@@ -1,0 +1,411 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0A872965-96D0-4B36-B9B2-F3CBAFBDDE79}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>CollegeManagement</RootNamespace>
+    <AssemblyName>CollegeManagement</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <PublishUrl>C:\Users\niros\OneDrive\Desktop\Application\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>25952F114E7DD5141C637CA24EEA4E5E6B4452B6</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>CollegeManagement_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FontAwesome.Sharp, Version=5.14.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FontAwesome.Sharp.5.14.1\lib\net45\FontAwesome.Sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.WinForms, Version=0.9.7.1, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.WinForms.0.9.7.1\lib\net45\LiveCharts.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.0.21.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsBase.4.6.1055.0\lib\WindowsBase.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CollegeDBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CollegeDBDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="data.cs">
+      <DependentUpon>data.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="data.Designer.cs">
+      <DependentUpon>data.cs</DependentUpon>
+    </Compile>
+    <Compile Include="data1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>data.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Server\DBConnection.cs" />
+    <Compile Include="Server\Infrastructure\BuildingCore.cs" />
+    <Compile Include="Server\Infrastructure\LecturerController.cs" />
+    <Compile Include="Server\Infrastructure\RoomCore.cs" />
+    <Compile Include="Server\Infrastructure\SessionController.cs" />
+    <Compile Include="Server\Infrastructure\StatisticsCore.cs" />
+    <Compile Include="Server\Infrastructure\StudentCore.cs" />
+    <Compile Include="Server\Infrastructure\TagController.cs" />
+    <Compile Include="Lecturer\AddLecturers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lecturer\AddLecturers.Designer.cs">
+      <DependentUpon>AddLecturers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lecturer\AddSession.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lecturer\AddSession.Designer.cs">
+      <DependentUpon>AddSession.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lecturer\LectureMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lecturer\LectureMain.Designer.cs">
+      <DependentUpon>LectureMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Location\AddBuilding.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Location\AddBuilding.Designer.cs">
+      <DependentUpon>AddBuilding.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Location\AddRoom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Location\AddRoom.Designer.cs">
+      <DependentUpon>AddRoom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Location\LocationMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Location\LocationMain.Designer.cs">
+      <DependentUpon>LocationMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Location\ViewBuilding.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Location\ViewBuilding.Designer.cs">
+      <DependentUpon>ViewBuilding.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Location\ViewRoom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Location\ViewRoom.Designer.cs">
+      <DependentUpon>ViewRoom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MianForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MianForm.Designer.cs">
+      <DependentUpon>MianForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Server\Infrastructure\WorkingDaysHoursCore.cs" />
+    <Compile Include="Server\Model\BuildingModel.cs" />
+    <Compile Include="Server\Model\LecturerModel.cs" />
+    <Compile Include="Server\Model\RoomModel.cs" />
+    <Compile Include="Server\Model\SessionModel.cs" />
+    <Compile Include="Server\Model\StatisticsModel.cs" />
+    <Compile Include="Server\Model\StudentModel.cs" />
+    <Compile Include="Server\Model\TagModel.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Server\Model\WorkDaysHours.cs" />
+    <Compile Include="Statistics\LecStat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Statistics\LecStat.Designer.cs">
+      <DependentUpon>LecStat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Statistics\StatisticMangement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Statistics\StatisticMangement.Designer.cs">
+      <DependentUpon>StatisticMangement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Statistics\StudStat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Statistics\StudStat.Designer.cs">
+      <DependentUpon>StudStat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Statistics\SubStat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Statistics\SubStat.Designer.cs">
+      <DependentUpon>SubStat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Student\Group.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Student\Group.Designer.cs">
+      <DependentUpon>Group.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Student\Program.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Student\Program.Designer.cs">
+      <DependentUpon>Program.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Student\StudentMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Student\StudentMain.Designer.cs">
+      <DependentUpon>StudentMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Student\SubGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Student\SubGroup.Designer.cs">
+      <DependentUpon>SubGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Student\YearSem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Student\YearSem.Designer.cs">
+      <DependentUpon>YearSem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tags\TagManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tags\TagManagement.Designer.cs">
+      <DependentUpon>TagManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WorkingDaysHours\MainWorkingDaysHours.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WorkingDaysHours\MainWorkingDaysHours.Designer.cs">
+      <DependentUpon>MainWorkingDaysHours.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WorkingDaysHours\TimeSlots.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WorkingDaysHours\TimeSlots.Designer.cs">
+      <DependentUpon>TimeSlots.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WorkingDaysHours\WorkingDays.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WorkingDaysHours\WorkingDays.Designer.cs">
+      <DependentUpon>WorkingDays.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WorkingDaysHours\WorkingHours.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WorkingDaysHours\WorkingHours.Designer.cs">
+      <DependentUpon>WorkingHours.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Lecturer\AddLecturers.resx">
+      <DependentUpon>AddLecturers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lecturer\AddSession.resx">
+      <DependentUpon>AddSession.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lecturer\LectureMain.resx">
+      <DependentUpon>LectureMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Location\AddBuilding.resx">
+      <DependentUpon>AddBuilding.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Location\AddRoom.resx">
+      <DependentUpon>AddRoom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Location\LocationMain.resx">
+      <DependentUpon>LocationMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Location\ViewBuilding.resx">
+      <DependentUpon>ViewBuilding.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Location\ViewRoom.resx">
+      <DependentUpon>ViewRoom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MianForm.resx">
+      <DependentUpon>MianForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Statistics\LecStat.resx">
+      <DependentUpon>LecStat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Statistics\StatisticMangement.resx">
+      <DependentUpon>StatisticMangement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Statistics\StudStat.resx">
+      <DependentUpon>StudStat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Statistics\SubStat.resx">
+      <DependentUpon>SubStat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Student\Group.resx">
+      <DependentUpon>Group.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Student\Program.resx">
+      <DependentUpon>Program.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Student\StudentMain.resx">
+      <DependentUpon>StudentMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Student\SubGroup.resx">
+      <DependentUpon>SubGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Student\YearSem.resx">
+      <DependentUpon>YearSem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tags\TagManagement.resx">
+      <DependentUpon>TagManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WorkingDaysHours\MainWorkingDaysHours.resx">
+      <DependentUpon>MainWorkingDaysHours.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WorkingDaysHours\TimeSlots.resx">
+      <DependentUpon>TimeSlots.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WorkingDaysHours\WorkingDays.resx">
+      <DependentUpon>WorkingDays.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WorkingDaysHours\WorkingHours.resx">
+      <DependentUpon>WorkingHours.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="CollegeDBDataSet.xsc">
+      <DependentUpon>CollegeDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="CollegeDBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CollegeDBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CollegeDBDataSet.xss">
+      <DependentUpon>CollegeDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="CollegeManagement_TemporaryKey.pfx" />
+    <None Include="data.xsc">
+      <DependentUpon>data.xsd</DependentUpon>
+    </None>
+    <None Include="data.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>data1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="data.xss">
+      <DependentUpon>data.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Subject\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Server\CollegeDB.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Server\CollegeDB_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>CollegeDB.mdf</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
