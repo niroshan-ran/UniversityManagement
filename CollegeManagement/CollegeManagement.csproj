@@ -58,7 +58,7 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="FontAwesome.Sharp, Version=5.14.1.0, Culture=neutral, processorArchitecture=MSIL">
@@ -114,6 +114,7 @@
     <Compile Include="Server\Infrastructure\SessionController.cs" />
     <Compile Include="Server\Infrastructure\StatisticsCore.cs" />
     <Compile Include="Server\Infrastructure\StudentCore.cs" />
+    <Compile Include="Server\Infrastructure\SubjectController.cs" />
     <Compile Include="Server\Infrastructure\TagController.cs" />
     <Compile Include="Lecturer\AddLecturers.cs">
       <SubType>Form</SubType>
@@ -176,6 +177,7 @@
     <Compile Include="Server\Model\SessionModel.cs" />
     <Compile Include="Server\Model\StatisticsModel.cs" />
     <Compile Include="Server\Model\StudentModel.cs" />
+    <Compile Include="Server\Model\SubjectModel.cs" />
     <Compile Include="Server\Model\TagModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -234,6 +236,18 @@
     <Compile Include="Student\YearSem.Designer.cs">
       <DependentUpon>YearSem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Subject\AddSubject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subject\AddSubject.Designer.cs" />
+    <Compile Include="Subject\ManageSubject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subject\ManageSubject.Designer.cs" />
+    <Compile Include="Subject\SubjectMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subject\SubjectMain.Designer.cs" />
     <Compile Include="Tags\TagManagement.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -328,6 +342,9 @@
     <EmbeddedResource Include="Student\YearSem.resx">
       <DependentUpon>YearSem.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Subject\AddSubject.resx" />
+    <EmbeddedResource Include="Subject\ManageSubject.resx" />
+    <EmbeddedResource Include="Subject\SubjectMain.resx" />
     <EmbeddedResource Include="Tags\TagManagement.resx">
       <DependentUpon>TagManagement.cs</DependentUpon>
     </EmbeddedResource>
@@ -387,9 +404,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Subject\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
