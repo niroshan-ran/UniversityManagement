@@ -1,36 +1,37 @@
 ﻿using CollegeCore.Model;
-using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
 
 namespace CollegeCore.Infrastructure
 {
     public class TagController
     {
+        SqlConnection con = new SqlConnection(DBConnection.connectionString);
+
         public void insertTag(TagModel objstudent)
         {
+            int count = 0;
             try
             {
                 string Query = "Insert into college_db.tags(tag_code,tag_name,tag_desc) values('" + objstudent.TagCode + "','" + objstudent.TagName + "','" + objstudent.TagDescription + "')";
-                MySqlConnection con = new MySqlConnection(DBConnection.ConnectionString);
+                con = new SqlConnection(DBConnection.connectionString);
 
-                MySqlCommand cmd = new MySqlCommand(Query, con);
-                MySqlDataReader myReader;
                 con.Open();
-                myReader = cmd.ExecuteReader();
 
-                while (myReader.Read())
-                {
-                }
-                con.Close();
-
+                SqlCommand cmd = new SqlCommand(Query, con);
+                count = cmd.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex);
+            }
+            finally
+            {
+                con.Close();
             }
         }
 
@@ -40,11 +41,12 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Select * from college_db.tags";
-                MySqlConnection con = new MySqlConnection(DBConnection.ConnectionString);
+                con = new SqlConnection(DBConnection.connectionString);
 
-                MySqlCommand cmd = new MySqlCommand(Query, con);
-                MySqlDataReader myReader;
+                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlDataReader myReader;
                 con.Open();
+                myReader = cmd.ExecuteReader();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
@@ -67,49 +69,51 @@ namespace CollegeCore.Infrastructure
 
         public void updateTag(TagModel objstudent, TagModel objPrevStd)
         {
+            int count = 0;
             try
             {
                 string Query = "Update college_db.tags SET tag_code = '" + objstudent.TagCode + "' , tag_name = '" + objstudent.TagName + "',tag_desc = '" + objstudent.TagDescription + "' where tag_code = '" + objPrevStd.TagCode + "'";
-                MySqlConnection con = new MySqlConnection(DBConnection.ConnectionString);
+                con = new SqlConnection(DBConnection.connectionString);
 
-                MySqlCommand cmd = new MySqlCommand(Query, con);
-                MySqlDataReader myReader;
                 con.Open();
-                myReader = cmd.ExecuteReader();
 
-                while (myReader.Read())
-                {
-                }
-                con.Close();
+                SqlCommand cmd = new SqlCommand(Query, con);
+
+                count = cmd.ExecuteNonQuery();
 
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex);
+            }
+            finally
+            {
+                con.Close();
             }
         }
 
         public void deleteTag(TagModel objStudent)
         {
+            int count = 0;
             try
             {
                 string Query = "Delete from college_db.tags where tag_code = '" + objStudent.TagCode + "'";
-                MySqlConnection con = new MySqlConnection(DBConnection.ConnectionString);
+                SqlConnection con = new SqlConnection(DBConnection.connectionString);
 
-                MySqlCommand cmd = new MySqlCommand(Query, con);
-                MySqlDataReader myReader;
                 con.Open();
-                myReader = cmd.ExecuteReader();
 
-                while (myReader.Read())
-                {
-                }
-                con.Close();
+                SqlCommand cmd = new SqlCommand(Query, con);
+
+                count = cmd.ExecuteNonQuery();
 
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex);
+            }
+            finally
+            {
+                con.Close();
             }
         }
     }
