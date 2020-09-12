@@ -1,4 +1,5 @@
 ﻿using CollegeManagement.Lecturer;
+using CollegeManagement.Subject;
 using CollegeManagement.Student;
 using CollegeManagement.Tags;
 using CollegeManagement.WorkingDaysHours;
@@ -116,7 +117,9 @@ namespace CollegeManagement
 
         private void iconBtnSub_Click(object sender, EventArgs e)
         {
-
+            ActivateButton(sender, RGBColors.color1);
+            openChildForm(new SubjectMain());
+            lblTitle.Text = "Subject Management";
         }
     }
 }
