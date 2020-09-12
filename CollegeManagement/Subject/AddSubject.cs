@@ -53,7 +53,7 @@ namespace CollegeManagement.Subject
         {
             SubjectModel objSub = new SubjectModel();
 
-            
+
             objSub.Year = offYear.Text;
             objSub.Semester = offSem.Text;
             objSub.SubName = subName.Text;

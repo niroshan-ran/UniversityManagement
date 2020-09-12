@@ -51,3 +51,17 @@ CREATE TABLE [dbo].[year_sem] (
     [year]     VARCHAR (5) NOT NULL,
     [semester] VARCHAR (5) NOT NULL
 );
+
+GO
+CREATE TABLE [dbo].[lecturers] (
+    [idlecturer]    INT          NOT NULL,
+    [lecturer_name] VARCHAR (50) NULL,
+    [emp_id]        VARCHAR (50) NULL,
+    [faculty]       VARCHAR (50) NULL,
+    [department]    VARCHAR (50) NULL,
+    [center]        VARCHAR (50) NULL,
+    [building]      VARCHAR (50) NULL,
+    [level_s]       VARCHAR (50) NULL,
+    [rank_s]        VARCHAR (50) NULL,
+    PRIMARY KEY CLUSTERED ([idlecturer] ASC)
+);
