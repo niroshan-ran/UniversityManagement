@@ -31,9 +31,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pannelTitle = new System.Windows.Forms.Panel();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.pannelTitle = new System.Windows.Forms.Panel();
+            //this.pannelTitle = new System.Windows.Forms.Panel();
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
-            this.lblTitle = new System.Windows.Forms.Label();
+            //this.lblTitle = new System.Windows.Forms.Label();
             this.pannelChild = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.icnBtnSatistics = new FontAwesome.Sharp.IconButton();
