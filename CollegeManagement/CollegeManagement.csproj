@@ -107,6 +107,11 @@
     <Compile Include="data.Designer.cs">
       <DependentUpon>data.cs</DependentUpon>
     </Compile>
+    <Compile Include="data1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>data.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Server\DBConnection.cs" />
     <Compile Include="Server\Infrastructure\BuildingCore.cs" />
     <Compile Include="Server\Infrastructure\LecturerController.cs" />
