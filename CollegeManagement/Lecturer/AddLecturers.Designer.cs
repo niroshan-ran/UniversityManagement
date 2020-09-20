@@ -88,16 +88,16 @@
             this.gvLecturers.BackgroundColor = System.Drawing.Color.White;
             this.gvLecturers.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.gvLecturers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gvLecturers.Location = new System.Drawing.Point(407, 105);
+            this.gvLecturers.Location = new System.Drawing.Point(397, 82);
             this.gvLecturers.Name = "gvLecturers";
-            this.gvLecturers.Size = new System.Drawing.Size(344, 149);
+            this.gvLecturers.Size = new System.Drawing.Size(453, 253);
             this.gvLecturers.TabIndex = 22;
             this.gvLecturers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gcLecture_CellClick);
             // 
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.OrangeRed;
-            this.button3.Location = new System.Drawing.Point(630, 275);
+            this.button3.Location = new System.Drawing.Point(700, 359);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 21;
@@ -108,7 +108,7 @@
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.SkyBlue;
-            this.button2.Location = new System.Drawing.Point(510, 275);
+            this.button2.Location = new System.Drawing.Point(580, 359);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 20;
@@ -119,7 +119,7 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.Turquoise;
-            this.button1.Location = new System.Drawing.Point(391, 275);
+            this.button1.Location = new System.Drawing.Point(461, 359);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 19;

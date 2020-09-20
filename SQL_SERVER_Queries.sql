@@ -51,3 +51,31 @@ CREATE TABLE [dbo].[year_sem] (
     [year]     VARCHAR (5) NOT NULL,
     [semester] VARCHAR (5) NOT NULL
 );
+
+GO
+CREATE TABLE [dbo].[lecturers] (
+    [idlecturer]    INT         IDENTITY (1, 1) NOT NULL,
+    [lecturer_name] VARCHAR (50) NULL,
+    [emp_id]        VARCHAR (50) NULL,
+    [faculty]       VARCHAR (50) NULL,
+    [department]    VARCHAR (50) NULL,
+    [center]        VARCHAR (50) NULL,
+    [building]      VARCHAR (50) NULL,
+    [level_s]       VARCHAR (50) NULL,
+    [rank_s]        VARCHAR (50) NULL,
+    PRIMARY KEY CLUSTERED ([idlecturer] ASC)
+);
+
+GO
+CREATE TABLE [dbo].[subjects] (
+    [subject_id]   INT            IDENTITY (1, 1) NOT NULL,
+    [subject_Code] VARCHAR (50)   NULL,
+    [year]         VARCHAR (50)   NULL,
+    [semester]     VARCHAR (50)   NULL,
+    [sub_name]     VARCHAR (50)   NULL,
+    [lec_hours]    VARCHAR (50)   NULL,
+    [tut_hours]    VARCHAR (50) NULL,
+    [lab_hours]    VARCHAR (50)   NULL,
+    [eve_hours]    VARCHAR (50)   NULL,
+    PRIMARY KEY CLUSTERED ([subject_id] ASC)
+);

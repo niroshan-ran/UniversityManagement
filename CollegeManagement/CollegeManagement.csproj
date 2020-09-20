@@ -58,7 +58,7 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BouncyCastle.Crypto, Version=1.8.3.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
@@ -97,7 +97,7 @@
       <HintPath>..\packages\SSH.NET.2016.1.0\lib\net40\Renci.SshNet.dll</HintPath>
     </Reference>
     <Reference Include="System">
-      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.dll</HintPath>
     </Reference>
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.0\lib\netstandard1.1\System.Buffers.dll</HintPath>
@@ -156,6 +156,7 @@
     <Compile Include="Server\Infrastructure\SessionController.cs" />
     <Compile Include="Server\Infrastructure\StatisticsCore.cs" />
     <Compile Include="Server\Infrastructure\StudentCore.cs" />
+    <Compile Include="Server\Infrastructure\SubjectController.cs" />
     <Compile Include="Server\Infrastructure\TagController.cs" />
     <Compile Include="Lecturer\AddLecturers.cs">
       <SubType>Form</SubType>
@@ -218,6 +219,7 @@
     <Compile Include="Server\Model\SessionModel.cs" />
     <Compile Include="Server\Model\StatisticsModel.cs" />
     <Compile Include="Server\Model\StudentModel.cs" />
+    <Compile Include="Server\Model\SubjectModel.cs" />
     <Compile Include="Server\Model\TagModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -275,6 +277,24 @@
     </Compile>
     <Compile Include="Student\YearSem.Designer.cs">
       <DependentUpon>YearSem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Subject\AddSubject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subject\AddSubject.Designer.cs">
+      <DependentUpon>AddSubject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Subject\ManageSubject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subject\ManageSubject.Designer.cs">
+      <DependentUpon>ManageSubject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Subject\SubjectMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subject\SubjectMain.Designer.cs">
+      <DependentUpon>SubjectMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Tags\TagManagement.cs">
       <SubType>Form</SubType>
@@ -370,6 +390,9 @@
     <EmbeddedResource Include="Student\YearSem.resx">
       <DependentUpon>YearSem.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Subject\AddSubject.resx">
+      <DependentUpon>AddSubject.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Tags\TagManagement.resx">
       <DependentUpon>TagManagement.cs</DependentUpon>
     </EmbeddedResource>
@@ -429,9 +452,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Subject\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>

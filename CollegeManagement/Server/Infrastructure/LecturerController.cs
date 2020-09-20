@@ -1,5 +1,5 @@
 ﻿using CollegeCore.Model;
-using MySql.Data.MySqlClient;
+using System.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +14,7 @@ namespace CollegeCore.Infrastructure
         {
             try
             {
-                string Query = "Insert into college_db.lecturers(lecturer_name,emp_id,faculty,department,center,building,level_s,rank_s) " + "values('" 
+                string Query = "Insert into lecturers(lecturer_name,emp_id,faculty,department,center,building,level_s,rank_s) " + "values('" 
                     + objLec.Name + "','" 
                     + objLec.EmpId + "','" 
                     + objLec.Faculty + "','" 
@@ -25,10 +25,10 @@ namespace CollegeCore.Infrastructure
                     + objLec.Rank + "')";
 
 
-                MySqlConnection con = new MySqlConnection(DBConnection.ConnectionString);
+                SqlConnection con = new SqlConnection(DBConnection.connectionString);
 
-                MySqlCommand cmd = new MySqlCommand(Query, con);
-                MySqlDataReader myReader;
+                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlDataReader myReader;
                 con.Open();
                 myReader = cmd.ExecuteReader();
 
@@ -49,11 +49,11 @@ namespace CollegeCore.Infrastructure
             List<LecturerModel> listLecturer = new List<LecturerModel>();
             try
             {
-                string Query = "Select lecturer_name,emp_id,faculty,department,center,building,level_s,rank_s from college_db.lecturers";
-                MySqlConnection con = new MySqlConnection(DBConnection.ConnectionString);
+                string Query = "Select lecturer_name,emp_id,faculty,department,center,building,level_s,rank_s from lecturers";
+                SqlConnection con = new SqlConnection(DBConnection.connectionString);
 
-                MySqlCommand cmd = new MySqlCommand(Query, con);
-                MySqlDataReader myReader;
+                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlDataReader myReader;
                 con.Open();
                 myReader = cmd.ExecuteReader();
 
@@ -84,13 +84,13 @@ namespace CollegeCore.Infrastructure
         {
             try
             {
-                string Query = "Update college_db.lecturers SET lecturer_name = '"+objlecture.Name+"', faculty = '" + objlecture.Faculty + "', department = '" + objlecture.Department + "', center = '" + objlecture.Center + "', building = '" + objlecture.Building + "', level_s = '" + objlecture.Level + "', rank_s = '" + objlecture.Rank + "'where emp_id = '" + objPrevLtr.EmpId + "'";
+                string Query = "Update lecturers SET lecturer_name = '"+objlecture.Name+"', faculty = '" + objlecture.Faculty + "', department = '" + objlecture.Department + "', center = '" + objlecture.Center + "', building = '" + objlecture.Building + "', level_s = '" + objlecture.Level + "', rank_s = '" + objlecture.Rank + "'where emp_id = '" + objPrevLtr.EmpId + "'";
                 
                 
-                MySqlConnection con = new MySqlConnection(DBConnection.ConnectionString);
+                SqlConnection con = new SqlConnection(DBConnection.connectionString);
 
-                MySqlCommand cmd = new MySqlCommand(Query, con);
-                MySqlDataReader myReader;
+                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlDataReader myReader;
                 con.Open();
                 myReader = cmd.ExecuteReader();
 
@@ -110,11 +110,11 @@ namespace CollegeCore.Infrastructure
         {
             try
             {
-                string Query = "Delete from college_db.lecturers where emp_id = '" + objlecture.EmpId + "'";
-                MySqlConnection con = new MySqlConnection(DBConnection.ConnectionString);
+                string Query = "Delete from lecturers where emp_id = '" + objlecture.EmpId + "'";
+                SqlConnection con = new SqlConnection(DBConnection.connectionString);
 
-                MySqlCommand cmd = new MySqlCommand(Query, con);
-                MySqlDataReader myReader;
+                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlDataReader myReader;
                 con.Open();
                 myReader = cmd.ExecuteReader();
 
