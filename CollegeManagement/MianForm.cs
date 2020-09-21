@@ -56,7 +56,7 @@ namespace CollegeManagement
                 currentButton.ForeColor = Color.Gainsboro;
                 currentButton.TextAlign = ContentAlignment.MiddleLeft;
                 currentButton.IconColor = Color.Gainsboro; ;
-               currentButton.TextImageRelation = TextImageRelation.ImageBeforeText;
+                currentButton.TextImageRelation = TextImageRelation.ImageBeforeText;
                 currentButton.ImageAlign = ContentAlignment.MiddleLeft;
             }
         }
@@ -128,7 +128,7 @@ namespace CollegeManagement
 
             if (result.ToString().Equals("Yes")) 
             {
-                Close();
+                Application.Exit();
             }
             
         }
