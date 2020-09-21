@@ -1,42 +1,35 @@
 ﻿using CollegeCore.Model;
-using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
 
 namespace CollegeCore.Infrastructure
 {
     public class StudentCore
     {
+        SqlConnection con = new SqlConnection(DBConnection.connectionString);
+
         #region Year & semester
 
         public void insertYearSem(YearSemModel objstudent)
         {
+            int count = 0;
             try
             {
                 string Query = "Insert into college_db.year_sem(year,semester) values('" + objstudent.Year + "','" + objstudent.Semester + "')";
-                
-                
-                MySqlConnection con = new MySqlConnection(DBConnection.ConnectionString);
+                con = new SqlConnection(DBConnection.connectionString);
 
-                
-                MySqlCommand cmd = new MySqlCommand(Query, con);
-
-                
-
-                MySqlDataReader myReader;
                 con.Open();
-                myReader = cmd.ExecuteReader();
 
-                while (myReader.Read())
-                {
-                }
+                SqlCommand cmd = new SqlCommand(Query, con);
+                count = cmd.ExecuteNonQuery();
                 con.Close();
-
-            }catch(Exception ex)
+            }
+            catch(Exception ex)
             {
 
             }
@@ -48,12 +41,13 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Select year,semester from college_db.year_sem";
-                MySqlConnection con = new MySqlConnection(DBConnection.ConnectionString);
+                con = new SqlConnection(DBConnection.connectionString);
 
-                MySqlCommand cmd = new MySqlCommand(Query, con);
-                MySqlDataReader myReader;
+                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlDataReader myReader;
                 con.Open();
                 myReader = cmd.ExecuteReader();
+                List<string> weekdayArray = new List<string>();
 
                 while (myReader.Read())
                 {
@@ -62,6 +56,7 @@ namespace CollegeCore.Infrastructure
                     objStudent.Semester = myReader["semester"].ToString();
                     listStudent.Add(objStudent);
                 }
+                con.Close();
             }
             catch (Exception ex)
             {
@@ -73,21 +68,17 @@ namespace CollegeCore.Infrastructure
 
         public void updateYearSem(YearSemModel objstudent, YearSemModel objPrevStd)
         {
+            int count = 0;
             try
             {
                 string Query = "Update college_db.year_sem SET year = '"+objstudent.Year+"' , semester = '"+objstudent.Semester+ "' where year = '" + objPrevStd.Year + "' and semester = '"+objPrevStd.Semester+"'";
-                MySqlConnection con = new MySqlConnection(DBConnection.ConnectionString);
+                con = new SqlConnection(DBConnection.connectionString);
 
-                MySqlCommand cmd = new MySqlCommand(Query, con);
-                MySqlDataReader myReader;
                 con.Open();
-                myReader = cmd.ExecuteReader();
+                SqlCommand cmd = new SqlCommand(Query, con);
 
-                while (myReader.Read())
-                {
-                }
+                count = cmd.ExecuteNonQuery();
                 con.Close();
-
             }
             catch (Exception ex)
             {
@@ -97,21 +88,18 @@ namespace CollegeCore.Infrastructure
 
         public void deleteYearSem(YearSemModel objStudent) 
         {
+            int count = 0;
             try
             {
                 string Query = "Delete from college_db.year_sem where year = '"+objStudent.Year+"' and semester = '"+objStudent.Semester+"'";
-                MySqlConnection con = new MySqlConnection(DBConnection.ConnectionString);
+                SqlConnection con = new SqlConnection(DBConnection.connectionString);
 
-                MySqlCommand cmd = new MySqlCommand(Query, con);
-                MySqlDataReader myReader;
                 con.Open();
-                myReader = cmd.ExecuteReader();
 
-                while (myReader.Read())
-                {
-                }
+                SqlCommand cmd = new SqlCommand(Query, con);
+
+                count = cmd.ExecuteNonQuery();
                 con.Close();
-
             }
             catch (Exception ex)
             {
@@ -123,21 +111,17 @@ namespace CollegeCore.Infrastructure
         #region Program
         public void insertProgram(ProgramModel objstudent)
         {
+            int count = 0;
             try
             {
                 string Query = "Insert into college_db.program(code,name,description) values('" + objstudent.ProgramCode + "','" + objstudent.ProgramName + "','"+objstudent.ProgramDescription+"')";
-                MySqlConnection con = new MySqlConnection(DBConnection.ConnectionString);
+                con = new SqlConnection(DBConnection.connectionString);
 
-                MySqlCommand cmd = new MySqlCommand(Query, con);
-                MySqlDataReader myReader;
                 con.Open();
-                myReader = cmd.ExecuteReader();
 
-                while (myReader.Read())
-                {
-                }
+                SqlCommand cmd = new SqlCommand(Query, con);
+                count = cmd.ExecuteNonQuery();
                 con.Close();
-
             }
             catch (Exception ex)
             {
@@ -151,10 +135,10 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Select code,name,description from college_db.program";
-                MySqlConnection con = new MySqlConnection(DBConnection.ConnectionString);
+                con = new SqlConnection(DBConnection.connectionString);
 
-                MySqlCommand cmd = new MySqlCommand(Query, con);
-                MySqlDataReader myReader;
+                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlDataReader myReader;
                 con.Open();
                 myReader = cmd.ExecuteReader();
 
@@ -166,6 +150,7 @@ namespace CollegeCore.Infrastructure
                     objStudent.ProgramDescription = myReader["description"].ToString();
                     listStudent.Add(objStudent);
                 }
+                con.Close();
             }
             catch (Exception ex)
             {
@@ -177,21 +162,17 @@ namespace CollegeCore.Infrastructure
 
         public void updateProgram(ProgramModel objstudent, ProgramModel objPrevStd)
         {
+            int count = 0;
             try
             {
                 string Query = "Update college_db.program SET code = '" + objstudent.ProgramCode + "' , name = '" + objstudent.ProgramName + "', description='"+objstudent.ProgramDescription+"' where code = '" + objPrevStd.ProgramCode+"' ";
-                MySqlConnection con = new MySqlConnection(DBConnection.ConnectionString);
+                con = new SqlConnection(DBConnection.connectionString);
 
-                MySqlCommand cmd = new MySqlCommand(Query, con);
-                MySqlDataReader myReader;
                 con.Open();
-                myReader = cmd.ExecuteReader();
+                SqlCommand cmd = new SqlCommand(Query, con);
 
-                while (myReader.Read())
-                {
-                }
+                count = cmd.ExecuteNonQuery();
                 con.Close();
-
             }
             catch (Exception ex)
             {
@@ -201,21 +182,17 @@ namespace CollegeCore.Infrastructure
 
         public void deleteProgram(ProgramModel objStudent)
         {
+            int count = 0;
             try
             {
                 string Query = "Delete from college_db.program where code = '" + objStudent.ProgramCode+"'" ;
-                MySqlConnection con = new MySqlConnection(DBConnection.ConnectionString);
+                SqlConnection con = new SqlConnection(DBConnection.connectionString);
 
-                MySqlCommand cmd = new MySqlCommand(Query, con);
-                MySqlDataReader myReader;
                 con.Open();
-                myReader = cmd.ExecuteReader();
 
-                while (myReader.Read())
-                {
-                }
+                SqlCommand cmd = new SqlCommand(Query, con);
+                count = cmd.ExecuteNonQuery();
                 con.Close();
-
             }
             catch (Exception ex)
             {
@@ -232,17 +209,18 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Select distinct year from college_db.year_sem";
-                MySqlConnection con = new MySqlConnection(DBConnection.ConnectionString);
+                SqlConnection con = new SqlConnection(DBConnection.connectionString);
 
-                MySqlCommand cmd = new MySqlCommand(Query, con);
-                MySqlDataAdapter MyAdapter = new MySqlDataAdapter();
-                MyAdapter.SelectCommand = cmd;
-                
-                MyAdapter.Fill(dt);
-
+                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlDataAdapter myAdapter = new SqlDataAdapter();
                 DataRow row = dt.NewRow();
-                row[0] = 0;
-                row[1] = "--Select--";
+                myAdapter.SelectCommand = cmd;
+                con.Open();
+                myAdapter.Fill(dt);
+                con.Close();
+                con.Close();
+                //row[0] = 0;
+                //row[1] = "--Select--";
             }
             catch (Exception ex)
             {
@@ -257,17 +235,18 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Select semester from college_db.year_sem where year = '"+year+"'";
-                MySqlConnection con = new MySqlConnection(DBConnection.ConnectionString);
+                SqlConnection con = new SqlConnection(DBConnection.connectionString);
 
-                MySqlCommand cmd = new MySqlCommand(Query, con);
-                MySqlDataAdapter MyAdapter = new MySqlDataAdapter();
-                MyAdapter.SelectCommand = cmd;
-
-                MyAdapter.Fill(dt);
-
+                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlDataAdapter myAdapter = new SqlDataAdapter();
                 DataRow row = dt.NewRow();
-                row[0] = 0;
-                row[1] = "--Select--";
+                myAdapter.SelectCommand = cmd;
+                con.Open();
+                myAdapter.Fill(dt);
+                con.Close();
+                //DataRow row = dt.NewRow();
+                //row[0] = 0;
+                //row[1] = "--Select--";
             }
             catch (Exception ex)
             {
@@ -282,17 +261,18 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Select code from college_db.program";
-                MySqlConnection con = new MySqlConnection(DBConnection.ConnectionString);
+                SqlConnection con = new SqlConnection(DBConnection.connectionString);
 
-                MySqlCommand cmd = new MySqlCommand(Query, con);
-                MySqlDataAdapter MyAdapter = new MySqlDataAdapter();
-                MyAdapter.SelectCommand = cmd;
-
-                MyAdapter.Fill(dt);
-
+                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlDataAdapter myAdapter = new SqlDataAdapter();
                 DataRow row = dt.NewRow();
-                row[0] = 0;
-                row[1] = "--Select--";
+                myAdapter.SelectCommand = cmd;
+                con.Open();
+                myAdapter.Fill(dt);
+                con.Close();
+                //DataRow row = dt.NewRow();
+                //row[0] = 0;
+                //row[1] = "--Select--";
             }
             catch (Exception ex)
             {
@@ -303,21 +283,16 @@ namespace CollegeCore.Infrastructure
 
         public void insertGroup(GroupModel objstudent)
         {
+            int count = 0;
             try
             {
                 string Query = "Insert into college_db.group(group_id,year,semester,program,group_no) values('" + objstudent.GrouID + "','" + objstudent.Year + "','" + objstudent.Semester + "','" + objstudent.Program + "'," + objstudent.GroupNo + ")";
-                MySqlConnection con = new MySqlConnection(DBConnection.ConnectionString);
+                con = new SqlConnection(DBConnection.connectionString);
 
-                MySqlCommand cmd = new MySqlCommand(Query, con);
-                MySqlDataReader myReader;
                 con.Open();
-                myReader = cmd.ExecuteReader();
-
-                while (myReader.Read())
-                {
-                }
+                SqlCommand cmd = new SqlCommand(Query, con);
+                count = cmd.ExecuteNonQuery();
                 con.Close();
-
             }
             catch (Exception ex)
             {
@@ -331,10 +306,10 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Select * from college_db.group";
-                MySqlConnection con = new MySqlConnection(DBConnection.ConnectionString);
+                SqlConnection con = new SqlConnection(DBConnection.connectionString);
 
-                MySqlCommand cmd = new MySqlCommand(Query, con);
-                MySqlDataReader myReader;
+                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlDataReader myReader;
                 con.Open();
                 myReader = cmd.ExecuteReader();
 
@@ -348,6 +323,7 @@ namespace CollegeCore.Infrastructure
                     objStudent.GroupNo = Convert.ToInt32(myReader["group_no"].ToString());
                     listStudent.Add(objStudent);
                 }
+                con.Close();
             }
             catch (Exception ex)
             {
@@ -359,21 +335,16 @@ namespace CollegeCore.Infrastructure
 
         public void updateGroup(GroupModel objstudent, GroupModel objPrevStd)
         {
+            int count = 0;
             try
             {
                 string Query = "Update college_db.group SET group_id = '" + objstudent.GrouID + "' , year = '" + objstudent.Year + "', semester='" + objstudent.Semester + "', program= '" + objstudent.Program + "' , group_no='" + objstudent.GroupNo + "'  where group_id = '" + objPrevStd.GrouID +"'";
-                MySqlConnection con = new MySqlConnection(DBConnection.ConnectionString);
+                con = new SqlConnection(DBConnection.connectionString);
 
-                MySqlCommand cmd = new MySqlCommand(Query, con);
-                MySqlDataReader myReader;
                 con.Open();
-                myReader = cmd.ExecuteReader();
-
-                while (myReader.Read())
-                {
-                }
+                SqlCommand cmd = new SqlCommand(Query, con);
+                count = cmd.ExecuteNonQuery();
                 con.Close();
-
             }
             catch (Exception ex)
             {
@@ -383,19 +354,15 @@ namespace CollegeCore.Infrastructure
 
         public void deleteGroup(GroupModel objStudent)
         {
+            int count = 0;
             try
             {
                 string Query = "Delete from college_db.group where group_id = '" + objStudent.GrouID + "'";
-                MySqlConnection con = new MySqlConnection(DBConnection.ConnectionString);
+                con = new SqlConnection(DBConnection.connectionString);
 
-                MySqlCommand cmd = new MySqlCommand(Query, con);
-                MySqlDataReader myReader;
                 con.Open();
-                myReader = cmd.ExecuteReader();
-
-                while (myReader.Read())
-                {
-                }
+                SqlCommand cmd = new SqlCommand(Query, con);
+                count = cmd.ExecuteNonQuery();
                 con.Close();
 
             }
@@ -415,17 +382,19 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Select group_id from college_db.group";
-                MySqlConnection con = new MySqlConnection(DBConnection.ConnectionString);
+                SqlConnection con = new SqlConnection(DBConnection.connectionString);
 
-                MySqlCommand cmd = new MySqlCommand(Query, con);
-                MySqlDataAdapter MyAdapter = new MySqlDataAdapter();
-                MyAdapter.SelectCommand = cmd;
-
-                MyAdapter.Fill(dt);
-
+                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlDataAdapter myAdapter = new SqlDataAdapter();
                 DataRow row = dt.NewRow();
-                row[0] = 0;
-                row[1] = "--Select--";
+                myAdapter.SelectCommand = cmd;
+                con.Open();
+                myAdapter.Fill(dt);
+                con.Close();
+
+                //DataRow row = dt.NewRow();
+                //row[0] = 0;
+                //row[1] = "--Select--";
             }
             catch (Exception ex)
             {
@@ -436,19 +405,15 @@ namespace CollegeCore.Infrastructure
 
         public void insertSubGroup(subGroupModel objstudent)
         {
+            int count = 0;
             try
             {
                 string Query = "Insert into college_db.sub_group(sub_group_id,group_id,sub_group_no) values('" + objstudent.SubGroupID + "','" + objstudent.GrouID + "','" + objstudent.SubGroupNo + "' )";
-                MySqlConnection con = new MySqlConnection(DBConnection.ConnectionString);
+                con = new SqlConnection(DBConnection.connectionString);
 
-                MySqlCommand cmd = new MySqlCommand(Query, con);
-                MySqlDataReader myReader;
                 con.Open();
-                myReader = cmd.ExecuteReader();
-
-                while (myReader.Read())
-                {
-                }
+                SqlCommand cmd = new SqlCommand(Query, con);
+                count = cmd.ExecuteNonQuery();
                 con.Close();
 
             }
@@ -464,10 +429,10 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Select * from college_db.sub_group";
-                MySqlConnection con = new MySqlConnection(DBConnection.ConnectionString);
+                SqlConnection con = new SqlConnection(DBConnection.connectionString);
 
-                MySqlCommand cmd = new MySqlCommand(Query, con);
-                MySqlDataReader myReader;
+                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlDataReader myReader;
                 con.Open();
                 myReader = cmd.ExecuteReader();
 
@@ -490,19 +455,15 @@ namespace CollegeCore.Infrastructure
 
         public void updateSubGroup(subGroupModel objstudent, subGroupModel objPrevStd)
         {
+            int count = 0;
             try
             {
                 string Query = "Update college_db.sub_group SET sub_group_id = '" + objstudent.SubGroupID + "' , group_id = '" + objstudent.GrouID + "', sub_group_no='" + objstudent.SubGroupNo + "'  where sub_group_id = '" + objPrevStd.SubGroupID + "'";
-                MySqlConnection con = new MySqlConnection(DBConnection.ConnectionString);
+                con = new SqlConnection(DBConnection.connectionString);
 
-                MySqlCommand cmd = new MySqlCommand(Query, con);
-                MySqlDataReader myReader;
                 con.Open();
-                myReader = cmd.ExecuteReader();
-
-                while (myReader.Read())
-                {
-                }
+                SqlCommand cmd = new SqlCommand(Query, con);
+                count = cmd.ExecuteNonQuery();
                 con.Close();
 
             }
@@ -514,20 +475,18 @@ namespace CollegeCore.Infrastructure
 
         public void deleteSubGroup(subGroupModel objStudent)
         {
+            int count = 0;
             try
             {
                 string Query = "Delete from college_db.sub_group where sub_group_id = '" + objStudent.SubGroupID + "'";
-                MySqlConnection con = new MySqlConnection(DBConnection.ConnectionString);
+                con = new SqlConnection(DBConnection.connectionString);
 
-                MySqlCommand cmd = new MySqlCommand(Query, con);
-                MySqlDataReader myReader;
                 con.Open();
-                myReader = cmd.ExecuteReader();
-
-                while (myReader.Read())
-                {
-                }
+                SqlCommand cmd = new SqlCommand(Query, con);
+                count = cmd.ExecuteNonQuery();
                 con.Close();
+
+             
 
             }
             catch (Exception ex)
