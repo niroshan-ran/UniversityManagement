@@ -16,7 +16,7 @@ namespace CollegeManagement
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MianForm());
+            Application.Run(new MainForm());
         }
     }
 }

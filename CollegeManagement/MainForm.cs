@@ -16,13 +16,13 @@ using System.Windows.Forms;
 
 namespace CollegeManagement
 {
-    public partial class MianForm : Form
+    public partial class MainForm : Form
     {
         private IconButton currentButton;
         private Panel mainPannel;
         private Form currentChildForm;
 
-        public MianForm()
+        public MainForm()
         {
             InitializeComponent();
         }

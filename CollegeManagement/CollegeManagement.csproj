@@ -164,11 +164,11 @@
     <Compile Include="Location\ViewRoom.Designer.cs">
       <DependentUpon>ViewRoom.cs</DependentUpon>
     </Compile>
-    <Compile Include="MianForm.cs">
+    <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MianForm.Designer.cs">
-      <DependentUpon>MianForm.cs</DependentUpon>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Server\Infrastructure\WorkingDaysHoursCore.cs" />
     <Compile Include="Server\Model\BuildingModel.cs" />
@@ -308,8 +308,8 @@
     <EmbeddedResource Include="Location\ViewRoom.resx">
       <DependentUpon>ViewRoom.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MianForm.resx">
-      <DependentUpon>MianForm.cs</DependentUpon>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
