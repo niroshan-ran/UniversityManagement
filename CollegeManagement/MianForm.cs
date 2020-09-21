@@ -41,10 +41,10 @@ namespace CollegeManagement
                 currentButton = (IconButton)SenderButton;
                 currentButton.BackColor = Color.FromArgb(37, 36, 81);
                 currentButton.ForeColor = color;
-                currentButton.TextAlign = ContentAlignment.MiddleCenter;
+                currentButton.TextAlign = ContentAlignment.MiddleLeft;
                 currentButton.IconColor = color;
-               // currentButton.TextImageRelation = TextImageRelation.TextBeforeImage;
-                currentButton.ImageAlign = ContentAlignment.MiddleRight;
+                currentButton.TextImageRelation = TextImageRelation.ImageBeforeText;
+                currentButton.ImageAlign = ContentAlignment.MiddleLeft;
             }            
         }
 
@@ -54,9 +54,9 @@ namespace CollegeManagement
             {
                 currentButton.BackColor = Color.FromArgb(31,30,68);
                 currentButton.ForeColor = Color.Gainsboro;
-                currentButton.TextAlign = ContentAlignment.MiddleCenter;
+                currentButton.TextAlign = ContentAlignment.MiddleLeft;
                 currentButton.IconColor = Color.Gainsboro; ;
-               // currentButton.TextImageRelation = TextImageRelation.TextBeforeImage;
+               currentButton.TextImageRelation = TextImageRelation.ImageBeforeText;
                 currentButton.ImageAlign = ContentAlignment.MiddleLeft;
             }
         }
@@ -120,6 +120,17 @@ namespace CollegeManagement
             ActivateButton(sender, RGBColors.color1);
             openChildForm(new SubjectMain());
             lblTitle.Text = "Subject Management";
+        }
+
+        private void iconPictureBox1_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure you want to Exit?", "Confirm Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (result.ToString().Equals("Yes")) 
+            {
+                Close();
+            }
+            
         }
     }
 }
