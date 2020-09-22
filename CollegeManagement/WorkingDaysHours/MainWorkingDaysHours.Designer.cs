@@ -1,4 +1,4 @@
-﻿namespace CollegeManagement.WorkingDaysHours
+﻿namespace CollegeCore.WorkingDaysHours
 {
     partial class MainWorkingDaysHours
     {

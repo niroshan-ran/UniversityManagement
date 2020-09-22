@@ -1,4 +1,4 @@
-﻿namespace CollegeManagement.Lecturer
+﻿namespace CollegeCore.Lecturer
 {
     partial class AddLecturers
     {

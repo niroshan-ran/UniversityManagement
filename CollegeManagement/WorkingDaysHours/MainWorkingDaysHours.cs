@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CollegeManagement.WorkingDaysHours
+namespace CollegeCore.WorkingDaysHours
 {
     public partial class MainWorkingDaysHours : Form
     {

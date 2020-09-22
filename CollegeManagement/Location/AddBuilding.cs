@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using CollegeCore.Infrastructure;
 using CollegeCore.Model;
 
-namespace CollegeManagement.Location
+namespace CollegeCore.Location
 {
     public partial class AddBuilding : Form
     {

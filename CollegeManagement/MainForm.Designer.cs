@@ -1,4 +1,4 @@
-﻿namespace CollegeManagement
+﻿namespace CollegeCore
 {
     partial class MainForm
     {

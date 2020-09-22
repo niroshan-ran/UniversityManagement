@@ -1,4 +1,4 @@
-﻿namespace CollegeManagement.Statistics
+﻿namespace CollegeCore.Statistics
 {
     partial class LecStat
     {
@@ -32,7 +32,7 @@
             this.pieChart2 = new LiveCharts.WinForms.PieChart();
             this.lecturerCountBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.dataBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.data = new CollegeManagement.data();
+            this.data = new CollegeCore.data();
             this.btnLoad = new FontAwesome.Sharp.IconButton();
             this.lblFac = new System.Windows.Forms.Label();
             this.pieChart1 = new LiveCharts.WinForms.PieChart();
@@ -41,8 +41,8 @@
             this.lblCenter = new System.Windows.Forms.Label();
             this.pieChart3 = new LiveCharts.WinForms.PieChart();
             this.lecturerCountBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.data2 = new CollegeManagement.data();
-            this.data1 = new CollegeManagement.data();
+            this.data2 = new CollegeCore.data();
+            this.data1 = new CollegeCore.data();
             this.lecturerCountBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.lecturerCountBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataBindingSource)).BeginInit();

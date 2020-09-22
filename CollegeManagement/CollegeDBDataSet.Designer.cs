@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace CollegeManagement {
+namespace CollegeCore {
     
     
     /// <summary>
@@ -2853,7 +2853,7 @@ namespace CollegeManagement {
         }
     }
 }
-namespace CollegeManagement.CollegeDBDataSetTableAdapters {
+namespace CollegeCore.CollegeDBDataSetTableAdapters {
     
     
     /// <summary>
@@ -3026,7 +3026,7 @@ SELECT group_id, Year, semester, program, group_no FROM [group] WHERE (group_id 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::CollegeManagement.Properties.Settings.Default.CollegeDBConnectionString;
+            this._connection.ConnectionString = global::CollegeCore.Properties.Settings.Default.CollegeDBConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3428,7 +3428,7 @@ SELECT code, Name, description FROM program WHERE (code = @code)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::CollegeManagement.Properties.Settings.Default.CollegeDBConnectionString;
+            this._connection.ConnectionString = global::CollegeCore.Properties.Settings.Default.CollegeDBConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3806,7 +3806,7 @@ SELECT sub_group_id, group_id, sub_group_no FROM sub_group WHERE (sub_group_id =
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::CollegeManagement.Properties.Settings.Default.CollegeDBConnectionString;
+            this._connection.ConnectionString = global::CollegeCore.Properties.Settings.Default.CollegeDBConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4162,7 +4162,7 @@ SELECT dayOfTheWeek, startTime, endTime, type FROM timeslots WHERE (dayOfTheWeek
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::CollegeManagement.Properties.Settings.Default.CollegeDBConnectionString;
+            this._connection.ConnectionString = global::CollegeCore.Properties.Settings.Default.CollegeDBConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4546,7 +4546,7 @@ SELECT dayOfTheWeek, startTime, endTime FROM workingdays WHERE (dayOfTheWeek = @
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::CollegeManagement.Properties.Settings.Default.CollegeDBConnectionString;
+            this._connection.ConnectionString = global::CollegeCore.Properties.Settings.Default.CollegeDBConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4900,7 +4900,7 @@ SELECT dayOfTheWeek, startTime, endTime FROM workingdays WHERE (dayOfTheWeek = @
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::CollegeManagement.Properties.Settings.Default.CollegeDBConnectionString;
+            this._connection.ConnectionString = global::CollegeCore.Properties.Settings.Default.CollegeDBConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CollegeManagement.Location
+namespace CollegeCore.Location
 {
     public partial class LocationMain : Form
     {

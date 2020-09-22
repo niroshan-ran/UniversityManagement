@@ -1,11 +1,9 @@
 ﻿using CollegeCore.Model;
-
+using CollegeCore.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-
 namespace CollegeCore.Infrastructure
 {
     public class WorkingDaysHoursCore
@@ -18,19 +16,17 @@ namespace CollegeCore.Infrastructure
             int count = 0;
 
 
-            string query = "UPDATE timeslots SET dayOfTheWeek = @Day_of_the_Week, startTime = @Start_Time, endTime = @End_Time, type = @Type WHERE dayOfTheWeek = @Day_of_the_Week AND startTime = @Start_Time IF @@ROWCOUNT=0 INSERT INTO timeslots VALUES (@Day_of_the_Week, @Start_Time, @End_Time, @Type);";
-
             try
             {
 
                 con.Open();
 
-                SqlCommand cmd = new SqlCommand(query, con);
+                SqlCommand cmd = new SqlCommand(CommonConstants.QUERY_SAVE_TIMESLOT, con);
 
-                cmd.Parameters.AddWithValue("@Day_of_the_Week", timeSlots.GetDay_of_the_Week());
-                cmd.Parameters.AddWithValue("@Start_Time", timeSlots.GetStart_Time());
-                cmd.Parameters.AddWithValue("@End_Time", timeSlots.GetEnd_Time());
-                cmd.Parameters.AddWithValue("@Type", timeSlots.GetSlotType());
+                cmd.Parameters.AddWithValue(CommonConstants.PARAMETER_DAY_OF_THE_WEEK, timeSlots.GetDay_of_the_Week());
+                cmd.Parameters.AddWithValue(CommonConstants.PARAMETER_START_TIME, timeSlots.GetStart_Time());
+                cmd.Parameters.AddWithValue(CommonConstants.PARAMETER_END_TIME, timeSlots.GetEnd_Time());
+                cmd.Parameters.AddWithValue(CommonConstants.PARAMETER_TYPE, timeSlots.GetSlotType());
 
 
                 count = cmd.ExecuteNonQuery();
@@ -62,31 +58,23 @@ namespace CollegeCore.Infrastructure
             try
             {
 
-                
-
-                
-
                 foreach (WorkDays day in dayList)
                 {
 
+                    SqlCommand cmd = new SqlCommand(CommonConstants.QUERY_GET_ALL_WORK_DAYS, con);
+                    SqlDataReader myReader;
 
                     if (day.getDayChecked())
                     {
 
                         bool status = true;
 
-                        string Query = "SELECT * FROM workingDays;";
-
-
-                        SqlCommand cmd = new SqlCommand(Query, con);
-                        SqlDataReader myReader;
-
                         con.Open();
                         myReader = cmd.ExecuteReader();
 
                         while (myReader.Read())
                         {
-                            if (day.GetDay_of_the_Week() == myReader["dayOfTheWeek"].ToString().Trim())
+                            if (day.GetDay_of_the_Week() == myReader[CommonConstants.COLUMN_DAY_OF_THE_WEEK].ToString().Trim())
                             {
                                 status = false;
                                 break;
@@ -104,18 +92,11 @@ namespace CollegeCore.Infrastructure
                         {
                             // Add the day
 
-                            
-
-                            string Query2 = "INSERT INTO workingDays(dayOfTheWeek) VALUES(@day);";
-
-
-
-
                             con.Open();
 
-                            SqlCommand cmd2 = new SqlCommand(Query2, con);
+                            SqlCommand cmd2 = new SqlCommand(CommonConstants.QUERY_INSERT_WORK_DAY, con);
 
-                            cmd2.Parameters.AddWithValue("@day", day.GetDay_of_the_Week().Trim());
+                            cmd2.Parameters.AddWithValue(CommonConstants.PARAMETER_DAY, day.GetDay_of_the_Week().Trim());
 
 
 
@@ -141,18 +122,12 @@ namespace CollegeCore.Infrastructure
 
                         bool status = false;
 
-                        string Query = "SELECT * FROM workingDays;";
-
-
-                        SqlCommand cmd = new SqlCommand(Query, con);
-                        SqlDataReader myReader;
-
                         con.Open();
                         myReader = cmd.ExecuteReader();
 
                         while (myReader.Read())
                         {
-                            if (day.GetDay_of_the_Week() == myReader["dayOfTheWeek"].ToString().Trim())
+                            if (day.GetDay_of_the_Week() == myReader[CommonConstants.COLUMN_DAY_OF_THE_WEEK].ToString().Trim())
                             {
                                 status = true;
                                 break;
@@ -170,17 +145,11 @@ namespace CollegeCore.Infrastructure
                         {
                             // Remove the day
 
-                            
-
-                            string Query2 = "DELETE FROM workingDays WHERE dayOfTheWeek = @day;";
-
-
-
                             con.Open();
 
-                            SqlCommand cmd2 = new SqlCommand(Query2, con);
+                            SqlCommand cmd2 = new SqlCommand(CommonConstants.QUERY_REMOVE_WORK_DAY, con);
 
-                            cmd2.Parameters.AddWithValue("@day", day.GetDay_of_the_Week().Trim());
+                            cmd2.Parameters.AddWithValue(CommonConstants.PARAMETER_DAY, day.GetDay_of_the_Week().Trim());
 
 
 
@@ -204,7 +173,7 @@ namespace CollegeCore.Infrastructure
 
                     }
 
-                    con.Close();
+                    
 
                 }
 
@@ -220,10 +189,7 @@ namespace CollegeCore.Infrastructure
             {
                 con.Close();
 
-                foreach(WorkDays day in dayList)
-                {
-                    Console.WriteLine(day.GetDay_of_the_Week() + " " + day.getDayChecked());
-                }
+               
             }
 
             return count;
@@ -235,13 +201,10 @@ namespace CollegeCore.Infrastructure
         {
             DataTable workingDaysTable = new DataTable();
 
-            string strCommandText = "SELECT dayOfTheWeek FROM workingdays order by case [dayOfTheWeek] WHEN 'Monday' THEN 1 WHEN 'Tuesday' THEN 2 WHEN 'Wednesday' THEN 3 WHEN 'Thursday' THEN 4 WHEN 'Friday' THEN 5 WHEN 'Saturday' THEN 6 WHEN 'Sunday' THEN 7 END;";
-
-
             try
             {
 
-                SqlDataAdapter dataAdapter = new SqlDataAdapter(strCommandText, con);
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(CommonConstants.QUERY_GET_WORK_DAYS, con);
 
                 SqlCommandBuilder cmdBuilder = new SqlCommandBuilder(dataAdapter);
 
@@ -266,12 +229,11 @@ namespace CollegeCore.Infrastructure
         {
             DataTable dataTable = new DataTable();
 
-            string strCommandText = "SELECT * FROM workingdays order by case [dayOfTheWeek] WHEN 'Monday' THEN 1 WHEN 'Tuesday' THEN 2 WHEN 'Wednesday' THEN 3 WHEN 'Thursday' THEN 4 WHEN 'Friday' THEN 5 WHEN 'Saturday' THEN 6 WHEN 'Sunday' THEN 7 END;";
-
+          
             try
             {
 
-                SqlDataAdapter dataAdapter = new SqlDataAdapter(strCommandText, con);
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(CommonConstants.QUERY_GET_WORK_HOURS, con);
 
                 SqlCommandBuilder cmdBuilder = new SqlCommandBuilder(dataAdapter);
 
@@ -292,7 +254,7 @@ namespace CollegeCore.Infrastructure
             return dataTable;
         }
 
-        public List<WorkDays> getWorkingDays()
+        public List<WorkDays> getWorkingDays(String query)
         {
 
             List<WorkDays> workDays = new List<WorkDays>();
@@ -300,11 +262,7 @@ namespace CollegeCore.Infrastructure
             try
             {
 
-
-
-                string Query = "SELECT dayOfTheWeek FROM workingdays order by case [dayOfTheWeek] WHEN 'Monday' THEN 1 WHEN 'Tuesday' THEN 2 WHEN 'Wednesday' THEN 3 WHEN 'Thursday' THEN 4 WHEN 'Friday' THEN 5 WHEN 'Saturday' THEN 6 WHEN 'Sunday' THEN 7 END;";
-
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(query, con);
                 SqlDataReader myReader;
                 con.Open();
                 myReader = cmd.ExecuteReader();
@@ -313,7 +271,7 @@ namespace CollegeCore.Infrastructure
                 {
                     WorkDays workDay = new WorkDays();
 
-                    workDay.SetDay_of_the_Week(myReader["dayOfTheWeek"].ToString());
+                    workDay.SetDay_of_the_Week(myReader[CommonConstants.COLUMN_DAY_OF_THE_WEEK].ToString());
 
                     workDays.Add(workDay);
 
@@ -337,6 +295,8 @@ namespace CollegeCore.Infrastructure
 
         }
 
+
+
         public int saveWorkingHours(WorkHours day)
         {
 
@@ -344,15 +304,13 @@ namespace CollegeCore.Infrastructure
 
             try
             {
-                String Query = "UPDATE workingDays SET startTime=@Start_Time, endTime = @End_Time WHERE dayOfTheWeek = @Day_of_the_Week;";
-
-
+              
                 con.Open();
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(CommonConstants.QUERY_SAVE_WORK_HOURS, con);
 
-                cmd.Parameters.AddWithValue("@Start_Time", day.GetStart_Time());
-                cmd.Parameters.AddWithValue("@End_Time", day.GetEnd_Time());
-                cmd.Parameters.AddWithValue("@Day_of_the_Week", day.GetDay_of_the_Week());
+                cmd.Parameters.AddWithValue(CommonConstants.PARAMETER_START_TIME, day.GetStart_Time());
+                cmd.Parameters.AddWithValue(CommonConstants.PARAMETER_END_TIME, day.GetEnd_Time());
+                cmd.Parameters.AddWithValue(CommonConstants.PARAMETER_DAY_OF_THE_WEEK, day.GetDay_of_the_Week());
 
 
 
@@ -458,9 +416,7 @@ namespace CollegeCore.Infrastructure
             try
             {
 
-                string Query = "SELECT * FROM timeslots ORDER BY CASE [dayOfTheWeek] WHEN 'Monday' THEN 1 WHEN 'Tuesday' THEN 2 WHEN 'Wednesday' THEN 3 WHEN 'Thursday' THEN 4 WHEN 'Friday' THEN 5 WHEN 'Saturday' THEN 6 WHEN 'Sunday' THEN 7 END;";
-
-                SqlDataAdapter dataAdapter = new SqlDataAdapter(Query, con);
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(CommonConstants.QUERY_GET_ALL_TIMESLOTS, con);
 
                 SqlCommandBuilder cmdBuilder = new SqlCommandBuilder(dataAdapter);
 
@@ -493,14 +449,12 @@ namespace CollegeCore.Infrastructure
             try
             {
 
-                String Query = "DELETE FROM timeslots WHERE startTime = @Start_Time AND dayOfTheWeek = @Day_of_the_Week;";
-
                 con.Open();
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(CommonConstants.QUERY_REMOVE_TIMESLOT, con);
 
-                cmd.Parameters.AddWithValue("@Start_Time", timeSlot.GetStart_Time());
-                cmd.Parameters.AddWithValue("@Day_of_the_Week", timeSlot.GetDay_of_the_Week());
+                cmd.Parameters.AddWithValue(CommonConstants.PARAMETER_START_TIME, timeSlot.GetStart_Time());
+                cmd.Parameters.AddWithValue(CommonConstants.PARAMETER_DAY_OF_THE_WEEK, timeSlot.GetDay_of_the_Week());
 
 
 

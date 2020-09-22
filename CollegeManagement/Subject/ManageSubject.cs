@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CollegeManagement.Subject
+namespace CollegeCore.Subject
 {
     public partial class ManageSubject : Form
     {
