@@ -8,39 +8,120 @@ namespace CollegeCore.Model
 {
     public class WorkHours
     {
-       
-        public string Day_of_the_Week { get; set; }
+        private string day_of_the_Week;
+        private string start_Time;
+        private string end_Time;
 
-        public String Start_Time { get; set; }
+        public WorkHours()
+        {
+        }
 
-        public String End_Time { get; set; }
+        public string GetDay_of_the_Week()
+        {
+            return day_of_the_Week;
+        }
+
+        public void SetDay_of_the_Week(string value)
+        {
+            day_of_the_Week = value;
+        }
+
+        public string GetStart_Time()
+        {
+            return start_Time;
+        }
+
+        public void SetStart_Time(string value)
+        {
+            start_Time = value;
+        }
+
+        public string GetEnd_Time()
+        {
+            return end_Time;
+        }
+
+        public void SetEnd_Time(string value)
+        {
+            end_Time = value;
+        }
 
 
-
+        
     }
 
     public class WorkDays
     {
+        private string day_of_the_Week;
+        private bool day_checked;
 
-        public string Day_of_the_Week { get; set; }
+        public void setDayChecked(bool value)
+        {
+            day_checked = value;
+        }
 
+        public bool getDayChecked()
+        {
+            return day_checked;
+        }
 
+        public string GetDay_of_the_Week()
+        {
+            return day_of_the_Week;
+        }
 
+        public void SetDay_of_the_Week(string value)
+        {
+            day_of_the_Week = value;
+        }
     }
 
     public class TimeSlot
     {
+        private string day_of_the_Week;
+        private string start_Time;
+        private string end_Time;
+        private string type;
 
-        public string Day_of_the_Week { get; set; }
+        public string GetDay_of_the_Week()
+        {
+            return day_of_the_Week;
+        }
 
-        public String Start_Time { get; set; }
+        public void SetDay_of_the_Week(string value)
+        {
+            day_of_the_Week = value;
+        }
+        
+        public string GetStart_Time()
+        {
+            return start_Time;
+        }
 
-        public String End_Time { get; set; }
+        public void SetStart_Time(string value)
+        {
+            start_Time = value;
+        }
 
-        public String Type { get; set; }
+        public string GetEnd_Time()
+        {
+            return end_Time;
+        }
 
+        public void SetEnd_Time(string value)
+        {
+            end_Time = value;
+        }
 
+        public string GetSlotType()
+        {
+            return type;
+        }
 
+        public void SetSlotType(string value)
+        {
+            type = value;
+        }
     }
 
 }
