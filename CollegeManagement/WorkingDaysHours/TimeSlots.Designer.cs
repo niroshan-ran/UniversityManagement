@@ -1,4 +1,4 @@
-﻿namespace CollegeManagement.WorkingDaysHours
+﻿namespace CollegeCore.WorkingDaysHours
 {
     partial class TimeSlots
     {
@@ -44,9 +44,9 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnSave = new FontAwesome.Sharp.IconButton();
             this.btnRemove = new FontAwesome.Sharp.IconButton();
-            this.collegeDBDataSet = new CollegeManagement.CollegeDBDataSet();
+            this.collegeDBDataSet = new CollegeCore.CollegeDBDataSet();
             this.timeslotsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.timeslotsTableAdapter = new CollegeManagement.CollegeDBDataSetTableAdapters.timeslotsTableAdapter();
+            this.timeslotsTableAdapter = new CollegeCore.CollegeDBDataSetTableAdapters.timeslotsTableAdapter();
             this.dayOfTheWeekDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.startTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.endTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();

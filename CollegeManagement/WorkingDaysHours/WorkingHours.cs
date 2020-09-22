@@ -1,5 +1,6 @@
 ﻿using CollegeCore.Infrastructure;
 using CollegeCore.Model;
+using CollegeCore.Utilities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CollegeManagement.WorkingDaysHours
+namespace CollegeCore.WorkingDaysHours
 {
     public partial class WorkingHours : Form
     {
@@ -36,7 +37,7 @@ namespace CollegeManagement.WorkingDaysHours
         public void loadDays()
         {
 
-            List<WorkDays> workDaysList = cntrl.getWorkingDays();
+            List<WorkDays> workDaysList = cntrl.getWorkingDays(CommonConstants.QUERY_GET_WORK_HOURS);
 
             List<String> stringList = new List<string>();
 
@@ -158,28 +159,41 @@ namespace CollegeManagement.WorkingDaysHours
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            DateTime startTime = DateTime.Parse(startTimePicker.Value.ToString());
+            DateTime endTime = DateTime.Parse(endTimePicker.Value.ToShortTimeString());
 
-            WorkHours day = new WorkHours();
 
-            day.SetDay_of_the_Week(daysListBox.SelectedItem.ToString());
 
-            day.SetStart_Time(startTimePicker.Value.ToShortTimeString());
-            day.SetEnd_Time(endTimePicker.Value.ToShortTimeString());
-
-            Console.WriteLine(day.GetStart_Time());
-
-            int count = cntrl.saveWorkingHours(day);
-
-            if (count != -1)
+            if (startTime.Hour >= endTime.Hour)
             {
-                MessageBox.Show("Working Hours Saved SuccessFully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Please Enter Valid Working Hours", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                MessageBox.Show("Error Occurred", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
 
-            loadData();
+                WorkHours day = new WorkHours();
+
+                day.SetDay_of_the_Week(daysListBox.SelectedItem.ToString());
+
+                day.SetStart_Time(startTimePicker.Value.ToShortTimeString());
+                day.SetEnd_Time(endTimePicker.Value.ToShortTimeString());
+
+                Console.WriteLine(day.GetStart_Time());
+
+                int count = cntrl.saveWorkingHours(day);
+
+                if (count != -1)
+                {
+                    MessageBox.Show("Working Hours Saved SuccessFully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Error Occurred", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                loadData();
+
+            }
 
         }
 

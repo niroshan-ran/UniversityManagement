@@ -1,4 +1,4 @@
-﻿namespace CollegeManagement.Statistics
+﻿namespace CollegeCore.Statistics
 {
     partial class StudStat
     {
@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.studentCountBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.data = new CollegeManagement.data();
+            this.data = new CollegeCore.data();
             this.pieChart1 = new LiveCharts.WinForms.PieChart();
             this.dataBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lblCount1 = new System.Windows.Forms.Label();

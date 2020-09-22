@@ -1,4 +1,4 @@
-﻿namespace CollegeManagement.Statistics
+﻿namespace CollegeCore.Statistics
 {
     partial class SubStat
     {
@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.pieChart3 = new LiveCharts.WinForms.PieChart();
             this.programmesCountBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.data = new CollegeManagement.data();
+            this.data = new CollegeCore.data();
             this.btnLoad = new FontAwesome.Sharp.IconButton();
             this.lblSubCount = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.programmesCountBindingSource)).BeginInit();

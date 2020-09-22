@@ -4,7 +4,7 @@
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
-          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="CollegeDBConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="CollegeDBConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.CollegeManagement.Properties.Settings.GlobalReference.Default.CollegeDBConnectionString" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="CollegeDBConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="CollegeDBConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.CollegeCore.Properties.Settings.GlobalReference.Default.CollegeDBConnectionString" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="groupTableAdapter" GeneratorDataComponentClassName="groupTableAdapter" Name="group" UserDataComponentName="groupTableAdapter">
@@ -333,7 +333,7 @@ SELECT dayOfTheWeek, startTime, endTime FROM workingdays WHERE (dayOfTheWeek = @
   <xs:element name="CollegeDBDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="CollegeDBDataSet" msprop:Generator_UserDSName="CollegeDBDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="group" msprop:Generator_TableClassName="groupDataTable" msprop:Generator_TableVarName="tablegroup" msprop:Generator_TablePropName="group" msprop:Generator_RowDeletingName="groupRowDeleting" msprop:Generator_RowChangingName="groupRowChanging" msprop:Generator_RowEvHandlerName="groupRowChangeEventHandler" msprop:Generator_RowDeletedName="groupRowDeleted" msprop:Generator_UserTableName="group" msprop:Generator_RowChangedName="groupRowChanged" msprop:Generator_RowEvArgName="groupRowChangeEvent" msprop:Generator_RowClassName="groupRow">
+        <xs:element name="group" msprop:Generator_TableClassName="groupDataTable" msprop:Generator_TableVarName="tablegroup" msprop:Generator_RowChangedName="groupRowChanged" msprop:Generator_TablePropName="group" msprop:Generator_RowDeletingName="groupRowDeleting" msprop:Generator_RowChangingName="groupRowChanging" msprop:Generator_RowEvHandlerName="groupRowChangeEventHandler" msprop:Generator_RowDeletedName="groupRowDeleted" msprop:Generator_RowClassName="groupRow" msprop:Generator_UserTableName="group" msprop:Generator_RowEvArgName="groupRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="group_id" msprop:Generator_ColumnVarNameInTable="columngroup_id" msprop:Generator_ColumnPropNameInRow="group_id" msprop:Generator_ColumnPropNameInTable="group_idColumn" msprop:Generator_UserColumnName="group_id">
@@ -368,7 +368,7 @@ SELECT dayOfTheWeek, startTime, endTime FROM workingdays WHERE (dayOfTheWeek = @
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="program" msprop:Generator_TableClassName="programDataTable" msprop:Generator_TableVarName="tableprogram" msprop:Generator_TablePropName="program" msprop:Generator_RowDeletingName="programRowDeleting" msprop:Generator_RowChangingName="programRowChanging" msprop:Generator_RowEvHandlerName="programRowChangeEventHandler" msprop:Generator_RowDeletedName="programRowDeleted" msprop:Generator_UserTableName="program" msprop:Generator_RowChangedName="programRowChanged" msprop:Generator_RowEvArgName="programRowChangeEvent" msprop:Generator_RowClassName="programRow">
+        <xs:element name="program" msprop:Generator_TableClassName="programDataTable" msprop:Generator_TableVarName="tableprogram" msprop:Generator_RowChangedName="programRowChanged" msprop:Generator_TablePropName="program" msprop:Generator_RowDeletingName="programRowDeleting" msprop:Generator_RowChangingName="programRowChanging" msprop:Generator_RowEvHandlerName="programRowChangeEventHandler" msprop:Generator_RowDeletedName="programRowDeleted" msprop:Generator_RowClassName="programRow" msprop:Generator_UserTableName="program" msprop:Generator_RowEvArgName="programRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="code" msprop:Generator_ColumnVarNameInTable="columncode" msprop:Generator_ColumnPropNameInRow="code" msprop:Generator_ColumnPropNameInTable="codeColumn" msprop:Generator_UserColumnName="code">
@@ -395,7 +395,7 @@ SELECT dayOfTheWeek, startTime, endTime FROM workingdays WHERE (dayOfTheWeek = @
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="sub_group" msprop:Generator_TableClassName="sub_groupDataTable" msprop:Generator_TableVarName="tablesub_group" msprop:Generator_TablePropName="sub_group" msprop:Generator_RowDeletingName="sub_groupRowDeleting" msprop:Generator_RowChangingName="sub_groupRowChanging" msprop:Generator_RowEvHandlerName="sub_groupRowChangeEventHandler" msprop:Generator_RowDeletedName="sub_groupRowDeleted" msprop:Generator_UserTableName="sub_group" msprop:Generator_RowChangedName="sub_groupRowChanged" msprop:Generator_RowEvArgName="sub_groupRowChangeEvent" msprop:Generator_RowClassName="sub_groupRow">
+        <xs:element name="sub_group" msprop:Generator_TableClassName="sub_groupDataTable" msprop:Generator_TableVarName="tablesub_group" msprop:Generator_RowChangedName="sub_groupRowChanged" msprop:Generator_TablePropName="sub_group" msprop:Generator_RowDeletingName="sub_groupRowDeleting" msprop:Generator_RowChangingName="sub_groupRowChanging" msprop:Generator_RowEvHandlerName="sub_groupRowChangeEventHandler" msprop:Generator_RowDeletedName="sub_groupRowDeleted" msprop:Generator_RowClassName="sub_groupRow" msprop:Generator_UserTableName="sub_group" msprop:Generator_RowEvArgName="sub_groupRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="sub_group_id" msprop:Generator_ColumnVarNameInTable="columnsub_group_id" msprop:Generator_ColumnPropNameInRow="sub_group_id" msprop:Generator_ColumnPropNameInTable="sub_group_idColumn" msprop:Generator_UserColumnName="sub_group_id">
@@ -416,7 +416,7 @@ SELECT dayOfTheWeek, startTime, endTime FROM workingdays WHERE (dayOfTheWeek = @
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="timeslots" msprop:Generator_TableClassName="timeslotsDataTable" msprop:Generator_TableVarName="tabletimeslots" msprop:Generator_TablePropName="timeslots" msprop:Generator_RowDeletingName="timeslotsRowDeleting" msprop:Generator_RowChangingName="timeslotsRowChanging" msprop:Generator_RowEvHandlerName="timeslotsRowChangeEventHandler" msprop:Generator_RowDeletedName="timeslotsRowDeleted" msprop:Generator_UserTableName="timeslots" msprop:Generator_RowChangedName="timeslotsRowChanged" msprop:Generator_RowEvArgName="timeslotsRowChangeEvent" msprop:Generator_RowClassName="timeslotsRow">
+        <xs:element name="timeslots" msprop:Generator_TableClassName="timeslotsDataTable" msprop:Generator_TableVarName="tabletimeslots" msprop:Generator_RowChangedName="timeslotsRowChanged" msprop:Generator_TablePropName="timeslots" msprop:Generator_RowDeletingName="timeslotsRowDeleting" msprop:Generator_RowChangingName="timeslotsRowChanging" msprop:Generator_RowEvHandlerName="timeslotsRowChangeEventHandler" msprop:Generator_RowDeletedName="timeslotsRowDeleted" msprop:Generator_RowClassName="timeslotsRow" msprop:Generator_UserTableName="timeslots" msprop:Generator_RowEvArgName="timeslotsRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="dayOfTheWeek" msprop:Generator_ColumnVarNameInTable="columndayOfTheWeek" msprop:Generator_ColumnPropNameInRow="dayOfTheWeek" msprop:Generator_ColumnPropNameInTable="dayOfTheWeekColumn" msprop:Generator_UserColumnName="dayOfTheWeek">
@@ -438,7 +438,7 @@ SELECT dayOfTheWeek, startTime, endTime FROM workingdays WHERE (dayOfTheWeek = @
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="workingdays" msprop:Generator_TableClassName="workingdaysDataTable" msprop:Generator_TableVarName="tableworkingdays" msprop:Generator_TablePropName="workingdays" msprop:Generator_RowDeletingName="workingdaysRowDeleting" msprop:Generator_RowChangingName="workingdaysRowChanging" msprop:Generator_RowEvHandlerName="workingdaysRowChangeEventHandler" msprop:Generator_RowDeletedName="workingdaysRowDeleted" msprop:Generator_UserTableName="workingdays" msprop:Generator_RowChangedName="workingdaysRowChanged" msprop:Generator_RowEvArgName="workingdaysRowChangeEvent" msprop:Generator_RowClassName="workingdaysRow">
+        <xs:element name="workingdays" msprop:Generator_TableClassName="workingdaysDataTable" msprop:Generator_TableVarName="tableworkingdays" msprop:Generator_RowChangedName="workingdaysRowChanged" msprop:Generator_TablePropName="workingdays" msprop:Generator_RowDeletingName="workingdaysRowDeleting" msprop:Generator_RowChangingName="workingdaysRowChanging" msprop:Generator_RowEvHandlerName="workingdaysRowChangeEventHandler" msprop:Generator_RowDeletedName="workingdaysRowDeleted" msprop:Generator_RowClassName="workingdaysRow" msprop:Generator_UserTableName="workingdays" msprop:Generator_RowEvArgName="workingdaysRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="dayOfTheWeek" msprop:Generator_ColumnVarNameInTable="columndayOfTheWeek" msprop:Generator_ColumnPropNameInRow="dayOfTheWeek" msprop:Generator_ColumnPropNameInTable="dayOfTheWeekColumn" msprop:Generator_UserColumnName="dayOfTheWeek">
@@ -453,7 +453,7 @@ SELECT dayOfTheWeek, startTime, endTime FROM workingdays WHERE (dayOfTheWeek = @
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="year_sem" msprop:Generator_TableClassName="year_semDataTable" msprop:Generator_TableVarName="tableyear_sem" msprop:Generator_TablePropName="year_sem" msprop:Generator_RowDeletingName="year_semRowDeleting" msprop:Generator_RowChangingName="year_semRowChanging" msprop:Generator_RowEvHandlerName="year_semRowChangeEventHandler" msprop:Generator_RowDeletedName="year_semRowDeleted" msprop:Generator_UserTableName="year_sem" msprop:Generator_RowChangedName="year_semRowChanged" msprop:Generator_RowEvArgName="year_semRowChangeEvent" msprop:Generator_RowClassName="year_semRow">
+        <xs:element name="year_sem" msprop:Generator_TableClassName="year_semDataTable" msprop:Generator_TableVarName="tableyear_sem" msprop:Generator_RowChangedName="year_semRowChanged" msprop:Generator_TablePropName="year_sem" msprop:Generator_RowDeletingName="year_semRowDeleting" msprop:Generator_RowChangingName="year_semRowChanging" msprop:Generator_RowEvHandlerName="year_semRowChangeEventHandler" msprop:Generator_RowDeletedName="year_semRowDeleted" msprop:Generator_RowClassName="year_semRow" msprop:Generator_UserTableName="year_sem" msprop:Generator_RowEvArgName="year_semRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="year" msprop:Generator_ColumnVarNameInTable="columnyear" msprop:Generator_ColumnPropNameInRow="year" msprop:Generator_ColumnPropNameInTable="yearColumn" msprop:Generator_UserColumnName="year">
@@ -499,7 +499,7 @@ SELECT dayOfTheWeek, startTime, endTime FROM workingdays WHERE (dayOfTheWeek = @
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="timeslots_ibfk_1" msdata:parent="workingdays" msdata:child="timeslots" msdata:parentkey="dayOfTheWeek" msdata:childkey="dayOfTheWeek" msprop:Generator_UserChildTable="timeslots" msprop:Generator_ChildPropName="GettimeslotsRows" msprop:Generator_UserRelationName="timeslots_ibfk_1" msprop:Generator_RelationVarName="relationtimeslots_ibfk_1" msprop:Generator_UserParentTable="workingdays" msprop:Generator_ParentPropName="workingdaysRow" />
+      <msdata:Relationship name="timeslots_ibfk_1" msdata:parent="workingdays" msdata:child="timeslots" msdata:parentkey="dayOfTheWeek" msdata:childkey="dayOfTheWeek" msprop:Generator_UserChildTable="timeslots" msprop:Generator_ChildPropName="GettimeslotsRows" msprop:Generator_UserRelationName="timeslots_ibfk_1" msprop:Generator_ParentPropName="workingdaysRow" msprop:Generator_RelationVarName="relationtimeslots_ibfk_1" msprop:Generator_UserParentTable="workingdays" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

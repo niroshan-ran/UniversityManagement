@@ -9,8 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CollegeCore.Infrastructure;
 using CollegeCore.Model;
+using CollegeCore.Utilities;
 
-namespace CollegeManagement.WorkingDaysHours
+namespace CollegeCore.WorkingDaysHours
 {
     public partial class TimeSlots : Form
     {
@@ -30,7 +31,7 @@ namespace CollegeManagement.WorkingDaysHours
         public void loadDays()
         {
 
-            List<WorkDays> workDaysList = cntrl.getWorkingDays();
+            List<WorkDays> workDaysList = cntrl.getWorkingDays(CommonConstants.QUERY_GET_WORK_DAYS_BY_HOURS);
 
             List<String> stringList = new List<string>();
 

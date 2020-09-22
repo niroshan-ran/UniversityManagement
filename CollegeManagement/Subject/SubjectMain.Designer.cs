@@ -1,4 +1,4 @@
-﻿namespace CollegeManagement.Subject
+﻿namespace CollegeCore.Subject
 {
     partial class SubjectMain
     {

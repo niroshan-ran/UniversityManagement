@@ -1,6 +1,6 @@
 ﻿
 
-namespace CollegeManagement.WorkingDaysHours
+namespace CollegeCore.WorkingDaysHours
 {
     partial class WorkingHours
     {
@@ -39,9 +39,9 @@ namespace CollegeManagement.WorkingDaysHours
             this.label3 = new System.Windows.Forms.Label();
             this.dtGdWorkHours = new System.Windows.Forms.DataGridView();
             this.workingdaysBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.collegeDBDataSet = new CollegeManagement.CollegeDBDataSet();
+            this.collegeDBDataSet = new CollegeCore.CollegeDBDataSet();
             this.btnSave = new FontAwesome.Sharp.IconButton();
-            this.workingdaysTableAdapter = new CollegeManagement.CollegeDBDataSetTableAdapters.workingdaysTableAdapter();
+            this.workingdaysTableAdapter = new CollegeCore.CollegeDBDataSetTableAdapters.workingdaysTableAdapter();
             this.dayOfTheWeekDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.startTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.endTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();

@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CollegeManagement.Tags
+namespace CollegeCore.Tags
 {
     public partial class TagManagement : Form
     {

@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CollegeManagement.Statistics
+namespace CollegeCore.Statistics
 {
     public partial class SubStat : Form
     {

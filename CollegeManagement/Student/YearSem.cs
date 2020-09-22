@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using CollegeCore.Infrastructure;
 using CollegeCore.Model;
 
-namespace CollegeManagement.Student
+namespace CollegeCore.Student
 {
     public partial class YearSem : Form
     {

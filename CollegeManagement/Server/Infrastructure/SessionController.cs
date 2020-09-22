@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CollegeManagement.Server.Infrastructure
+namespace CollegeCore.Server.Infrastructure
 {
     class SessionController
     {

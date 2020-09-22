@@ -1,4 +1,4 @@
-﻿namespace CollegeManagement.Location
+﻿namespace CollegeCore.Location
 {
     partial class ViewRoom
     {

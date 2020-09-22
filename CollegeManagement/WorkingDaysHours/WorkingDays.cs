@@ -11,8 +11,9 @@ using System.Windows.Forms;
 using CollegeCore;
 using CollegeCore.Infrastructure;
 using CollegeCore.Model;
+using CollegeCore.Utilities;
 
-namespace CollegeManagement.WorkingDaysHours
+namespace CollegeCore.WorkingDaysHours
 {
     public partial class WorkingDays : Form
     {
@@ -30,7 +31,7 @@ namespace CollegeManagement.WorkingDaysHours
         {
             List<WorkDays> daysList = new List<WorkDays>();
 
-            daysList = contrl.getWorkingDays();
+            daysList = contrl.getWorkingDays(CommonConstants.QUERY_GET_WORK_DAYS);
 
             DataTable dataTable = contrl.getWorkingDaysTable();
 

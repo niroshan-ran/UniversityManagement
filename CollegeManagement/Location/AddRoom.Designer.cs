@@ -1,4 +1,4 @@
-﻿namespace CollegeManagement.Location
+﻿namespace CollegeCore.Location
 {
     partial class AddRoom
     {
@@ -43,7 +43,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cmbBuilding = new System.Windows.Forms.ComboBox();
             this.txtCapacity = new System.Windows.Forms.TextBox();
-            this.data = new CollegeManagement.data();
+            this.data = new CollegeCore.data();
             this.buildingBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.gvRooms)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.data)).BeginInit();
