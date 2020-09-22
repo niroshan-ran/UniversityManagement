@@ -25,8 +25,11 @@ namespace CollegeManagement.WorkingDaysHours
         public void loadData() 
         {
 
-            dataGridView3.DataSource = cntrl.getWorkingHours();
 
+            DataTable dataTable = cntrl.getWorkingHoursTable();
+
+            if (dataTable.Rows.Count > 0)
+                dtGdWorkHours.DataSource = dataTable;
 
         }
 
@@ -40,7 +43,7 @@ namespace CollegeManagement.WorkingDaysHours
             foreach (WorkDays work in workDaysList)
             {
 
-                stringList.Add(work.Day_of_the_Week.ToString());
+                stringList.Add(work.GetDay_of_the_Week().ToString());
             }
 
             daysListBox.DataSource = stringList;
@@ -158,12 +161,12 @@ namespace CollegeManagement.WorkingDaysHours
 
             WorkHours day = new WorkHours();
 
-            day.Day_of_the_Week = daysListBox.SelectedItem.ToString();
+            day.SetDay_of_the_Week(daysListBox.SelectedItem.ToString());
 
-            day.Start_Time = startTimePicker.Value.ToShortTimeString();
-            day.End_Time = endTimePicker.Value.ToShortTimeString();
+            day.SetStart_Time(startTimePicker.Value.ToShortTimeString());
+            day.SetEnd_Time(endTimePicker.Value.ToShortTimeString());
 
-            Console.WriteLine(day.Start_Time);
+            Console.WriteLine(day.GetStart_Time());
 
             int count = cntrl.saveWorkingHours(day);
 
@@ -181,6 +184,18 @@ namespace CollegeManagement.WorkingDaysHours
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void WorkingHours_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'collegeDBDataSet.workingdays' table. You can move, or remove it, as needed.
+            this.workingdaysTableAdapter.Fill(this.collegeDBDataSet.workingdays);
+
+        }
+
+        private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

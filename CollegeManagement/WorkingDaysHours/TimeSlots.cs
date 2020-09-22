@@ -20,8 +20,11 @@ namespace CollegeManagement.WorkingDaysHours
 
         public void loadData() 
         {
+            DataTable dataTable = cntrl.getTimeSlotsTable();
 
-            dataGridView1.DataSource = cntrl.getTimeSlots();
+            if (dataTable.Rows.Count > 0)
+                dataGridView1.DataSource = dataTable;
+            
         }
 
         public void loadDays()
@@ -34,7 +37,7 @@ namespace CollegeManagement.WorkingDaysHours
             foreach (WorkDays work in workDaysList)
             {
 
-                stringList.Add(work.Day_of_the_Week.ToString());
+                stringList.Add(work.GetDay_of_the_Week().ToString());
             }
 
             daysListBox.DataSource = stringList;
@@ -97,26 +100,26 @@ namespace CollegeManagement.WorkingDaysHours
         {
             TimeSlot timeSlots = new TimeSlot();
 
-            timeSlots.Day_of_the_Week = daysListBox.SelectedItem.ToString();
+            timeSlots.SetDay_of_the_Week(daysListBox.SelectedItem.ToString());
 
-            timeSlots.Start_Time = startTimePicker.Value.ToShortTimeString();
+            timeSlots.SetStart_Time(startTimePicker.Value.ToShortTimeString());
 
             if (radioButtonThirtyMinutes.Checked == true)
             {
-                timeSlots.End_Time = startTimePicker.Value.AddMinutes(30).ToShortTimeString();
+                timeSlots.SetEnd_Time(startTimePicker.Value.AddMinutes(30).ToShortTimeString());
             }
             else if (radioButtonOneHour.Checked == true) 
             {
-                timeSlots.End_Time = startTimePicker.Value.AddHours(1).ToShortTimeString();
+                timeSlots.SetEnd_Time(startTimePicker.Value.AddHours(1).ToShortTimeString());
             }
 
             if (radioButtonLunchBreak.Checked == true)
             {
-                timeSlots.Type = radioButtonLunchBreak.Text.ToString();
+                timeSlots.SetSlotType(radioButtonLunchBreak.Text.ToString());
             }
             else if (radioButtonWorkTime.Checked == true)
             {
-                timeSlots.Type = radioButtonWorkTime.Text.ToString();
+                timeSlots.SetSlotType(radioButtonWorkTime.Text.ToString());
             }
 
 
@@ -140,9 +143,9 @@ namespace CollegeManagement.WorkingDaysHours
 
             TimeSlot timeSlots = new TimeSlot();
 
-            timeSlots.Day_of_the_Week = daysListBox.SelectedItem.ToString();
+            timeSlots.SetDay_of_the_Week(daysListBox.SelectedItem.ToString());
 
-            timeSlots.Start_Time = startTimePicker.Value.ToShortTimeString();
+            timeSlots.SetStart_Time(startTimePicker.Value.ToShortTimeString());
 
             int count = cntrl.removeTimeSlot(timeSlots);
 
@@ -163,6 +166,13 @@ namespace CollegeManagement.WorkingDaysHours
             }
 
             loadData();
+
+        }
+
+        private void TimeSlots_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'collegeDBDataSet.timeslots' table. You can move, or remove it, as needed.
+            this.timeslotsTableAdapter.Fill(this.collegeDBDataSet.timeslots);
 
         }
     }
