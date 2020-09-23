@@ -99,6 +99,12 @@ namespace CollegeCore.WorkingDaysHours
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+
+            WorkHours workHours = cntrl.getWorkHoursByDay(daysListBox.SelectedItem.ToString());
+
+            DateTime startTime = DateTime.Parse(workHours.GetStart_Time());
+            DateTime endTime = DateTime.Parse(workHours.GetEnd_Time());
+
             TimeSlot timeSlots = new TimeSlot();
 
             timeSlots.SetDay_of_the_Week(daysListBox.SelectedItem.ToString());
@@ -123,19 +129,53 @@ namespace CollegeCore.WorkingDaysHours
                 timeSlots.SetSlotType(radioButtonWorkTime.Text.ToString());
             }
 
+            DateTime timeslot_startTime = DateTime.Parse(timeSlots.GetStart_Time());
+            DateTime timeslot_endTime = DateTime.Parse(timeSlots.GetEnd_Time());
 
-            int count  = cntrl.saveTimeSlot(timeSlots);
+            bool status = false;
 
-            if (count != -1) 
+            if (startTime.Hour < timeslot_startTime.Hour && endTime.Hour > timeslot_endTime.Hour)
             {
-                MessageBox.Show("TimeSlot Saved SuccessFully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                status = true;
             }
-            else 
+            else if ((startTime.Hour == timeslot_startTime.Hour && endTime.Hour > timeslot_endTime.Hour) && startTime.Minute <= timeslot_startTime.Minute)
             {
-                MessageBox.Show("Error Occurred", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                status = true;
+            }
+            else if ((startTime.Hour < timeslot_startTime.Hour && endTime.Hour == timeslot_endTime.Hour) && endTime.Minute >= timeslot_endTime.Minute)
+            {
+                status = true;
+            }
+            else if ((startTime.Hour == timeslot_startTime.Hour && endTime.Hour == timeslot_endTime.Hour) && (startTime.Minute <= timeslot_startTime.Minute && endTime.Minute >= timeslot_endTime.Minute))
+            {
+                status = true;
+            }
+            else
+            {
+                status = false;
             }
 
-            loadData();
+            if (status) 
+            {
+                int count = cntrl.saveTimeSlot(timeSlots);
+
+                if (count != -1)
+                {
+                    MessageBox.Show("TimeSlot Saved SuccessFully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Error Occurred", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                loadData();
+            }
+            else
+            {
+                MessageBox.Show("Please Enter Valid Time-Slot", "Invalid Time-Slot", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            
 
         }
 

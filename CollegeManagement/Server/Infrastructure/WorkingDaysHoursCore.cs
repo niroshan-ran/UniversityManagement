@@ -308,6 +308,7 @@ namespace CollegeCore.Infrastructure
                 con.Open();
                 SqlCommand cmd = new SqlCommand(CommonConstants.QUERY_SAVE_WORK_HOURS, con);
 
+
                 cmd.Parameters.AddWithValue(CommonConstants.PARAMETER_START_TIME, day.GetStart_Time());
                 cmd.Parameters.AddWithValue(CommonConstants.PARAMETER_END_TIME, day.GetEnd_Time());
                 cmd.Parameters.AddWithValue(CommonConstants.PARAMETER_DAY_OF_THE_WEEK, day.GetDay_of_the_Week());
@@ -330,6 +331,41 @@ namespace CollegeCore.Infrastructure
 
             return count;
 
+        }
+
+        public WorkHours getWorkHoursByDay(string day)
+        {
+            WorkHours workHours = new WorkHours();
+
+            try
+            {
+
+                workHours.SetDay_of_the_Week(day);
+
+                con.Open();
+                SqlCommand cmd = new SqlCommand(CommonConstants.QUERY_GET_START_AND_END_TIME_BY_DAY, con);
+                cmd.Parameters.AddWithValue(CommonConstants.PARAMETER_DAY_OF_THE_WEEK, workHours.GetDay_of_the_Week());
+
+                SqlDataReader myReader = cmd.ExecuteReader();
+
+                while (myReader.Read())
+                {
+                    workHours.SetStart_Time(myReader[CommonConstants.COLUMN_START_TIME].ToString());
+                    workHours.SetEnd_Time(myReader[CommonConstants.COLUMN_END_TIME].ToString());
+                }
+
+                myReader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            return workHours;
         }
 
         /*public List<WorkHours> getWorkingHours()
