@@ -19,6 +19,7 @@ namespace CollegeCore.Utilities
         public static string QUERY_GET_ALL_TIMESLOTS = "SELECT * FROM timeslots ORDER BY CASE [dayOfTheWeek] WHEN 'Monday' THEN 1 WHEN 'Tuesday' THEN 2 WHEN 'Wednesday' THEN 3 WHEN 'Thursday' THEN 4 WHEN 'Friday' THEN 5 WHEN 'Saturday' THEN 6 WHEN 'Sunday' THEN 7 END;";
         public static string QUERY_REMOVE_TIMESLOT = "DELETE FROM timeslots WHERE startTime = @Start_Time AND dayOfTheWeek = @Day_of_the_Week;";
         public static string QUERY_GET_WORK_DAYS_BY_HOURS = "SELECT * FROM workingdays WHERE startTime IS NOT NULL AND endTime IS NOT NULL ORDER BY CASE [dayOfTheWeek] WHEN 'Monday' THEN 1 WHEN 'Tuesday' THEN 2 WHEN 'Wednesday' THEN 3 WHEN 'Thursday' THEN 4 WHEN 'Friday' THEN 5 WHEN 'Saturday' THEN 6 WHEN 'Sunday' THEN 7 END;";
+        public static string QUERY_GET_START_AND_END_TIME_BY_DAY = "SELECT startTime, endTime FROM workingDays WHERE dayOfTheWeek = @Day_of_the_Week";
 
         public static string PARAMETER_DAY_OF_THE_WEEK = "@Day_of_the_Week";
         public static string PARAMETER_START_TIME = "@Start_Time";
@@ -27,6 +28,8 @@ namespace CollegeCore.Utilities
         public static string PARAMETER_DAY = "@day";
 
         public static string COLUMN_DAY_OF_THE_WEEK = "dayOfTheWeek";
+        public static string COLUMN_START_TIME = "startTime";
+        public static string COLUMN_END_TIME = "endTime";
 
     }
 }
