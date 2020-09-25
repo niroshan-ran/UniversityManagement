@@ -13,6 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CollegeManagement.Session;
 
 namespace CollegeManagement
 {
@@ -131,6 +132,13 @@ namespace CollegeManagement
                 Application.Exit();
             }
             
+        }
+
+        private void iconButton2_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBColors.color1);
+            openChildForm(new NotAvailableMain());
+            lblTitle.Text = "Not Available Management";
         }
     }
 }

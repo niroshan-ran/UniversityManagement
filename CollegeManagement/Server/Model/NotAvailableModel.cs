@@ -15,5 +15,7 @@ namespace CollegeManagement.Server.Model
         public string endTime { get; set; }
         public int startSlot { get; set; }
         public int endSlot { get; set; }
+        public string lecturerID { get; set; }
+        public string lecturerName{ get; set; }
     }
 }
