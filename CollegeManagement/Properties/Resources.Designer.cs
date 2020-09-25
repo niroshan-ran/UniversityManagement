@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CollegeCore.Properties {
+namespace CollegeManagement.Properties {
     using System;
     
     
