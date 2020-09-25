@@ -1,20 +1,16 @@
 ﻿using CollegeCore.Infrastructure;
 using CollegeCore.Model;
+using CollegeCore.Utilities;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CollegeManagement.WorkingDaysHours
+namespace CollegeCore.WorkingDaysHours
 {
     public partial class WorkingHours : Form
     {
-        WorkingDaysHoursCore cntrl = new WorkingDaysHoursCore();
+        readonly WorkingDaysHoursCore cntrl = new WorkingDaysHoursCore();
 
         private DateTime prevTimePicker1;
         private bool navigatingDateTimePicker = false;
@@ -22,25 +18,28 @@ namespace CollegeManagement.WorkingDaysHours
         private DateTime prevTimePicker2;
         private bool navigatingDateTimePicker2 = false;
 
-        public void loadData() 
+        public void LoadData() 
         {
 
-            dataGridView3.DataSource = cntrl.getWorkingHours();
 
+            DataTable dataTable = cntrl.GetWorkingHoursTable();
 
+            
+            DataGridWorkHours.DataSource = dataTable;
+            DataGridWorkHours.Columns[0].Width = 120;
         }
 
-        public void loadDays()
+        public void LoadDays()
         {
 
-            List<WorkDays> workDaysList = cntrl.getWorkingDays();
+            List<WorkDays> workDaysList = cntrl.GetWorkingDays(CommonConstants.QUERY_GET_WORK_HOURS);
 
             List<String> stringList = new List<string>();
 
             foreach (WorkDays work in workDaysList)
             {
 
-                stringList.Add(work.Day_of_the_Week.ToString());
+                stringList.Add(work.GetDay_of_the_Week().ToString());
             }
 
             daysListBox.DataSource = stringList;
@@ -56,26 +55,26 @@ namespace CollegeManagement.WorkingDaysHours
 
             prevTimePicker1 = startTimePicker.Value;
             navigatingDateTimePicker = false;
-            changeStartTime();
+            ChangeStartTime();
 
             prevTimePicker2 = endTimePicker.Value;
             navigatingDateTimePicker2 = false;
-            changeEndTime();
+            ChangeEndTime();
 
-            loadDays();
-            loadData();
+            LoadDays();
+            LoadData();
         }
 
 
 
-        private void startTimePicker_ValueChanged(object sender, EventArgs e)
+        private void StartTimePicker_ValueChanged(object sender, EventArgs e)
         {
-            changeStartTime();
+            ChangeStartTime();
 
         }
 
 
-        public void changeStartTime() 
+        public void ChangeStartTime() 
         {
             if (!navigatingDateTimePicker)
             {
@@ -112,12 +111,12 @@ namespace CollegeManagement.WorkingDaysHours
         }
 
 
-        private void endTimePicker_ValueChanged_1(object sender, EventArgs e)
+        private void EndTimePicker_ValueChanged(object sender, EventArgs e)
         {
-            changeEndTime();
+            ChangeEndTime();
         }
 
-        public void changeEndTime() 
+        public void ChangeEndTime() 
         {
             if (!navigatingDateTimePicker2)
             {
@@ -153,36 +152,57 @@ namespace CollegeManagement.WorkingDaysHours
             prevTimePicker2 = endTimePicker.Value;
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void ButtonSave_Click(object sender, EventArgs e)
         {
-
-            WorkHours day = new WorkHours();
-
-            day.Day_of_the_Week = daysListBox.SelectedItem.ToString();
-
-            day.Start_Time = startTimePicker.Value.ToShortTimeString();
-            day.End_Time = endTimePicker.Value.ToShortTimeString();
-
-            Console.WriteLine(day.Start_Time);
-
-            int count = cntrl.saveWorkingHours(day);
-
-            if (count != -1)
+            if (daysListBox.SelectedItem == null)
             {
-                MessageBox.Show("Working Hours Saved SuccessFully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Please Enter Required Fields", "Validation Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                MessageBox.Show("Error Occurred", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DateTime startTime = DateTime.Parse(startTimePicker.Value.ToString());
+                DateTime endTime = DateTime.Parse(endTimePicker.Value.ToLongTimeString());
+
+
+
+                if (startTime.Hour >= endTime.Hour)
+                {
+                    MessageBox.Show("Please Enter Valid Working Hours", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+
+                    WorkHours day = new WorkHours();
+
+                    day.SetDay_of_the_Week(daysListBox.SelectedItem.ToString());
+
+                    day.SetStart_Time(startTimePicker.Value.ToLongTimeString());
+                    day.SetEnd_Time(endTimePicker.Value.ToLongTimeString());
+
+                    Console.WriteLine(day.GetStart_Time());
+
+                    int count = cntrl.SaveWorkingHours(day);
+
+                    if (count != -1)
+                    {
+                        MessageBox.Show("Working Hours Saved SuccessFully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error Occurred", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                    LoadData();
+
+                }
             }
 
-            loadData();
-
         }
 
-        private void btnRemove_Click(object sender, EventArgs e)
-        {
+        
 
-        }
+        
+
+        
     }
 }

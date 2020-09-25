@@ -1,4 +1,6 @@
-﻿namespace CollegeManagement.Student
+﻿using CollegeManagement;
+
+namespace CollegeCore.Student
 {
     partial class SubGroup
     {
@@ -225,7 +227,7 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private CollegeDBDataSet collegeDBDataSet;
         private System.Windows.Forms.BindingSource groupsBindingSource;
-        private CollegeDBDataSetTableAdapters.groupsTableAdapter groupsTableAdapter;
+        private CollegeManagement.CollegeDBDataSetTableAdapters.groupsTableAdapter groupsTableAdapter;
         //private CollegeDBDataSetTableAdapters.groupTableAdapter groupTableAdapter;
     }
 }

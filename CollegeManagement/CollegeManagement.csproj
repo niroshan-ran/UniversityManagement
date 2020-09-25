@@ -145,9 +145,15 @@
     </Compile>
     <Compile Include="data.cs">
       <DependentUpon>data.xsd</DependentUpon>
+      <SubType>code</SubType>
     </Compile>
     <Compile Include="data.Designer.cs">
       <DependentUpon>data.cs</DependentUpon>
+    </Compile>
+    <Compile Include="data1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>data.xsd</DependentUpon>
     </Compile>
     <Compile Include="Server\DBConnection.cs" />
     <Compile Include="Server\Infrastructure\BuildingCore.cs" />
@@ -226,6 +232,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Server\Model\WorkDaysHours.cs" />
+    <Compile Include="Server\Utilities\CommonConstants.cs" />
     <Compile Include="Session\NotAvailableLecturer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -486,6 +493,7 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Oxygen-Icons.org-Oxygen-Categories-applications-education-university.ico" />
     <Content Include="Server\CollegeDB.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

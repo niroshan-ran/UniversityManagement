@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CollegeManagement.Student
+namespace CollegeCore.Student
 {
     public partial class Group : Form
     {
@@ -133,6 +133,11 @@ namespace CollegeManagement.Student
 
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.AllowUserToResizeColumns = true;
+        }
+
+        private void Group_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

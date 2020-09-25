@@ -3,7 +3,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace CollegeManagement.Subject
+namespace CollegeCore.Subject
 {
     public partial class SubjectMain : Form
     {

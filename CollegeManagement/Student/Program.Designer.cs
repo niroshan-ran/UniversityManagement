@@ -1,4 +1,4 @@
-﻿namespace CollegeManagement.Student
+﻿namespace CollegeCore.Student
 {
     partial class Program
     {

@@ -1,4 +1,4 @@
-﻿namespace CollegeManagement.WorkingDaysHours
+﻿namespace CollegeCore.WorkingDaysHours
 {
     partial class WorkingDays
     {
@@ -36,9 +36,9 @@
             this.chkSaturday = new System.Windows.Forms.CheckBox();
             this.chkSunday = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnSave = new FontAwesome.Sharp.IconButton();
-            this.dtGdWorkDays = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dtGdWorkDays)).BeginInit();
+            this.ButtonSave = new FontAwesome.Sharp.IconButton();
+            this.DataGridWorkDays = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridWorkDays)).BeginInit();
             this.SuspendLayout();
             // 
             // chkMonday
@@ -128,45 +128,45 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Select the Working Days";
             // 
-            // btnSave
+            // ButtonSave
             // 
-            this.btnSave.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.btnSave.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnSave.IconChar = FontAwesome.Sharp.IconChar.Save;
-            this.btnSave.IconColor = System.Drawing.Color.Honeydew;
-            this.btnSave.IconSize = 32;
-            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(26, 128);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Rotation = 0D;
-            this.btnSave.Size = new System.Drawing.Size(100, 39);
-            this.btnSave.TabIndex = 5;
-            this.btnSave.Text = "Save";
-            this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSave.UseVisualStyleBackColor = false;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.ButtonSave.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.ButtonSave.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.ButtonSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonSave.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ButtonSave.IconChar = FontAwesome.Sharp.IconChar.Save;
+            this.ButtonSave.IconColor = System.Drawing.Color.Honeydew;
+            this.ButtonSave.IconSize = 32;
+            this.ButtonSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ButtonSave.Location = new System.Drawing.Point(26, 128);
+            this.ButtonSave.Name = "ButtonSave";
+            this.ButtonSave.Rotation = 0D;
+            this.ButtonSave.Size = new System.Drawing.Size(100, 39);
+            this.ButtonSave.TabIndex = 5;
+            this.ButtonSave.Text = "Save";
+            this.ButtonSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ButtonSave.UseVisualStyleBackColor = false;
+            this.ButtonSave.Click += new System.EventHandler(this.ButtonSave_Click);
             // 
-            // dtGdWorkDays
+            // DataGridWorkDays
             // 
-            this.dtGdWorkDays.AllowUserToDeleteRows = false;
-            this.dtGdWorkDays.AllowUserToOrderColumns = true;
-            this.dtGdWorkDays.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            this.dtGdWorkDays.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtGdWorkDays.Location = new System.Drawing.Point(26, 188);
-            this.dtGdWorkDays.Name = "dtGdWorkDays";
-            this.dtGdWorkDays.ReadOnly = true;
-            this.dtGdWorkDays.Size = new System.Drawing.Size(255, 214);
-            this.dtGdWorkDays.TabIndex = 3;
+            this.DataGridWorkDays.AllowUserToDeleteRows = false;
+            this.DataGridWorkDays.AllowUserToOrderColumns = true;
+            this.DataGridWorkDays.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.DataGridWorkDays.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DataGridWorkDays.Location = new System.Drawing.Point(26, 188);
+            this.DataGridWorkDays.Name = "DataGridWorkDays";
+            this.DataGridWorkDays.ReadOnly = true;
+            this.DataGridWorkDays.Size = new System.Drawing.Size(255, 214);
+            this.DataGridWorkDays.TabIndex = 3;
             // 
             // WorkingDays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(853, 626);
-            this.Controls.Add(this.dtGdWorkDays);
-            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.DataGridWorkDays);
+            this.Controls.Add(this.ButtonSave);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.chkSunday);
             this.Controls.Add(this.chkSaturday);
@@ -177,7 +177,8 @@
             this.Controls.Add(this.chkMonday);
             this.Name = "WorkingDays";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.dtGdWorkDays)).EndInit();
+            this.Load += new System.EventHandler(this.WorkingDays_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridWorkDays)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -193,7 +194,7 @@
         private System.Windows.Forms.CheckBox chkSaturday;
         private System.Windows.Forms.CheckBox chkSunday;
         private System.Windows.Forms.Label label1;
-        private FontAwesome.Sharp.IconButton btnSave;
-        private System.Windows.Forms.DataGridView dtGdWorkDays;
+        private FontAwesome.Sharp.IconButton ButtonSave;
+        private System.Windows.Forms.DataGridView DataGridWorkDays;
     }
 }

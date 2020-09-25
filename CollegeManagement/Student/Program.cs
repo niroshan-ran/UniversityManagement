@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CollegeManagement.Student
+namespace CollegeCore.Student
 {
     public partial class Program : Form
     {

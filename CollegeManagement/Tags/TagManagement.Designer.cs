@@ -1,4 +1,4 @@
-﻿namespace CollegeManagement.Tags
+﻿namespace CollegeCore.Tags
 {
     partial class TagManagement
     {

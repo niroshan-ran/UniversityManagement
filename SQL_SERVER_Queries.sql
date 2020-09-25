@@ -1,4 +1,4 @@
-CREATE TABLE [dbo].[group] (
+CREATE TABLE [dbo].[groups] (
     [group_id] VARCHAR (10) NOT NULL,
     [Year]     VARCHAR (5)  NOT NULL,
     [semester] VARCHAR (5)  NOT NULL,
@@ -39,9 +39,9 @@ GO
 CREATE TABLE [dbo].[timeslots] (
     [dayOfTheWeek] VARCHAR (100) NOT NULL,
     [startTime]    TIME (7)      NOT NULL,
-    [endTime]      TIME (7)      DEFAULT (NULL) NULL,
-    [type]         VARCHAR (100) DEFAULT (NULL) NULL,
-    PRIMARY KEY CLUSTERED ([dayOfTheWeek] ASC, [startTime] ASC),
+    [endTime]      TIME (7)      NOT NULL,
+    [type]         VARCHAR (100) NOT NULL,
+    CONSTRAINT [timeslots_ibpk] PRIMARY KEY([dayOfTheWeek], [startTime], [endTime], [type]),
     CONSTRAINT [timeslots_ibfk_1] FOREIGN KEY ([dayOfTheWeek]) REFERENCES [dbo].[workingdays] ([dayOfTheWeek]) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
@@ -79,3 +79,4 @@ CREATE TABLE [dbo].[subjects] (
     [eve_hours]    VARCHAR (50)   NULL,
     PRIMARY KEY CLUSTERED ([subject_id] ASC)
 );
+
