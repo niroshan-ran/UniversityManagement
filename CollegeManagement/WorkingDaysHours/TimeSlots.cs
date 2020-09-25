@@ -269,5 +269,33 @@ namespace CollegeCore.WorkingDaysHours
 
             }
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.CurrentRow.Index != -1)
+            {
+                daysListBox.SelectedItem = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+                startTimePicker.Value = DateTime.Parse(dataGridView1.CurrentRow.Cells[1].Value.ToString());
+
+                if (DateTime.Parse(dataGridView1.CurrentRow.Cells[1].Value.ToString()).Minute == 30 && DateTime.Parse(dataGridView1.CurrentRow.Cells[2].Value.ToString()).Minute == 30)
+                    radioButtonOneHour.Checked = true;
+                else if (DateTime.Parse(dataGridView1.CurrentRow.Cells[1].Value.ToString()).Minute == 0 && DateTime.Parse(dataGridView1.CurrentRow.Cells[2].Value.ToString()).Minute == 0)
+                    radioButtonOneHour.Checked = true;
+                else
+                    radioButtonThirtyMinutes.Checked = true;
+
+                if (dataGridView1.CurrentRow.Cells[3].Value.ToString() == "Work Time")
+                    radioButtonWorkTime.Checked = true;
+                else
+                    radioButtonLunchBreak.Checked = true;
+
+
+            }
+        }
     }
 }
