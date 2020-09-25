@@ -3,19 +3,14 @@ using CollegeCore.Model;
 using CollegeCore.Utilities;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CollegeCore.WorkingDaysHours
 {
     public partial class WorkingHours : Form
     {
-        WorkingDaysHoursCore cntrl = new WorkingDaysHoursCore();
+        readonly WorkingDaysHoursCore cntrl = new WorkingDaysHoursCore();
 
         private DateTime prevTimePicker1;
         private bool navigatingDateTimePicker = false;
@@ -23,21 +18,21 @@ namespace CollegeCore.WorkingDaysHours
         private DateTime prevTimePicker2;
         private bool navigatingDateTimePicker2 = false;
 
-        public void loadData() 
+        public void LoadData() 
         {
 
 
-            DataTable dataTable = cntrl.getWorkingHoursTable();
+            DataTable dataTable = cntrl.GetWorkingHoursTable();
 
-            if (dataTable.Rows.Count > 0)
-                dtGdWorkHours.DataSource = dataTable;
-
+            
+            DataGridWorkHours.DataSource = dataTable;
+            DataGridWorkHours.Columns[0].Width = 120;
         }
 
-        public void loadDays()
+        public void LoadDays()
         {
 
-            List<WorkDays> workDaysList = cntrl.getWorkingDays(CommonConstants.QUERY_GET_WORK_HOURS);
+            List<WorkDays> workDaysList = cntrl.GetWorkingDays(CommonConstants.QUERY_GET_WORK_HOURS);
 
             List<String> stringList = new List<string>();
 
@@ -60,26 +55,26 @@ namespace CollegeCore.WorkingDaysHours
 
             prevTimePicker1 = startTimePicker.Value;
             navigatingDateTimePicker = false;
-            changeStartTime();
+            ChangeStartTime();
 
             prevTimePicker2 = endTimePicker.Value;
             navigatingDateTimePicker2 = false;
-            changeEndTime();
+            ChangeEndTime();
 
-            loadDays();
-            loadData();
+            LoadDays();
+            LoadData();
         }
 
 
 
-        private void startTimePicker_ValueChanged(object sender, EventArgs e)
+        private void StartTimePicker_ValueChanged(object sender, EventArgs e)
         {
-            changeStartTime();
+            ChangeStartTime();
 
         }
 
 
-        public void changeStartTime() 
+        public void ChangeStartTime() 
         {
             if (!navigatingDateTimePicker)
             {
@@ -116,12 +111,12 @@ namespace CollegeCore.WorkingDaysHours
         }
 
 
-        private void endTimePicker_ValueChanged_1(object sender, EventArgs e)
+        private void EndTimePicker_ValueChanged(object sender, EventArgs e)
         {
-            changeEndTime();
+            ChangeEndTime();
         }
 
-        public void changeEndTime() 
+        public void ChangeEndTime() 
         {
             if (!navigatingDateTimePicker2)
             {
@@ -157,7 +152,7 @@ namespace CollegeCore.WorkingDaysHours
             prevTimePicker2 = endTimePicker.Value;
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void ButtonSave_Click(object sender, EventArgs e)
         {
             if (daysListBox.SelectedItem == null)
             {
@@ -186,7 +181,7 @@ namespace CollegeCore.WorkingDaysHours
 
                     Console.WriteLine(day.GetStart_Time());
 
-                    int count = cntrl.saveWorkingHours(day);
+                    int count = cntrl.SaveWorkingHours(day);
 
                     if (count != -1)
                     {
@@ -197,27 +192,17 @@ namespace CollegeCore.WorkingDaysHours
                         MessageBox.Show("Error Occurred", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
-                    loadData();
+                    LoadData();
 
                 }
             }
 
         }
 
-        private void btnRemove_Click(object sender, EventArgs e)
-        {
+        
 
-        }
+        
 
-        private void WorkingHours_Load(object sender, EventArgs e)
-        {
-
-
-        }
-
-        private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+        
     }
 }

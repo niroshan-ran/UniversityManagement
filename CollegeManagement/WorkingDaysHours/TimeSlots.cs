@@ -15,24 +15,24 @@ namespace CollegeCore.WorkingDaysHours
 {
     public partial class TimeSlots : Form
     {
-        WorkingDaysHoursCore cntrl = new WorkingDaysHoursCore();
+        readonly WorkingDaysHoursCore cntrl = new WorkingDaysHoursCore();
         private DateTime prevTimePicker1;
         private bool navigatingDateTimePicker = false;
 
-        public void loadData() 
+        public void LoadData() 
         {
-            DataTable dataTable = cntrl.getTimeSlotsTable();
+            DataTable dataTable = cntrl.GetTimeSlotsTable();
 
-            dataGridView1.DataSource = dataTable;
+            DataGridTimeSlot.DataSource = dataTable;
 
-            dataGridView1.Columns[0].Width = 120;
+            DataGridTimeSlot.Columns[0].Width = 120;
             
         }
 
-        public void loadDays()
+        public void LoadDays()
         {
 
-            List<WorkDays> workDaysList = cntrl.getWorkingDays(CommonConstants.QUERY_GET_WORK_DAYS_BY_HOURS);
+            List<WorkDays> workDaysList = cntrl.GetWorkingDays(CommonConstants.QUERY_GET_WORK_DAYS_BY_HOURS);
 
             List<String> stringList = new List<string>();
 
@@ -51,13 +51,13 @@ namespace CollegeCore.WorkingDaysHours
 
             prevTimePicker1 = startTimePicker.Value;
             navigatingDateTimePicker = false;
-            changeStartTime();
+            ChangeStartTime();
 
-            loadDays();
-            loadData();
+            LoadDays();
+            LoadData();
         }
 
-        public void changeStartTime()
+        public void ChangeStartTime()
         {
             if (!navigatingDateTimePicker)
             {
@@ -93,12 +93,12 @@ namespace CollegeCore.WorkingDaysHours
             prevTimePicker1 = startTimePicker.Value;
         }
 
-        private void startTimePicker_ValueChanged(object sender, EventArgs e)
+        private void StartTimePicker_ValueChanged(object sender, EventArgs e)
         {
-            changeStartTime();
+            ChangeStartTime();
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void ButtonSave_Click(object sender, EventArgs e)
         {
             if (daysListBox.SelectedItem == null)
             {
@@ -106,7 +106,7 @@ namespace CollegeCore.WorkingDaysHours
             }
             else
             {
-                WorkHours workHours = cntrl.getWorkHoursByDay(daysListBox.SelectedItem.ToString());
+                WorkHours workHours = cntrl.GetWorkHoursByDay(daysListBox.SelectedItem.ToString());
 
                 DateTime startTime = DateTime.Parse(workHours.GetStart_Time());
                 DateTime endTime = DateTime.Parse(workHours.GetEnd_Time());
@@ -138,7 +138,7 @@ namespace CollegeCore.WorkingDaysHours
                 DateTime timeslot_startTime = DateTime.Parse(timeSlots.GetStart_Time());
                 DateTime timeslot_endTime = DateTime.Parse(timeSlots.GetEnd_Time());
 
-                bool status = false;
+                bool status;
 
                 if (startTime.Hour < timeslot_startTime.Hour && endTime.Hour > timeslot_endTime.Hour)
                 {
@@ -163,7 +163,7 @@ namespace CollegeCore.WorkingDaysHours
 
                 if (status)
                 {
-                    int count = cntrl.saveTimeSlot(timeSlots);
+                    int count = cntrl.SaveTimeSlot(timeSlots);
 
                     if (count >= 1)
                     {
@@ -178,7 +178,7 @@ namespace CollegeCore.WorkingDaysHours
                         MessageBox.Show("Error Occurred", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
-                    loadData();
+                    LoadData();
                 }
                 else
                 {
@@ -190,7 +190,7 @@ namespace CollegeCore.WorkingDaysHours
 
         }
 
-        private void btnRemove_Click(object sender, EventArgs e)
+        private void ButtonRemove_Click(object sender, EventArgs e)
         {
             if (daysListBox.SelectedItem == null)
             {
@@ -222,7 +222,7 @@ namespace CollegeCore.WorkingDaysHours
                     timeSlots.SetSlotType(radioButtonWorkTime.Text.ToString());
                 }
 
-                int count = cntrl.removeTimeSlot(timeSlots);
+                int count = cntrl.RemoveTimeSlot(timeSlots);
 
                 if (count > -1)
                 {
@@ -240,47 +240,28 @@ namespace CollegeCore.WorkingDaysHours
                     MessageBox.Show("Error Occurred", "Delete Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
-                loadData();
+                LoadData();
             }
         }
 
-        private void TimeSlots_Load(object sender, EventArgs e)
+
+     
+
+        private void DataGridTimeSlot_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
-
-        }
-
-        private void timeslotsBindingSource_CurrentChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void timeslotsBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-        }
-
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dataGridView1.CurrentRow.Index != -1)
+            if (DataGridTimeSlot.CurrentRow.Index != -1)
             {
-                daysListBox.SelectedItem = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-                startTimePicker.Value = DateTime.Parse(dataGridView1.CurrentRow.Cells[1].Value.ToString());
+                daysListBox.SelectedItem = DataGridTimeSlot.CurrentRow.Cells[0].Value.ToString();
+                startTimePicker.Value = DateTime.Parse(DataGridTimeSlot.CurrentRow.Cells[1].Value.ToString());
 
-                if (DateTime.Parse(dataGridView1.CurrentRow.Cells[1].Value.ToString()).Minute == 30 && DateTime.Parse(dataGridView1.CurrentRow.Cells[2].Value.ToString()).Minute == 30)
+                if (DateTime.Parse(DataGridTimeSlot.CurrentRow.Cells[1].Value.ToString()).Minute == 30 && DateTime.Parse(DataGridTimeSlot.CurrentRow.Cells[2].Value.ToString()).Minute == 30)
                     radioButtonOneHour.Checked = true;
-                else if (DateTime.Parse(dataGridView1.CurrentRow.Cells[1].Value.ToString()).Minute == 0 && DateTime.Parse(dataGridView1.CurrentRow.Cells[2].Value.ToString()).Minute == 0)
+                else if (DateTime.Parse(DataGridTimeSlot.CurrentRow.Cells[1].Value.ToString()).Minute == 0 && DateTime.Parse(DataGridTimeSlot.CurrentRow.Cells[2].Value.ToString()).Minute == 0)
                     radioButtonOneHour.Checked = true;
                 else
                     radioButtonThirtyMinutes.Checked = true;
 
-                if (dataGridView1.CurrentRow.Cells[3].Value.ToString() == "Work Time")
+                if (DataGridTimeSlot.CurrentRow.Cells[3].Value.ToString() == "Work Time")
                     radioButtonWorkTime.Checked = true;
                 else
                     radioButtonLunchBreak.Checked = true;

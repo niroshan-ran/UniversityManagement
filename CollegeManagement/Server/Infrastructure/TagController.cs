@@ -10,7 +10,7 @@ namespace CollegeCore.Infrastructure
 {
     public class TagController
     {
-        SqlConnection con = new SqlConnection(DBConnection.connectionString);
+        SqlConnection con = new SqlConnection(DBConnection.connectionStringNew);
 
         public void insertTag(TagModel objstudent)
         {
@@ -18,7 +18,7 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Insert into college_db.tags(tag_code,tag_name,tag_desc) values('" + objstudent.TagCode + "','" + objstudent.TagName + "','" + objstudent.TagDescription + "')";
-                con = new SqlConnection(DBConnection.connectionString);
+                con = new SqlConnection(DBConnection.connectionStringNew);
 
                 con.Open();
 
@@ -41,7 +41,7 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Select * from college_db.tags";
-                con = new SqlConnection(DBConnection.connectionString);
+                con = new SqlConnection(DBConnection.connectionStringNew);
 
                 SqlCommand cmd = new SqlCommand(Query, con);
                 SqlDataReader myReader;
@@ -73,7 +73,7 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Update college_db.tags SET tag_code = '" + objstudent.TagCode + "' , tag_name = '" + objstudent.TagName + "',tag_desc = '" + objstudent.TagDescription + "' where tag_code = '" + objPrevStd.TagCode + "'";
-                con = new SqlConnection(DBConnection.connectionString);
+                con = new SqlConnection(DBConnection.connectionStringNew);
 
                 con.Open();
 
@@ -98,7 +98,7 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Delete from college_db.tags where tag_code = '" + objStudent.TagCode + "'";
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                SqlConnection con = new SqlConnection(DBConnection.connectionStringNew);
 
                 con.Open();
 

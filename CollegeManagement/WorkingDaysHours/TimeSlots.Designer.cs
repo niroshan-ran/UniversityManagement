@@ -40,12 +40,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.daysListBox = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.btnSave = new FontAwesome.Sharp.IconButton();
-            this.btnRemove = new FontAwesome.Sharp.IconButton();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.ButtonAdd = new FontAwesome.Sharp.IconButton();
+            this.ButtonRemove = new FontAwesome.Sharp.IconButton();
+            this.DataGridTimeSlot = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridTimeSlot)).BeginInit();
             this.SuspendLayout();
             // 
             // startTimePicker
@@ -58,7 +58,7 @@
             this.startTimePicker.ShowUpDown = true;
             this.startTimePicker.Size = new System.Drawing.Size(83, 26);
             this.startTimePicker.TabIndex = 1;
-            this.startTimePicker.ValueChanged += new System.EventHandler(this.startTimePicker_ValueChanged);
+            this.startTimePicker.ValueChanged += new System.EventHandler(this.StartTimePicker_ValueChanged);
             // 
             // panel1
             // 
@@ -174,65 +174,65 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "Day of the Week";
             // 
-            // btnSave
+            // ButtonAdd
             // 
-            this.btnSave.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.btnSave.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnSave.IconChar = FontAwesome.Sharp.IconChar.Save;
-            this.btnSave.IconColor = System.Drawing.Color.Cyan;
-            this.btnSave.IconSize = 20;
-            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(119, 258);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Rotation = 0D;
-            this.btnSave.Size = new System.Drawing.Size(142, 33);
-            this.btnSave.TabIndex = 9;
-            this.btnSave.Text = "Add";
-            this.btnSave.UseVisualStyleBackColor = false;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.ButtonAdd.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.ButtonAdd.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.ButtonAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonAdd.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ButtonAdd.IconChar = FontAwesome.Sharp.IconChar.Save;
+            this.ButtonAdd.IconColor = System.Drawing.Color.Cyan;
+            this.ButtonAdd.IconSize = 20;
+            this.ButtonAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ButtonAdd.Location = new System.Drawing.Point(119, 258);
+            this.ButtonAdd.Name = "ButtonAdd";
+            this.ButtonAdd.Rotation = 0D;
+            this.ButtonAdd.Size = new System.Drawing.Size(142, 33);
+            this.ButtonAdd.TabIndex = 9;
+            this.ButtonAdd.Text = "Add";
+            this.ButtonAdd.UseVisualStyleBackColor = false;
+            this.ButtonAdd.Click += new System.EventHandler(this.ButtonSave_Click);
             // 
-            // btnRemove
+            // ButtonRemove
             // 
-            this.btnRemove.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.btnRemove.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemove.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnRemove.IconChar = FontAwesome.Sharp.IconChar.Trash;
-            this.btnRemove.IconColor = System.Drawing.Color.Cyan;
-            this.btnRemove.IconSize = 20;
-            this.btnRemove.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRemove.Location = new System.Drawing.Point(301, 258);
-            this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Rotation = 0D;
-            this.btnRemove.Size = new System.Drawing.Size(142, 33);
-            this.btnRemove.TabIndex = 10;
-            this.btnRemove.Text = "Remove";
-            this.btnRemove.UseVisualStyleBackColor = false;
-            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            this.ButtonRemove.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.ButtonRemove.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.ButtonRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonRemove.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ButtonRemove.IconChar = FontAwesome.Sharp.IconChar.Trash;
+            this.ButtonRemove.IconColor = System.Drawing.Color.Cyan;
+            this.ButtonRemove.IconSize = 20;
+            this.ButtonRemove.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ButtonRemove.Location = new System.Drawing.Point(301, 258);
+            this.ButtonRemove.Name = "ButtonRemove";
+            this.ButtonRemove.Rotation = 0D;
+            this.ButtonRemove.Size = new System.Drawing.Size(142, 33);
+            this.ButtonRemove.TabIndex = 10;
+            this.ButtonRemove.Text = "Remove";
+            this.ButtonRemove.UseVisualStyleBackColor = false;
+            this.ButtonRemove.Click += new System.EventHandler(this.ButtonRemove_Click);
             // 
-            // dataGridView1
+            // DataGridTimeSlot
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(119, 311);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(477, 150);
-            this.dataGridView1.TabIndex = 11;
-            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.DataGridTimeSlot.AllowUserToAddRows = false;
+            this.DataGridTimeSlot.AllowUserToDeleteRows = false;
+            this.DataGridTimeSlot.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.DataGridTimeSlot.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DataGridTimeSlot.Location = new System.Drawing.Point(119, 311);
+            this.DataGridTimeSlot.Name = "DataGridTimeSlot";
+            this.DataGridTimeSlot.ReadOnly = true;
+            this.DataGridTimeSlot.Size = new System.Drawing.Size(477, 150);
+            this.DataGridTimeSlot.TabIndex = 11;
+            this.DataGridTimeSlot.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridTimeSlot_CellClick);
             // 
             // TimeSlots
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(934, 614);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.btnRemove);
-            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.DataGridTimeSlot);
+            this.Controls.Add(this.ButtonRemove);
+            this.Controls.Add(this.ButtonAdd);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.daysListBox);
             this.Controls.Add(this.label3);
@@ -243,12 +243,11 @@
             this.Controls.Add(this.startTimePicker);
             this.Name = "TimeSlots";
             this.Text = "TimeSlots";
-            this.Load += new System.EventHandler(this.TimeSlots_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridTimeSlot)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -267,12 +266,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox daysListBox;
         private System.Windows.Forms.Label label4;
-        private FontAwesome.Sharp.IconButton btnSave;
-        private FontAwesome.Sharp.IconButton btnRemove;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private FontAwesome.Sharp.IconButton ButtonAdd;
+        private FontAwesome.Sharp.IconButton ButtonRemove;
+        private System.Windows.Forms.DataGridView DataGridTimeSlot;
     }
 }

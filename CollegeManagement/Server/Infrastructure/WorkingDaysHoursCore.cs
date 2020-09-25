@@ -8,9 +8,9 @@ namespace CollegeCore.Infrastructure
 {
     public class WorkingDaysHoursCore
     {
-        SqlConnection con = new SqlConnection(DBConnection.connectionString);
+        readonly SqlConnection con = new SqlConnection(DBConnection.connectionStringNew);
 
-        public int saveTimeSlot(TimeSlot timeSlots)
+        public int SaveTimeSlot(TimeSlot timeSlots)
         {
 
             int count = 0;
@@ -71,7 +71,7 @@ namespace CollegeCore.Infrastructure
             return count;
         }
 
-        public int saveWorkingDays(List<WorkDays> dayList)
+        public int SaveWorkingDays(List<WorkDays> dayList)
         {
             int count = 0;
 
@@ -220,7 +220,7 @@ namespace CollegeCore.Infrastructure
 
         }
 
-        public DataTable getWorkingDaysTable ()
+        public DataTable GetWorkingDaysTable ()
         {
             DataTable workingDaysTable = new DataTable();
 
@@ -248,7 +248,7 @@ namespace CollegeCore.Infrastructure
             return workingDaysTable;
         }
 
-        public DataTable getWorkingHoursTable()
+        public DataTable GetWorkingHoursTable()
         {
             DataTable dataTable = new DataTable();
 
@@ -277,7 +277,7 @@ namespace CollegeCore.Infrastructure
             return dataTable;
         }
 
-        public List<WorkDays> getWorkingDays(String query)
+        public List<WorkDays> GetWorkingDays(String query)
         {
 
             List<WorkDays> workDays = new List<WorkDays>();
@@ -294,7 +294,7 @@ namespace CollegeCore.Infrastructure
                 {
                     WorkDays workDay = new WorkDays();
 
-                    workDay.SetDay_of_the_Week(myReader[CommonConstants.COLUMN_DAY_OF_THE_WEEK].ToString());
+                    workDay.SetDay_of_the_Week(myReader[CommonConstants.COLUMN_DAY_OF_THE_WEEK_NEW].ToString());
 
                     workDays.Add(workDay);
 
@@ -320,7 +320,7 @@ namespace CollegeCore.Infrastructure
 
 
 
-        public int saveWorkingHours(WorkHours day)
+        public int SaveWorkingHours(WorkHours day)
         {
 
             int count = 0;
@@ -365,7 +365,7 @@ namespace CollegeCore.Infrastructure
 
         }
 
-        public WorkHours getWorkHoursByDay(string day)
+        public WorkHours GetWorkHoursByDay(string day)
         {
             WorkHours workHours = new WorkHours();
 
@@ -476,7 +476,7 @@ namespace CollegeCore.Infrastructure
 
 
 
-        public DataTable getTimeSlotsTable()
+        public DataTable GetTimeSlotsTable()
         {
 
             DataTable dataTable = new DataTable();
@@ -509,7 +509,7 @@ namespace CollegeCore.Infrastructure
         }
 
 
-        public int removeTimeSlot(TimeSlot timeSlot)
+        public int RemoveTimeSlot(TimeSlot timeSlot)
         {
 
             int count = 0;
