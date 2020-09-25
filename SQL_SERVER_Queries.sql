@@ -1,4 +1,4 @@
-CREATE TABLE [dbo].[group] (
+CREATE TABLE [dbo].[groups] (
     [group_id] VARCHAR (10) NOT NULL,
     [Year]     VARCHAR (5)  NOT NULL,
     [semester] VARCHAR (5)  NOT NULL,
