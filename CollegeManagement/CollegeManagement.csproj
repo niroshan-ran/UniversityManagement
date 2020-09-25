@@ -138,11 +138,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CollegeDBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CollegeDBDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="data.cs">
       <DependentUpon>data.xsd</DependentUpon>
+      <SubType>code</SubType>
     </Compile>
     <Compile Include="data.Designer.cs">
       <DependentUpon>data.cs</DependentUpon>
+    </Compile>
+    <Compile Include="data1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>data.xsd</DependentUpon>
     </Compile>
     <Compile Include="Server\DBConnection.cs" />
     <Compile Include="Server\Infrastructure\BuildingCore.cs" />
@@ -433,6 +444,17 @@
     <EmbeddedResource Include="WorkingDaysHours\WorkingHours.resx">
       <DependentUpon>WorkingHours.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="CollegeDBDataSet.xsc">
+      <DependentUpon>CollegeDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="CollegeDBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CollegeDBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CollegeDBDataSet.xss">
+      <DependentUpon>CollegeDBDataSet.xsd</DependentUpon>
+    </None>
     <None Include="CollegeManagement_TemporaryKey.pfx" />
     <None Include="data.xsc">
       <DependentUpon>data.xsd</DependentUpon>
@@ -471,6 +493,7 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Oxygen-Icons.org-Oxygen-Categories-applications-education-university.ico" />
     <Content Include="Server\CollegeDB.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

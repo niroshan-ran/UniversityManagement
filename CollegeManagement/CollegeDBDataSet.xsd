@@ -522,7 +522,7 @@ SELECT idlecturer, lecturer_name, emp_id, faculty, department, center, building,
   <xs:element name="CollegeDBDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="CollegeDBDataSet" msprop:Generator_UserDSName="CollegeDBDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="program" msprop:Generator_TableClassName="programDataTable" msprop:Generator_TableVarName="tableprogram" msprop:Generator_TablePropName="program" msprop:Generator_RowDeletingName="programRowDeleting" msprop:Generator_RowChangingName="programRowChanging" msprop:Generator_RowEvHandlerName="programRowChangeEventHandler" msprop:Generator_RowDeletedName="programRowDeleted" msprop:Generator_UserTableName="program" msprop:Generator_RowChangedName="programRowChanged" msprop:Generator_RowEvArgName="programRowChangeEvent" msprop:Generator_RowClassName="programRow">
+        <xs:element name="program" msprop:Generator_TableClassName="programDataTable" msprop:Generator_TableVarName="tableprogram" msprop:Generator_RowChangedName="programRowChanged" msprop:Generator_TablePropName="program" msprop:Generator_RowDeletingName="programRowDeleting" msprop:Generator_RowChangingName="programRowChanging" msprop:Generator_RowEvHandlerName="programRowChangeEventHandler" msprop:Generator_RowDeletedName="programRowDeleted" msprop:Generator_RowClassName="programRow" msprop:Generator_UserTableName="program" msprop:Generator_RowEvArgName="programRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="code" msprop:Generator_ColumnVarNameInTable="columncode" msprop:Generator_ColumnPropNameInRow="code" msprop:Generator_ColumnPropNameInTable="codeColumn" msprop:Generator_UserColumnName="code">
@@ -549,7 +549,7 @@ SELECT idlecturer, lecturer_name, emp_id, faculty, department, center, building,
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="sub_group" msprop:Generator_TableClassName="sub_groupDataTable" msprop:Generator_TableVarName="tablesub_group" msprop:Generator_TablePropName="sub_group" msprop:Generator_RowDeletingName="sub_groupRowDeleting" msprop:Generator_RowChangingName="sub_groupRowChanging" msprop:Generator_RowEvHandlerName="sub_groupRowChangeEventHandler" msprop:Generator_RowDeletedName="sub_groupRowDeleted" msprop:Generator_UserTableName="sub_group" msprop:Generator_RowChangedName="sub_groupRowChanged" msprop:Generator_RowEvArgName="sub_groupRowChangeEvent" msprop:Generator_RowClassName="sub_groupRow">
+        <xs:element name="sub_group" msprop:Generator_TableClassName="sub_groupDataTable" msprop:Generator_TableVarName="tablesub_group" msprop:Generator_RowChangedName="sub_groupRowChanged" msprop:Generator_TablePropName="sub_group" msprop:Generator_RowDeletingName="sub_groupRowDeleting" msprop:Generator_RowChangingName="sub_groupRowChanging" msprop:Generator_RowEvHandlerName="sub_groupRowChangeEventHandler" msprop:Generator_RowDeletedName="sub_groupRowDeleted" msprop:Generator_RowClassName="sub_groupRow" msprop:Generator_UserTableName="sub_group" msprop:Generator_RowEvArgName="sub_groupRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="sub_group_id" msprop:Generator_ColumnVarNameInTable="columnsub_group_id" msprop:Generator_ColumnPropNameInRow="sub_group_id" msprop:Generator_ColumnPropNameInTable="sub_group_idColumn" msprop:Generator_UserColumnName="sub_group_id">
@@ -570,7 +570,7 @@ SELECT idlecturer, lecturer_name, emp_id, faculty, department, center, building,
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="timeslots" msprop:Generator_TableClassName="timeslotsDataTable" msprop:Generator_TableVarName="tabletimeslots" msprop:Generator_TablePropName="timeslots" msprop:Generator_RowDeletingName="timeslotsRowDeleting" msprop:Generator_RowChangingName="timeslotsRowChanging" msprop:Generator_RowEvHandlerName="timeslotsRowChangeEventHandler" msprop:Generator_RowDeletedName="timeslotsRowDeleted" msprop:Generator_UserTableName="timeslots" msprop:Generator_RowChangedName="timeslotsRowChanged" msprop:Generator_RowEvArgName="timeslotsRowChangeEvent" msprop:Generator_RowClassName="timeslotsRow">
+        <xs:element name="timeslots" msprop:Generator_TableClassName="timeslotsDataTable" msprop:Generator_TableVarName="tabletimeslots" msprop:Generator_RowChangedName="timeslotsRowChanged" msprop:Generator_TablePropName="timeslots" msprop:Generator_RowDeletingName="timeslotsRowDeleting" msprop:Generator_RowChangingName="timeslotsRowChanging" msprop:Generator_RowEvHandlerName="timeslotsRowChangeEventHandler" msprop:Generator_RowDeletedName="timeslotsRowDeleted" msprop:Generator_RowClassName="timeslotsRow" msprop:Generator_UserTableName="timeslots" msprop:Generator_RowEvArgName="timeslotsRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="dayOfTheWeek" msprop:Generator_ColumnVarNameInTable="columndayOfTheWeek" msprop:Generator_ColumnPropNameInRow="dayOfTheWeek" msprop:Generator_ColumnPropNameInTable="dayOfTheWeekColumn" msprop:Generator_UserColumnName="dayOfTheWeek">
@@ -592,7 +592,7 @@ SELECT idlecturer, lecturer_name, emp_id, faculty, department, center, building,
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="workingdays" msprop:Generator_TableClassName="workingdaysDataTable" msprop:Generator_TableVarName="tableworkingdays" msprop:Generator_TablePropName="workingdays" msprop:Generator_RowDeletingName="workingdaysRowDeleting" msprop:Generator_RowChangingName="workingdaysRowChanging" msprop:Generator_RowEvHandlerName="workingdaysRowChangeEventHandler" msprop:Generator_RowDeletedName="workingdaysRowDeleted" msprop:Generator_UserTableName="workingdays" msprop:Generator_RowChangedName="workingdaysRowChanged" msprop:Generator_RowEvArgName="workingdaysRowChangeEvent" msprop:Generator_RowClassName="workingdaysRow">
+        <xs:element name="workingdays" msprop:Generator_TableClassName="workingdaysDataTable" msprop:Generator_TableVarName="tableworkingdays" msprop:Generator_RowChangedName="workingdaysRowChanged" msprop:Generator_TablePropName="workingdays" msprop:Generator_RowDeletingName="workingdaysRowDeleting" msprop:Generator_RowChangingName="workingdaysRowChanging" msprop:Generator_RowEvHandlerName="workingdaysRowChangeEventHandler" msprop:Generator_RowDeletedName="workingdaysRowDeleted" msprop:Generator_RowClassName="workingdaysRow" msprop:Generator_UserTableName="workingdays" msprop:Generator_RowEvArgName="workingdaysRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="dayOfTheWeek" msprop:Generator_ColumnVarNameInTable="columndayOfTheWeek" msprop:Generator_ColumnPropNameInRow="dayOfTheWeek" msprop:Generator_ColumnPropNameInTable="dayOfTheWeekColumn" msprop:Generator_UserColumnName="dayOfTheWeek">
@@ -607,7 +607,7 @@ SELECT idlecturer, lecturer_name, emp_id, faculty, department, center, building,
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="year_sem" msprop:Generator_TableClassName="year_semDataTable" msprop:Generator_TableVarName="tableyear_sem" msprop:Generator_TablePropName="year_sem" msprop:Generator_RowDeletingName="year_semRowDeleting" msprop:Generator_RowChangingName="year_semRowChanging" msprop:Generator_RowEvHandlerName="year_semRowChangeEventHandler" msprop:Generator_RowDeletedName="year_semRowDeleted" msprop:Generator_UserTableName="year_sem" msprop:Generator_RowChangedName="year_semRowChanged" msprop:Generator_RowEvArgName="year_semRowChangeEvent" msprop:Generator_RowClassName="year_semRow">
+        <xs:element name="year_sem" msprop:Generator_TableClassName="year_semDataTable" msprop:Generator_TableVarName="tableyear_sem" msprop:Generator_RowChangedName="year_semRowChanged" msprop:Generator_TablePropName="year_sem" msprop:Generator_RowDeletingName="year_semRowDeleting" msprop:Generator_RowChangingName="year_semRowChanging" msprop:Generator_RowEvHandlerName="year_semRowChangeEventHandler" msprop:Generator_RowDeletedName="year_semRowDeleted" msprop:Generator_RowClassName="year_semRow" msprop:Generator_UserTableName="year_sem" msprop:Generator_RowEvArgName="year_semRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="year" msprop:Generator_ColumnVarNameInTable="columnyear" msprop:Generator_ColumnPropNameInRow="year" msprop:Generator_ColumnPropNameInTable="yearColumn" msprop:Generator_UserColumnName="year">
@@ -627,7 +627,7 @@ SELECT idlecturer, lecturer_name, emp_id, faculty, department, center, building,
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="groups" msprop:Generator_TableClassName="groupsDataTable" msprop:Generator_TableVarName="tablegroups" msprop:Generator_RowChangedName="groupsRowChanged" msprop:Generator_TablePropName="groups" msprop:Generator_RowDeletingName="groupsRowDeleting" msprop:Generator_RowChangingName="groupsRowChanging" msprop:Generator_RowEvHandlerName="groupsRowChangeEventHandler" msprop:Generator_RowDeletedName="groupsRowDeleted" msprop:Generator_RowClassName="groupsRow" msprop:Generator_UserTableName="groups" msprop:Generator_RowEvArgName="groupsRowChangeEvent">
+        <xs:element name="groups" msprop:Generator_TableClassName="groupsDataTable" msprop:Generator_TableVarName="tablegroups" msprop:Generator_TablePropName="groups" msprop:Generator_RowDeletingName="groupsRowDeleting" msprop:Generator_RowChangingName="groupsRowChanging" msprop:Generator_RowEvHandlerName="groupsRowChangeEventHandler" msprop:Generator_RowDeletedName="groupsRowDeleted" msprop:Generator_UserTableName="groups" msprop:Generator_RowChangedName="groupsRowChanged" msprop:Generator_RowEvArgName="groupsRowChangeEvent" msprop:Generator_RowClassName="groupsRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="group_id" msprop:Generator_ColumnVarNameInTable="columngroup_id" msprop:Generator_ColumnPropNameInRow="group_id" msprop:Generator_ColumnPropNameInTable="group_idColumn" msprop:Generator_UserColumnName="group_id">
@@ -662,7 +662,7 @@ SELECT idlecturer, lecturer_name, emp_id, faculty, department, center, building,
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="NotAvailableStudent" msprop:Generator_TableClassName="NotAvailableStudentDataTable" msprop:Generator_TableVarName="tableNotAvailableStudent" msprop:Generator_RowChangedName="NotAvailableStudentRowChanged" msprop:Generator_TablePropName="NotAvailableStudent" msprop:Generator_RowDeletingName="NotAvailableStudentRowDeleting" msprop:Generator_RowChangingName="NotAvailableStudentRowChanging" msprop:Generator_RowEvHandlerName="NotAvailableStudentRowChangeEventHandler" msprop:Generator_RowDeletedName="NotAvailableStudentRowDeleted" msprop:Generator_RowClassName="NotAvailableStudentRow" msprop:Generator_UserTableName="NotAvailableStudent" msprop:Generator_RowEvArgName="NotAvailableStudentRowChangeEvent">
+        <xs:element name="NotAvailableStudent" msprop:Generator_TableClassName="NotAvailableStudentDataTable" msprop:Generator_TableVarName="tableNotAvailableStudent" msprop:Generator_TablePropName="NotAvailableStudent" msprop:Generator_RowDeletingName="NotAvailableStudentRowDeleting" msprop:Generator_RowChangingName="NotAvailableStudentRowChanging" msprop:Generator_RowEvHandlerName="NotAvailableStudentRowChangeEventHandler" msprop:Generator_RowDeletedName="NotAvailableStudentRowDeleted" msprop:Generator_UserTableName="NotAvailableStudent" msprop:Generator_RowChangedName="NotAvailableStudentRowChanged" msprop:Generator_RowEvArgName="NotAvailableStudentRowChangeEvent" msprop:Generator_RowClassName="NotAvailableStudentRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="group_id" msprop:Generator_ColumnVarNameInTable="columngroup_id" msprop:Generator_ColumnPropNameInRow="group_id" msprop:Generator_ColumnPropNameInTable="group_idColumn" msprop:Generator_UserColumnName="group_id">
@@ -705,7 +705,7 @@ SELECT idlecturer, lecturer_name, emp_id, faculty, department, center, building,
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="tags" msprop:Generator_TableClassName="tagsDataTable" msprop:Generator_TableVarName="tabletags" msprop:Generator_RowChangedName="tagsRowChanged" msprop:Generator_TablePropName="tags" msprop:Generator_RowDeletingName="tagsRowDeleting" msprop:Generator_RowChangingName="tagsRowChanging" msprop:Generator_RowEvHandlerName="tagsRowChangeEventHandler" msprop:Generator_RowDeletedName="tagsRowDeleted" msprop:Generator_RowClassName="tagsRow" msprop:Generator_UserTableName="tags" msprop:Generator_RowEvArgName="tagsRowChangeEvent">
+        <xs:element name="tags" msprop:Generator_TableClassName="tagsDataTable" msprop:Generator_TableVarName="tabletags" msprop:Generator_TablePropName="tags" msprop:Generator_RowDeletingName="tagsRowDeleting" msprop:Generator_RowChangingName="tagsRowChanging" msprop:Generator_RowEvHandlerName="tagsRowChangeEventHandler" msprop:Generator_RowDeletedName="tagsRowDeleted" msprop:Generator_UserTableName="tags" msprop:Generator_RowChangedName="tagsRowChanged" msprop:Generator_RowEvArgName="tagsRowChangeEvent" msprop:Generator_RowClassName="tagsRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="tag_code" msprop:Generator_ColumnVarNameInTable="columntag_code" msprop:Generator_ColumnPropNameInRow="tag_code" msprop:Generator_ColumnPropNameInTable="tag_codeColumn" msprop:Generator_UserColumnName="tag_code">
@@ -732,7 +732,7 @@ SELECT idlecturer, lecturer_name, emp_id, faculty, department, center, building,
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="lecturers" msprop:Generator_TableClassName="lecturersDataTable" msprop:Generator_TableVarName="tablelecturers" msprop:Generator_TablePropName="lecturers" msprop:Generator_RowDeletingName="lecturersRowDeleting" msprop:Generator_RowChangingName="lecturersRowChanging" msprop:Generator_RowEvHandlerName="lecturersRowChangeEventHandler" msprop:Generator_RowDeletedName="lecturersRowDeleted" msprop:Generator_UserTableName="lecturers" msprop:Generator_RowChangedName="lecturersRowChanged" msprop:Generator_RowEvArgName="lecturersRowChangeEvent" msprop:Generator_RowClassName="lecturersRow">
+        <xs:element name="lecturers" msprop:Generator_TableClassName="lecturersDataTable" msprop:Generator_TableVarName="tablelecturers" msprop:Generator_RowChangedName="lecturersRowChanged" msprop:Generator_TablePropName="lecturers" msprop:Generator_RowDeletingName="lecturersRowDeleting" msprop:Generator_RowChangingName="lecturersRowChanging" msprop:Generator_RowEvHandlerName="lecturersRowChangeEventHandler" msprop:Generator_RowDeletedName="lecturersRowDeleted" msprop:Generator_RowClassName="lecturersRow" msprop:Generator_UserTableName="lecturers" msprop:Generator_RowEvArgName="lecturersRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="idlecturer" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnidlecturer" msprop:Generator_ColumnPropNameInRow="idlecturer" msprop:Generator_ColumnPropNameInTable="idlecturerColumn" msprop:Generator_UserColumnName="idlecturer" type="xs:int" />
@@ -829,7 +829,7 @@ SELECT idlecturer, lecturer_name, emp_id, faculty, department, center, building,
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="timeslots_ibfk_1" msdata:parent="workingdays" msdata:child="timeslots" msdata:parentkey="dayOfTheWeek" msdata:childkey="dayOfTheWeek" msprop:Generator_UserChildTable="timeslots" msprop:Generator_ChildPropName="GettimeslotsRows" msprop:Generator_UserRelationName="timeslots_ibfk_1" msprop:Generator_RelationVarName="relationtimeslots_ibfk_1" msprop:Generator_UserParentTable="workingdays" msprop:Generator_ParentPropName="workingdaysRow" />
+      <msdata:Relationship name="timeslots_ibfk_1" msdata:parent="workingdays" msdata:child="timeslots" msdata:parentkey="dayOfTheWeek" msdata:childkey="dayOfTheWeek" msprop:Generator_UserChildTable="timeslots" msprop:Generator_ChildPropName="GettimeslotsRows" msprop:Generator_UserRelationName="timeslots_ibfk_1" msprop:Generator_ParentPropName="workingdaysRow" msprop:Generator_RelationVarName="relationtimeslots_ibfk_1" msprop:Generator_UserParentTable="workingdays" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>
