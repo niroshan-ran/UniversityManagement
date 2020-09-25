@@ -21,7 +21,7 @@ namespace CollegeCore.Student
         {
             InitializeComponent();
             loadData();
-            loadDropdowns();
+            //loadDropdowns();
         }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
@@ -112,6 +112,15 @@ namespace CollegeCore.Student
             comboBox1.DataSource = objCore.LoadGroupID();
             comboBox1.DisplayMember = "group_id";
             comboBox1.ValueMember = "group_id";
+        }
+
+        private void SubGroup_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'collegeDBDataSet.groups' table. You can move, or remove it, as needed.
+            this.groupsTableAdapter.Fill(this.collegeDBDataSet.groups);
+            // TODO: This line of code loads data into the 'collegeDBDataSet.group' table. You can move, or remove it, as needed.
+            // this.groupTableAdapter.Fill(this.collegeDBDataSet.groups);
+
         }
     }
 }

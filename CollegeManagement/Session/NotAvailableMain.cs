@@ -9,15 +9,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CollegeCore.Student
+namespace CollegeManagement.Session
 {
-    public partial class StudentMain : Form
+    public partial class NotAvailableMain : Form
     {
         private IconButton currentButton;
         private Form currentChildForm;
-
-
-        public StudentMain()
+        public NotAvailableMain()
         {
             InitializeComponent();
         }
@@ -65,41 +63,23 @@ namespace CollegeCore.Student
             currentChildForm = childForm;
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
-            panelStudentChild.Controls.Add(childForm);
-            panelStudentChild.Tag = childForm;
+            panelChild.Controls.Add(childForm);
+            panelChild.Tag = childForm;
             childForm.BringToFront();
             childForm.Show();
 
         }
 
-        private void icnBtnYearSem_Click(object sender, EventArgs e)
-        {
-            ActivateButton(sender, RGBColors.color1);
-            openChildForm(new YearSem());
-        }
-
-        private void icnBtnProgram_Click(object sender, EventArgs e)
-        {
-            ActivateButton(sender, RGBColors.color1);
-            openChildForm(new Program());
-        }
-
-        private void icnBtnGroup_Click(object sender, EventArgs e)
-        {
-            ActivateButton(sender, RGBColors.color1);
-            openChildForm(new Group());
-        }
-
-        private void icnBtnSubGroup_Click(object sender, EventArgs e)
-        {
-            ActivateButton(sender, RGBColors.color1);
-            openChildForm(new SubGroup());
-        }
-
         private void iconButton1_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color1);
-            openChildForm(new SubGroup());
+            openChildForm(new NotAvailableLecturer());
+        }
+
+        private void iconButton2_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBColors.color1);
+            openChildForm(new NotAvailableStudent());
         }
     }
 }
