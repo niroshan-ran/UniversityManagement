@@ -413,13 +413,18 @@
         "InstallerBootstrapper" = "3:2"
             "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
             {
-            "Enabled" = "11:FALSE"
+            "Enabled" = "11:TRUE"
             "PromptEnabled" = "11:TRUE"
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
                 "Items"
                 {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
                 }
             }
         }
@@ -1430,7 +1435,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:College Manager"
         "ProductCode" = "8:{C63B5B08-B405-455B-8B7B-CC419BED74E1}"
-        "PackageCode" = "8:{638272BD-27F1-48C5-A063-A299930A875D}"
+        "PackageCode" = "8:{6B616C41-C3AB-4ED6-90E4-6EE3E40B87C4}"
         "UpgradeCode" = "8:{0E363595-455F-477C-A575-25EB1D7ACFE9}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
