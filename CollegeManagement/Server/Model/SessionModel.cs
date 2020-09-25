@@ -16,5 +16,7 @@ namespace CollegeManagement.Model
         public string Group { get; set; }
         public string Stucount { get; set; }
         public string Duration { get; set; }
+
+        public string SessionStatus { get; set; }
     }
 }
