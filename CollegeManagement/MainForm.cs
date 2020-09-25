@@ -113,6 +113,8 @@ namespace CollegeCore
         private void icnBtnStat_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color1);
+            openChildForm(new Location.LocationMain());
+            lblTitle.Text = "Location Management";
         }
 
         private void iconBtnSub_Click(object sender, EventArgs e)
@@ -131,6 +133,13 @@ namespace CollegeCore
                 Application.Exit();
             }
             
+        }
+
+        private void icnBtnSatistics_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBColors.color1);
+            openChildForm(new Statistics.StatisticMangement());
+            lblTitle.Text = "Statistics Management";
         }
     }
 }

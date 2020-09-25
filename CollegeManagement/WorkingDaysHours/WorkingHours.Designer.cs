@@ -39,15 +39,14 @@ namespace CollegeCore.WorkingDaysHours
             this.label3 = new System.Windows.Forms.Label();
             this.dtGdWorkHours = new System.Windows.Forms.DataGridView();
             this.workingdaysBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.collegeDBDataSet = new CollegeCore.CollegeDBDataSet();
+
             this.btnSave = new FontAwesome.Sharp.IconButton();
-            this.workingdaysTableAdapter = new CollegeCore.CollegeDBDataSetTableAdapters.workingdaysTableAdapter();
+
             this.dayOfTheWeekDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.startTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.endTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtGdWorkHours)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.workingdaysBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.collegeDBDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // startTimePicker
@@ -139,12 +138,11 @@ namespace CollegeCore.WorkingDaysHours
             // workingdaysBindingSource
             // 
             this.workingdaysBindingSource.DataMember = "workingdays";
-            this.workingdaysBindingSource.DataSource = this.collegeDBDataSet;
+
             // 
             // collegeDBDataSet
             // 
-            this.collegeDBDataSet.DataSetName = "CollegeDBDataSet";
-            this.collegeDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+
             // 
             // btnSave
             // 
@@ -167,7 +165,6 @@ namespace CollegeCore.WorkingDaysHours
             // 
             // workingdaysTableAdapter
             // 
-            this.workingdaysTableAdapter.ClearBeforeFill = true;
             // 
             // dayOfTheWeekDataGridViewTextBoxColumn
             // 
@@ -209,7 +206,6 @@ namespace CollegeCore.WorkingDaysHours
             this.Load += new System.EventHandler(this.WorkingHours_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtGdWorkHours)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.workingdaysBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.collegeDBDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -225,9 +221,8 @@ namespace CollegeCore.WorkingDaysHours
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView dtGdWorkHours;
         private FontAwesome.Sharp.IconButton btnSave;
-        private CollegeDBDataSet collegeDBDataSet;
+
         private System.Windows.Forms.BindingSource workingdaysBindingSource;
-        private CollegeDBDataSetTableAdapters.workingdaysTableAdapter workingdaysTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn dayOfTheWeekDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn startTimeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn endTimeDataGridViewTextBoxColumn;

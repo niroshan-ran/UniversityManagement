@@ -56,7 +56,7 @@
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1047, 609);
             this.panel1.TabIndex = 0;
@@ -68,7 +68,7 @@
             this.pannelTitle.Controls.Add(this.lblTitle);
             this.pannelTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.pannelTitle.Location = new System.Drawing.Point(166, 0);
-            this.pannelTitle.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pannelTitle.Margin = new System.Windows.Forms.Padding(2);
             this.pannelTitle.Name = "pannelTitle";
             this.pannelTitle.Size = new System.Drawing.Size(881, 46);
             this.pannelTitle.TabIndex = 0;
@@ -81,7 +81,7 @@
             this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.WindowClose;
             this.iconPictureBox1.IconColor = System.Drawing.Color.Red;
             this.iconPictureBox1.Location = new System.Drawing.Point(844, 8);
-            this.iconPictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.iconPictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.iconPictureBox1.Name = "iconPictureBox1";
             this.iconPictureBox1.Size = new System.Drawing.Size(32, 33);
             this.iconPictureBox1.TabIndex = 1;
@@ -104,7 +104,7 @@
             this.pannelChild.AutoSize = true;
             this.pannelChild.BackColor = System.Drawing.Color.White;
             this.pannelChild.Location = new System.Drawing.Point(161, 46);
-            this.pannelChild.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pannelChild.Margin = new System.Windows.Forms.Padding(2);
             this.pannelChild.Name = "pannelChild";
             this.pannelChild.Size = new System.Drawing.Size(884, 560);
             this.pannelChild.TabIndex = 1;
@@ -123,7 +123,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(2, 81, 2, 8);
             this.panel2.Size = new System.Drawing.Size(166, 609);
@@ -142,7 +142,7 @@
             this.icnBtnSatistics.IconSize = 32;
             this.icnBtnSatistics.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.icnBtnSatistics.Location = new System.Drawing.Point(2, 403);
-            this.icnBtnSatistics.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.icnBtnSatistics.Margin = new System.Windows.Forms.Padding(2);
             this.icnBtnSatistics.Name = "icnBtnSatistics";
             this.icnBtnSatistics.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.icnBtnSatistics.Rotation = 0D;
@@ -152,6 +152,7 @@
             this.icnBtnSatistics.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.icnBtnSatistics.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.icnBtnSatistics.UseVisualStyleBackColor = true;
+            this.icnBtnSatistics.Click += new System.EventHandler(this.icnBtnSatistics_Click);
             // 
             // icnBtnLocation
             // 
@@ -166,7 +167,7 @@
             this.icnBtnLocation.IconSize = 32;
             this.icnBtnLocation.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.icnBtnLocation.Location = new System.Drawing.Point(2, 357);
-            this.icnBtnLocation.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.icnBtnLocation.Margin = new System.Windows.Forms.Padding(2);
             this.icnBtnLocation.Name = "icnBtnLocation";
             this.icnBtnLocation.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.icnBtnLocation.Rotation = 0D;
@@ -191,7 +192,7 @@
             this.icnBtnTags.IconSize = 32;
             this.icnBtnTags.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.icnBtnTags.Location = new System.Drawing.Point(2, 311);
-            this.icnBtnTags.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.icnBtnTags.Margin = new System.Windows.Forms.Padding(2);
             this.icnBtnTags.Name = "icnBtnTags";
             this.icnBtnTags.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.icnBtnTags.Rotation = 0D;
@@ -216,7 +217,7 @@
             this.icnBtnWrk.IconSize = 32;
             this.icnBtnWrk.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.icnBtnWrk.Location = new System.Drawing.Point(2, 265);
-            this.icnBtnWrk.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.icnBtnWrk.Margin = new System.Windows.Forms.Padding(2);
             this.icnBtnWrk.Name = "icnBtnWrk";
             this.icnBtnWrk.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.icnBtnWrk.Rotation = 0D;
@@ -241,7 +242,7 @@
             this.icnBtnStudent.IconSize = 32;
             this.icnBtnStudent.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.icnBtnStudent.Location = new System.Drawing.Point(2, 219);
-            this.icnBtnStudent.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.icnBtnStudent.Margin = new System.Windows.Forms.Padding(2);
             this.icnBtnStudent.Name = "icnBtnStudent";
             this.icnBtnStudent.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.icnBtnStudent.Rotation = 0D;
@@ -265,7 +266,7 @@
             this.iconBtnSub.IconSize = 32;
             this.iconBtnSub.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconBtnSub.Location = new System.Drawing.Point(2, 173);
-            this.iconBtnSub.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.iconBtnSub.Margin = new System.Windows.Forms.Padding(2);
             this.iconBtnSub.Name = "iconBtnSub";
             this.iconBtnSub.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.iconBtnSub.Rotation = 0D;
@@ -290,7 +291,7 @@
             this.icnBtnLec.IconSize = 32;
             this.icnBtnLec.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.icnBtnLec.Location = new System.Drawing.Point(2, 127);
-            this.icnBtnLec.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.icnBtnLec.Margin = new System.Windows.Forms.Padding(2);
             this.icnBtnLec.Name = "icnBtnLec";
             this.icnBtnLec.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.icnBtnLec.Rotation = 0D;
@@ -315,7 +316,7 @@
             this.iconButton1.IconSize = 32;
             this.iconButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton1.Location = new System.Drawing.Point(2, 81);
-            this.iconButton1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.iconButton1.Margin = new System.Windows.Forms.Padding(2);
             this.iconButton1.Name = "iconButton1";
             this.iconButton1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.iconButton1.Rotation = 0D;
@@ -327,7 +328,7 @@
             this.iconButton1.UseVisualStyleBackColor = true;
             this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
             // 
-            // MianForm
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -335,8 +336,8 @@
             this.ClientSize = new System.Drawing.Size(1047, 609);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.Name = "MianForm";
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Name = "MainForm";
             this.Text = "AddYearSemester";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

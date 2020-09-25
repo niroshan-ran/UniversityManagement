@@ -153,8 +153,7 @@ namespace CollegeCore.WorkingDaysHours
 
         private void WorkingDays_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'collegeDBDataSet.workingdays' table. You can move, or remove it, as needed.
-            this.workingdaysTableAdapter.Fill(this.collegeDBDataSet.workingdays);
+
 
         }
     }
