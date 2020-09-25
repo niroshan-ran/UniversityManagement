@@ -13,17 +13,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CollegeManagement.Session;
 
 namespace CollegeManagement
 {
-    public partial class MianForm : Form
+    public partial class MainForm : Form
     {
         private IconButton currentButton;
         private Panel mainPannel;
         private Form currentChildForm;
 
-        public MianForm()
+        public MainForm()
         {
             InitializeComponent();
         }
@@ -42,10 +41,10 @@ namespace CollegeManagement
                 currentButton = (IconButton)SenderButton;
                 currentButton.BackColor = Color.FromArgb(37, 36, 81);
                 currentButton.ForeColor = color;
-                currentButton.TextAlign = ContentAlignment.MiddleCenter;
+                currentButton.TextAlign = ContentAlignment.MiddleLeft;
                 currentButton.IconColor = color;
-               // currentButton.TextImageRelation = TextImageRelation.TextBeforeImage;
-                currentButton.ImageAlign = ContentAlignment.MiddleRight;
+                currentButton.TextImageRelation = TextImageRelation.ImageBeforeText;
+                currentButton.ImageAlign = ContentAlignment.MiddleLeft;
             }            
         }
 
@@ -55,9 +54,9 @@ namespace CollegeManagement
             {
                 currentButton.BackColor = Color.FromArgb(31,30,68);
                 currentButton.ForeColor = Color.Gainsboro;
-                currentButton.TextAlign = ContentAlignment.MiddleCenter;
+                currentButton.TextAlign = ContentAlignment.MiddleLeft;
                 currentButton.IconColor = Color.Gainsboro; ;
-               // currentButton.TextImageRelation = TextImageRelation.TextBeforeImage;
+                currentButton.TextImageRelation = TextImageRelation.ImageBeforeText;
                 currentButton.ImageAlign = ContentAlignment.MiddleLeft;
             }
         }
@@ -123,11 +122,15 @@ namespace CollegeManagement
             lblTitle.Text = "Subject Management";
         }
 
-        private void btnNotAvailable_Click(object sender, EventArgs e)
+        private void iconPictureBox1_Click(object sender, EventArgs e)
         {
-            ActivateButton(sender, RGBColors.color1);
-            openChildForm(new NotAvailableMain());
-            lblTitle.Text = "Not Available Allocation";
+            DialogResult result = MessageBox.Show("Are you sure you want to Exit?", "Confirm Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (result.ToString().Equals("Yes")) 
+            {
+                Application.Exit();
+            }
+            
         }
     }
 }
