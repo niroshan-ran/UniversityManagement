@@ -51,8 +51,20 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_274692BEAF684517BE711F97BEBA1D71"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_2D7555FAB1EBCA609D23242AD923CFB7"
         "OwnerKey" = "8:_0BE8627D850E92BF09F54F1CB846FEC9"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_30A130514E3E485EB17C42DACB96EE1B"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -81,8 +93,14 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_624CD2BFEABD5E3F7B62038A3774AB0C"
-        "OwnerKey" = "8:_C6FCB93BC894064946BA217EC36B93FA"
+        "MsmKey" = "8:_59FC543178844A02951C723CC7EE0946"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6B6B95A6F80440039803E4AAA2407887"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -105,8 +123,26 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_91C6458B4AC1454189A94865E0194941"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_97B89877CA030712D5F48C81E1EF8F12"
         "OwnerKey" = "8:_BF8C6480CD533D0B11E74F6E37548CDD"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9DE71F54C4C94777A65836264E92AECD"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_AA80922677B2460183FB7AB130C43F9D"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -117,8 +153,20 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_C45E59F4978242BB964C8DC69E6829C7"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_C47EA391922844F64C73ADE4256C9250"
         "OwnerKey" = "8:_8D335D7CA425DA5F7F569DDF50B9289D"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_C6DCFC743B1C48AFBAB3E2DEA693914F"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -135,6 +183,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_C8626F453C4043938241FED33D06A868"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_D97B26343E1442118702A493944C8DC1"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -147,8 +201,14 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_DA6801A435B74D0D88A988B93F003044"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_E4E6F8E3A18D420CEBF04BA96F1D9CAC"
-        "OwnerKey" = "8:_D97B26343E1442118702A493944C8DC1"
+        "OwnerKey" = "8:_274692BEAF684517BE711F97BEBA1D71"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -165,14 +225,14 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_EF0A2BF66E4644409C698E0AAE13D3BD"
-        "OwnerKey" = "8:_UNDEFINED"
+        "MsmKey" = "8:_E4E6F8E3A18D420CEBF04BA96F1D9CAC"
+        "OwnerKey" = "8:_D97B26343E1442118702A493944C8DC1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_F3E9BE050ABB614987C1F89702644B8F"
-        "OwnerKey" = "8:_624CD2BFEABD5E3F7B62038A3774AB0C"
+        "MsmKey" = "8:_EF0A2BF66E4644409C698E0AAE13D3BD"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -209,12 +269,6 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_7AC784962535B7726BA0CBBE4BA01597"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E4E6F8E3A18D420CEBF04BA96F1D9CAC"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -286,6 +340,18 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_274692BEAF684517BE711F97BEBA1D71"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_E4E6F8E3A18D420CEBF04BA96F1D9CAC"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_25F6907F7B537E91482CAD6D0F9CFB2E"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -347,33 +413,13 @@
         "InstallerBootstrapper" = "3:2"
             "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
             {
-            "Enabled" = "11:TRUE"
+            "Enabled" = "11:FALSE"
             "PromptEnabled" = "11:TRUE"
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
                 "Items"
                 {
-                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
-                    {
-                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
-                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
-                    }
-                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.SqlServer.SQLSysClrTypes.12.0.x86"
-                    {
-                    "Name" = "8:Microsoft® System CLR Types for SQL Server® 2014 (x86)"
-                    "ProductCode" = "8:Microsoft.SqlServer.SQLSysClrTypes.12.0.x86"
-                    }
-                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.SqlServer.SqlLocalDB.11.1"
-                    {
-                    "Name" = "8:SQL Server 2012 Express LocalDB"
-                    "ProductCode" = "8:Microsoft.SqlServer.SqlLocalDB.11.1"
-                    }
-                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Visual.C++.14.0.x86"
-                    {
-                    "Name" = "8:Visual C++ \"14\" Runtime Libraries (x86)"
-                    "ProductCode" = "8:Microsoft.Visual.C++.14.0.x86"
-                    }
                 }
             }
         }
@@ -569,6 +615,37 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_274692BEAF684517BE711F97BEBA1D71"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_274692BEAF684517BE711F97BEBA1D71"
+                    {
+                    "Name" = "8:LiveCharts.Wpf.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:..\\CollegeManagement\\bin\\Release\\LiveCharts.Wpf.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_96082F52CB0E427AA4586A907EB753DF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_2D7555FAB1EBCA609D23242AD923CFB7"
             {
             "AssemblyRegister" = "3:1"
@@ -598,6 +675,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_30A130514E3E485EB17C42DACB96EE1B"
+            {
+            "SourcePath" = "8:..\\CollegeManagement\\bin\\Release\\System.xml"
+            "TargetName" = "8:System.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_96082F52CB0E427AA4586A907EB753DF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_3BEA801536DE53D0A63546C110FBD7A2"
@@ -724,21 +821,10 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_624CD2BFEABD5E3F7B62038A3774AB0C"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_59FC543178844A02951C723CC7EE0946"
             {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:TRUE"
-            "AssemblyAsmDisplayName" = "8:System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_624CD2BFEABD5E3F7B62038A3774AB0C"
-                    {
-                    "Name" = "8:System.Runtime.CompilerServices.Unsafe.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:System.Runtime.CompilerServices.Unsafe.dll"
-            "TargetName" = "8:"
+            "SourcePath" = "8:..\\CollegeManagement\\bin\\Release\\LiveCharts.xml"
+            "TargetName" = "8:LiveCharts.xml"
             "Tag" = "8:"
             "Folder" = "8:_96082F52CB0E427AA4586A907EB753DF"
             "Condition" = "8:"
@@ -752,7 +838,27 @@
             "PackageAs" = "3:1"
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6B6B95A6F80440039803E4AAA2407887"
+            {
+            "SourcePath" = "8:..\\CollegeManagement\\bin\\Release\\CollegeManagement.exe.manifest"
+            "TargetName" = "8:CollegeManagement.exe.manifest"
+            "Tag" = "8:"
+            "Folder" = "8:_96082F52CB0E427AA4586A907EB753DF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_7AC784962535B7726BA0CBBE4BA01597"
@@ -817,6 +923,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_91C6458B4AC1454189A94865E0194941"
+            {
+            "SourcePath" = "8:..\\CollegeManagement\\bin\\Release\\LiveCharts.WinForms.xml"
+            "TargetName" = "8:LiveCharts.WinForms.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_96082F52CB0E427AA4586A907EB753DF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_97B89877CA030712D5F48C81E1EF8F12"
             {
             "AssemblyRegister" = "3:1"
@@ -846,6 +972,46 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9DE71F54C4C94777A65836264E92AECD"
+            {
+            "SourcePath" = "8:..\\CollegeManagement\\bin\\Release\\LiveCharts.Wpf.xml"
+            "TargetName" = "8:LiveCharts.Wpf.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_96082F52CB0E427AA4586A907EB753DF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_AA80922677B2460183FB7AB130C43F9D"
+            {
+            "SourcePath" = "8:..\\CollegeManagement\\bin\\Release\\CollegeManagement.pdb"
+            "TargetName" = "8:CollegeManagement.pdb"
+            "Tag" = "8:"
+            "Folder" = "8:_96082F52CB0E427AA4586A907EB753DF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_BF8C6480CD533D0B11E74F6E37548CDD"
@@ -879,6 +1045,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C45E59F4978242BB964C8DC69E6829C7"
+            {
+            "SourcePath" = "8:..\\CollegeManagement\\bin\\Release\\CollegeManagement.exe.config"
+            "TargetName" = "8:CollegeManagement.exe.config"
+            "Tag" = "8:"
+            "Folder" = "8:_96082F52CB0E427AA4586A907EB753DF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C47EA391922844F64C73ADE4256C9250"
             {
             "AssemblyRegister" = "3:1"
@@ -908,6 +1094,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C6DCFC743B1C48AFBAB3E2DEA693914F"
+            {
+            "SourcePath" = "8:..\\CollegeManagement\\bin\\Release\\MySql.Data.xml"
+            "TargetName" = "8:MySql.Data.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_96082F52CB0E427AA4586A907EB753DF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C6E8BF35AB3B1FE07F7E52B323B9CA21"
@@ -972,6 +1178,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C8626F453C4043938241FED33D06A868"
+            {
+            "SourcePath" = "8:..\\CollegeManagement\\bin\\Release\\LiveCharts.WinForms.pdb"
+            "TargetName" = "8:LiveCharts.WinForms.pdb"
+            "Tag" = "8:"
+            "Folder" = "8:_96082F52CB0E427AA4586A907EB753DF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_D97B26343E1442118702A493944C8DC1"
             {
             "AssemblyRegister" = "3:1"
@@ -1032,6 +1258,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DA6801A435B74D0D88A988B93F003044"
+            {
+            "SourcePath" = "8:..\\CollegeManagement\\bin\\Release\\LiveCharts.pdb"
+            "TargetName" = "8:LiveCharts.pdb"
+            "Tag" = "8:"
+            "Folder" = "8:_96082F52CB0E427AA4586A907EB753DF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_E4E6F8E3A18D420CEBF04BA96F1D9CAC"
@@ -1184,7 +1430,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:College Manager"
         "ProductCode" = "8:{C63B5B08-B405-455B-8B7B-CC419BED74E1}"
-        "PackageCode" = "8:{692F93F3-7B5C-4A6B-A4D5-CFCA9EB237C6}"
+        "PackageCode" = "8:{638272BD-27F1-48C5-A063-A299930A875D}"
         "UpgradeCode" = "8:{0E363595-455F-477C-A575-25EB1D7ACFE9}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
