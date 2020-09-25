@@ -28,16 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.collegeDBDataSet = new CollegeManagement.CollegeDBDataSet();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnSave = new FontAwesome.Sharp.IconButton();
             this.btnUpdate = new FontAwesome.Sharp.IconButton();
             this.btnDelete = new FontAwesome.Sharp.IconButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.groupsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.groupsTableAdapter = new CollegeManagement.CollegeDBDataSetTableAdapters.groupsTableAdapter();
+            ((System.ComponentModel.ISupportInitialize)(this.collegeDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -72,12 +78,20 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.DataSource = this.groupsBindingSource;
+            this.comboBox1.DisplayMember = "group_id";
             this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(217, 90);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(275, 30);
             this.comboBox1.TabIndex = 3;
+            this.comboBox1.ValueMember = "group_id";
+            // 
+            // collegeDBDataSet
+            // 
+            this.collegeDBDataSet.DataSetName = "CollegeDBDataSet";
+            this.collegeDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // textBox1
             // 
@@ -163,6 +177,15 @@
             this.dataGridView1.TabIndex = 8;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
+            // groupsBindingSource
+            // 
+            this.groupsBindingSource.DataMember = "groups";
+            this.groupsBindingSource.DataSource = this.collegeDBDataSet;
+            // 
+            // groupsTableAdapter
+            // 
+            this.groupsTableAdapter.ClearBeforeFill = true;
+            // 
             // SubGroup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -180,7 +203,10 @@
             this.Controls.Add(this.label1);
             this.Name = "SubGroup";
             this.Text = "SubGroup";
+            this.Load += new System.EventHandler(this.SubGroup_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.collegeDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -197,5 +223,9 @@
         private FontAwesome.Sharp.IconButton btnUpdate;
         private FontAwesome.Sharp.IconButton btnDelete;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private CollegeDBDataSet collegeDBDataSet;
+        private System.Windows.Forms.BindingSource groupsBindingSource;
+        private CollegeDBDataSetTableAdapters.groupsTableAdapter groupsTableAdapter;
+        //private CollegeDBDataSetTableAdapters.groupTableAdapter groupTableAdapter;
     }
 }

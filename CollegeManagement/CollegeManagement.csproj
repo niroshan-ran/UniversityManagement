@@ -152,6 +152,7 @@
     <Compile Include="Server\DBConnection.cs" />
     <Compile Include="Server\Infrastructure\BuildingCore.cs" />
     <Compile Include="Server\Infrastructure\LecturerController.cs" />
+    <Compile Include="Server\Infrastructure\NotAvailableCore.cs" />
     <Compile Include="Server\Infrastructure\RoomCore.cs" />
     <Compile Include="Server\Infrastructure\SessionController.cs" />
     <Compile Include="Server\Infrastructure\StatisticsCore.cs" />
@@ -215,6 +216,7 @@
     <Compile Include="Server\Infrastructure\WorkingDaysHoursCore.cs" />
     <Compile Include="Server\Model\BuildingModel.cs" />
     <Compile Include="Server\Model\LecturerModel.cs" />
+    <Compile Include="Server\Model\NotAvailableModel.cs" />
     <Compile Include="Server\Model\RoomModel.cs" />
     <Compile Include="Server\Model\SessionModel.cs" />
     <Compile Include="Server\Model\StatisticsModel.cs" />
@@ -224,6 +226,24 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Server\Model\WorkDaysHours.cs" />
+    <Compile Include="Session\NotAvailableLecturer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Session\NotAvailableLecturer.Designer.cs">
+      <DependentUpon>NotAvailableLecturer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Session\NotAvailableMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Session\NotAvailableMain.Designer.cs">
+      <DependentUpon>NotAvailableMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Session\NotAvailableStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Session\NotAvailableStudent.Designer.cs">
+      <DependentUpon>NotAvailableStudent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Statistics\LecStat.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -363,6 +383,15 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Session\NotAvailableLecturer.resx">
+      <DependentUpon>NotAvailableLecturer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Session\NotAvailableMain.resx">
+      <DependentUpon>NotAvailableMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Session\NotAvailableStudent.resx">
+      <DependentUpon>NotAvailableStudent.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Statistics\LecStat.resx">
       <DependentUpon>LecStat.cs</DependentUpon>
     </EmbeddedResource>

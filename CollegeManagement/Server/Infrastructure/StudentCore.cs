@@ -286,7 +286,7 @@ namespace CollegeCore.Infrastructure
             int count = 0;
             try
             {
-                string Query = "Insert into group(group_id,year,semester,program,group_no) values('" + objstudent.GrouID + "','" + objstudent.Year + "','" + objstudent.Semester + "','" + objstudent.Program + "'," + objstudent.GroupNo + ")";
+                string Query = "Insert into groups (group_id,year,semester,program,group_no) values('" + objstudent.GrouID + "','" + objstudent.Year + "','" + objstudent.Semester + "','" + objstudent.Program + "'," + objstudent.GroupNo + ")";
                 con = new SqlConnection(DBConnection.connectionString);
 
                 con.Open();
@@ -305,7 +305,7 @@ namespace CollegeCore.Infrastructure
             List<GroupModel> listStudent = new List<GroupModel>();
             try
             {
-                string Query = "Select * from group";
+                string Query = "Select * from groups";
                 SqlConnection con = new SqlConnection(DBConnection.connectionString);
 
                 SqlCommand cmd = new SqlCommand(Query, con);
@@ -338,7 +338,7 @@ namespace CollegeCore.Infrastructure
             int count = 0;
             try
             {
-                string Query = "Update group SET group_id = '" + objstudent.GrouID + "' , year = '" + objstudent.Year + "', semester='" + objstudent.Semester + "', program= '" + objstudent.Program + "' , group_no='" + objstudent.GroupNo + "'  where group_id = '" + objPrevStd.GrouID +"'";
+                string Query = "Update groups SET group_id = '" + objstudent.GrouID + "' , year = '" + objstudent.Year + "', semester='" + objstudent.Semester + "', program= '" + objstudent.Program + "' , group_no='" + objstudent.GroupNo + "'  where group_id = '" + objPrevStd.GrouID +"'";
                 con = new SqlConnection(DBConnection.connectionString);
 
                 con.Open();
@@ -357,7 +357,7 @@ namespace CollegeCore.Infrastructure
             int count = 0;
             try
             {
-                string Query = "Delete from group where group_id = '" + objStudent.GrouID + "'";
+                string Query = "Delete from groups where group_id = '" + objStudent.GrouID + "'";
                 con = new SqlConnection(DBConnection.connectionString);
 
                 con.Open();
@@ -381,7 +381,7 @@ namespace CollegeCore.Infrastructure
             DataTable dt = new DataTable();
             try
             {
-                string Query = "Select group_id from group";
+                string Query = "Select group_id from groups";
                 SqlConnection con = new SqlConnection(DBConnection.connectionString);
 
                 SqlCommand cmd = new SqlCommand(Query, con);

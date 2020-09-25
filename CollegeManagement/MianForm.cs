@@ -13,6 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CollegeManagement.Session;
 
 namespace CollegeManagement
 {
@@ -120,6 +121,13 @@ namespace CollegeManagement
             ActivateButton(sender, RGBColors.color1);
             openChildForm(new SubjectMain());
             lblTitle.Text = "Subject Management";
+        }
+
+        private void btnNotAvailable_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBColors.color1);
+            openChildForm(new NotAvailableMain());
+            lblTitle.Text = "Not Available Allocation";
         }
     }
 }

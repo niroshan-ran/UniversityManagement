@@ -95,5 +95,11 @@ namespace CollegeManagement.Student
             ActivateButton(sender, RGBColors.color1);
             openChildForm(new SubGroup());
         }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBColors.color1);
+            openChildForm(new SubGroup());
+        }
     }
 }
