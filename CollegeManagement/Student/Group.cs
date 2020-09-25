@@ -134,5 +134,10 @@ namespace CollegeCore.Student
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.AllowUserToResizeColumns = true;
         }
+
+        private void Group_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

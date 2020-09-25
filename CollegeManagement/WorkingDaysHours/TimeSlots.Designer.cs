@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.startTimePicker = new System.Windows.Forms.DateTimePicker();
             this.panel1 = new System.Windows.Forms.Panel();
             this.radioButtonOneHour = new System.Windows.Forms.RadioButton();
@@ -41,21 +40,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.daysListBox = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnSave = new FontAwesome.Sharp.IconButton();
             this.btnRemove = new FontAwesome.Sharp.IconButton();
-            this.collegeDBDataSet = new CollegeCore.CollegeDBDataSet();
-            this.timeslotsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.timeslotsTableAdapter = new CollegeCore.CollegeDBDataSetTableAdapters.timeslotsTableAdapter();
-            this.dayOfTheWeekDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.startTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.endTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.collegeDBDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.timeslotsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // startTimePicker
@@ -184,24 +174,6 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "Day of the Week";
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dayOfTheWeekDataGridViewTextBoxColumn,
-            this.startTimeDataGridViewTextBoxColumn,
-            this.endTimeDataGridViewTextBoxColumn,
-            this.typeDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.timeslotsBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(119, 310);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(486, 176);
-            this.dataGridView1.TabIndex = 7;
-            // 
             // btnSave
             // 
             this.btnSave.BackColor = System.Drawing.SystemColors.HotTrack;
@@ -217,7 +189,7 @@
             this.btnSave.Rotation = 0D;
             this.btnSave.Size = new System.Drawing.Size(142, 33);
             this.btnSave.TabIndex = 9;
-            this.btnSave.Text = "Save";
+            this.btnSave.Text = "Add";
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -240,58 +212,25 @@
             this.btnRemove.UseVisualStyleBackColor = false;
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
-            // collegeDBDataSet
+            // dataGridView1
             // 
-            this.collegeDBDataSet.DataSetName = "CollegeDBDataSet";
-            this.collegeDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // timeslotsBindingSource
-            // 
-            this.timeslotsBindingSource.DataMember = "timeslots";
-            this.timeslotsBindingSource.DataSource = this.collegeDBDataSet;
-            // 
-            // timeslotsTableAdapter
-            // 
-            this.timeslotsTableAdapter.ClearBeforeFill = true;
-            // 
-            // dayOfTheWeekDataGridViewTextBoxColumn
-            // 
-            this.dayOfTheWeekDataGridViewTextBoxColumn.DataPropertyName = "dayOfTheWeek";
-            this.dayOfTheWeekDataGridViewTextBoxColumn.HeaderText = "Day of the Week";
-            this.dayOfTheWeekDataGridViewTextBoxColumn.Name = "dayOfTheWeekDataGridViewTextBoxColumn";
-            this.dayOfTheWeekDataGridViewTextBoxColumn.ReadOnly = true;
-            this.dayOfTheWeekDataGridViewTextBoxColumn.Width = 120;
-            // 
-            // startTimeDataGridViewTextBoxColumn
-            // 
-            this.startTimeDataGridViewTextBoxColumn.DataPropertyName = "startTime";
-            this.startTimeDataGridViewTextBoxColumn.HeaderText = "Start Time";
-            this.startTimeDataGridViewTextBoxColumn.Name = "startTimeDataGridViewTextBoxColumn";
-            this.startTimeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // endTimeDataGridViewTextBoxColumn
-            // 
-            this.endTimeDataGridViewTextBoxColumn.DataPropertyName = "endTime";
-            this.endTimeDataGridViewTextBoxColumn.HeaderText = "End Time";
-            this.endTimeDataGridViewTextBoxColumn.Name = "endTimeDataGridViewTextBoxColumn";
-            this.endTimeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // typeDataGridViewTextBoxColumn
-            // 
-            this.typeDataGridViewTextBoxColumn.DataPropertyName = "type";
-            this.typeDataGridViewTextBoxColumn.HeaderText = "Time-Slot Type";
-            this.typeDataGridViewTextBoxColumn.Name = "typeDataGridViewTextBoxColumn";
-            this.typeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.typeDataGridViewTextBoxColumn.Width = 120;
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(119, 311);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(477, 150);
+            this.dataGridView1.TabIndex = 11;
             // 
             // TimeSlots
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(934, 614);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.daysListBox);
             this.Controls.Add(this.label3);
@@ -308,8 +247,6 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.collegeDBDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.timeslotsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -328,15 +265,12 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox daysListBox;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private FontAwesome.Sharp.IconButton btnSave;
         private FontAwesome.Sharp.IconButton btnRemove;
-        private CollegeDBDataSet collegeDBDataSet;
-        private System.Windows.Forms.BindingSource timeslotsBindingSource;
-        private CollegeDBDataSetTableAdapters.timeslotsTableAdapter timeslotsTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dayOfTheWeekDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn startTimeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn endTimeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

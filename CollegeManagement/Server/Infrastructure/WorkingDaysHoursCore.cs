@@ -21,6 +21,27 @@ namespace CollegeCore.Infrastructure
 
                 con.Open();
 
+                
+
+                SqlCommand cmd2 = new SqlCommand(CommonConstants.QUERY_GET_TIMESLOT, con);
+
+                cmd2.Parameters.AddWithValue(CommonConstants.PARAMETER_DAY_OF_THE_WEEK, timeSlots.GetDay_of_the_Week());
+                cmd2.Parameters.AddWithValue(CommonConstants.PARAMETER_START_TIME, timeSlots.GetStart_Time());
+                cmd2.Parameters.AddWithValue(CommonConstants.PARAMETER_END_TIME, timeSlots.GetEnd_Time());
+                cmd2.Parameters.AddWithValue(CommonConstants.PARAMETER_TYPE, timeSlots.GetSlotType());
+
+                SqlDataReader reader = cmd2.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    return 0;
+                }
+
+                reader.Close();
+
+                con.Close();
+                con.Open();
+
                 SqlCommand cmd = new SqlCommand(CommonConstants.QUERY_SAVE_TIMESLOT, con);
 
                 cmd.Parameters.AddWithValue(CommonConstants.PARAMETER_DAY_OF_THE_WEEK, timeSlots.GetDay_of_the_Week());
@@ -37,6 +58,7 @@ namespace CollegeCore.Infrastructure
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
+                return -1;
             }
             finally
             {
@@ -184,6 +206,7 @@ namespace CollegeCore.Infrastructure
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
+                return -1;
             }
             finally
             {
@@ -307,22 +330,31 @@ namespace CollegeCore.Infrastructure
               
                 con.Open();
                 SqlCommand cmd = new SqlCommand(CommonConstants.QUERY_SAVE_WORK_HOURS, con);
+                SqlCommand cmd2 = new SqlCommand(CommonConstants.QUERY_REMOVE_TIMESLOTS_BY_DAY, con);
 
 
                 cmd.Parameters.AddWithValue(CommonConstants.PARAMETER_START_TIME, day.GetStart_Time());
                 cmd.Parameters.AddWithValue(CommonConstants.PARAMETER_END_TIME, day.GetEnd_Time());
                 cmd.Parameters.AddWithValue(CommonConstants.PARAMETER_DAY_OF_THE_WEEK, day.GetDay_of_the_Week());
 
-
+                cmd2.Parameters.AddWithValue(CommonConstants.PARAMETER_DAY_OF_THE_WEEK, day.GetDay_of_the_Week());
 
 
                 count = cmd.ExecuteNonQuery();
+
+                
+                int count2 = cmd2.ExecuteNonQuery();
+
+                if (count2 == -1 || count == -1)
+                    count = -1;
+                
 
 
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
+                return -1;
             }
             finally
             {
@@ -489,8 +521,12 @@ namespace CollegeCore.Infrastructure
 
                 SqlCommand cmd = new SqlCommand(CommonConstants.QUERY_REMOVE_TIMESLOT, con);
 
-                cmd.Parameters.AddWithValue(CommonConstants.PARAMETER_START_TIME, timeSlot.GetStart_Time());
+
+                
                 cmd.Parameters.AddWithValue(CommonConstants.PARAMETER_DAY_OF_THE_WEEK, timeSlot.GetDay_of_the_Week());
+                cmd.Parameters.AddWithValue(CommonConstants.PARAMETER_START_TIME, timeSlot.GetStart_Time());
+                cmd.Parameters.AddWithValue(CommonConstants.PARAMETER_END_TIME, timeSlot.GetEnd_Time());
+                cmd.Parameters.AddWithValue(CommonConstants.PARAMETER_TYPE, timeSlot.GetSlotType());
 
 
 
@@ -500,6 +536,7 @@ namespace CollegeCore.Infrastructure
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
+                return -1;
             }
             finally
             {
