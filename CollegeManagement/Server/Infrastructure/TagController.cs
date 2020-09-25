@@ -10,15 +10,15 @@ namespace CollegeCore.Infrastructure
 {
     public class TagController
     {
-        SqlConnection con = new SqlConnection(DBConnection.connectionStringNew);
+        SqlConnection con = new SqlConnection(DBConnection.connectionString);
 
         public void insertTag(TagModel objstudent)
         {
             int count = 0;
             try
             {
-                string Query = "Insert into college_db.tags(tag_code,tag_name,tag_desc) values('" + objstudent.TagCode + "','" + objstudent.TagName + "','" + objstudent.TagDescription + "')";
-                con = new SqlConnection(DBConnection.connectionStringNew);
+                string Query = "Insert into tags(tag_code,tag_name,tag_desc) values('" + objstudent.TagCode + "','" + objstudent.TagName + "','" + objstudent.TagDescription + "')";
+                con = new SqlConnection(DBConnection.connectionString);
 
                 con.Open();
 
@@ -40,14 +40,14 @@ namespace CollegeCore.Infrastructure
             List<TagModel> listStudent = new List<TagModel>();
             try
             {
-                string Query = "Select * from college_db.tags";
-                con = new SqlConnection(DBConnection.connectionStringNew);
+                string Query = "Select * from tags";
+                con = new SqlConnection(DBConnection.connectionString);
 
                 SqlCommand cmd = new SqlCommand(Query, con);
                 SqlDataReader myReader;
                 con.Open();
                 myReader = cmd.ExecuteReader();
-                myReader = cmd.ExecuteReader();
+                //myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
                 {
@@ -72,8 +72,8 @@ namespace CollegeCore.Infrastructure
             int count = 0;
             try
             {
-                string Query = "Update college_db.tags SET tag_code = '" + objstudent.TagCode + "' , tag_name = '" + objstudent.TagName + "',tag_desc = '" + objstudent.TagDescription + "' where tag_code = '" + objPrevStd.TagCode + "'";
-                con = new SqlConnection(DBConnection.connectionStringNew);
+                string Query = "Update tags SET tag_code = '" + objstudent.TagCode + "' , tag_name = '" + objstudent.TagName + "',tag_desc = '" + objstudent.TagDescription + "' where tag_code = '" + objPrevStd.TagCode + "'";
+                con = new SqlConnection(DBConnection.connectionString);
 
                 con.Open();
 
@@ -97,8 +97,8 @@ namespace CollegeCore.Infrastructure
             int count = 0;
             try
             {
-                string Query = "Delete from college_db.tags where tag_code = '" + objStudent.TagCode + "'";
-                SqlConnection con = new SqlConnection(DBConnection.connectionStringNew);
+                string Query = "Delete from tags where tag_code = '" + objStudent.TagCode + "'";
+                SqlConnection con = new SqlConnection(DBConnection.connectionString);
 
                 con.Open();
 
