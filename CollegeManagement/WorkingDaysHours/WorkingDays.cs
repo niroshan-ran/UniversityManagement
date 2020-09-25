@@ -18,25 +18,24 @@ namespace CollegeCore.WorkingDaysHours
     public partial class WorkingDays : Form
     {
 
-        WorkingDaysHoursCore contrl = new WorkingDaysHoursCore();
+        readonly WorkingDaysHoursCore contrl = new WorkingDaysHoursCore();
 
         public WorkingDays()
         {
             InitializeComponent();
-            loadData();
+            LoadData();
         }
 
 
-        public void loadData()
+        public void LoadData()
         {
-            List<WorkDays> daysList = new List<WorkDays>();
+            List<WorkDays> daysList = contrl.GetWorkingDays(CommonConstants.QUERY_GET_WORK_DAYS);
 
-            daysList = contrl.getWorkingDays(CommonConstants.QUERY_GET_WORK_DAYS);
+            DataTable dataTable = contrl.GetWorkingDaysTable();
 
-            DataTable dataTable = contrl.getWorkingDaysTable();
-
-            if (dataTable.Rows.Count > 0)
-                dtGdWorkDays.DataSource = dataTable;
+            
+            DataGridWorkDays.DataSource = dataTable;
+            DataGridWorkDays.Columns[0].Width = 120;
 
             foreach (WorkDays day in daysList) 
             {
@@ -81,7 +80,7 @@ namespace CollegeCore.WorkingDaysHours
 
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void ButtonSave_Click(object sender, EventArgs e)
         {
             List<WorkDays> workingDays = new List<WorkDays>();
 
@@ -135,7 +134,7 @@ namespace CollegeCore.WorkingDaysHours
             workingDays.Add(sunday);
 
 
-            int count = contrl.saveWorkingDays(workingDays);
+            int count = contrl.SaveWorkingDays(workingDays);
 
             if (count > -1)
             {
@@ -147,7 +146,7 @@ namespace CollegeCore.WorkingDaysHours
                 MessageBox.Show("Workdays Saved with Errors", "Save Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            loadData();
+            LoadData();
 
         }
 

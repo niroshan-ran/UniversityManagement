@@ -11,7 +11,7 @@ namespace CollegeCore.Infrastructure
 {
     public class StudentCore
     {
-        SqlConnection con = new SqlConnection(DBConnection.connectionString);
+        SqlConnection con = new SqlConnection(DBConnection.connectionStringNew);
 
         #region Year & semester
 
@@ -21,7 +21,7 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Insert into college_db.year_sem(year,semester) values('" + objstudent.Year + "','" + objstudent.Semester + "')";
-                con = new SqlConnection(DBConnection.connectionString);
+                con = new SqlConnection(DBConnection.connectionStringNew);
 
                 con.Open();
 
@@ -41,7 +41,7 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Select year,semester from college_db.year_sem";
-                con = new SqlConnection(DBConnection.connectionString);
+                con = new SqlConnection(DBConnection.connectionStringNew);
 
                 SqlCommand cmd = new SqlCommand(Query, con);
                 SqlDataReader myReader;
@@ -72,7 +72,7 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Update college_db.year_sem SET year = '"+objstudent.Year+"' , semester = '"+objstudent.Semester+ "' where year = '" + objPrevStd.Year + "' and semester = '"+objPrevStd.Semester+"'";
-                con = new SqlConnection(DBConnection.connectionString);
+                con = new SqlConnection(DBConnection.connectionStringNew);
 
                 con.Open();
                 SqlCommand cmd = new SqlCommand(Query, con);
@@ -92,7 +92,7 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Delete from college_db.year_sem where year = '"+objStudent.Year+"' and semester = '"+objStudent.Semester+"'";
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                SqlConnection con = new SqlConnection(DBConnection.connectionStringNew);
 
                 con.Open();
 
@@ -115,7 +115,7 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Insert into college_db.program(code,name,description) values('" + objstudent.ProgramCode + "','" + objstudent.ProgramName + "','"+objstudent.ProgramDescription+"')";
-                con = new SqlConnection(DBConnection.connectionString);
+                con = new SqlConnection(DBConnection.connectionStringNew);
 
                 con.Open();
 
@@ -135,7 +135,7 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Select code,name,description from college_db.program";
-                con = new SqlConnection(DBConnection.connectionString);
+                con = new SqlConnection(DBConnection.connectionStringNew);
 
                 SqlCommand cmd = new SqlCommand(Query, con);
                 SqlDataReader myReader;
@@ -166,7 +166,7 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Update college_db.program SET code = '" + objstudent.ProgramCode + "' , name = '" + objstudent.ProgramName + "', description='"+objstudent.ProgramDescription+"' where code = '" + objPrevStd.ProgramCode+"' ";
-                con = new SqlConnection(DBConnection.connectionString);
+                con = new SqlConnection(DBConnection.connectionStringNew);
 
                 con.Open();
                 SqlCommand cmd = new SqlCommand(Query, con);
@@ -186,7 +186,7 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Delete from college_db.program where code = '" + objStudent.ProgramCode+"'" ;
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                SqlConnection con = new SqlConnection(DBConnection.connectionStringNew);
 
                 con.Open();
 
@@ -209,7 +209,7 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Select distinct year from year_sem";
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                SqlConnection con = new SqlConnection(DBConnection.connectionStringNew);
 
                 SqlCommand cmd = new SqlCommand(Query, con);
                 SqlDataAdapter myAdapter = new SqlDataAdapter();
@@ -235,7 +235,7 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Select semester from year_sem where year = '"+year+"'";
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                SqlConnection con = new SqlConnection(DBConnection.connectionStringNew);
 
                 SqlCommand cmd = new SqlCommand(Query, con);
                 SqlDataAdapter myAdapter = new SqlDataAdapter();
@@ -261,7 +261,7 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Select code from program";
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                SqlConnection con = new SqlConnection(DBConnection.connectionStringNew);
 
                 SqlCommand cmd = new SqlCommand(Query, con);
                 SqlDataAdapter myAdapter = new SqlDataAdapter();
@@ -287,7 +287,7 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Insert into group(group_id,year,semester,program,group_no) values('" + objstudent.GrouID + "','" + objstudent.Year + "','" + objstudent.Semester + "','" + objstudent.Program + "'," + objstudent.GroupNo + ")";
-                con = new SqlConnection(DBConnection.connectionString);
+                con = new SqlConnection(DBConnection.connectionStringNew);
 
                 con.Open();
                 SqlCommand cmd = new SqlCommand(Query, con);
@@ -306,7 +306,7 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Select * from group";
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                SqlConnection con = new SqlConnection(DBConnection.connectionStringNew);
 
                 SqlCommand cmd = new SqlCommand(Query, con);
                 SqlDataReader myReader;
@@ -339,7 +339,7 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Update group SET group_id = '" + objstudent.GrouID + "' , year = '" + objstudent.Year + "', semester='" + objstudent.Semester + "', program= '" + objstudent.Program + "' , group_no='" + objstudent.GroupNo + "'  where group_id = '" + objPrevStd.GrouID +"'";
-                con = new SqlConnection(DBConnection.connectionString);
+                con = new SqlConnection(DBConnection.connectionStringNew);
 
                 con.Open();
                 SqlCommand cmd = new SqlCommand(Query, con);
@@ -358,7 +358,7 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Delete from group where group_id = '" + objStudent.GrouID + "'";
-                con = new SqlConnection(DBConnection.connectionString);
+                con = new SqlConnection(DBConnection.connectionStringNew);
 
                 con.Open();
                 SqlCommand cmd = new SqlCommand(Query, con);
@@ -382,7 +382,7 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Select group_id from college_db.group";
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                SqlConnection con = new SqlConnection(DBConnection.connectionStringNew);
 
                 SqlCommand cmd = new SqlCommand(Query, con);
                 SqlDataAdapter myAdapter = new SqlDataAdapter();
@@ -409,7 +409,7 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Insert into college_db.sub_group(sub_group_id,group_id,sub_group_no) values('" + objstudent.SubGroupID + "','" + objstudent.GrouID + "','" + objstudent.SubGroupNo + "' )";
-                con = new SqlConnection(DBConnection.connectionString);
+                con = new SqlConnection(DBConnection.connectionStringNew);
 
                 con.Open();
                 SqlCommand cmd = new SqlCommand(Query, con);
@@ -429,7 +429,7 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Select * from college_db.sub_group";
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                SqlConnection con = new SqlConnection(DBConnection.connectionStringNew);
 
                 SqlCommand cmd = new SqlCommand(Query, con);
                 SqlDataReader myReader;
@@ -459,7 +459,7 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Update college_db.sub_group SET sub_group_id = '" + objstudent.SubGroupID + "' , group_id = '" + objstudent.GrouID + "', sub_group_no='" + objstudent.SubGroupNo + "'  where sub_group_id = '" + objPrevStd.SubGroupID + "'";
-                con = new SqlConnection(DBConnection.connectionString);
+                con = new SqlConnection(DBConnection.connectionStringNew);
 
                 con.Open();
                 SqlCommand cmd = new SqlCommand(Query, con);
@@ -479,7 +479,7 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Delete from college_db.sub_group where sub_group_id = '" + objStudent.SubGroupID + "'";
-                con = new SqlConnection(DBConnection.connectionString);
+                con = new SqlConnection(DBConnection.connectionStringNew);
 
                 con.Open();
                 SqlCommand cmd = new SqlCommand(Query, con);

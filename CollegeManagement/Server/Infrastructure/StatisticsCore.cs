@@ -16,7 +16,7 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Select * from programmes";
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                SqlConnection con = new SqlConnection(DBConnection.connectionStringNew);
 
                 SqlCommand cmd = new SqlCommand(Query, con);
                 SqlDataReader myReader;
@@ -46,7 +46,7 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "SELECT Faculty,count(*) as Lecturers_Count FROM lecturers group by Faculty";
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                SqlConnection con = new SqlConnection(DBConnection.connectionStringNew);
 
                 SqlCommand cmd = new SqlCommand(Query, con);
                 SqlDataReader myReader;
@@ -75,7 +75,7 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "SELECT Department,count(*) as Lecturers_Count FROM lecturers group by Department";
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                SqlConnection con = new SqlConnection(DBConnection.connectionStringNew);
 
                 SqlCommand cmd = new SqlCommand(Query, con);
                 SqlDataReader myReader;
@@ -104,7 +104,7 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "SELECT Center,count(*) as Lecturers_Count FROM lecturers group by Center";
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                SqlConnection con = new SqlConnection(DBConnection.connectionStringNew);
 
                 SqlCommand cmd = new SqlCommand(Query, con);
                 SqlDataReader myReader;
@@ -133,7 +133,7 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "SELECT year,count(*) as Offered_Subject_Count FROM subjects group by year";
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                SqlConnection con = new SqlConnection(DBConnection.connectionStringNew);
 
                 SqlCommand cmd = new SqlCommand(Query, con);
                 SqlDataReader myReader;
@@ -162,7 +162,7 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "SELECT Year, count(*) as Student_Count FROM [group] group by Year";
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                SqlConnection con = new SqlConnection(DBConnection.connectionStringNew);
 
                 SqlCommand cmd = new SqlCommand(Query, con);
                 SqlDataReader myReader;
@@ -191,7 +191,7 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = " SELECT program, count(*) as Student_Count FROM [group] group by Year, program";
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                SqlConnection con = new SqlConnection(DBConnection.connectionStringNew);
 
                 SqlCommand cmd = new SqlCommand(Query, con);
                 SqlDataReader myReader;
