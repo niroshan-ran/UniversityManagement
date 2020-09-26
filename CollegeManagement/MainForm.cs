@@ -1,4 +1,11 @@
-﻿using FontAwesome.Sharp;
+﻿using CollegeCore.Lecturer;
+using CollegeCore.Subject;
+using CollegeCore.Student;
+using CollegeCore.Tags;
+using CollegeCore.WorkingDaysHours;
+using CollegeCore.Location;
+using CollegeCore.Statistics;
+using FontAwesome.Sharp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,12 +16,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CollegeManagement.Session;
-using CollegeCore.Subject;
-using CollegeCore.Tags;
-using CollegeCore.WorkingDaysHours;
-using CollegeCore.Student;
-using CollegeCore.Lecturer;
-using CollegeManagement.AdvancedSession;
 
 namespace CollegeManagement
 {
@@ -112,9 +113,11 @@ namespace CollegeManagement
             lblTitle.Text = "Tag Management";
         }
 
-        private void icnBtnStat_Click(object sender, EventArgs e)
+        private void icnBtnLocation_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color1);
+            openChildForm(new LocationMain());
+            lblTitle.Text = "Location Management";
         }
 
         private void iconBtnSub_Click(object sender, EventArgs e)
@@ -142,11 +145,10 @@ namespace CollegeManagement
             lblTitle.Text = "Not Available Management";
         }
 
-        private void btnAdvancedSession_Click(object sender, EventArgs e)
+        private void icnBtnSatistics_Click(object sender, EventArgs e)
         {
-            ActivateButton(sender, RGBColors.color1);
-            openChildForm(new AdvancedSessionMain());
-            lblTitle.Text = "Advanced Session Management";
+            openChildForm(new StatisticMangement());
+            lblTitle.Text = "Statistics Management";
         }
     }
 }
