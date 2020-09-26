@@ -80,3 +80,33 @@ CREATE TABLE [dbo].[subjects] (
     PRIMARY KEY CLUSTERED ([subject_id] ASC)
 );
 
+GO
+CREATE TABLE [dbo].[NotAvailableLec]
+(
+    [LecturerID] VARCHAR(20) NOT NULL, 
+    [day] VARCHAR(20) NOT NULL, 
+    [start_time] VARCHAR(20) NOT NULL, 
+    [end_time] VARCHAR(20) NOT NULL, 
+    [start_slot] INT NOT NULL, 
+    [end_slot] INT NOT NULL 
+);
+
+GO
+CREATE TABLE [dbo].[NotAvailableStudent] (
+    [group_id]    VARCHAR (20) NOT NULL,
+    [sub_grou_id] VARCHAR (20) ,
+    [day]         VARCHAR (20) NOT NULL,
+    [start_time]  VARCHAR (20) NOT NULL,
+    [end_time]    VARCHAR (20) NOT NULL,
+    [start_slot]  INT          NOT NULL,
+    [end_slot]    INT          NOT NULL
+);
+
+GO
+CREATE TABLE [dbo].[tags]
+(
+    [tag_code] VARCHAR(20) NOT NULL, 
+    [tag_name] VARCHAR(20) NOT NULL, 
+    [tag_desc] VARCHAR(20) NOT NULL 
+);
+
