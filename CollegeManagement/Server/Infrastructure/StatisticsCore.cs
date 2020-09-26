@@ -1,5 +1,5 @@
 ﻿using CollegeCore.Model;
-using MySql.Data.MySqlClient;
+using System.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,11 +15,11 @@ namespace CollegeCore.Infrastructure
             List<StatisticsModel> listProgrammesCount = new List<StatisticsModel>();
             try
             {
-                string Query = "Select * from college_db.programmes";
-                MySqlConnection con = new MySqlConnection(DBConnection.ConnectionString);
+                string Query = "Select * from programmes";
+                SqlConnection con = new SqlConnection(DBConnection.connectionStringNew);
 
-                MySqlCommand cmd = new MySqlCommand(Query, con);
-                MySqlDataReader myReader;
+                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlDataReader myReader;
                 con.Open();
                 myReader = cmd.ExecuteReader();
 
@@ -45,11 +45,11 @@ namespace CollegeCore.Infrastructure
             List<StatisticsModel> listLecturerCountByFaculty = new List<StatisticsModel>();
             try
             {
-                string Query = "SELECT Faculty,count(*) as Lecturers_Count FROM college_db.lecturersnew group by Faculty";
-                MySqlConnection con = new MySqlConnection(DBConnection.ConnectionString);
+                string Query = "SELECT Faculty,count(*) as Lecturers_Count FROM lecturers group by Faculty";
+                SqlConnection con = new SqlConnection(DBConnection.connectionStringNew);
 
-                MySqlCommand cmd = new MySqlCommand(Query, con);
-                MySqlDataReader myReader;
+                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlDataReader myReader;
                 con.Open();
                 myReader = cmd.ExecuteReader();
 
@@ -74,11 +74,11 @@ namespace CollegeCore.Infrastructure
             List<StatisticsModel> listLecturerCountByDepartment = new List<StatisticsModel>();
             try
             {
-                string Query = "SELECT Department,count(*) as Lecturers_Count FROM college_db.lecturersnew group by Department";
-                MySqlConnection con = new MySqlConnection(DBConnection.ConnectionString);
+                string Query = "SELECT Department,count(*) as Lecturers_Count FROM lecturers group by Department";
+                SqlConnection con = new SqlConnection(DBConnection.connectionStringNew);
 
-                MySqlCommand cmd = new MySqlCommand(Query, con);
-                MySqlDataReader myReader;
+                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlDataReader myReader;
                 con.Open();
                 myReader = cmd.ExecuteReader();
 
@@ -103,11 +103,11 @@ namespace CollegeCore.Infrastructure
             List<StatisticsModel> listLecturerCountByCenter = new List<StatisticsModel>();
             try
             {
-                string Query = "SELECT Center,count(*) as Lecturers_Count FROM college_db.lecturersnew group by Center";
-                MySqlConnection con = new MySqlConnection(DBConnection.ConnectionString);
+                string Query = "SELECT Center,count(*) as Lecturers_Count FROM lecturers group by Center";
+                SqlConnection con = new SqlConnection(DBConnection.connectionStringNew);
 
-                MySqlCommand cmd = new MySqlCommand(Query, con);
-                MySqlDataReader myReader;
+                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlDataReader myReader;
                 con.Open();
                 myReader = cmd.ExecuteReader();
 
@@ -132,11 +132,11 @@ namespace CollegeCore.Infrastructure
             List<StatisticsModel> listSubjectOfferedCountByYear = new List<StatisticsModel>();
             try
             {
-                string Query = "SELECT Offered_Year,count(*) as Offered_Subject_Count FROM college_db.subjects group by Offered_Year";
-                MySqlConnection con = new MySqlConnection(DBConnection.ConnectionString);
+                string Query = "SELECT year,count(*) as Offered_Subject_Count FROM subjects group by year";
+                SqlConnection con = new SqlConnection(DBConnection.connectionStringNew);
 
-                MySqlCommand cmd = new MySqlCommand(Query, con);
-                MySqlDataReader myReader;
+                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlDataReader myReader;
                 con.Open();
                 myReader = cmd.ExecuteReader();
 
@@ -161,11 +161,11 @@ namespace CollegeCore.Infrastructure
             List<StatisticsModel> listStudentGroupCountByYear = new List<StatisticsModel>();
             try
             {
-                string Query = "SELECT Year, count(*) as Student_Count FROM college_db.group group by Year";
-                MySqlConnection con = new MySqlConnection(DBConnection.ConnectionString);
+                string Query = "SELECT Year, count(*) as Student_Count FROM [group] group by Year";
+                SqlConnection con = new SqlConnection(DBConnection.connectionStringNew);
 
-                MySqlCommand cmd = new MySqlCommand(Query, con);
-                MySqlDataReader myReader;
+                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlDataReader myReader;
                 con.Open();
                 myReader = cmd.ExecuteReader();
 
@@ -190,11 +190,11 @@ namespace CollegeCore.Infrastructure
             List<StatisticsModel> listStudentGroupCountByProgram = new List<StatisticsModel>();
             try
             {
-                string Query = " SELECT program, count(*) as Student_Count FROM college_db.group group by Year";
-                MySqlConnection con = new MySqlConnection(DBConnection.ConnectionString);
+                string Query = " SELECT program, count(*) as Student_Count FROM [group] group by Year, program";
+                SqlConnection con = new SqlConnection(DBConnection.connectionStringNew);
 
-                MySqlCommand cmd = new MySqlCommand(Query, con);
-                MySqlDataReader myReader;
+                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlDataReader myReader;
                 con.Open();
                 myReader = cmd.ExecuteReader();
 

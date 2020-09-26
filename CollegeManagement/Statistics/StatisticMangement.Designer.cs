@@ -1,4 +1,4 @@
-﻿namespace CollegeManagement.Statistics
+﻿namespace CollegeCore.Statistics
 {
     partial class StatisticMangement
     {

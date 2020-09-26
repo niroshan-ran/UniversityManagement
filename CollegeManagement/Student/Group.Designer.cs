@@ -1,4 +1,4 @@
-﻿namespace CollegeManagement.Student
+﻿namespace CollegeCore.Student
 {
     partial class Group
     {
@@ -48,9 +48,10 @@
             // 
             this.ddlYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlYear.FormattingEnabled = true;
-            this.ddlYear.Location = new System.Drawing.Point(273, 127);
+            this.ddlYear.Location = new System.Drawing.Point(205, 103);
+            this.ddlYear.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ddlYear.Name = "ddlYear";
-            this.ddlYear.Size = new System.Drawing.Size(283, 30);
+            this.ddlYear.Size = new System.Drawing.Size(213, 25);
             this.ddlYear.TabIndex = 0;
             this.ddlYear.SelectedValueChanged += new System.EventHandler(this.ddlYear_SelectedValueChanged);
             // 
@@ -58,9 +59,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(111, 55);
+            this.label1.Location = new System.Drawing.Point(83, 45);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(242, 29);
+            this.label1.Size = new System.Drawing.Size(195, 24);
             this.label1.TabIndex = 1;
             this.label1.Text = "Group Management";
             // 
@@ -68,9 +70,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(116, 127);
+            this.label2.Location = new System.Drawing.Point(87, 103);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 24);
+            this.label2.Size = new System.Drawing.Size(38, 18);
             this.label2.TabIndex = 2;
             this.label2.Text = "Year";
             // 
@@ -78,9 +81,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(116, 170);
+            this.label3.Location = new System.Drawing.Point(87, 138);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(90, 24);
+            this.label3.Size = new System.Drawing.Size(72, 18);
             this.label3.TabIndex = 3;
             this.label3.Text = "Semester";
             // 
@@ -88,9 +92,10 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(116, 208);
+            this.label4.Location = new System.Drawing.Point(87, 169);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(82, 24);
+            this.label4.Size = new System.Drawing.Size(66, 18);
             this.label4.TabIndex = 4;
             this.label4.Text = "Program";
             // 
@@ -98,9 +103,10 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(112, 249);
+            this.label5.Location = new System.Drawing.Point(84, 202);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(137, 24);
+            this.label5.Size = new System.Drawing.Size(107, 18);
             this.label5.TabIndex = 5;
             this.label5.Text = "Group Number";
             // 
@@ -108,26 +114,29 @@
             // 
             this.ddlSem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlSem.FormattingEnabled = true;
-            this.ddlSem.Location = new System.Drawing.Point(273, 167);
+            this.ddlSem.Location = new System.Drawing.Point(205, 136);
+            this.ddlSem.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ddlSem.Name = "ddlSem";
-            this.ddlSem.Size = new System.Drawing.Size(283, 30);
+            this.ddlSem.Size = new System.Drawing.Size(213, 25);
             this.ddlSem.TabIndex = 6;
             // 
             // ddlProgram
             // 
             this.ddlProgram.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlProgram.FormattingEnabled = true;
-            this.ddlProgram.Location = new System.Drawing.Point(273, 208);
+            this.ddlProgram.Location = new System.Drawing.Point(205, 169);
+            this.ddlProgram.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ddlProgram.Name = "ddlProgram";
-            this.ddlProgram.Size = new System.Drawing.Size(283, 30);
+            this.ddlProgram.Size = new System.Drawing.Size(213, 25);
             this.ddlProgram.TabIndex = 7;
             // 
             // txtGroupNO
             // 
             this.txtGroupNO.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtGroupNO.Location = new System.Drawing.Point(273, 249);
+            this.txtGroupNO.Location = new System.Drawing.Point(205, 202);
+            this.txtGroupNO.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtGroupNO.Name = "txtGroupNO";
-            this.txtGroupNO.Size = new System.Drawing.Size(283, 28);
+            this.txtGroupNO.Size = new System.Drawing.Size(213, 24);
             this.txtGroupNO.TabIndex = 8;
             this.txtGroupNO.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGroupNO_KeyPress);
             // 
@@ -141,11 +150,12 @@
             this.btnSave.IconColor = System.Drawing.Color.White;
             this.btnSave.IconSize = 32;
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(144, 310);
+            this.btnSave.Location = new System.Drawing.Point(108, 252);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Padding = new System.Windows.Forms.Padding(3);
+            this.btnSave.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSave.Rotation = 0D;
-            this.btnSave.Size = new System.Drawing.Size(104, 37);
+            this.btnSave.Size = new System.Drawing.Size(78, 30);
             this.btnSave.TabIndex = 9;
             this.btnSave.Text = "Save";
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -162,11 +172,12 @@
             this.btnUpdate.IconColor = System.Drawing.Color.White;
             this.btnUpdate.IconSize = 32;
             this.btnUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUpdate.Location = new System.Drawing.Point(254, 310);
+            this.btnUpdate.Location = new System.Drawing.Point(190, 252);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Padding = new System.Windows.Forms.Padding(3);
+            this.btnUpdate.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnUpdate.Rotation = 0D;
-            this.btnUpdate.Size = new System.Drawing.Size(115, 37);
+            this.btnUpdate.Size = new System.Drawing.Size(86, 30);
             this.btnUpdate.TabIndex = 10;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -183,11 +194,12 @@
             this.btnDelete.IconColor = System.Drawing.Color.White;
             this.btnDelete.IconSize = 32;
             this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDelete.Location = new System.Drawing.Point(375, 310);
+            this.btnDelete.Location = new System.Drawing.Point(281, 252);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Padding = new System.Windows.Forms.Padding(3);
+            this.btnDelete.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnDelete.Rotation = 0D;
-            this.btnDelete.Size = new System.Drawing.Size(118, 37);
+            this.btnDelete.Size = new System.Drawing.Size(88, 30);
             this.btnDelete.TabIndex = 11;
             this.btnDelete.Text = "Delete";
             this.btnDelete.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -201,20 +213,21 @@
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(120, 366);
+            this.dataGridView1.Location = new System.Drawing.Point(90, 297);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(639, 320);
+            this.dataGridView1.Size = new System.Drawing.Size(479, 260);
             this.dataGridView1.TabIndex = 12;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // Group
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(979, 698);
+            this.ClientSize = new System.Drawing.Size(600, 366);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
@@ -228,10 +241,10 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ddlYear);
-            this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Group";
             this.Text = "Group";
+            this.Load += new System.EventHandler(this.Group_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

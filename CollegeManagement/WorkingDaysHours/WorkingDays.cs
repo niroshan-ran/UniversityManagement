@@ -2,54 +2,44 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CollegeCore;
 using CollegeCore.Infrastructure;
 using CollegeCore.Model;
+using CollegeCore.Utilities;
 
-namespace CollegeManagement.WorkingDaysHours
+namespace CollegeCore.WorkingDaysHours
 {
     public partial class WorkingDays : Form
     {
 
-        WorkingDaysHoursCore contrl = new WorkingDaysHoursCore();
+        readonly WorkingDaysHoursCore contrl = new WorkingDaysHoursCore();
 
         public WorkingDays()
         {
             InitializeComponent();
-            loadData();
+            LoadData();
         }
 
 
-        public void loadData()
+        public void LoadData()
         {
-            List<WorkDays> daysList = new List<WorkDays>();
+            List<WorkDays> daysList = contrl.GetWorkingDays(CommonConstants.QUERY_GET_WORK_DAYS);
 
-            daysList = contrl.getWorkingDays();
+            DataTable dataTable = contrl.GetWorkingDaysTable();
 
-            dtGdWorkDays.DataSource = daysList;
-
-            dtGdWorkDays.RowsDefaultCellStyle.BackColor = Color.LightGray;
-            dtGdWorkDays.AlternatingRowsDefaultCellStyle.BackColor = Color.CornflowerBlue;
-            dtGdWorkDays.CellBorderStyle = DataGridViewCellBorderStyle.RaisedHorizontal;
-
-            dtGdWorkDays.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            dtGdWorkDays.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
-
-            dtGdWorkDays.Columns[0].Width = 200;
-
-
-
-            dtGdWorkDays.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dtGdWorkDays.AllowUserToResizeColumns = false;
+            
+            DataGridWorkDays.DataSource = dataTable;
+            DataGridWorkDays.Columns[0].Width = 120;
 
             foreach (WorkDays day in daysList) 
             {
-                switch (day.Day_of_the_Week) 
+                switch (day.GetDay_of_the_Week()) 
                 {
 
                     case "Monday":
@@ -85,93 +75,85 @@ namespace CollegeManagement.WorkingDaysHours
                 }
             }
 
+           
+
 
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void ButtonSave_Click(object sender, EventArgs e)
         {
-            List<String> workingDays = new List<string>();
+            List<WorkDays> workingDays = new List<WorkDays>();
 
-            if (chkMonday.Checked == true)
-            {
-                workingDays.Add(chkMonday.Text.ToString());
-            }
-            else
-            {
-                workingDays.Remove(chkMonday.Text.ToString());
-            }
+            WorkDays monday = new WorkDays();
 
-            if (chkTuesday.Checked == true)
-            {
-                workingDays.Add(chkTuesday.Text.ToString());
-            }
-            else
-            {
-                workingDays.Remove(chkTuesday.Text.ToString());
-            }
+            monday.setDayChecked(chkMonday.Checked);
+            monday.SetDay_of_the_Week(chkMonday.Text.ToString());
 
-            if (chkWednesday.Checked == true)
-            {
-                workingDays.Add(chkWednesday.Text.ToString());
-            }
-            else
-            {
-                workingDays.Remove(chkWednesday.Text.ToString());
-            }
+            workingDays.Add(monday);
 
-            if (chkThursday.Checked == true)
-            {
-                workingDays.Add(chkThursday.Text.ToString());
-            }
-            else
-            {
-                workingDays.Remove(chkThursday.Text.ToString());
-            }
+            WorkDays tuesday = new WorkDays();
 
-            if (chkFriday.Checked == true)
-            {
-                workingDays.Add(chkFriday.Text.ToString());
-            }
-            else
-            {
-                workingDays.Remove(chkFriday.Text.ToString());
-            }
+            tuesday.setDayChecked(chkTuesday.Checked);
+            tuesday.SetDay_of_the_Week(chkTuesday.Text.ToString());
 
-            if (chkSaturday.Checked == true)
-            {
-                workingDays.Add(chkSaturday.Text.ToString());
-            }
-            else
-            {
-                workingDays.Remove(chkSaturday.Text.ToString());
-            }
+            workingDays.Add(tuesday);
 
-            if (chkSunday.Checked == true)
-            {
-                workingDays.Add(chkSunday.Text.ToString());
-            }
-            else
-            {
-                workingDays.Remove(chkSunday.Text.ToString());
-            }
+            WorkDays wednesday = new WorkDays();
+
+            wednesday.setDayChecked(chkWednesday.Checked);
+            wednesday.SetDay_of_the_Week(chkWednesday.Text.ToString());
+
+            workingDays.Add(wednesday);
+
+            WorkDays thursday = new WorkDays();
+
+            thursday.setDayChecked(chkThursday.Checked);
+            thursday.SetDay_of_the_Week(chkThursday.Text.ToString());
+
+            workingDays.Add(thursday);
+
+            WorkDays friday = new WorkDays();
+
+            friday.setDayChecked(chkFriday.Checked);
+            friday.SetDay_of_the_Week(chkFriday.Text.ToString());
+
+            workingDays.Add(friday);
+
+            WorkDays saturday = new WorkDays();
+
+            saturday.setDayChecked(chkSaturday.Checked);
+            saturday.SetDay_of_the_Week(chkSaturday.Text.ToString());
+
+            workingDays.Add(saturday);
+
+            WorkDays sunday = new WorkDays();
+
+            sunday.setDayChecked(chkSunday.Checked);
+            sunday.SetDay_of_the_Week(chkSunday.Text.ToString());
+
+            workingDays.Add(sunday);
 
 
-            int count = contrl.saveWorkingDays(workingDays);
+            int count = contrl.SaveWorkingDays(workingDays);
 
             if (count > -1)
             {
 
-                MessageBox.Show("Workdays Saved Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Workdays Saved Successfully", "Save Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show("Unexpected Error Occurred", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Workdays Saved with Errors", "Save Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            loadData();
+            LoadData();
 
         }
 
-        
+        private void WorkingDays_Load(object sender, EventArgs e)
+        {
+
+
+        }
     }
 }

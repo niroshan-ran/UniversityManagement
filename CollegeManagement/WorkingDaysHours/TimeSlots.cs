@@ -9,32 +9,37 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CollegeCore.Infrastructure;
 using CollegeCore.Model;
+using CollegeCore.Utilities;
 
-namespace CollegeManagement.WorkingDaysHours
+namespace CollegeCore.WorkingDaysHours
 {
     public partial class TimeSlots : Form
     {
-        WorkingDaysHoursCore cntrl = new WorkingDaysHoursCore();
+        readonly WorkingDaysHoursCore cntrl = new WorkingDaysHoursCore();
         private DateTime prevTimePicker1;
         private bool navigatingDateTimePicker = false;
 
-        public void loadData() 
+        public void LoadData() 
         {
+            DataTable dataTable = cntrl.GetTimeSlotsTable();
 
-            dataGridView1.DataSource = cntrl.getTimeSlots();
+            DataGridTimeSlot.DataSource = dataTable;
+
+            DataGridTimeSlot.Columns[0].Width = 120;
+            
         }
 
-        public void loadDays()
+        public void LoadDays()
         {
 
-            List<WorkDays> workDaysList = cntrl.getWorkingDays();
+            List<WorkDays> workDaysList = cntrl.GetWorkingDays(CommonConstants.QUERY_GET_WORK_DAYS_BY_HOURS);
 
             List<String> stringList = new List<string>();
 
             foreach (WorkDays work in workDaysList)
             {
 
-                stringList.Add(work.Day_of_the_Week.ToString());
+                stringList.Add(work.GetDay_of_the_Week().ToString());
             }
 
             daysListBox.DataSource = stringList;
@@ -46,13 +51,13 @@ namespace CollegeManagement.WorkingDaysHours
 
             prevTimePicker1 = startTimePicker.Value;
             navigatingDateTimePicker = false;
-            changeStartTime();
+            ChangeStartTime();
 
-            loadDays();
-            loadData();
+            LoadDays();
+            LoadData();
         }
 
-        public void changeStartTime()
+        public void ChangeStartTime()
         {
             if (!navigatingDateTimePicker)
             {
@@ -88,82 +93,182 @@ namespace CollegeManagement.WorkingDaysHours
             prevTimePicker1 = startTimePicker.Value;
         }
 
-        private void startTimePicker_ValueChanged(object sender, EventArgs e)
+        private void StartTimePicker_ValueChanged(object sender, EventArgs e)
         {
-            changeStartTime();
+            ChangeStartTime();
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void ButtonSave_Click(object sender, EventArgs e)
         {
-            TimeSlot timeSlots = new TimeSlot();
-
-            timeSlots.Day_of_the_Week = daysListBox.SelectedItem.ToString();
-
-            timeSlots.Start_Time = startTimePicker.Value.ToShortTimeString();
-
-            if (radioButtonThirtyMinutes.Checked == true)
+            if (daysListBox.SelectedItem == null)
             {
-                timeSlots.End_Time = startTimePicker.Value.AddMinutes(30).ToShortTimeString();
+                MessageBox.Show("Please Enter Required Fields", "Validation Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            else if (radioButtonOneHour.Checked == true) 
+            else
             {
-                timeSlots.End_Time = startTimePicker.Value.AddHours(1).ToShortTimeString();
-            }
+                WorkHours workHours = cntrl.GetWorkHoursByDay(daysListBox.SelectedItem.ToString());
 
-            if (radioButtonLunchBreak.Checked == true)
-            {
-                timeSlots.Type = radioButtonLunchBreak.Text.ToString();
-            }
-            else if (radioButtonWorkTime.Checked == true)
-            {
-                timeSlots.Type = radioButtonWorkTime.Text.ToString();
-            }
+                DateTime startTime = DateTime.Parse(workHours.GetStart_Time());
+                DateTime endTime = DateTime.Parse(workHours.GetEnd_Time());
 
+                TimeSlot timeSlots = new TimeSlot();
 
-            int count  = cntrl.saveTimeSlot(timeSlots);
+                timeSlots.SetDay_of_the_Week(daysListBox.SelectedItem.ToString());
 
-            if (count != -1) 
-            {
-                MessageBox.Show("TimeSlot Saved SuccessFully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else 
-            {
-                MessageBox.Show("Error Occurred", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                timeSlots.SetStart_Time(startTimePicker.Value.ToLongTimeString());
 
-            loadData();
-
-        }
-
-        private void btnRemove_Click(object sender, EventArgs e)
-        {
-
-            TimeSlot timeSlots = new TimeSlot();
-
-            timeSlots.Day_of_the_Week = daysListBox.SelectedItem.ToString();
-
-            timeSlots.Start_Time = startTimePicker.Value.ToShortTimeString();
-
-            int count = cntrl.removeTimeSlot(timeSlots);
-
-            if (count > -1)
-            {
-                if (count >= 1)
+                if (radioButtonThirtyMinutes.Checked == true)
                 {
-                    MessageBox.Show("TimeSlot Deleted SuccessFully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    timeSlots.SetEnd_Time(startTimePicker.Value.AddMinutes(30).ToLongTimeString());
+                }
+                else if (radioButtonOneHour.Checked == true)
+                {
+                    timeSlots.SetEnd_Time(startTimePicker.Value.AddHours(1).ToLongTimeString());
+                }
+
+                if (radioButtonLunchBreak.Checked == true)
+                {
+                    timeSlots.SetSlotType(radioButtonLunchBreak.Text.ToString());
+                }
+                else if (radioButtonWorkTime.Checked == true)
+                {
+                    timeSlots.SetSlotType(radioButtonWorkTime.Text.ToString());
+                }
+
+                DateTime timeslot_startTime = DateTime.Parse(timeSlots.GetStart_Time());
+                DateTime timeslot_endTime = DateTime.Parse(timeSlots.GetEnd_Time());
+
+                bool status;
+
+                if (startTime.Hour < timeslot_startTime.Hour && endTime.Hour > timeslot_endTime.Hour)
+                {
+                    status = true;
+                }
+                else if ((startTime.Hour == timeslot_startTime.Hour && endTime.Hour > timeslot_endTime.Hour) && startTime.Minute <= timeslot_startTime.Minute)
+                {
+                    status = true;
+                }
+                else if ((startTime.Hour < timeslot_startTime.Hour && endTime.Hour == timeslot_endTime.Hour) && endTime.Minute >= timeslot_endTime.Minute)
+                {
+                    status = true;
+                }
+                else if ((startTime.Hour == timeslot_startTime.Hour && endTime.Hour == timeslot_endTime.Hour) && (startTime.Minute <= timeslot_startTime.Minute && endTime.Minute >= timeslot_endTime.Minute))
+                {
+                    status = true;
                 }
                 else
                 {
-                    MessageBox.Show("Nothing Deleted", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    status = false;
+                }
+
+                if (status)
+                {
+                    int count = cntrl.SaveTimeSlot(timeSlots);
+
+                    if (count >= 1)
+                    {
+                        MessageBox.Show("TimeSlot Saved SuccessFully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else if (count == 0)
+                    {
+                        MessageBox.Show("TimeSlot Already Added", "TimeSlot Exist", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error Occurred", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                    LoadData();
+                }
+                else
+                {
+                    MessageBox.Show("Please Enter Valid Time-Slot", "Invalid Time-Slot", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
-            else 
-            {
-                MessageBox.Show("Error Occurred", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
 
-            loadData();
+            
 
         }
+
+        private void ButtonRemove_Click(object sender, EventArgs e)
+        {
+            if (daysListBox.SelectedItem == null)
+            {
+                MessageBox.Show("Please Enter Required Fields", "Validation Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                TimeSlot timeSlots = new TimeSlot();
+
+                timeSlots.SetDay_of_the_Week(daysListBox.SelectedItem.ToString());
+
+                timeSlots.SetStart_Time(startTimePicker.Value.ToLongTimeString());
+
+                if (radioButtonThirtyMinutes.Checked == true)
+                {
+                    timeSlots.SetEnd_Time(startTimePicker.Value.AddMinutes(30).ToLongTimeString());
+                }
+                else if (radioButtonOneHour.Checked == true)
+                {
+                    timeSlots.SetEnd_Time(startTimePicker.Value.AddHours(1).ToLongTimeString());
+                }
+
+                if (radioButtonLunchBreak.Checked == true)
+                {
+                    timeSlots.SetSlotType(radioButtonLunchBreak.Text.ToString());
+                }
+                else if (radioButtonWorkTime.Checked == true)
+                {
+                    timeSlots.SetSlotType(radioButtonWorkTime.Text.ToString());
+                }
+
+                int count = cntrl.RemoveTimeSlot(timeSlots);
+
+                if (count > -1)
+                {
+                    if (count >= 1)
+                    {
+                        MessageBox.Show("TimeSlot Deleted SuccessFully", "Delete Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("No TimeSlot Exist to Delete for the user Input", "TimeSlot Doesn\'t Exist", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Error Occurred", "Delete Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                LoadData();
+            }
+        }
+
+
+     
+
+        private void DataGridTimeSlot_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (DataGridTimeSlot.CurrentRow.Index != -1)
+            {
+                daysListBox.SelectedItem = DataGridTimeSlot.CurrentRow.Cells[0].Value.ToString();
+                startTimePicker.Value = DateTime.Parse(DataGridTimeSlot.CurrentRow.Cells[1].Value.ToString());
+
+                if (DateTime.Parse(DataGridTimeSlot.CurrentRow.Cells[1].Value.ToString()).Minute == 30 && DateTime.Parse(DataGridTimeSlot.CurrentRow.Cells[2].Value.ToString()).Minute == 30)
+                    radioButtonOneHour.Checked = true;
+                else if (DateTime.Parse(DataGridTimeSlot.CurrentRow.Cells[1].Value.ToString()).Minute == 0 && DateTime.Parse(DataGridTimeSlot.CurrentRow.Cells[2].Value.ToString()).Minute == 0)
+                    radioButtonOneHour.Checked = true;
+                else
+                    radioButtonThirtyMinutes.Checked = true;
+
+                if (DataGridTimeSlot.CurrentRow.Cells[3].Value.ToString() == "Work Time")
+                    radioButtonWorkTime.Checked = true;
+                else
+                    radioButtonLunchBreak.Checked = true;
+
+
+            }
+        }
+
     }
 }
