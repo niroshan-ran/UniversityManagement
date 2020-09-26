@@ -16,6 +16,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CollegeManagement.Session;
+using CollegeManagement.AdvancedSession;
 
 namespace CollegeManagement
 {
@@ -149,6 +150,13 @@ namespace CollegeManagement
         {
             openChildForm(new StatisticMangement());
             lblTitle.Text = "Statistics Management";
+        }
+
+        private void btnAdvanceSession_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBColors.color1);
+            openChildForm(new AdvancedSessionMain());
+            lblTitle.Text = "Advanced Session Management";
         }
     }
 }
