@@ -22,6 +22,7 @@ namespace CollegeCore.Utilities
         public static string QUERY_GET_START_AND_END_TIME_BY_DAY = "SELECT startTime, endTime FROM workingDays WHERE dayOfTheWeek = @Day_of_the_Week";
         public static string QUERY_REMOVE_TIMESLOTS_BY_DAY = "DELETE FROM timeslots WHERE dayOfTheWeek = @Day_of_the_Week;";
         public static string QUERY_GET_TIMESLOT = "SELECT * FROM timeslots WHERE dayOfTheWeek = @Day_of_the_Week AND startTime = @Start_Time AND endTime = @End_Time AND [type] = @Type;";
+        public static string QUERY_GET_LUNCH_BREAK_COUNT_FOR_THE_DAY = "SELECT COUNT(*) AS 'breakCount' FROM timeslots WHERE dayOfTheWeek = @Day_of_the_Week AND [type] LIKE '%Lunch Break%';";
 
         public static string PARAMETER_DAY_OF_THE_WEEK = "@Day_of_the_Week";
         public static string PARAMETER_START_TIME = "@Start_Time";
@@ -37,6 +38,8 @@ namespace CollegeCore.Utilities
         public static string COLUMN_END_TIME_NEW = "End Time";
         public static string COLUMN_TIMESLOT_TYPE = "type";
         public static string COLUMN_TIMESLOT_TYPE_NEW = "TimeSlot Type";
+
+        public static string COLUMN_BREAK_COUNT = "breakCount";
 
     }
 }

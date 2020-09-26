@@ -173,9 +173,13 @@ namespace CollegeCore.WorkingDaysHours
                     {
                         MessageBox.Show("TimeSlot Already Added", "TimeSlot Exist", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
-                    else
+                    else if (count == -1)
                     {
                         MessageBox.Show("Error Occurred", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    } 
+                    else if (count == -2)
+                    {
+                        MessageBox.Show("Cannot add another Lunch Break for " + timeSlots.GetDay_of_the_Week() + "!!", "Duplicate Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
 
                     LoadData();
