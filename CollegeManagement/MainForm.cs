@@ -1,8 +1,8 @@
-﻿using CollegeManagement.Lecturer;
-using CollegeManagement.Subject;
-using CollegeManagement.Student;
-using CollegeManagement.Tags;
-using CollegeManagement.WorkingDaysHours;
+﻿using CollegeCore.Lecturer;
+using CollegeCore.Subject;
+using CollegeCore.Student;
+using CollegeCore.Tags;
+using CollegeCore.WorkingDaysHours;
 using FontAwesome.Sharp;
 using System;
 using System.Collections.Generic;
