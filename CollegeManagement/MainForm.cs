@@ -3,6 +3,8 @@ using CollegeCore.Subject;
 using CollegeCore.Student;
 using CollegeCore.Tags;
 using CollegeCore.WorkingDaysHours;
+using CollegeCore.Location;
+using CollegeCore.Statistics;
 using FontAwesome.Sharp;
 using System;
 using System.Collections.Generic;
@@ -111,9 +113,11 @@ namespace CollegeManagement
             lblTitle.Text = "Tag Management";
         }
 
-        private void icnBtnStat_Click(object sender, EventArgs e)
+        private void icnBtnLocation_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color1);
+            openChildForm(new LocationMain());
+            lblTitle.Text = "Location Management";
         }
 
         private void iconBtnSub_Click(object sender, EventArgs e)
@@ -139,6 +143,12 @@ namespace CollegeManagement
             ActivateButton(sender, RGBColors.color1);
             openChildForm(new NotAvailableMain());
             lblTitle.Text = "Not Available Management";
+        }
+
+        private void icnBtnSatistics_Click(object sender, EventArgs e)
+        {
+            openChildForm(new StatisticMangement());
+            lblTitle.Text = "Statistics Management";
         }
     }
 }
