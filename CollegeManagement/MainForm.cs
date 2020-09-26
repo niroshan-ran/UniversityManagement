@@ -1,8 +1,8 @@
-﻿using CollegeCore.Lecturer;
-using CollegeCore.Subject;
-using CollegeCore.Student;
-using CollegeCore.Tags;
-using CollegeCore.WorkingDaysHours;
+﻿using CollegeManagement.Lecturer;
+using CollegeManagement.Subject;
+using CollegeManagement.Student;
+using CollegeManagement.Tags;
+using CollegeManagement.WorkingDaysHours;
 using FontAwesome.Sharp;
 using System;
 using System.Collections.Generic;
@@ -13,8 +13,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CollegeManagement.Session;
 
-namespace CollegeCore
+namespace CollegeManagement
 {
     public partial class MainForm : Form
     {
@@ -113,8 +114,6 @@ namespace CollegeCore
         private void icnBtnStat_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color1);
-            openChildForm(new Location.LocationMain());
-            lblTitle.Text = "Location Management";
         }
 
         private void iconBtnSub_Click(object sender, EventArgs e)
@@ -135,11 +134,11 @@ namespace CollegeCore
             
         }
 
-        private void icnBtnSatistics_Click(object sender, EventArgs e)
+        private void iconButton2_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color1);
-            openChildForm(new Statistics.StatisticMangement());
-            lblTitle.Text = "Statistics Management";
+            openChildForm(new NotAvailableMain());
+            lblTitle.Text = "Not Available Management";
         }
     }
 }

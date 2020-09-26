@@ -146,11 +146,15 @@ namespace CollegeManagement.Session
             dataGridView1.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridView1.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-            dataGridView1.Columns[0].Width = 200;
-            dataGridView1.Columns[1].Width = 200;
-            dataGridView1.Columns[2].Width = 200;
-            dataGridView1.Columns[3].Width = 200;
-            dataGridView1.Columns[4].Width = 200;
+            dataGridView1.Columns[6].Visible = false;
+            dataGridView1.Columns[7].Visible = false;
+            dataGridView1.Columns[8].Visible = false;
+
+            dataGridView1.Columns[0].Width = 150;
+            dataGridView1.Columns[1].Width = 150;
+            dataGridView1.Columns[2].Width = 150;
+            dataGridView1.Columns[3].Width = 150;
+            dataGridView1.Columns[4].Width = 150;
 
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.AllowUserToResizeColumns = true;
@@ -162,6 +166,7 @@ namespace CollegeManagement.Session
             {
                 objCurr.groupID = dataGridView1.CurrentRow.Cells[0].Value.ToString();
                 objCurr.sub_group_id = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                objCurr.day = dataGridView1.CurrentRow.Cells[2].Value.ToString();
                 objCurr.startTime = dataGridView1.CurrentRow.Cells[3].Value.ToString();
                 objCurr.endTime = dataGridView1.CurrentRow.Cells[4].Value.ToString();
                 objCurr.startSlot = convertToSlot(objCurr.startTime);
