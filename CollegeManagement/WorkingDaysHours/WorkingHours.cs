@@ -20,18 +20,20 @@ namespace CollegeCore.WorkingDaysHours
 
         public void LoadData() 
         {
-
+            Cursor.Current = Cursors.WaitCursor;
 
             DataTable dataTable = cntrl.GetWorkingHoursTable();
 
             
             DataGridWorkHours.DataSource = dataTable;
             DataGridWorkHours.Columns[0].Width = 120;
+
+            Cursor.Current = Cursors.Default;
         }
 
         public void LoadDays()
         {
-
+            Cursor.Current = Cursors.WaitCursor;
             List<WorkDays> workDaysList = cntrl.GetWorkingDays(CommonConstants.QUERY_GET_WORK_HOURS);
 
             List<String> stringList = new List<string>();
@@ -43,6 +45,7 @@ namespace CollegeCore.WorkingDaysHours
             }
 
             daysListBox.DataSource = stringList;
+            Cursor.Current = Cursors.Default;
         }
 
 
@@ -51,7 +54,7 @@ namespace CollegeCore.WorkingDaysHours
         {
             InitializeComponent();
 
-
+            Cursor.Current = Cursors.WaitCursor;
 
             prevTimePicker1 = startTimePicker.Value;
             navigatingDateTimePicker = false;
@@ -63,6 +66,7 @@ namespace CollegeCore.WorkingDaysHours
 
             LoadDays();
             LoadData();
+            Cursor.Current = Cursors.Default;
         }
 
 
@@ -154,12 +158,17 @@ namespace CollegeCore.WorkingDaysHours
 
         private void ButtonSave_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
             if (daysListBox.SelectedItem == null)
             {
+                Cursor.Current = Cursors.Default;
                 MessageBox.Show("Please Enter Required Fields", "Validation Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
+
+                Cursor.Current = Cursors.WaitCursor;
+
                 DateTime startTime = DateTime.Parse(startTimePicker.Value.ToString());
                 DateTime endTime = DateTime.Parse(endTimePicker.Value.ToLongTimeString());
 
@@ -167,10 +176,13 @@ namespace CollegeCore.WorkingDaysHours
 
                 if (startTime.Hour >= endTime.Hour)
                 {
+                    Cursor.Current = Cursors.Default;
                     MessageBox.Show("Please Enter Valid Working Hours", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else
                 {
+
+                    Cursor.Current = Cursors.WaitCursor;
 
                     WorkHours day = new WorkHours();
 
@@ -183,6 +195,8 @@ namespace CollegeCore.WorkingDaysHours
 
                     int count = cntrl.SaveWorkingHours(day);
 
+                    Cursor.Current = Cursors.Default;
+
                     if (count != -1)
                     {
                         MessageBox.Show("Working Hours Saved SuccessFully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -191,9 +205,9 @@ namespace CollegeCore.WorkingDaysHours
                     {
                         MessageBox.Show("Error Occurred", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-
+                    Cursor.Current = Cursors.WaitCursor;
                     LoadData();
-
+                    Cursor.Current = Cursors.Default;
                 }
             }
 
