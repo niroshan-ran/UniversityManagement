@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.gvSessions = new System.Windows.Forms.DataGridView();
             this.sessionsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.collegeDBDataSet1 = new CollegeManagement.CollegeDBDataSet();
             this.button3 = new System.Windows.Forms.Button();
@@ -64,7 +63,8 @@
             this.sub_groupTableAdapter = new CollegeManagement.CollegeDBDataSetTableAdapters.sub_groupTableAdapter();
             this.ChecksboxLecturersList = new System.Windows.Forms.CheckedListBox();
             this.sessionsTableAdapter = new CollegeManagement.CollegeDBDataSetTableAdapters.SessionsTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.gvSessions)).BeginInit();
+            this.groupsBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.gvSessions = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.sessionsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.collegeDBDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupsBindingSource)).BeginInit();
@@ -74,17 +74,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.lecturersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.programBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.subgroupBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupsBindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvSessions)).BeginInit();
             this.SuspendLayout();
-            // 
-            // gvSessions
-            // 
-            this.gvSessions.BackgroundColor = System.Drawing.Color.White;
-            this.gvSessions.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.gvSessions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gvSessions.Location = new System.Drawing.Point(327, 56);
-            this.gvSessions.Name = "gvSessions";
-            this.gvSessions.Size = new System.Drawing.Size(444, 295);
-            this.gvSessions.TabIndex = 43;
             // 
             // sessionsBindingSource
             // 
@@ -149,14 +141,11 @@
             // 
             // GroupId
             // 
-            this.GroupId.DataSource = this.groupsBindingSource;
-            this.GroupId.DisplayMember = "group_no";
             this.GroupId.FormattingEnabled = true;
             this.GroupId.Location = new System.Drawing.Point(175, 254);
             this.GroupId.Name = "GroupId";
             this.GroupId.Size = new System.Drawing.Size(100, 21);
             this.GroupId.TabIndex = 33;
-            this.GroupId.ValueMember = "group_id";
             // 
             // groupsBindingSource
             // 
@@ -184,14 +173,11 @@
             // 
             // SubjectCode
             // 
-            this.SubjectCode.DataSource = this.subjectsBindingSource;
-            this.SubjectCode.DisplayMember = "subject_Code";
             this.SubjectCode.FormattingEnabled = true;
             this.SubjectCode.Location = new System.Drawing.Point(175, 161);
             this.SubjectCode.Name = "SubjectCode";
             this.SubjectCode.Size = new System.Drawing.Size(100, 21);
             this.SubjectCode.TabIndex = 31;
-            this.SubjectCode.ValueMember = "subject_id";
             // 
             // subjectsBindingSource
             // 
@@ -241,14 +227,11 @@
             // 
             // comboSubjects
             // 
-            this.comboSubjects.DataSource = this.subjectsBindingSource;
-            this.comboSubjects.DisplayMember = "sub_name";
             this.comboSubjects.FormattingEnabled = true;
             this.comboSubjects.Location = new System.Drawing.Point(175, 111);
             this.comboSubjects.Name = "comboSubjects";
             this.comboSubjects.Size = new System.Drawing.Size(100, 21);
             this.comboSubjects.TabIndex = 45;
-            this.comboSubjects.ValueMember = "subject_id";
             // 
             // comboTag
             // 
@@ -338,13 +321,30 @@
             // 
             this.sessionsTableAdapter.ClearBeforeFill = true;
             // 
+            // groupsBindingSource2
+            // 
+            this.groupsBindingSource2.DataMember = "groups";
+            this.groupsBindingSource2.DataSource = this.collegeDBDataSet1;
+            // 
+            // gvSessions
+            // 
+            this.gvSessions.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.gvSessions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gvSessions.Location = new System.Drawing.Point(315, 56);
+            this.gvSessions.Name = "gvSessions";
+            this.gvSessions.Size = new System.Drawing.Size(470, 305);
+            this.gvSessions.TabIndex = 52;
+            this.gvSessions.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gcSession_CellClick);
+            // 
             // AddSession
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(817, 539);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(829, 553);
+            this.Controls.Add(this.gvSessions);
             this.Controls.Add(this.ChecksboxLecturersList);
             this.Controls.Add(this.comboSubGroup);
             this.Controls.Add(this.label8);
@@ -352,7 +352,6 @@
             this.Controls.Add(this.studentCount);
             this.Controls.Add(this.comboTag);
             this.Controls.Add(this.comboSubjects);
-            this.Controls.Add(this.gvSessions);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -368,7 +367,6 @@
             this.Name = "AddSession";
             this.Text = "AddSession";
             this.Load += new System.EventHandler(this.AddSession_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.gvSessions)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sessionsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.collegeDBDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupsBindingSource)).EndInit();
@@ -378,14 +376,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.lecturersBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.programBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.subgroupBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupsBindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvSessions)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView gvSessions;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
@@ -420,5 +418,7 @@
         private CollegeManagement.CollegeDBDataSet collegeDBDataSet1;
         private System.Windows.Forms.BindingSource sessionsBindingSource;
         private CollegeManagement.CollegeDBDataSetTableAdapters.SessionsTableAdapter sessionsTableAdapter;
+        private System.Windows.Forms.BindingSource groupsBindingSource2;
+        private System.Windows.Forms.DataGridView gvSessions;
     }
 }

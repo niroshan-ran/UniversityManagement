@@ -12,6 +12,7 @@ namespace CollegeCore.Server.Infrastructure
     {
         public void insertSession(SessionModel objSes)
         {
+            var SessionStatus = 1;
             try
             {
                 string Query = "Insert into Sessions(lecturer_id,subject_id,subject_code,tag_code,group_id,sub_group_id,student_count,duration,session_status) " + "values('"
@@ -20,10 +21,10 @@ namespace CollegeCore.Server.Infrastructure
                     + objSes.SubjCode + "','"
                     + objSes.Tag + "','"
                     + objSes.Group + "','"
-                    + objSes.SubGroup + "','"
-                    + objSes.Stucount + "','"
-                    + objSes.Duration + "','"
-                    +1+ "')";
+                    + objSes.SubGroup + "',"
+                    + objSes.Stucount + ","
+                    + objSes.Duration + ","
+                    + SessionStatus + ")";
 
 
                 SqlConnection con = new SqlConnection(DBConnection.connectionStringNew);
@@ -50,7 +51,7 @@ namespace CollegeCore.Server.Infrastructure
             List<SessionModel> listSession = new List<SessionModel>();
             try
             {
-                string Query = "Select lecturer_id,subject_id,subject_code,tag_code,group_id,sub_group_id,student_count,duration,session_status from Sessions";
+                string Query = "Select session_id,lecturer_id,subject_id,subject_code,tag_code,group_id,sub_group_id,student_count,duration,session_status from Sessions";
                 SqlConnection con = new SqlConnection(DBConnection.connectionStringNew);
 
                 SqlCommand cmd = new SqlCommand(Query, con);
@@ -61,6 +62,7 @@ namespace CollegeCore.Server.Infrastructure
                 while (myReader.Read())
                 {
                     SessionModel objSession = new SessionModel();
+                    objSession.SessionId = myReader["session_id"].ToString();
                     objSession.Lecturer = myReader["lecturer_id"].ToString();
                     objSession.Subject = myReader["subject_id"].ToString();
                     objSession.SubjCode = myReader["subject_code"].ToString();
@@ -69,6 +71,7 @@ namespace CollegeCore.Server.Infrastructure
                     objSession.SubGroup = myReader["sub_group_id"].ToString();
                     objSession.Stucount = Convert.ToInt32(myReader["student_count"].ToString());
                     objSession.Duration = Convert.ToInt32(myReader["duration"].ToString());
+                    objSession.SessionStatus = Convert.ToInt32(myReader["session_status"].ToString());
 
                     listSession.Add(objSession);
                 }
