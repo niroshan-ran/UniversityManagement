@@ -34,6 +34,7 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.pannelChild = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.iconButton2 = new FontAwesome.Sharp.IconButton();
             this.icnBtnSatistics = new FontAwesome.Sharp.IconButton();
             this.icnBtnLocation = new FontAwesome.Sharp.IconButton();
             this.icnBtnTags = new FontAwesome.Sharp.IconButton();
@@ -42,7 +43,7 @@
             this.iconBtnSub = new FontAwesome.Sharp.IconButton();
             this.icnBtnLec = new FontAwesome.Sharp.IconButton();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
-            this.iconButton2 = new FontAwesome.Sharp.IconButton();
+            this.btnAdvancedSession = new FontAwesome.Sharp.IconButton();
             this.panel1.SuspendLayout();
             this.pannelTitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
@@ -113,6 +114,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.panel2.Controls.Add(this.btnAdvancedSession);
             this.panel2.Controls.Add(this.iconButton2);
             this.panel2.Controls.Add(this.icnBtnSatistics);
             this.panel2.Controls.Add(this.icnBtnLocation);
@@ -130,6 +132,31 @@
             this.panel2.Padding = new System.Windows.Forms.Padding(3, 100, 3, 10);
             this.panel2.Size = new System.Drawing.Size(221, 750);
             this.panel2.TabIndex = 0;
+            // 
+            // iconButton2
+            // 
+            this.iconButton2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.iconButton2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.iconButton2.FlatAppearance.BorderSize = 0;
+            this.iconButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton2.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconButton2.ForeColor = System.Drawing.SystemColors.Control;
+            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.Cut;
+            this.iconButton2.IconColor = System.Drawing.Color.White;
+            this.iconButton2.IconSize = 32;
+            this.iconButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton2.Location = new System.Drawing.Point(3, 556);
+            this.iconButton2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.iconButton2.Name = "iconButton2";
+            this.iconButton2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.iconButton2.Rotation = 0D;
+            this.iconButton2.Size = new System.Drawing.Size(215, 57);
+            this.iconButton2.TabIndex = 7;
+            this.iconButton2.Text = "   Not Available";
+            this.iconButton2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton2.UseVisualStyleBackColor = true;
+            this.iconButton2.Click += new System.EventHandler(this.iconButton2_Click);
             // 
             // icnBtnSatistics
             // 
@@ -329,30 +356,30 @@
             this.iconButton1.UseVisualStyleBackColor = true;
             this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
             // 
-            // iconButton2
+            // btnAdvancedSession
             // 
-            this.iconButton2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.iconButton2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.iconButton2.FlatAppearance.BorderSize = 0;
-            this.iconButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton2.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.iconButton2.ForeColor = System.Drawing.SystemColors.Control;
-            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.Cut;
-            this.iconButton2.IconColor = System.Drawing.Color.White;
-            this.iconButton2.IconSize = 32;
-            this.iconButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton2.Location = new System.Drawing.Point(3, 556);
-            this.iconButton2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.iconButton2.Name = "iconButton2";
-            this.iconButton2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.iconButton2.Rotation = 0D;
-            this.iconButton2.Size = new System.Drawing.Size(215, 57);
-            this.iconButton2.TabIndex = 7;
-            this.iconButton2.Text = "   Not Available";
-            this.iconButton2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton2.UseVisualStyleBackColor = true;
-            this.iconButton2.Click += new System.EventHandler(this.iconButton2_Click);
+            this.btnAdvancedSession.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAdvancedSession.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAdvancedSession.FlatAppearance.BorderSize = 0;
+            this.btnAdvancedSession.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdvancedSession.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnAdvancedSession.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnAdvancedSession.IconChar = FontAwesome.Sharp.IconChar.UniversalAccess;
+            this.btnAdvancedSession.IconColor = System.Drawing.Color.White;
+            this.btnAdvancedSession.IconSize = 32;
+            this.btnAdvancedSession.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAdvancedSession.Location = new System.Drawing.Point(3, 613);
+            this.btnAdvancedSession.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAdvancedSession.Name = "btnAdvancedSession";
+            this.btnAdvancedSession.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnAdvancedSession.Rotation = 0D;
+            this.btnAdvancedSession.Size = new System.Drawing.Size(215, 57);
+            this.btnAdvancedSession.TabIndex = 8;
+            this.btnAdvancedSession.Text = "Advanced Session";
+            this.btnAdvancedSession.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAdvancedSession.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAdvancedSession.UseVisualStyleBackColor = true;
+            this.btnAdvancedSession.Click += new System.EventHandler(this.btnAdvancedSession_Click);
             // 
             // MainForm
             // 
@@ -392,5 +419,6 @@
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
         private FontAwesome.Sharp.IconButton iconBtnSub;
         private FontAwesome.Sharp.IconButton iconButton2;
+        private FontAwesome.Sharp.IconButton btnAdvancedSession;
     }
 }

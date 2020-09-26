@@ -113,7 +113,7 @@ namespace CollegeManagement.Server.Infrastructure
             try
             {
                 string Query = "Insert into NotAvailableLec (LecturerID,day,start_time,end_time,start_slot,end_slot) values('" + objstudent.lecturerID + "','" + objstudent.day + "','" + objstudent.startTime + "','" + objstudent.endTime + "'," + objstudent.startSlot + "," + objstudent.endSlot + ")";
-                con = new SqlConnection(DBConnection.connectionString);
+                con = new SqlConnection(DBConnection.connectionStringNew);
 
                 con.Open();
                 SqlCommand cmd = new SqlCommand(Query, con);
@@ -134,7 +134,7 @@ namespace CollegeManagement.Server.Infrastructure
                 //Insert into NotAvailableStudent (group_id,sub_grou_id,day,start_time,end_time,start_slot,end_slot) values('" + objstudent.groupID + "','" + objstudent.sub_group_id + "','" + objstudent.day + "','" + objstudent.startTime + "','" + objstudent.endTime + "'," + objstudent.startSlot + "," + objstudent.endSlot + ")";
 
                 string Query = "UPDATE NotAvailableLec SET day='" + objstudent.day + "', start_time = '" + objstudent.startTime + "', end_time = '" + objstudent.endTime + "', start_slot = " + objstudent.startSlot + ",end_slot = " + objstudent.endSlot + " WHERE LecturerID = '" + objstudentCurr.lecturerID + "' and start_slot = " + objstudentCurr.startSlot + " and end_slot = " + objstudentCurr.endSlot + "";
-                con = new SqlConnection(DBConnection.connectionString);
+                con = new SqlConnection(DBConnection.connectionStringNew);
 
                 con.Open();
                 SqlCommand cmd = new SqlCommand(Query, con);
@@ -155,7 +155,7 @@ namespace CollegeManagement.Server.Infrastructure
                 //Insert into NotAvailableStudent (group_id,sub_grou_id,day,start_time,end_time,start_slot,end_slot) values('" + objstudent.groupID + "','" + objstudent.sub_group_id + "','" + objstudent.day + "','" + objstudent.startTime + "','" + objstudent.endTime + "'," + objstudent.startSlot + "," + objstudent.endSlot + ")";
 
                 string Query = "DELETE from NotAvailableLec  WHERE LecturerID = '" + objstudent.lecturerID + "' and start_slot = " + objstudent.startSlot + " and end_slot = " + objstudent.endSlot + "";
-                con = new SqlConnection(DBConnection.connectionString);
+                con = new SqlConnection(DBConnection.connectionStringNew);
 
                 con.Open();
                 SqlCommand cmd = new SqlCommand(Query, con);
@@ -174,7 +174,7 @@ namespace CollegeManagement.Server.Infrastructure
             try
             {
                 string Query = "Select * from NotAvailableLec";
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                SqlConnection con = new SqlConnection(DBConnection.connectionStringNew);
 
                 SqlCommand cmd = new SqlCommand(Query, con);
                 SqlDataReader myReader;

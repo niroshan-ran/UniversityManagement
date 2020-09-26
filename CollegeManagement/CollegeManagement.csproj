@@ -138,6 +138,30 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdvancedSession\AdvancedSessionMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdvancedSession\AdvancedSessionMain.Designer.cs">
+      <DependentUpon>AdvancedSessionMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancedSession\ConsecutiveSession.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdvancedSession\ConsecutiveSession.Designer.cs">
+      <DependentUpon>ConsecutiveSession.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancedSession\NotParallelSession.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdvancedSession\NotParallelSession.Designer.cs">
+      <DependentUpon>NotParallelSession.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancedSession\ParallelSession.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdvancedSession\ParallelSession.Designer.cs">
+      <DependentUpon>ParallelSession.cs</DependentUpon>
+    </Compile>
     <Compile Include="CollegeDBDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -353,6 +377,18 @@
     <Compile Include="WorkingDaysHours\WorkingHours.Designer.cs">
       <DependentUpon>WorkingHours.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AdvancedSession\AdvancedSessionMain.resx">
+      <DependentUpon>AdvancedSessionMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvancedSession\ConsecutiveSession.resx">
+      <DependentUpon>ConsecutiveSession.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvancedSession\NotParallelSession.resx">
+      <DependentUpon>NotParallelSession.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvancedSession\ParallelSession.resx">
+      <DependentUpon>ParallelSession.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Lecturer\AddLecturers.resx">
       <DependentUpon>AddLecturers.cs</DependentUpon>
     </EmbeddedResource>

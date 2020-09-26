@@ -1,9 +1,4 @@
-﻿using CollegeManagement.Lecturer;
-using CollegeManagement.Subject;
-using CollegeManagement.Student;
-using CollegeManagement.Tags;
-using CollegeManagement.WorkingDaysHours;
-using FontAwesome.Sharp;
+﻿using FontAwesome.Sharp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +9,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CollegeManagement.Session;
+using CollegeCore.Subject;
+using CollegeCore.Tags;
+using CollegeCore.WorkingDaysHours;
+using CollegeCore.Student;
+using CollegeCore.Lecturer;
+using CollegeManagement.AdvancedSession;
 
 namespace CollegeManagement
 {
@@ -139,6 +140,13 @@ namespace CollegeManagement
             ActivateButton(sender, RGBColors.color1);
             openChildForm(new NotAvailableMain());
             lblTitle.Text = "Not Available Management";
+        }
+
+        private void btnAdvancedSession_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBColors.color1);
+            openChildForm(new AdvancedSessionMain());
+            lblTitle.Text = "Advanced Session Management";
         }
     }
 }
