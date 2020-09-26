@@ -155,16 +155,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>data.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Server\DBConnection.cs" />
-    <Compile Include="Server\Infrastructure\BuildingCore.cs" />
-    <Compile Include="Server\Infrastructure\LecturerController.cs" />
-    <Compile Include="Server\Infrastructure\NotAvailableCore.cs" />
-    <Compile Include="Server\Infrastructure\RoomCore.cs" />
-    <Compile Include="Server\Infrastructure\SessionController.cs" />
-    <Compile Include="Server\Infrastructure\StatisticsCore.cs" />
-    <Compile Include="Server\Infrastructure\StudentCore.cs" />
-    <Compile Include="Server\Infrastructure\SubjectController.cs" />
-    <Compile Include="Server\Infrastructure\TagController.cs" />
     <Compile Include="Lecturer\AddLecturers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -219,6 +209,18 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Server\DBConnection.cs" />
+    <Compile Include="Server\Infrastructure\BuildingCore.cs" />
+    <Compile Include="Server\Infrastructure\LecturerController.cs" />
+    <Compile Include="Server\Infrastructure\NotAvailableCore.cs" />
+    <Compile Include="Server\Infrastructure\RoomCore.cs" />
+    <Compile Include="Server\Infrastructure\SessionController.cs" />
+    <Compile Include="Server\Infrastructure\StatisticsCore.cs" />
+    <Compile Include="Server\Infrastructure\StudentCore.cs" />
+    <Compile Include="Server\Infrastructure\SubjectController.cs" />
+    <Compile Include="Server\Infrastructure\TagController.cs" />
     <Compile Include="Server\Infrastructure\WorkingDaysHoursCore.cs" />
     <Compile Include="Server\Model\BuildingModel.cs" />
     <Compile Include="Server\Model\LecturerModel.cs" />
@@ -229,8 +231,6 @@
     <Compile Include="Server\Model\StudentModel.cs" />
     <Compile Include="Server\Model\SubjectModel.cs" />
     <Compile Include="Server\Model\TagModel.cs" />
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Server\Model\WorkDaysHours.cs" />
     <Compile Include="Server\Utilities\CommonConstants.cs" />
     <Compile Include="Session\NotAvailableLecturer.cs">
@@ -482,10 +482,20 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.SqlServer.SqlLocalDB.13.2">
+      <Visible>False</Visible>
+      <ProductName>SQL Server 2016 Express LocalDB</ProductName>
+      <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup />
@@ -498,8 +508,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Server\CollegeDB_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>CollegeDB.mdf</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
