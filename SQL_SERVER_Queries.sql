@@ -80,3 +80,26 @@ CREATE TABLE [dbo].[subjects] (
     PRIMARY KEY CLUSTERED ([subject_id] ASC)
 );
 
+GO
+CREATE TABLE [dbo].[Sessions] (
+    [session_id]      INT            IDENTITY (1, 1) NOT NULL,
+    [lecturer_id]     VARCHAR (MAX)  NULL,
+    [subject_id]      VARCHAR (MAX)  NULL,
+    [subject_code]    VARCHAR (50)   NULL,
+    [tag_code]        VARCHAR (50)   NULL,
+    [group_id]        VARBINARY (50) NULL,
+    [sub_group_id]    VARCHAR (50)   NULL,
+    [student_count]   INT            NULL,
+    [duration]        INT            NULL,
+    [day]             VARCHAR (50)   NULL,
+    [start_time]      VARCHAR (50)   NULL,
+    [end_time]        VARCHAR (50)   NULL,
+    [start_slot]      INT            NULL,
+    [end_slot]        INT            NULL,
+    [consecutive_id]  INT            NULL,
+    [parallel_id]     INT            NULL,
+    [not_parallel_id] INT            NULL,
+    [session_status]  NCHAR (10)     NULL,
+    PRIMARY KEY CLUSTERED ([session_id] ASC)
+);
+
