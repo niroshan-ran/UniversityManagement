@@ -103,3 +103,24 @@ CREATE TABLE [dbo].[Sessions] (
     PRIMARY KEY CLUSTERED ([session_id] ASC)
 );
 
+
+
+
+
+
+
+
+
+
+
+/* Lecturer Sample data */
+
+SET IDENTITY_INSERT [dbo].[lecturers] ON
+INSERT INTO [dbo].[lecturers] ([idlecturer], [lecturer_name], [emp_id], [faculty], [department], [center], [building], [level_s], [rank_s]) VALUES (1, N'Mr. Perera', N'E0001', N'Faculty of Computing', N'IT', N'Malabe', N'Building 1', N'4', N'4.0001')
+INSERT INTO [dbo].[lecturers] ([idlecturer], [lecturer_name], [emp_id], [faculty], [department], [center], [building], [level_s], [rank_s]) VALUES (2, N'Ms. Nishi', N'E0002', N'Faculty of Computing', N'IT', N'Malabe', N'Building 2', N'5', N'5.0002')
+INSERT INTO [dbo].[lecturers] ([idlecturer], [lecturer_name], [emp_id], [faculty], [department], [center], [building], [level_s], [rank_s]) VALUES (3, N'Mr. Hashan', N'E0003', N'Faculty of Computing', N'IT', N'Malabe', N'Building 3', N'4', N'4.0003')
+INSERT INTO [dbo].[lecturers] ([idlecturer], [lecturer_name], [emp_id], [faculty], [department], [center], [building], [level_s], [rank_s]) VALUES (4, N'Mr. Kamal', N'E0004', N'Faculty of Engineering', N'EI', N'Malabe', N'Building 4', N'4', N'4.0004')
+INSERT INTO [dbo].[lecturers] ([idlecturer], [lecturer_name], [emp_id], [faculty], [department], [center], [building], [level_s], [rank_s]) VALUES (5, N'Mr. Mohomad', N'E0005', N'Faculty of Engineering', N'EI', N'Malabe', N'Building 4', N'4', N'4.0005')
+INSERT INTO [dbo].[lecturers] ([idlecturer], [lecturer_name], [emp_id], [faculty], [department], [center], [building], [level_s], [rank_s]) VALUES (6, N'Mr. Shiva', N'E0006', N'Faculty of Business', N'BA', N'Malabe', N'Building 5', N'4', N'4.0006')
+
+SET IDENTITY_INSERT [dbo].[lecturers] OFF
