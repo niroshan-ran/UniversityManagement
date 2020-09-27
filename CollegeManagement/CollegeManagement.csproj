@@ -91,6 +91,12 @@
     <Reference Include="MySql.Data, Version=8.0.21.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.8.0.21\lib\net452\MySql.Data.dll</HintPath>
     </Reference>
+    <Reference Include="PdfSharp, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp.1.50.5147\lib\net20\PdfSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp.Charting, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp.1.50.5147\lib\net20\PdfSharp.Charting.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="Renci.SshNet, Version=2016.1.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
@@ -245,6 +251,7 @@
     <Compile Include="Server\Infrastructure\StudentCore.cs" />
     <Compile Include="Server\Infrastructure\SubjectController.cs" />
     <Compile Include="Server\Infrastructure\TagController.cs" />
+    <Compile Include="Server\Infrastructure\TimeTableGeneratorToPDFCore.cs" />
     <Compile Include="Server\Infrastructure\WorkingDaysHoursCore.cs" />
     <Compile Include="Server\Model\BuildingModel.cs" />
     <Compile Include="Server\Model\LecturerModel.cs" />
@@ -352,6 +359,12 @@
     </Compile>
     <Compile Include="Tags\TagManagement.Designer.cs">
       <DependentUpon>TagManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TimeTable\TimeTableMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TimeTable\TimeTableMain.Designer.cs">
+      <DependentUpon>TimeTableMain.cs</DependentUpon>
     </Compile>
     <Compile Include="WorkingDaysHours\MainWorkingDaysHours.cs">
       <SubType>Form</SubType>
@@ -467,6 +480,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tags\TagManagement.resx">
       <DependentUpon>TagManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TimeTable\TimeTableMain.resx">
+      <DependentUpon>TimeTableMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WorkingDaysHours\MainWorkingDaysHours.resx">
       <DependentUpon>MainWorkingDaysHours.cs</DependentUpon>

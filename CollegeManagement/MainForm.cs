@@ -17,6 +17,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CollegeManagement.Session;
 using CollegeManagement.AdvancedSession;
+using CollegeManagement.TimeTable;
 
 namespace CollegeManagement
 {
@@ -84,6 +85,8 @@ namespace CollegeManagement
         private void iconButton1_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color1);
+            openChildForm(new TimeTableMain());
+            lblTitle.Text = "Time Table Management";
         }
 
         private void icnBtnLec_Click(object sender, EventArgs e)
@@ -148,6 +151,7 @@ namespace CollegeManagement
 
         private void icnBtnSatistics_Click(object sender, EventArgs e)
         {
+            ActivateButton(sender, RGBColors.color1);
             openChildForm(new StatisticMangement());
             lblTitle.Text = "Statistics Management";
         }
@@ -157,6 +161,11 @@ namespace CollegeManagement
             ActivateButton(sender, RGBColors.color1);
             openChildForm(new AdvancedSessionMain());
             lblTitle.Text = "Advanced Session Management";
+        }
+
+        private void iconPictureBox2_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }

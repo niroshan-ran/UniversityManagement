@@ -53,7 +53,7 @@
             this.startTimePicker.CustomFormat = "HH:mm";
             this.startTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.startTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.startTimePicker.Location = new System.Drawing.Point(248, 64);
+            this.startTimePicker.Location = new System.Drawing.Point(145, 50);
             this.startTimePicker.Name = "startTimePicker";
             this.startTimePicker.ShowUpDown = true;
             this.startTimePicker.Size = new System.Drawing.Size(83, 26);
@@ -65,7 +65,7 @@
             this.panel1.Controls.Add(this.radioButtonOneHour);
             this.panel1.Controls.Add(this.radioButtonThirtyMinutes);
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(248, 96);
+            this.panel1.Location = new System.Drawing.Point(145, 82);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(195, 69);
             this.panel1.TabIndex = 2;
@@ -97,7 +97,7 @@
             this.panel2.Controls.Add(this.radioButtonWorkTime);
             this.panel2.Controls.Add(this.radioButtonLunchBreak);
             this.panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel2.Location = new System.Drawing.Point(248, 171);
+            this.panel2.Location = new System.Drawing.Point(145, 157);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(195, 69);
             this.panel2.TabIndex = 2;
@@ -128,7 +128,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(115, 101);
+            this.label1.Location = new System.Drawing.Point(12, 87);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(70, 20);
             this.label1.TabIndex = 3;
@@ -138,7 +138,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(115, 64);
+            this.label2.Location = new System.Drawing.Point(12, 50);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(82, 20);
             this.label2.TabIndex = 3;
@@ -148,7 +148,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(115, 176);
+            this.label3.Location = new System.Drawing.Point(12, 162);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(43, 20);
             this.label3.TabIndex = 3;
@@ -159,7 +159,7 @@
             this.daysListBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.daysListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.daysListBox.FormattingEnabled = true;
-            this.daysListBox.Location = new System.Drawing.Point(248, 20);
+            this.daysListBox.Location = new System.Drawing.Point(145, 6);
             this.daysListBox.Name = "daysListBox";
             this.daysListBox.Size = new System.Drawing.Size(255, 28);
             this.daysListBox.TabIndex = 5;
@@ -168,7 +168,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(115, 23);
+            this.label4.Location = new System.Drawing.Point(12, 9);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(127, 20);
             this.label4.TabIndex = 6;
@@ -185,7 +185,7 @@
             this.ButtonAdd.IconColor = System.Drawing.Color.Cyan;
             this.ButtonAdd.IconSize = 20;
             this.ButtonAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ButtonAdd.Location = new System.Drawing.Point(119, 258);
+            this.ButtonAdd.Location = new System.Drawing.Point(16, 244);
             this.ButtonAdd.Name = "ButtonAdd";
             this.ButtonAdd.Rotation = 0D;
             this.ButtonAdd.Size = new System.Drawing.Size(142, 33);
@@ -205,7 +205,7 @@
             this.ButtonRemove.IconColor = System.Drawing.Color.Cyan;
             this.ButtonRemove.IconSize = 20;
             this.ButtonRemove.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ButtonRemove.Location = new System.Drawing.Point(301, 258);
+            this.ButtonRemove.Location = new System.Drawing.Point(198, 244);
             this.ButtonRemove.Name = "ButtonRemove";
             this.ButtonRemove.Rotation = 0D;
             this.ButtonRemove.Size = new System.Drawing.Size(142, 33);
@@ -220,7 +220,7 @@
             this.DataGridTimeSlot.AllowUserToDeleteRows = false;
             this.DataGridTimeSlot.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.DataGridTimeSlot.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataGridTimeSlot.Location = new System.Drawing.Point(119, 311);
+            this.DataGridTimeSlot.Location = new System.Drawing.Point(16, 297);
             this.DataGridTimeSlot.Name = "DataGridTimeSlot";
             this.DataGridTimeSlot.ReadOnly = true;
             this.DataGridTimeSlot.Size = new System.Drawing.Size(477, 150);
@@ -231,7 +231,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(934, 614);
+            this.ClientSize = new System.Drawing.Size(984, 761);
             this.Controls.Add(this.DataGridTimeSlot);
             this.Controls.Add(this.ButtonRemove);
             this.Controls.Add(this.ButtonAdd);
