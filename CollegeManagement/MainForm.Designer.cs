@@ -29,11 +29,13 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pannelTitle = new System.Windows.Forms.Panel();
-            this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
-            this.lblTitle = new System.Windows.Forms.Label();
             this.pannelChild = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.iconPictureBox3 = new FontAwesome.Sharp.IconPictureBox();
+            this.iconPictureBox2 = new FontAwesome.Sharp.IconButton();
+            this.iconPictureBox1 = new FontAwesome.Sharp.IconButton();
+            this.btnAdvanceSession = new FontAwesome.Sharp.IconButton();
+            this.lblTitle = new System.Windows.Forms.Label();
             this.iconButton2 = new FontAwesome.Sharp.IconButton();
             this.icnBtnSatistics = new FontAwesome.Sharp.IconButton();
             this.icnBtnLocation = new FontAwesome.Sharp.IconButton();
@@ -43,78 +45,43 @@
             this.iconBtnSub = new FontAwesome.Sharp.IconButton();
             this.icnBtnLec = new FontAwesome.Sharp.IconButton();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
-            this.btnAdvanceSession = new FontAwesome.Sharp.IconButton();
+            this.pannelTitle = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
-            this.pannelTitle.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.pannelTitle);
             this.panel1.Controls.Add(this.pannelChild);
             this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.pannelTitle);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1396, 750);
+            this.panel1.Size = new System.Drawing.Size(1047, 609);
             this.panel1.TabIndex = 0;
-            // 
-            // pannelTitle
-            // 
-            this.pannelTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.pannelTitle.Controls.Add(this.iconPictureBox1);
-            this.pannelTitle.Controls.Add(this.lblTitle);
-            this.pannelTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pannelTitle.Location = new System.Drawing.Point(221, 0);
-            this.pannelTitle.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pannelTitle.Name = "pannelTitle";
-            this.pannelTitle.Size = new System.Drawing.Size(1175, 57);
-            this.pannelTitle.TabIndex = 0;
-            // 
-            // iconPictureBox1
-            // 
-            this.iconPictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.iconPictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.iconPictureBox1.ForeColor = System.Drawing.Color.Red;
-            this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.WindowClose;
-            this.iconPictureBox1.IconColor = System.Drawing.Color.Red;
-            this.iconPictureBox1.IconSize = 41;
-            this.iconPictureBox1.Location = new System.Drawing.Point(1125, 10);
-            this.iconPictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.iconPictureBox1.Name = "iconPictureBox1";
-            this.iconPictureBox1.Size = new System.Drawing.Size(43, 41);
-            this.iconPictureBox1.TabIndex = 1;
-            this.iconPictureBox1.TabStop = false;
-            this.iconPictureBox1.Click += new System.EventHandler(this.iconPictureBox1_Click);
-            // 
-            // lblTitle
-            // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblTitle.Location = new System.Drawing.Point(23, 16);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(0, 25);
-            this.lblTitle.TabIndex = 0;
             // 
             // pannelChild
             // 
             this.pannelChild.AutoSize = true;
             this.pannelChild.BackColor = System.Drawing.Color.White;
-            this.pannelChild.Location = new System.Drawing.Point(215, 57);
-            this.pannelChild.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pannelChild.Location = new System.Drawing.Point(161, 46);
+            this.pannelChild.Margin = new System.Windows.Forms.Padding(2);
             this.pannelChild.Name = "pannelChild";
-            this.pannelChild.Size = new System.Drawing.Size(1179, 689);
+            this.pannelChild.Size = new System.Drawing.Size(884, 560);
             this.pannelChild.TabIndex = 1;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.panel2.Controls.Add(this.iconPictureBox3);
+            this.panel2.Controls.Add(this.iconPictureBox2);
+            this.panel2.Controls.Add(this.iconPictureBox1);
             this.panel2.Controls.Add(this.btnAdvanceSession);
+            this.panel2.Controls.Add(this.lblTitle);
             this.panel2.Controls.Add(this.iconButton2);
             this.panel2.Controls.Add(this.icnBtnSatistics);
             this.panel2.Controls.Add(this.icnBtnLocation);
@@ -124,14 +91,123 @@
             this.panel2.Controls.Add(this.iconBtnSub);
             this.panel2.Controls.Add(this.icnBtnLec);
             this.panel2.Controls.Add(this.iconButton1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Padding = new System.Windows.Forms.Padding(3, 100, 3, 10);
-            this.panel2.Size = new System.Drawing.Size(221, 750);
+            this.panel2.Padding = new System.Windows.Forms.Padding(2, 81, 2, 8);
+            this.panel2.Size = new System.Drawing.Size(1047, 609);
             this.panel2.TabIndex = 0;
+            // 
+            // iconPictureBox3
+            // 
+            this.iconPictureBox3.BackColor = System.Drawing.Color.Transparent;
+            this.iconPictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.iconPictureBox3.Cursor = System.Windows.Forms.Cursors.SizeAll;
+            this.iconPictureBox3.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.iconPictureBox3.IconColor = System.Drawing.Color.White;
+            this.iconPictureBox3.IconSize = 47;
+            this.iconPictureBox3.Location = new System.Drawing.Point(0, 0);
+            this.iconPictureBox3.Margin = new System.Windows.Forms.Padding(2);
+            this.iconPictureBox3.Name = "iconPictureBox3";
+            this.iconPictureBox3.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.iconPictureBox3.Size = new System.Drawing.Size(157, 47);
+            this.iconPictureBox3.TabIndex = 1;
+            this.iconPictureBox3.TabStop = false;
+            this.iconPictureBox3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.iconPictureBox3_MouseDown);
+            // 
+            // iconPictureBox2
+            // 
+            this.iconPictureBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.iconPictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.iconPictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.iconPictureBox2.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.iconPictureBox2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.iconPictureBox2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.iconPictureBox2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.CornflowerBlue;
+            this.iconPictureBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconPictureBox2.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconPictureBox2.ForeColor = System.Drawing.Color.Transparent;
+            this.iconPictureBox2.IconChar = FontAwesome.Sharp.IconChar.WindowMinimize;
+            this.iconPictureBox2.IconColor = System.Drawing.Color.White;
+            this.iconPictureBox2.IconSize = 36;
+            this.iconPictureBox2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconPictureBox2.Location = new System.Drawing.Point(945, 0);
+            this.iconPictureBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.iconPictureBox2.Name = "iconPictureBox2";
+            this.iconPictureBox2.Rotation = 0D;
+            this.iconPictureBox2.Size = new System.Drawing.Size(53, 47);
+            this.iconPictureBox2.TabIndex = 1;
+            this.iconPictureBox2.TabStop = false;
+            this.iconPictureBox2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconPictureBox2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconPictureBox2.UseVisualStyleBackColor = false;
+            this.iconPictureBox2.Click += new System.EventHandler(this.iconPictureBox2_Click);
+            // 
+            // iconPictureBox1
+            // 
+            this.iconPictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.iconPictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.iconPictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.iconPictureBox1.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.iconPictureBox1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.iconPictureBox1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.iconPictureBox1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.CornflowerBlue;
+            this.iconPictureBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconPictureBox1.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconPictureBox1.ForeColor = System.Drawing.Color.Transparent;
+            this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.Times;
+            this.iconPictureBox1.IconColor = System.Drawing.Color.Red;
+            this.iconPictureBox1.IconSize = 36;
+            this.iconPictureBox1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.iconPictureBox1.Location = new System.Drawing.Point(993, 0);
+            this.iconPictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.iconPictureBox1.Name = "iconPictureBox1";
+            this.iconPictureBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.iconPictureBox1.Rotation = 0D;
+            this.iconPictureBox1.Size = new System.Drawing.Size(54, 47);
+            this.iconPictureBox1.TabIndex = 1;
+            this.iconPictureBox1.TabStop = false;
+            this.iconPictureBox1.UseVisualStyleBackColor = false;
+            this.iconPictureBox1.Click += new System.EventHandler(this.iconPictureBox1_Click);
+            // 
+            // btnAdvanceSession
+            // 
+            this.btnAdvanceSession.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAdvanceSession.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAdvanceSession.FlatAppearance.BorderSize = 0;
+            this.btnAdvanceSession.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdvanceSession.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnAdvanceSession.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnAdvanceSession.IconChar = FontAwesome.Sharp.IconChar.PuzzlePiece;
+            this.btnAdvanceSession.IconColor = System.Drawing.Color.White;
+            this.btnAdvanceSession.IconSize = 32;
+            this.btnAdvanceSession.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAdvanceSession.Location = new System.Drawing.Point(2, 495);
+            this.btnAdvanceSession.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAdvanceSession.Name = "btnAdvanceSession";
+            this.btnAdvanceSession.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnAdvanceSession.Rotation = 0D;
+            this.btnAdvanceSession.Size = new System.Drawing.Size(1043, 46);
+            this.btnAdvanceSession.TabIndex = 8;
+            this.btnAdvanceSession.Text = "  Advanced Sessions";
+            this.btnAdvanceSession.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAdvanceSession.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAdvanceSession.UseVisualStyleBackColor = true;
+            this.btnAdvanceSession.Click += new System.EventHandler(this.btnAdvanceSession_Click);
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblTitle.Location = new System.Drawing.Point(157, 11);
+            this.lblTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(144, 20);
+            this.lblTitle.TabIndex = 0;
+            this.lblTitle.Text = "College Manager";
             // 
             // iconButton2
             // 
@@ -145,12 +221,12 @@
             this.iconButton2.IconColor = System.Drawing.Color.White;
             this.iconButton2.IconSize = 32;
             this.iconButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton2.Location = new System.Drawing.Point(3, 556);
-            this.iconButton2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.iconButton2.Location = new System.Drawing.Point(2, 449);
+            this.iconButton2.Margin = new System.Windows.Forms.Padding(2);
             this.iconButton2.Name = "iconButton2";
             this.iconButton2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.iconButton2.Rotation = 0D;
-            this.iconButton2.Size = new System.Drawing.Size(215, 57);
+            this.iconButton2.Size = new System.Drawing.Size(1043, 46);
             this.iconButton2.TabIndex = 7;
             this.iconButton2.Text = "   Not Available";
             this.iconButton2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -170,12 +246,12 @@
             this.icnBtnSatistics.IconColor = System.Drawing.Color.White;
             this.icnBtnSatistics.IconSize = 32;
             this.icnBtnSatistics.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.icnBtnSatistics.Location = new System.Drawing.Point(3, 499);
-            this.icnBtnSatistics.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.icnBtnSatistics.Location = new System.Drawing.Point(2, 403);
+            this.icnBtnSatistics.Margin = new System.Windows.Forms.Padding(2);
             this.icnBtnSatistics.Name = "icnBtnSatistics";
             this.icnBtnSatistics.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.icnBtnSatistics.Rotation = 0D;
-            this.icnBtnSatistics.Size = new System.Drawing.Size(215, 57);
+            this.icnBtnSatistics.Size = new System.Drawing.Size(1043, 46);
             this.icnBtnSatistics.TabIndex = 6;
             this.icnBtnSatistics.Text = "   Statistics";
             this.icnBtnSatistics.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -195,12 +271,12 @@
             this.icnBtnLocation.IconColor = System.Drawing.Color.White;
             this.icnBtnLocation.IconSize = 32;
             this.icnBtnLocation.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.icnBtnLocation.Location = new System.Drawing.Point(3, 442);
-            this.icnBtnLocation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.icnBtnLocation.Location = new System.Drawing.Point(2, 357);
+            this.icnBtnLocation.Margin = new System.Windows.Forms.Padding(2);
             this.icnBtnLocation.Name = "icnBtnLocation";
             this.icnBtnLocation.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.icnBtnLocation.Rotation = 0D;
-            this.icnBtnLocation.Size = new System.Drawing.Size(215, 57);
+            this.icnBtnLocation.Size = new System.Drawing.Size(1043, 46);
             this.icnBtnLocation.TabIndex = 5;
             this.icnBtnLocation.Text = "   Location";
             this.icnBtnLocation.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -220,12 +296,12 @@
             this.icnBtnTags.IconColor = System.Drawing.Color.White;
             this.icnBtnTags.IconSize = 32;
             this.icnBtnTags.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.icnBtnTags.Location = new System.Drawing.Point(3, 385);
-            this.icnBtnTags.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.icnBtnTags.Location = new System.Drawing.Point(2, 311);
+            this.icnBtnTags.Margin = new System.Windows.Forms.Padding(2);
             this.icnBtnTags.Name = "icnBtnTags";
             this.icnBtnTags.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.icnBtnTags.Rotation = 0D;
-            this.icnBtnTags.Size = new System.Drawing.Size(215, 57);
+            this.icnBtnTags.Size = new System.Drawing.Size(1043, 46);
             this.icnBtnTags.TabIndex = 4;
             this.icnBtnTags.Text = "   Tags";
             this.icnBtnTags.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -245,12 +321,12 @@
             this.icnBtnWrk.IconColor = System.Drawing.Color.White;
             this.icnBtnWrk.IconSize = 32;
             this.icnBtnWrk.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.icnBtnWrk.Location = new System.Drawing.Point(3, 328);
-            this.icnBtnWrk.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.icnBtnWrk.Location = new System.Drawing.Point(2, 265);
+            this.icnBtnWrk.Margin = new System.Windows.Forms.Padding(2);
             this.icnBtnWrk.Name = "icnBtnWrk";
             this.icnBtnWrk.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.icnBtnWrk.Rotation = 0D;
-            this.icnBtnWrk.Size = new System.Drawing.Size(215, 57);
+            this.icnBtnWrk.Size = new System.Drawing.Size(1043, 46);
             this.icnBtnWrk.TabIndex = 3;
             this.icnBtnWrk.Text = "   Working Days/Hours";
             this.icnBtnWrk.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -270,12 +346,12 @@
             this.icnBtnStudent.IconColor = System.Drawing.Color.White;
             this.icnBtnStudent.IconSize = 32;
             this.icnBtnStudent.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.icnBtnStudent.Location = new System.Drawing.Point(3, 271);
-            this.icnBtnStudent.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.icnBtnStudent.Location = new System.Drawing.Point(2, 219);
+            this.icnBtnStudent.Margin = new System.Windows.Forms.Padding(2);
             this.icnBtnStudent.Name = "icnBtnStudent";
             this.icnBtnStudent.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.icnBtnStudent.Rotation = 0D;
-            this.icnBtnStudent.Size = new System.Drawing.Size(215, 57);
+            this.icnBtnStudent.Size = new System.Drawing.Size(1043, 46);
             this.icnBtnStudent.TabIndex = 2;
             this.icnBtnStudent.Text = "   Students";
             this.icnBtnStudent.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -285,6 +361,7 @@
             // 
             // iconBtnSub
             // 
+            this.iconBtnSub.Cursor = System.Windows.Forms.Cursors.Hand;
             this.iconBtnSub.Dock = System.Windows.Forms.DockStyle.Top;
             this.iconBtnSub.FlatAppearance.BorderSize = 0;
             this.iconBtnSub.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -294,12 +371,12 @@
             this.iconBtnSub.IconColor = System.Drawing.Color.White;
             this.iconBtnSub.IconSize = 32;
             this.iconBtnSub.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconBtnSub.Location = new System.Drawing.Point(3, 214);
-            this.iconBtnSub.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.iconBtnSub.Location = new System.Drawing.Point(2, 173);
+            this.iconBtnSub.Margin = new System.Windows.Forms.Padding(2);
             this.iconBtnSub.Name = "iconBtnSub";
             this.iconBtnSub.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.iconBtnSub.Rotation = 0D;
-            this.iconBtnSub.Size = new System.Drawing.Size(215, 57);
+            this.iconBtnSub.Size = new System.Drawing.Size(1043, 46);
             this.iconBtnSub.TabIndex = 2;
             this.iconBtnSub.Text = "   Subjects";
             this.iconBtnSub.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -319,12 +396,12 @@
             this.icnBtnLec.IconColor = System.Drawing.Color.White;
             this.icnBtnLec.IconSize = 32;
             this.icnBtnLec.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.icnBtnLec.Location = new System.Drawing.Point(3, 157);
-            this.icnBtnLec.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.icnBtnLec.Location = new System.Drawing.Point(2, 127);
+            this.icnBtnLec.Margin = new System.Windows.Forms.Padding(2);
             this.icnBtnLec.Name = "icnBtnLec";
             this.icnBtnLec.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.icnBtnLec.Rotation = 0D;
-            this.icnBtnLec.Size = new System.Drawing.Size(215, 57);
+            this.icnBtnLec.Size = new System.Drawing.Size(1043, 46);
             this.icnBtnLec.TabIndex = 1;
             this.icnBtnLec.Text = "   Lecturers";
             this.icnBtnLec.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -340,65 +417,49 @@
             this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iconButton1.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
             this.iconButton1.ForeColor = System.Drawing.SystemColors.Control;
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Dashcube;
+            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Table;
             this.iconButton1.IconColor = System.Drawing.Color.White;
             this.iconButton1.IconSize = 32;
             this.iconButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton1.Location = new System.Drawing.Point(3, 100);
-            this.iconButton1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.iconButton1.Location = new System.Drawing.Point(2, 81);
+            this.iconButton1.Margin = new System.Windows.Forms.Padding(2);
             this.iconButton1.Name = "iconButton1";
             this.iconButton1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.iconButton1.Rotation = 0D;
-            this.iconButton1.Size = new System.Drawing.Size(215, 57);
+            this.iconButton1.Size = new System.Drawing.Size(1043, 46);
             this.iconButton1.TabIndex = 0;
-            this.iconButton1.Text = "   Dashboard";
+            this.iconButton1.Text = "   Time Table";
             this.iconButton1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton1.UseVisualStyleBackColor = true;
             this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
             // 
-            // btnAdvanceSession
+            // pannelTitle
             // 
-            this.btnAdvanceSession.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAdvanceSession.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAdvanceSession.FlatAppearance.BorderSize = 0;
-            this.btnAdvanceSession.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdvanceSession.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnAdvanceSession.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnAdvanceSession.IconChar = FontAwesome.Sharp.IconChar.PuzzlePiece;
-            this.btnAdvanceSession.IconColor = System.Drawing.Color.White;
-            this.btnAdvanceSession.IconSize = 32;
-            this.btnAdvanceSession.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAdvanceSession.Location = new System.Drawing.Point(3, 613);
-            this.btnAdvanceSession.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnAdvanceSession.Name = "btnAdvanceSession";
-            this.btnAdvanceSession.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnAdvanceSession.Rotation = 0D;
-            this.btnAdvanceSession.Size = new System.Drawing.Size(215, 57);
-            this.btnAdvanceSession.TabIndex = 8;
-            this.btnAdvanceSession.Text = "  Advanced Sessions";
-            this.btnAdvanceSession.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAdvanceSession.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnAdvanceSession.UseVisualStyleBackColor = true;
-            this.btnAdvanceSession.Click += new System.EventHandler(this.btnAdvanceSession_Click);
+            this.pannelTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.pannelTitle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pannelTitle.Location = new System.Drawing.Point(0, 0);
+            this.pannelTitle.Margin = new System.Windows.Forms.Padding(2);
+            this.pannelTitle.Name = "pannelTitle";
+            this.pannelTitle.Size = new System.Drawing.Size(1047, 609);
+            this.pannelTitle.TabIndex = 0;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1396, 750);
+            this.ClientSize = new System.Drawing.Size(1047, 609);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainForm";
             this.Text = "AddYearSemester";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.pannelTitle.ResumeLayout(false);
-            this.pannelTitle.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -417,9 +478,11 @@
         private System.Windows.Forms.Panel pannelTitle;
         private System.Windows.Forms.Label lblTitle;
         private FontAwesome.Sharp.IconButton icnBtnSatistics;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
+        private FontAwesome.Sharp.IconButton iconPictureBox1;
         private FontAwesome.Sharp.IconButton iconBtnSub;
         private FontAwesome.Sharp.IconButton iconButton2;
         private FontAwesome.Sharp.IconButton btnAdvanceSession;
+        private FontAwesome.Sharp.IconButton iconPictureBox2;
+        private FontAwesome.Sharp.IconPictureBox iconPictureBox3;
     }
 }

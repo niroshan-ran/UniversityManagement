@@ -17,14 +17,25 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CollegeManagement.Session;
 using CollegeManagement.AdvancedSession;
+using CollegeManagement.TimeTable;
+using System.Runtime.InteropServices;
 
 namespace CollegeManagement
 {
     public partial class MainForm : Form
     {
         private IconButton currentButton;
-        private Panel mainPannel;
         private Form currentChildForm;
+
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+
+        [DllImportAttribute("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd,
+                         int Msg, int wParam, int lParam);
+        [DllImportAttribute("user32.dll")]
+        public static extern bool ReleaseCapture();
+
 
         public MainForm()
         {
@@ -38,7 +49,7 @@ namespace CollegeManagement
 
         private void ActivateButton(Object SenderButton, Color color)
         {
-            if(SenderButton != null)
+            if (SenderButton != null)
             {
                 DisableButton();
                 //Button Settings
@@ -49,14 +60,14 @@ namespace CollegeManagement
                 currentButton.IconColor = color;
                 currentButton.TextImageRelation = TextImageRelation.ImageBeforeText;
                 currentButton.ImageAlign = ContentAlignment.MiddleLeft;
-            }            
+            }
         }
 
         private void DisableButton()
         {
-            if(currentButton != null)
+            if (currentButton != null)
             {
-                currentButton.BackColor = Color.FromArgb(31,30,68);
+                currentButton.BackColor = Color.FromArgb(31, 30, 68);
                 currentButton.ForeColor = Color.Gainsboro;
                 currentButton.TextAlign = ContentAlignment.MiddleLeft;
                 currentButton.IconColor = Color.Gainsboro; ;
@@ -67,7 +78,7 @@ namespace CollegeManagement
 
         private void openChildForm(Form childForm)
         {
-            if(currentChildForm != null)
+            if (currentChildForm != null)
             {
                 currentChildForm.Close();
             }
@@ -84,6 +95,8 @@ namespace CollegeManagement
         private void iconButton1_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color1);
+            openChildForm(new TimeTableMain());
+            lblTitle.Text = "Time Table Management";
         }
 
         private void icnBtnLec_Click(object sender, EventArgs e)
@@ -132,11 +145,11 @@ namespace CollegeManagement
         {
             DialogResult result = MessageBox.Show("Are you sure you want to Exit?", "Confirm Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-            if (result.ToString().Equals("Yes")) 
+            if (result.ToString().Equals("Yes"))
             {
                 Application.Exit();
             }
-            
+
         }
 
         private void iconButton2_Click(object sender, EventArgs e)
@@ -148,6 +161,7 @@ namespace CollegeManagement
 
         private void icnBtnSatistics_Click(object sender, EventArgs e)
         {
+            ActivateButton(sender, RGBColors.color1);
             openChildForm(new StatisticMangement());
             lblTitle.Text = "Statistics Management";
         }
@@ -158,5 +172,21 @@ namespace CollegeManagement
             openChildForm(new AdvancedSessionMain());
             lblTitle.Text = "Advanced Session Management";
         }
+
+        private void iconPictureBox2_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void iconPictureBox3_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+        }
+
+        
     }
 }
