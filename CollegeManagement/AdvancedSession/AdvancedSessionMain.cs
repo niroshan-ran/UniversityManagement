@@ -88,5 +88,23 @@ namespace CollegeManagement.AdvancedSession
             ActivateButton(sender, RGBColors.color1);
             openChildForm(new NotParallelSession());
         }
+
+        private void btnConMng_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBColors.color1);
+            openChildForm(new ConsecutiveManagement());
+        }
+
+        private void btnParallelMng_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBColors.color1);
+            openChildForm(new ParallelManagement());
+        }
+
+        private void btnNotParallel_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBColors.color1);
+            openChildForm(new NotParallelManagement());
+        }
     }
 }
