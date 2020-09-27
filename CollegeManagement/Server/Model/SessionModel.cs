@@ -14,9 +14,9 @@ namespace CollegeCore.Model
         public string SubjCode { get; set; }
         public string Tag { get; set; }
         public string Group { get; set; }
-        public string Stucount { get; set; }
-        public string Duration { get; set; }
-
-        public string SessionStatus { get; set; }
+        public string SubGroup { get; set; }
+        public int Stucount { get; set; }
+        public int Duration { get; set; }
+        public int SessionStatus { get; set; }
     }
 }

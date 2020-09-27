@@ -1,4 +1,6 @@
 ﻿using CollegeCore.Infrastructure;
+using CollegeCore.Model;
+using CollegeCore.Server.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,35 +15,177 @@ namespace CollegeCore.Lecturer
 {
     public partial class AddSession : Form
     {
-        LecturerController objLectre = new LecturerController();
+        SessionController objSession = new SessionController();
+        SessionModel objSesMod = new SessionModel();
 
         public AddSession()
         {
             InitializeComponent();
-            //loadData();
-            loadDropdowns();
+            loadData();
         }
 
         private void onClick_save(object sender, EventArgs e)
         {
 
+            objSesMod.Lecturer = ChecksboxLecturersList.Text;
+            objSesMod.Subject = comboSubjects.Text;
+            objSesMod.SubjCode = SubjectCode.Text;
+            objSesMod.Tag = comboTag.Text;
+            objSesMod.Group = GroupId.Text;
+            objSesMod.SubGroup = comboSubGroup.Text;
+            objSesMod.Stucount = Convert.ToInt32(studentCount.Text);
+            objSesMod.Duration = Convert.ToInt32(duration.Text);
+
+            objSession.insertSession(objSesMod);
+
+            ChecksboxLecturersList.Text = "";
+            comboSubjects.Text = "";
+            SubjectCode.Text = "";
+            comboTag.Text = "";
+            GroupId.Text = "";
+            comboSubGroup.Text = "";
+            studentCount.Text = "";
+            duration.Text = "";
+
+            loadData();
         }
 
         private void onClick_update(object sender, EventArgs e)
         {
+            SessionModel objSes = new SessionModel();
+
+            objSes.Lecturer = ChecksboxLecturersList.Text;
+            objSes.Subject = comboSubjects.Text;
+            objSes.SubjCode = SubjectCode.Text;
+            objSes.Tag = comboTag.Text;
+            objSes.Group = GroupId.Text;
+            objSes.SubGroup = comboSubGroup.Text;
+            objSes.Stucount = Convert.ToInt32(studentCount.Text);
+            objSes.Duration = Convert.ToInt32(duration.Text);
+
+            objSession.updateSession(objSes, objSesMod);
+
+            loadData();
+
+            ChecksboxLecturersList.Text = "";
+            comboSubjects.Text = "";
+            SubjectCode.Text = "";
+            comboTag.Text = "";
+            GroupId.Text = "";
+            comboSubGroup.Text = "";
+            studentCount.Text = "";
+            duration.Text = "";
 
         }
 
         private void onClick_delete(object sender, EventArgs e)
         {
+            SessionModel objSes = new SessionModel();
+
+            objSes.SessionId = objSesMod.SessionId;
+            objSes.Lecturer = ChecksboxLecturersList.Text;
+            objSes.Subject = comboSubjects.Text;
+            objSes.SubjCode = SubjectCode.Text;
+            objSes.Tag = comboTag.Text;
+            objSes.Group = GroupId.Text;
+            objSes.SubGroup = comboSubGroup.Text;
+            objSes.Stucount = Convert.ToInt32(studentCount.Text);
+            objSes.Duration = Convert.ToInt32(duration.Text);
+
+            objSession.deleteSession(objSes);
+
+            loadData();
+
+            ChecksboxLecturersList.Text = "";
+            comboSubjects.Text = "";
+            SubjectCode.Text = "";
+            comboTag.Text = "";
+            GroupId.Text = "";
+            comboSubGroup.Text = "";
+            studentCount.Text = "";
+            duration.Text = "";
+        }
+
+        private void AddSession_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'collegeDBDataSet1.Sessions' table. You can move, or remove it, as needed.
+            //this.sessionsTableAdapter.Fill(this.collegeDBDataSet1.Sessions);
+            // TODO: This line of code loads data into the 'collegeDBDataSet.sub_group' table. You can move, or remove it, as needed.
+            this.sub_groupTableAdapter.Fill(this.collegeDBDataSet.sub_group);
+            // TODO: This line of code loads data into the 'collegeDBDataSet.groups' table. You can move, or remove it, as needed.
+            this.groupsTableAdapter.Fill(this.collegeDBDataSet.groups);
+            // TODO: This line of code loads data into the 'collegeDBDataSet.subjects' table. You can move, or remove it, as needed.
+            this.subjectsTableAdapter.Fill(this.collegeDBDataSet.subjects);
+            // TODO: This line of code loads data into the 'collegeDBDataSet.program' table. You can move, or remove it, as needed.
+            this.programTableAdapter.Fill(this.collegeDBDataSet.program);
+            // TODO: This line of code loads data into the 'collegeDBDataSet.lecturers' table. You can move, or remove it, as needed.
+            this.lecturersTableAdapter.Fill(this.collegeDBDataSet.lecturers);
+
+            for (int i = 0; i < this.collegeDBDataSet.lecturers.Count; i++)
+            {
+                ChecksboxLecturersList.Items.Add(this.collegeDBDataSet.lecturers[i]["lecturer_name"]);
+            }
 
         }
 
-        private void loadDropdowns()
+        private void loadData()
         {
-            comboLectures.DataSource = objLectre.getLecturers();
-            comboLectures.DisplayMember = "Name";
-            comboLectures.ValueMember = "Name";
+            gvSessions.DataSource = objSession.getSessions();
+
+            gvSessions.RowsDefaultCellStyle.BackColor = Color.LightGray;
+            gvSessions.AlternatingRowsDefaultCellStyle.BackColor = Color.CornflowerBlue;
+            gvSessions.CellBorderStyle = DataGridViewCellBorderStyle.RaisedHorizontal;
+
+            gvSessions.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            gvSessions.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gvSessions.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gvSessions.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gvSessions.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gvSessions.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gvSessions.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gvSessions.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gvSessions.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            gvSessions.Columns[0].Width = 100;
+            gvSessions.Columns[1].Width = 200;
+            gvSessions.Columns[2].Width = 200;
+            gvSessions.Columns[3].Width = 100;
+            gvSessions.Columns[4].Width = 100;
+            gvSessions.Columns[5].Width = 100;
+            gvSessions.Columns[6].Width = 100;
+            gvSessions.Columns[7].Width = 100;
+
+
+            gvSessions.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            gvSessions.AllowUserToResizeColumns = false;
+        }
+
+        private void gcSession_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (gvSessions.CurrentRow.Index != -1)
+            {
+
+                objSesMod.SessionId = gvSessions.CurrentRow.Cells[0].Value.ToString();
+                objSesMod.Lecturer = gvSessions.CurrentRow.Cells[1].Value.ToString();
+                objSesMod.Subject = gvSessions.CurrentRow.Cells[2].Value.ToString();
+                objSesMod.SubjCode = gvSessions.CurrentRow.Cells[3].Value.ToString();
+                objSesMod.Tag = gvSessions.CurrentRow.Cells[4].Value.ToString();
+                objSesMod.Group = gvSessions.CurrentRow.Cells[5].Value.ToString();
+                objSesMod.SubGroup = gvSessions.CurrentRow.Cells[6].Value.ToString();
+                objSesMod.Stucount = Convert.ToInt32(gvSessions.CurrentRow.Cells[7].Value);
+                objSesMod.Duration = Convert.ToInt32(gvSessions.CurrentRow.Cells[8].Value);
+
+
+                ChecksboxLecturersList.Text = gvSessions.CurrentRow.Cells[1].Value.ToString();
+                comboSubjects.Text = gvSessions.CurrentRow.Cells[2].Value.ToString();
+                SubjectCode.Text = gvSessions.CurrentRow.Cells[3].Value.ToString();
+                comboTag.Text = gvSessions.CurrentRow.Cells[4].Value.ToString();
+                GroupId.Text = gvSessions.CurrentRow.Cells[5].Value.ToString();
+                comboSubGroup.Text = gvSessions.CurrentRow.Cells[6].Value.ToString();
+                studentCount.Text = gvSessions.CurrentRow.Cells[7].Value.ToString();
+                duration.Text = gvSessions.CurrentRow.Cells[8].Value.ToString();
+
+            }
         }
     }
 }
