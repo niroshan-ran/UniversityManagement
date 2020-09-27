@@ -50,26 +50,39 @@ namespace CollegeCore.Student
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            subGroupModel objStudent = new subGroupModel();
+            DialogResult result = MessageBox.Show("Are you sure you want to Update?", "Confirm Update", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-            objStudent.SubGroupNo = (textBox1.Text);
-            objStudent.GrouID = comboBox1.SelectedValue.ToString();
-            objStudent.SubGroupID = objStudent.GrouID + "." + objStudent.SubGroupNo;
+            if (result.ToString().Equals("Yes"))
+            {
+                subGroupModel objStudent = new subGroupModel();
 
-            objCore.updateSubGroup(objStudent,prevObject);
+                objStudent.SubGroupNo = (textBox1.Text);
+                objStudent.GrouID = comboBox1.SelectedValue.ToString();
+                objStudent.SubGroupID = objStudent.GrouID + "." + objStudent.SubGroupNo;
 
-            //reset feilds
-            textBox1.Text = "";
+                objCore.updateSubGroup(objStudent, prevObject);
 
-            loadData();
+                //reset feilds
+                textBox1.Text = "";
+
+                loadData();
+            }
+            
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            //subGroupModel objStudent = new subGroupModel();
-            objCore.deleteSubGroup(prevObject);
-            loadData();
-            textBox1.Text = "";
+            DialogResult result = MessageBox.Show("Are you sure you want to Delete?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (result.ToString().Equals("Yes"))
+            {
+                //subGroupModel objStudent = new subGroupModel();
+                objCore.deleteSubGroup(prevObject);
+                loadData();
+                textBox1.Text = "";
+            }
+
+
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)

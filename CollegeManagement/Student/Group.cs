@@ -76,26 +76,36 @@ namespace CollegeCore.Student
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            GroupModel objStudent = new GroupModel();
+            DialogResult result = MessageBox.Show("Are you sure you want to Update?", "Confirm Update", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-            objStudent.Year = ddlYear.SelectedValue.ToString();
-            objStudent.Semester = ddlSem.SelectedValue.ToString();
-            objStudent.Program = ddlProgram.SelectedValue.ToString();
-            objStudent.GroupNo = Convert.ToInt32(txtGroupNO.Text);
+            if (result.ToString().Equals("Yes"))
+            {
+                GroupModel objStudent = new GroupModel();
 
-            objStudent.GrouID = objStudent.Year + "." + objStudent.Semester + "." + objStudent.Program + "." + objStudent.GroupNo.ToString();
+                objStudent.Year = ddlYear.SelectedValue.ToString();
+                objStudent.Semester = ddlSem.SelectedValue.ToString();
+                objStudent.Program = ddlProgram.SelectedValue.ToString();
+                objStudent.GroupNo = Convert.ToInt32(txtGroupNO.Text);
 
-            objCore.updateGroup(objStudent, objCurrentStd);
-            loadData();
-            //reset feilds
-            txtGroupNO.Text = "";
+                objStudent.GrouID = objStudent.Year + "." + objStudent.Semester + "." + objStudent.Program + "." + objStudent.GroupNo.ToString();
+
+                objCore.updateGroup(objStudent, objCurrentStd);
+                loadData();
+                //reset feilds
+                txtGroupNO.Text = "";
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            GroupModel objStudent = new GroupModel();
-            objCore.deleteGroup(objCurrentStd);
-            loadData();
+            DialogResult result = MessageBox.Show("Are you sure you want to Delete?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (result.ToString().Equals("Yes"))
+            {
+                GroupModel objStudent = new GroupModel();
+                objCore.deleteGroup(objCurrentStd);
+                loadData();
+            }
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)

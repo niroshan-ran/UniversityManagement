@@ -27,11 +27,16 @@ namespace CollegeManagement.AdvancedSession
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            objCore.UpdateParallelSessions(ParallelList);
-            loadList();
-            gvAdd.Visible = false;
-            btnSave.Visible = false;
-            btnReset.Visible = false;
+            DialogResult result = MessageBox.Show("Are you sure you want to Update?", "Confirm Update", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (result.ToString().Equals("Yes"))
+            {
+                objCore.UpdateParallelSessions(ParallelList);
+                loadList();
+                gvAdd.Visible = false;
+                btnSave.Visible = false;
+                btnReset.Visible = false;
+            }
         }
         private void loadList()
         {

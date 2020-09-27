@@ -49,7 +49,7 @@ namespace CollegeManagement.AdvancedSession
 
         private void gvLoad_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int consID = Convert.ToInt32(gvLoad.CurrentRow.Cells[10].Value.ToString());
+            int consID = Convert.ToInt32(gvLoad.CurrentRow.Cells[11].Value.ToString());
             loadDataRemove(consID);
             ConsecutiveID = consID;
             gvRemove.Visible = true;
@@ -58,10 +58,16 @@ namespace CollegeManagement.AdvancedSession
 
         private void iconButton1_Click(object sender, EventArgs e)
         {
-            objCore.DeleteConsecutiveSession(ConsecutiveID);
-            gvRemove.Visible = false;
-            iconButton1.Visible = false;
-            loadData();
+            DialogResult result = MessageBox.Show("Are you sure you want to Remove?", "Confirm Remove", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (result.ToString().Equals("Yes"))
+            {
+                objCore.DeleteConsecutiveSession(ConsecutiveID);
+                gvRemove.Visible = false;
+                iconButton1.Visible = false;
+                loadData();
+            }
         }
+
     }
 }

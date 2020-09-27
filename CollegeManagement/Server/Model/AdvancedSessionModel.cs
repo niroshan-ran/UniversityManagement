@@ -11,7 +11,7 @@ namespace CollegeManagement.Server.Model
         public string SessionId { get; set; }
         public string Lecturer { get; set; }
         public string Subject { get; set; }
-        //public string SubjCode { get; set; }
+        public string SubjCode { get; set; }
         public string Tag { get; set; }
         public string Group { get; set; }
         public string SubGroup { get; set; }

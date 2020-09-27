@@ -56,32 +56,45 @@ namespace CollegeCore.Student
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            ProgramModel objStudent = new ProgramModel();
+            DialogResult result = MessageBox.Show("Are you sure you want to Update?", "Confirm Update", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-            objStudent.ProgramCode = txtcode.Text;
-            objStudent.ProgramName = txtName.Text;
-            objStudent.ProgramDescription = txtDes.Text;
+            if (result.ToString().Equals("Yes"))
+            {
+                ProgramModel objStudent = new ProgramModel();
 
-            objStudCore.updateProgram(objStudent, objPrevStudent);
-            loadData();
-            //reset feilds
-            txtcode.Text = "";
-            txtName.Text = "";
-            txtDes.Text = "";
+                objStudent.ProgramCode = txtcode.Text;
+                objStudent.ProgramName = txtName.Text;
+                objStudent.ProgramDescription = txtDes.Text;
+
+                objStudCore.updateProgram(objStudent, objPrevStudent);
+                loadData();
+                //reset feilds
+                txtcode.Text = "";
+                txtName.Text = "";
+                txtDes.Text = "";
+            }
+
+            
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            ProgramModel objStudent = new ProgramModel();
+            DialogResult result = MessageBox.Show("Are you sure you want to Delete?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-            objStudent.ProgramCode =  txtcode.Text;
+            if (result.ToString().Equals("Yes"))
+            {
+                ProgramModel objStudent = new ProgramModel();
 
-            objStudCore.deleteProgram(objStudent);
-            loadData();
-            //reset feilds
-            txtcode.Text = "";
-            txtDes.Text = "";
-            txtName.Text = "";
+                objStudent.ProgramCode = txtcode.Text;
+
+                objStudCore.deleteProgram(objStudent);
+                loadData();
+                //reset feilds
+                txtcode.Text = "";
+                txtDes.Text = "";
+                txtName.Text = "";
+            }
+
         }
 
         private void loadData()

@@ -55,6 +55,7 @@ namespace CollegeManagement.AdvancedSession
             }
             obj.Lecturer= ddlLecturer.SelectedValue.ToString();
             obj.Subject = ddlSubject.SelectedValue.ToString();
+            obj.SubjCode = ddlSubject.SelectedItem.ToString();
             obj.Tag = ddlTags.SelectedValue.ToString();
             obj.Stucount = txtStdCount.Text;
             obj.Duration = txtDuration.Text;
@@ -109,6 +110,9 @@ namespace CollegeManagement.AdvancedSession
 
         private void btnReset_Click(object sender, EventArgs e)
         {
+            dataGridView1.DataSource = null;
+            dataGridView1.Rows.Clear();
+            dataGridView1.Columns.Clear();
             consecutiveList = new List<AdvancedSessionModel>();
             dataGridView1.Visible = true;
             txtDuration.Text = "";
@@ -117,9 +121,14 @@ namespace CollegeManagement.AdvancedSession
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            objCore.insertConsecutiveSessions(consecutiveList);
-            dataGridView1.Visible = false;
-            btnSave.Visible = false;
+            DialogResult result = MessageBox.Show("Are you sure you want to Update?", "Confirm Update", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (result.ToString().Equals("Yes"))
+            {
+                objCore.insertConsecutiveSessions(consecutiveList);
+                dataGridView1.Visible = false;
+                btnSave.Visible = false;
+            }
         }
 
         private void btnManage_Click(object sender, EventArgs e)

@@ -94,30 +94,40 @@ namespace CollegeCore.Student
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            YearSemModel objStudent = new YearSemModel();
+            DialogResult result = MessageBox.Show("Are you sure you want to Update?", "Confirm Update", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-            objStudent.Year = "Y" + txtYear.Text;
-            objStudent.Semester = "S" + txtSem.Text;
+            if (result.ToString().Equals("Yes"))
+            {
+                YearSemModel objStudent = new YearSemModel();
 
-            objStudCore.updateYearSem(objStudent,objCurrentStd);
-            loadData();
-            //reset feilds
-            txtYear.Text = "";
-            txtSem.Text = "";
+                objStudent.Year = "Y" + txtYear.Text;
+                objStudent.Semester = "S" + txtSem.Text;
+
+                objStudCore.updateYearSem(objStudent, objCurrentStd);
+                loadData();
+                //reset feilds
+                txtYear.Text = "";
+                txtSem.Text = "";
+            }            
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            YearSemModel objStudent = new YearSemModel();
+            DialogResult result = MessageBox.Show("Are you sure you want to Delete?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-            objStudent.Year = "Y" + txtYear.Text;
-            objStudent.Semester = "S" + txtSem.Text;
+            if (result.ToString().Equals("Yes"))
+            {
+                YearSemModel objStudent = new YearSemModel();
 
-            objStudCore.deleteYearSem(objStudent);
-            loadData();
-            //reset feilds
-            txtYear.Text = "";
-            txtSem.Text = "";
+                objStudent.Year = "Y" + txtYear.Text;
+                objStudent.Semester = "S" + txtSem.Text;
+
+                objStudCore.deleteYearSem(objStudent);
+                loadData();
+                //reset feilds
+                txtYear.Text = "";
+                txtSem.Text = "";
+            }           
         }
 
         private void gvYearSem_CellContentClick(object sender, DataGridViewCellEventArgs e)

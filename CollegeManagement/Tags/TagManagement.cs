@@ -43,35 +43,45 @@ namespace CollegeCore.Tags
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            TagModel objStudent = new TagModel();
+            DialogResult result = MessageBox.Show("Are you sure you want to Update?", "Confirm Update", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-            objStudent.TagCode =  txtCode.Text;
-            objStudent.TagName =  txtName.Text;
-            objStudent.TagDescription = txtDesc.Text;
+            if (result.ToString().Equals("Yes"))
+            {
+                TagModel objStudent = new TagModel();
 
-            objStudCore.updateTag(objStudent, objCurrentStd);
-            loadData();
-            //reset feilds
-            txtCode.Text = "";
-            txtDesc.Text = "";
-            txtName.Text = "";
+                objStudent.TagCode = txtCode.Text;
+                objStudent.TagName = txtName.Text;
+                objStudent.TagDescription = txtDesc.Text;
+
+                objStudCore.updateTag(objStudent, objCurrentStd);
+                loadData();
+                //reset feilds
+                txtCode.Text = "";
+                txtDesc.Text = "";
+                txtName.Text = "";
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            TagModel objStudent = new TagModel();
+            DialogResult result = MessageBox.Show("Are you sure you want to Delete?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-            objStudent.TagCode = txtCode.Text;
-            objStudent.TagName = txtName.Text;
-            objStudent.TagDescription = txtDesc.Text;
+            if (result.ToString().Equals("Yes"))
+            {
+                TagModel objStudent = new TagModel();
 
-            objStudCore.deleteTag(objStudent);
-            loadData();
+                objStudent.TagCode = txtCode.Text;
+                objStudent.TagName = txtName.Text;
+                objStudent.TagDescription = txtDesc.Text;
 
-            //reset feilds
-            txtName.Text = "";
-            txtDesc.Text = "";
-            txtCode.Text = "";
+                objStudCore.deleteTag(objStudent);
+                loadData();
+
+                //reset feilds
+                txtName.Text = "";
+                txtDesc.Text = "";
+                txtCode.Text = "";
+            }
         }
 
         private void loadData()
