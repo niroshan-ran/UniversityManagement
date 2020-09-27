@@ -117,7 +117,7 @@ CREATE TABLE [dbo].[Sessions] (
     [subject_id]      VARCHAR (MAX)  NULL,
     [subject_code]    VARCHAR (50)   NULL,
     [tag_code]        VARCHAR (50)   NULL,
-    [group_id]        VARBINARY (50) NULL,
+    [group_id]        VARCHAR(20) NULL,
     [sub_group_id]    VARCHAR (50)   NULL,
     [student_count]   INT            NULL,
     [duration]        INT            NULL,
@@ -129,6 +129,7 @@ CREATE TABLE [dbo].[Sessions] (
     [consecutive_id]  INT            NULL,
     [parallel_id]     INT            NULL,
     [not_parallel_id] INT            NULL,
-    [session_status]  NCHAR (10)     NULL,
+    [session_status]  VARCHAR(5)     NULL,
     PRIMARY KEY CLUSTERED ([session_id] ASC)
 );
+
