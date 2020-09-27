@@ -31,8 +31,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pannelChild = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
-            this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
+            this.iconPictureBox3 = new FontAwesome.Sharp.IconPictureBox();
+            this.iconPictureBox2 = new FontAwesome.Sharp.IconButton();
+            this.iconPictureBox1 = new FontAwesome.Sharp.IconButton();
             this.btnAdvanceSession = new FontAwesome.Sharp.IconButton();
             this.lblTitle = new System.Windows.Forms.Label();
             this.iconButton2 = new FontAwesome.Sharp.IconButton();
@@ -47,8 +48,7 @@
             this.pannelTitle = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -77,6 +77,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.panel2.Controls.Add(this.iconPictureBox3);
             this.panel2.Controls.Add(this.iconPictureBox2);
             this.panel2.Controls.Add(this.iconPictureBox1);
             this.panel2.Controls.Add(this.btnAdvanceSession);
@@ -99,22 +100,49 @@
             this.panel2.Size = new System.Drawing.Size(1047, 609);
             this.panel2.TabIndex = 0;
             // 
+            // iconPictureBox3
+            // 
+            this.iconPictureBox3.BackColor = System.Drawing.Color.Transparent;
+            this.iconPictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.iconPictureBox3.Cursor = System.Windows.Forms.Cursors.SizeAll;
+            this.iconPictureBox3.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.iconPictureBox3.IconColor = System.Drawing.Color.White;
+            this.iconPictureBox3.IconSize = 47;
+            this.iconPictureBox3.Location = new System.Drawing.Point(0, 0);
+            this.iconPictureBox3.Margin = new System.Windows.Forms.Padding(2);
+            this.iconPictureBox3.Name = "iconPictureBox3";
+            this.iconPictureBox3.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.iconPictureBox3.Size = new System.Drawing.Size(157, 47);
+            this.iconPictureBox3.TabIndex = 1;
+            this.iconPictureBox3.TabStop = false;
+            this.iconPictureBox3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.iconPictureBox3_MouseDown);
+            // 
             // iconPictureBox2
             // 
             this.iconPictureBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.iconPictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.iconPictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.iconPictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.iconPictureBox2.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.iconPictureBox2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.iconPictureBox2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.iconPictureBox2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.CornflowerBlue;
+            this.iconPictureBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconPictureBox2.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconPictureBox2.ForeColor = System.Drawing.Color.Transparent;
             this.iconPictureBox2.IconChar = FontAwesome.Sharp.IconChar.WindowMinimize;
             this.iconPictureBox2.IconColor = System.Drawing.Color.White;
             this.iconPictureBox2.IconSize = 36;
-            this.iconPictureBox2.Location = new System.Drawing.Point(969, 2);
+            this.iconPictureBox2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconPictureBox2.Location = new System.Drawing.Point(945, 0);
             this.iconPictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.iconPictureBox2.Name = "iconPictureBox2";
-            this.iconPictureBox2.Size = new System.Drawing.Size(36, 36);
-            this.iconPictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.iconPictureBox2.Rotation = 0D;
+            this.iconPictureBox2.Size = new System.Drawing.Size(53, 47);
             this.iconPictureBox2.TabIndex = 1;
             this.iconPictureBox2.TabStop = false;
+            this.iconPictureBox2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconPictureBox2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconPictureBox2.UseVisualStyleBackColor = false;
             this.iconPictureBox2.Click += new System.EventHandler(this.iconPictureBox2_Click);
             // 
             // iconPictureBox1
@@ -122,18 +150,26 @@
             this.iconPictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.iconPictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.iconPictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.iconPictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.iconPictureBox1.ForeColor = System.Drawing.Color.Red;
+            this.iconPictureBox1.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.iconPictureBox1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.iconPictureBox1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.iconPictureBox1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.CornflowerBlue;
+            this.iconPictureBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconPictureBox1.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconPictureBox1.ForeColor = System.Drawing.Color.Transparent;
             this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.Times;
             this.iconPictureBox1.IconColor = System.Drawing.Color.Red;
             this.iconPictureBox1.IconSize = 36;
-            this.iconPictureBox1.Location = new System.Drawing.Point(1009, 2);
+            this.iconPictureBox1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.iconPictureBox1.Location = new System.Drawing.Point(993, 0);
             this.iconPictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.iconPictureBox1.Name = "iconPictureBox1";
-            this.iconPictureBox1.Size = new System.Drawing.Size(36, 36);
-            this.iconPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.iconPictureBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.iconPictureBox1.Rotation = 0D;
+            this.iconPictureBox1.Size = new System.Drawing.Size(54, 47);
             this.iconPictureBox1.TabIndex = 1;
             this.iconPictureBox1.TabStop = false;
+            this.iconPictureBox1.UseVisualStyleBackColor = false;
             this.iconPictureBox1.Click += new System.EventHandler(this.iconPictureBox1_Click);
             // 
             // btnAdvanceSession
@@ -423,8 +459,7 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -443,10 +478,11 @@
         private System.Windows.Forms.Panel pannelTitle;
         private System.Windows.Forms.Label lblTitle;
         private FontAwesome.Sharp.IconButton icnBtnSatistics;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
+        private FontAwesome.Sharp.IconButton iconPictureBox1;
         private FontAwesome.Sharp.IconButton iconBtnSub;
         private FontAwesome.Sharp.IconButton iconButton2;
         private FontAwesome.Sharp.IconButton btnAdvanceSession;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox2;
+        private FontAwesome.Sharp.IconButton iconPictureBox2;
+        private FontAwesome.Sharp.IconPictureBox iconPictureBox3;
     }
 }
