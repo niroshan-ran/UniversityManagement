@@ -131,6 +131,7 @@
             // ButtonSave
             // 
             this.ButtonSave.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.ButtonSave.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ButtonSave.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
             this.ButtonSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ButtonSave.ForeColor = System.Drawing.SystemColors.ButtonHighlight;

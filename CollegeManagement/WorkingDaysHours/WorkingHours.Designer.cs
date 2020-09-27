@@ -123,6 +123,7 @@ namespace CollegeCore.WorkingDaysHours
             // ButtonSave
             // 
             this.ButtonSave.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.ButtonSave.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ButtonSave.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
             this.ButtonSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ButtonSave.ForeColor = System.Drawing.SystemColors.ButtonHighlight;

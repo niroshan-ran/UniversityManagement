@@ -177,6 +177,7 @@
             // ButtonAdd
             // 
             this.ButtonAdd.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.ButtonAdd.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ButtonAdd.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
             this.ButtonAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ButtonAdd.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -196,6 +197,7 @@
             // ButtonRemove
             // 
             this.ButtonRemove.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.ButtonRemove.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ButtonRemove.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
             this.ButtonRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ButtonRemove.ForeColor = System.Drawing.SystemColors.ButtonHighlight;

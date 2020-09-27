@@ -23,12 +23,15 @@ namespace CollegeCore.WorkingDaysHours
         public WorkingDays()
         {
             InitializeComponent();
+            Cursor.Current = Cursors.WaitCursor;
             LoadData();
+            Cursor.Current = Cursors.Default;
         }
 
 
         public void LoadData()
         {
+            Cursor.Current = Cursors.WaitCursor;
             List<WorkDays> daysList = contrl.GetWorkingDays(CommonConstants.QUERY_GET_WORK_DAYS);
 
             DataTable dataTable = contrl.GetWorkingDaysTable();
@@ -75,13 +78,14 @@ namespace CollegeCore.WorkingDaysHours
                 }
             }
 
-           
+            Cursor.Current = Cursors.Default;
 
 
         }
 
         private void ButtonSave_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.Default;
             List<WorkDays> workingDays = new List<WorkDays>();
 
             WorkDays monday = new WorkDays();
@@ -135,7 +139,7 @@ namespace CollegeCore.WorkingDaysHours
 
 
             int count = contrl.SaveWorkingDays(workingDays);
-
+            Cursor.Current = Cursors.Default;
             if (count > -1)
             {
 
@@ -145,9 +149,9 @@ namespace CollegeCore.WorkingDaysHours
             {
                 MessageBox.Show("Workdays Saved with Errors", "Save Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
+            Cursor.Current = Cursors.WaitCursor;
             LoadData();
-
+            Cursor.Current = Cursors.Default;
         }
 
         private void WorkingDays_Load(object sender, EventArgs e)

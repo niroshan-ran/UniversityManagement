@@ -21,16 +21,21 @@ namespace CollegeCore.WorkingDaysHours
 
         public void LoadData() 
         {
+            Cursor.Current = Cursors.WaitCursor;
+
             DataTable dataTable = cntrl.GetTimeSlotsTable();
 
             DataGridTimeSlot.DataSource = dataTable;
 
             DataGridTimeSlot.Columns[0].Width = 120;
-            
+
+            Cursor.Current = Cursors.Default;
+
         }
 
         public void LoadDays()
         {
+            Cursor.Current = Cursors.WaitCursor;
 
             List<WorkDays> workDaysList = cntrl.GetWorkingDays(CommonConstants.QUERY_GET_WORK_DAYS_BY_HOURS);
 
@@ -43,11 +48,15 @@ namespace CollegeCore.WorkingDaysHours
             }
 
             daysListBox.DataSource = stringList;
+
+            Cursor.Current = Cursors.Default;
         }
 
         public TimeSlots()
         {
             InitializeComponent();
+
+            Cursor.Current = Cursors.WaitCursor;
 
             prevTimePicker1 = startTimePicker.Value;
             navigatingDateTimePicker = false;
@@ -55,6 +64,8 @@ namespace CollegeCore.WorkingDaysHours
 
             LoadDays();
             LoadData();
+
+            Cursor.Current = Cursors.Default;
         }
 
         public void ChangeStartTime()
@@ -100,6 +111,8 @@ namespace CollegeCore.WorkingDaysHours
 
         private void ButtonSave_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
+
             if (daysListBox.SelectedItem == null)
             {
                 MessageBox.Show("Please Enter Required Fields", "Validation Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -163,7 +176,10 @@ namespace CollegeCore.WorkingDaysHours
 
                 if (status)
                 {
+
                     int count = cntrl.SaveTimeSlot(timeSlots);
+
+                    Cursor.Current = Cursors.Default;
 
                     if (count >= 1)
                     {
@@ -173,12 +189,18 @@ namespace CollegeCore.WorkingDaysHours
                     {
                         MessageBox.Show("TimeSlot Already Added", "TimeSlot Exist", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
-                    else
+                    else if (count == -1)
                     {
                         MessageBox.Show("Error Occurred", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    } 
+                    else if (count == -2)
+                    {
+                        MessageBox.Show("Cannot add another Lunch Break for " + timeSlots.GetDay_of_the_Week() + "!!", "Duplicate Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
 
+                    Cursor.Current = Cursors.WaitCursor;
                     LoadData();
+                    Cursor.Current = Cursors.Default;
                 }
                 else
                 {
@@ -192,6 +214,7 @@ namespace CollegeCore.WorkingDaysHours
 
         private void ButtonRemove_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
             if (daysListBox.SelectedItem == null)
             {
                 MessageBox.Show("Please Enter Required Fields", "Validation Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -223,7 +246,7 @@ namespace CollegeCore.WorkingDaysHours
                 }
 
                 int count = cntrl.RemoveTimeSlot(timeSlots);
-
+                Cursor.Current = Cursors.Default;
                 if (count > -1)
                 {
                     if (count >= 1)
@@ -239,8 +262,9 @@ namespace CollegeCore.WorkingDaysHours
                 {
                     MessageBox.Show("Error Occurred", "Delete Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
+                Cursor.Current = Cursors.WaitCursor;
                 LoadData();
+                Cursor.Current = Cursors.Default;
             }
         }
 
@@ -251,6 +275,7 @@ namespace CollegeCore.WorkingDaysHours
         {
             if (DataGridTimeSlot.CurrentRow.Index != -1)
             {
+                Cursor.Current = Cursors.WaitCursor;
                 daysListBox.SelectedItem = DataGridTimeSlot.CurrentRow.Cells[0].Value.ToString();
                 startTimePicker.Value = DateTime.Parse(DataGridTimeSlot.CurrentRow.Cells[1].Value.ToString());
 
@@ -265,6 +290,7 @@ namespace CollegeCore.WorkingDaysHours
                     radioButtonWorkTime.Checked = true;
                 else
                     radioButtonLunchBreak.Checked = true;
+                Cursor.Current = Cursors.Default;
 
 
             }

@@ -15,6 +15,7 @@ namespace CollegeCore.WorkingDaysHours
     {
         public MainWorkingDaysHours()
         {
+            
             InitializeComponent();
         }
 

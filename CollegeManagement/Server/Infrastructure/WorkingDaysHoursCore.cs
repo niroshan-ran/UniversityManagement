@@ -34,12 +34,49 @@ namespace CollegeCore.Infrastructure
 
                 if (reader.Read())
                 {
+                    reader.Close();
+                    con.Close();
                     return 0;
+                    
                 }
+                    
+                
 
                 reader.Close();
 
                 con.Close();
+
+                if (timeSlots.GetSlotType().Trim() == "Lunch Break") 
+                {
+                    con.Open();
+                    SqlCommand cmd3 = new SqlCommand(CommonConstants.QUERY_GET_LUNCH_BREAK_COUNT_FOR_THE_DAY, con);
+
+                    cmd3.Parameters.AddWithValue(CommonConstants.PARAMETER_DAY_OF_THE_WEEK, timeSlots.GetDay_of_the_Week());
+                    cmd3.Parameters.AddWithValue(CommonConstants.PARAMETER_TYPE, timeSlots.GetSlotType());
+
+                    SqlDataReader reader2 = cmd3.ExecuteReader();
+
+                    
+
+                    reader2.Read();
+
+                    if (int.Parse(reader2[CommonConstants.COLUMN_BREAK_COUNT].ToString()) >= 1)
+                    {
+                        reader2.Close();
+                        con.Close();
+                        return -2;
+                    }
+                        
+                    
+
+
+
+
+                    con.Close();
+                }
+
+                
+
                 con.Open();
 
                 SqlCommand cmd = new SqlCommand(CommonConstants.QUERY_SAVE_TIMESLOT, con);
@@ -57,12 +94,29 @@ namespace CollegeCore.Infrastructure
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+
+                try
+                {
+                    Console.WriteLine(ex);
+                    con.Close();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
                 return -1;
             }
             finally
             {
-                con.Close();
+                try
+                {
+                    con.Close();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
             }
 
 
@@ -205,14 +259,29 @@ namespace CollegeCore.Infrastructure
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                try
+                {
+                    Console.WriteLine(ex);
+                    con.Close();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
                 return -1;
             }
             finally
             {
-                con.Close();
+                try
+                {
+                    con.Close();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
 
-               
+
             }
 
             return count;
@@ -238,11 +307,26 @@ namespace CollegeCore.Infrastructure
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                try
+                {
+                    Console.WriteLine(ex);
+                    con.Close();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
             }
             finally
             {
-                con.Close();
+                try
+                {
+                    con.Close();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
             }
 
             return workingDaysTable;
@@ -267,11 +351,26 @@ namespace CollegeCore.Infrastructure
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                try
+                {
+                    Console.WriteLine(ex);
+                    con.Close();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
             }
             finally
             {
-                con.Close();
+                try
+                {
+                    con.Close();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
             }
 
             return dataTable;
@@ -306,11 +405,26 @@ namespace CollegeCore.Infrastructure
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                try
+                {
+                    Console.WriteLine(ex);
+                    con.Close();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
             }
             finally
             {
-                con.Close();
+                try
+                {
+                    con.Close();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
             }
 
             return workDays;
@@ -353,12 +467,27 @@ namespace CollegeCore.Infrastructure
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                try
+                {
+                    Console.WriteLine(ex);
+                    con.Close();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
                 return -1;
             }
             finally
             {
-                con.Close();
+                try
+                {
+                    con.Close();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
             }
 
             return count;
@@ -390,11 +519,26 @@ namespace CollegeCore.Infrastructure
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                try
+                {
+                    Console.WriteLine(ex);
+                    con.Close();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
             }
             finally
             {
-                con.Close();
+                try
+                {
+                    con.Close();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
             }
 
             return workHours;
@@ -496,11 +640,26 @@ namespace CollegeCore.Infrastructure
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                try
+                {
+                    Console.WriteLine(ex);
+                    con.Close();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
             }
             finally
             {
-                con.Close();
+                try
+                {
+                    con.Close();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
             }
 
             return dataTable;
@@ -535,12 +694,27 @@ namespace CollegeCore.Infrastructure
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                try
+                {
+                    Console.WriteLine(ex);
+                    con.Close();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
                 return -1;
             }
             finally
             {
-                con.Close();
+                try
+                {
+                    con.Close();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
             }
 
             return count;
