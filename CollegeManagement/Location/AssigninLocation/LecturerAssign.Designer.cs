@@ -77,7 +77,6 @@
             this.cmbRoom.Name = "cmbRoom";
             this.cmbRoom.Size = new System.Drawing.Size(177, 24);
             this.cmbRoom.TabIndex = 17;
-            this.cmbRoom.Text = "--Select--";
             this.cmbRoom.SelectedIndexChanged += new System.EventHandler(this.cmbRoom_SelectedIndexChanged);
             // 
             // cmbBuilding
@@ -87,7 +86,6 @@
             this.cmbBuilding.Name = "cmbBuilding";
             this.cmbBuilding.Size = new System.Drawing.Size(177, 24);
             this.cmbBuilding.TabIndex = 16;
-            this.cmbBuilding.Text = "--Select--";
             this.cmbBuilding.SelectedIndexChanged += new System.EventHandler(this.cmbBuilding_SelectedIndexChanged);
             // 
             // cmbTag
@@ -101,7 +99,6 @@
             this.cmbTag.Name = "cmbTag";
             this.cmbTag.Size = new System.Drawing.Size(177, 24);
             this.cmbTag.TabIndex = 15;
-            this.cmbTag.Text = "--Select--";
             this.cmbTag.SelectedIndexChanged += new System.EventHandler(this.cmbTag_SelectedIndexChanged);
             // 
             // label1
@@ -151,7 +148,6 @@
             this.cmbLecturer.Name = "cmbLecturer";
             this.cmbLecturer.Size = new System.Drawing.Size(177, 24);
             this.cmbLecturer.TabIndex = 21;
-            this.cmbLecturer.Text = "--Select--";
             this.cmbLecturer.SelectedIndexChanged += new System.EventHandler(this.cmbLecturer_SelectedIndexChanged);
             // 
             // LecturerAssign

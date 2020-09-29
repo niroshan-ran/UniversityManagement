@@ -33,6 +33,8 @@
             this.lnkSessions = new System.Windows.Forms.LinkLabel();
             this.lnkAssignGroups = new System.Windows.Forms.LinkLabel();
             this.pannelChild = new System.Windows.Forms.Panel();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.lnlShow = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // lnkTag
@@ -89,10 +91,36 @@
             // 
             // pannelChild
             // 
-            this.pannelChild.Location = new System.Drawing.Point(12, 61);
+            this.pannelChild.Location = new System.Drawing.Point(12, 123);
             this.pannelChild.Name = "pannelChild";
-            this.pannelChild.Size = new System.Drawing.Size(1149, 580);
+            this.pannelChild.Size = new System.Drawing.Size(1149, 518);
             this.pannelChild.TabIndex = 4;
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.DisabledLinkColor = System.Drawing.Color.Teal;
+            this.linkLabel1.LinkColor = System.Drawing.Color.Navy;
+            this.linkLabel1.Location = new System.Drawing.Point(933, 23);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(129, 17);
+            this.linkLabel1.TabIndex = 5;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Assign To Subjects";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // lnlShow
+            // 
+            this.lnlShow.AutoSize = true;
+            this.lnlShow.DisabledLinkColor = System.Drawing.Color.Teal;
+            this.lnlShow.LinkColor = System.Drawing.Color.Navy;
+            this.lnlShow.Location = new System.Drawing.Point(50, 70);
+            this.lnlShow.Name = "lnlShow";
+            this.lnlShow.Size = new System.Drawing.Size(150, 17);
+            this.lnlShow.TabIndex = 6;
+            this.lnlShow.TabStop = true;
+            this.lnlShow.Text = "All Assigned Locations";
+            this.lnlShow.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnlShow_LinkClicked);
             // 
             // AssignRoom
             // 
@@ -100,6 +128,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1161, 642);
+            this.Controls.Add(this.lnlShow);
+            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.pannelChild);
             this.Controls.Add(this.lnkAssignGroups);
             this.Controls.Add(this.lnkSessions);
@@ -119,5 +149,7 @@
         private System.Windows.Forms.LinkLabel lnkSessions;
         private System.Windows.Forms.LinkLabel lnkAssignGroups;
         private System.Windows.Forms.Panel pannelChild;
+        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.LinkLabel lnlShow;
     }
 }

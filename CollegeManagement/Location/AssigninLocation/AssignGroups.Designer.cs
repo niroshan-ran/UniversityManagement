@@ -49,7 +49,6 @@
             this.cmbGroup.Name = "cmbGroup";
             this.cmbGroup.Size = new System.Drawing.Size(177, 24);
             this.cmbGroup.TabIndex = 30;
-            this.cmbGroup.Text = "0";
             this.cmbGroup.SelectedIndexChanged += new System.EventHandler(this.cmbGroup_SelectedIndexChanged);
             // 
             // lblGroup
@@ -81,7 +80,6 @@
             this.cmbRoom.Name = "cmbRoom";
             this.cmbRoom.Size = new System.Drawing.Size(177, 24);
             this.cmbRoom.TabIndex = 27;
-            this.cmbRoom.Text = "--Select--";
             this.cmbRoom.SelectedIndexChanged += new System.EventHandler(this.cmbRoom_SelectedIndexChanged);
             // 
             // cmbBuilding
@@ -91,7 +89,6 @@
             this.cmbBuilding.Name = "cmbBuilding";
             this.cmbBuilding.Size = new System.Drawing.Size(177, 24);
             this.cmbBuilding.TabIndex = 26;
-            this.cmbBuilding.Text = "--Select--";
             this.cmbBuilding.SelectedIndexChanged += new System.EventHandler(this.cmbBuilding_SelectedIndexChanged);
             // 
             // cmbTag
@@ -105,7 +102,6 @@
             this.cmbTag.Name = "cmbTag";
             this.cmbTag.Size = new System.Drawing.Size(177, 24);
             this.cmbTag.TabIndex = 25;
-            this.cmbTag.Text = "--Select--";
             this.cmbTag.SelectedIndexChanged += new System.EventHandler(this.cmbTag_SelectedIndexChanged);
             // 
             // label1
@@ -145,7 +141,7 @@
             this.icnBtnAdd.IconChar = FontAwesome.Sharp.IconChar.Save;
             this.icnBtnAdd.IconColor = System.Drawing.Color.Black;
             this.icnBtnAdd.IconSize = 32;
-            this.icnBtnAdd.Location = new System.Drawing.Point(509, 442);
+            this.icnBtnAdd.Location = new System.Drawing.Point(495, 364);
             this.icnBtnAdd.Name = "icnBtnAdd";
             this.icnBtnAdd.Padding = new System.Windows.Forms.Padding(3);
             this.icnBtnAdd.Rotation = 0D;
@@ -173,7 +169,6 @@
             this.cmbSubgroup.Name = "cmbSubgroup";
             this.cmbSubgroup.Size = new System.Drawing.Size(177, 24);
             this.cmbSubgroup.TabIndex = 33;
-            this.cmbSubgroup.Text = "--Select--";
             this.cmbSubgroup.SelectedIndexChanged += new System.EventHandler(this.cmbSubgroup_SelectedIndexChanged);
             // 
             // AssignGroups

@@ -66,10 +66,10 @@ namespace CollegeManagement.Location.AssigninLocation
             if (result == true)
             {
                 MessageBox.Show("Succesfully Insrted");
-                cmbLecturer.Text = "--Select--";
-                cmbBuilding.Text = "--Select--";
-                cmbRoom.Text = "--Select--";
-                cmbTag.Text = "--Select--";
+                cmbLecturer.Text = "";
+                cmbBuilding.Text = "";
+                cmbRoom.Text = "";
+                cmbTag.Text = "";
             }
             else
             {

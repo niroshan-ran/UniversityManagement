@@ -95,5 +95,17 @@ namespace CollegeManagement.Location
             ActivateButton(sender, RGBColors.color1);
             openChildForm(new AssignSessions());
         }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ActivateButton(sender, RGBColors.color1);
+            openChildForm(new AssignSubject());
+        }
+
+        private void lnlShow_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ActivateButton(sender, RGBColors.color1);
+            openChildForm(new AssigenedLocation());
+        }
     }
 }
