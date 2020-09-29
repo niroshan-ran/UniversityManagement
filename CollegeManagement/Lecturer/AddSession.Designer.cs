@@ -65,6 +65,8 @@
             this.sessionsTableAdapter = new CollegeManagement.CollegeDBDataSetTableAdapters.SessionsTableAdapter();
             this.groupsBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.gvSessions = new System.Windows.Forms.DataGridView();
+            this.tagsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tagsTableAdapter = new CollegeManagement.CollegeDBDataSetTableAdapters.tagsTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.sessionsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.collegeDBDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupsBindingSource)).BeginInit();
@@ -76,6 +78,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.subgroupBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupsBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvSessions)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tagsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // sessionsBindingSource
@@ -141,11 +144,14 @@
             // 
             // GroupId
             // 
+            this.GroupId.DataSource = this.groupsBindingSource;
+            this.GroupId.DisplayMember = "group_no";
             this.GroupId.FormattingEnabled = true;
             this.GroupId.Location = new System.Drawing.Point(175, 254);
             this.GroupId.Name = "GroupId";
             this.GroupId.Size = new System.Drawing.Size(100, 21);
             this.GroupId.TabIndex = 33;
+            this.GroupId.ValueMember = "group_id";
             // 
             // groupsBindingSource
             // 
@@ -173,11 +179,14 @@
             // 
             // SubjectCode
             // 
+            this.SubjectCode.DataSource = this.subjectsBindingSource;
+            this.SubjectCode.DisplayMember = "subject_Code";
             this.SubjectCode.FormattingEnabled = true;
             this.SubjectCode.Location = new System.Drawing.Point(175, 161);
             this.SubjectCode.Name = "SubjectCode";
             this.SubjectCode.Size = new System.Drawing.Size(100, 21);
             this.SubjectCode.TabIndex = 31;
+            this.SubjectCode.ValueMember = "subject_Code";
             // 
             // subjectsBindingSource
             // 
@@ -227,19 +236,18 @@
             // 
             // comboSubjects
             // 
+            this.comboSubjects.DataSource = this.subjectsBindingSource;
+            this.comboSubjects.DisplayMember = "sub_name";
             this.comboSubjects.FormattingEnabled = true;
             this.comboSubjects.Location = new System.Drawing.Point(175, 111);
             this.comboSubjects.Name = "comboSubjects";
             this.comboSubjects.Size = new System.Drawing.Size(100, 21);
             this.comboSubjects.TabIndex = 45;
+            this.comboSubjects.ValueMember = "subject_id";
             // 
             // comboTag
             // 
             this.comboTag.FormattingEnabled = true;
-            this.comboTag.Items.AddRange(new object[] {
-            "Lecture",
-            "Lab",
-            "Tutorials"});
             this.comboTag.Location = new System.Drawing.Point(175, 206);
             this.comboTag.Name = "comboTag";
             this.comboTag.Size = new System.Drawing.Size(100, 21);
@@ -251,6 +259,7 @@
             this.studentCount.Name = "studentCount";
             this.studentCount.Size = new System.Drawing.Size(100, 20);
             this.studentCount.TabIndex = 47;
+            this.studentCount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.StudentCount_changed_numberValidate);
             // 
             // duration
             // 
@@ -258,6 +267,7 @@
             this.duration.Name = "duration";
             this.duration.Size = new System.Drawing.Size(100, 20);
             this.duration.TabIndex = 48;
+            this.duration.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Duration_changed_validate);
             // 
             // lecturersTableAdapter
             // 
@@ -336,6 +346,15 @@
             this.gvSessions.TabIndex = 52;
             this.gvSessions.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gcSession_CellClick);
             // 
+            // tagsBindingSource
+            // 
+            this.tagsBindingSource.DataMember = "tags";
+            this.tagsBindingSource.DataSource = this.collegeDBDataSet1;
+            // 
+            // tagsTableAdapter
+            // 
+            this.tagsTableAdapter.ClearBeforeFill = true;
+            // 
             // AddSession
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -378,6 +397,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.subgroupBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupsBindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvSessions)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tagsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -420,5 +440,7 @@
         private CollegeManagement.CollegeDBDataSetTableAdapters.SessionsTableAdapter sessionsTableAdapter;
         private System.Windows.Forms.BindingSource groupsBindingSource2;
         private System.Windows.Forms.DataGridView gvSessions;
+        private System.Windows.Forms.BindingSource tagsBindingSource;
+        private CollegeManagement.CollegeDBDataSetTableAdapters.tagsTableAdapter tagsTableAdapter;
     }
 }
