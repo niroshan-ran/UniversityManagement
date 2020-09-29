@@ -88,5 +88,10 @@ namespace CollegeCore.Location
 
         }
 
+        private void icnAssignRoom_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBColors.color1);
+            openChildForm(new AssignRoom());
+        }
     }
 }

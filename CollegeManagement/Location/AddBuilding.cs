@@ -161,5 +161,10 @@ namespace CollegeCore.Location
                 txtNoofRooms.Text = gvBuildings.CurrentRow.Cells[1].Value.ToString();
             }
         }
+
+        private void gvBuildings_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
