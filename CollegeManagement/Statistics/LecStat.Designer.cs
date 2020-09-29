@@ -31,8 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.pieChart2 = new LiveCharts.WinForms.PieChart();
             this.lecturerCountBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.dataBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.data = new CollegeManagement.data();
             this.btnLoad = new FontAwesome.Sharp.IconButton();
             this.lblFac = new System.Windows.Forms.Label();
             this.pieChart1 = new LiveCharts.WinForms.PieChart();
@@ -40,14 +38,16 @@
             this.lblDep = new System.Windows.Forms.Label();
             this.lblCenter = new System.Windows.Forms.Label();
             this.pieChart3 = new LiveCharts.WinForms.PieChart();
+            this.dataBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.data = new CollegeManagement.data();
             this.lecturerCountBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.data2 = new CollegeManagement.data();
             this.data1 = new CollegeManagement.data();
             this.lecturerCountBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.lecturerCountBindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lecCountByDepBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.data)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lecCountByDepBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lecturerCountBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.data2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.data1)).BeginInit();
@@ -62,21 +62,12 @@
             this.pieChart2.Size = new System.Drawing.Size(300, 282);
             this.pieChart2.TabIndex = 0;
             this.pieChart2.Text = "pieChart1";
+            this.pieChart2.ChildChanged += new System.EventHandler<System.Windows.Forms.Integration.ChildChangedEventArgs>(this.pieChart2_ChildChanged);
             // 
             // lecturerCountBindingSource2
             // 
             this.lecturerCountBindingSource2.DataMember = "Lecturer Count";
             this.lecturerCountBindingSource2.DataSource = this.dataBindingSource;
-            // 
-            // dataBindingSource
-            // 
-            this.dataBindingSource.DataSource = this.data;
-            this.dataBindingSource.Position = 0;
-            // 
-            // data
-            // 
-            this.data.DataSetName = "data";
-            this.data.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // btnLoad
             // 
@@ -152,6 +143,16 @@
             this.pieChart3.TabIndex = 8;
             this.pieChart3.Text = "pieChart3";
             // 
+            // dataBindingSource
+            // 
+            this.dataBindingSource.DataSource = this.data;
+            this.dataBindingSource.Position = 0;
+            // 
+            // data
+            // 
+            this.data.DataSetName = "data";
+            this.data.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // lecturerCountBindingSource1
             // 
             this.lecturerCountBindingSource1.DataMember = "LecturerCount";
@@ -189,9 +190,9 @@
             this.Text = "LecStat";
             this.Load += new System.EventHandler(this.LecStat_Load);
             ((System.ComponentModel.ISupportInitialize)(this.lecturerCountBindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lecCountByDepBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.data)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lecCountByDepBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lecturerCountBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.data2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.data1)).EndInit();

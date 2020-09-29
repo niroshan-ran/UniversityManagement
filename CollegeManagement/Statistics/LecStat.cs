@@ -59,5 +59,9 @@ namespace CollegeManagement.Statistics
             lblFac.Visible = false;
         }
 
+        private void pieChart2_ChildChanged(object sender, System.Windows.Forms.Integration.ChildChangedEventArgs e)
+        {
+
+        }
     }
 }

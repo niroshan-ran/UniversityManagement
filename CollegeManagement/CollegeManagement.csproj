@@ -101,11 +101,52 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CollegeDBDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="CollegeDBDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CollegeDBDataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="data.cs">
       <DependentUpon>data.xsd</DependentUpon>
     </Compile>
     <Compile Include="data.Designer.cs">
       <DependentUpon>data.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Location\AddRoom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Location\AddRoom.Designer.cs">
+      <DependentUpon>AddRoom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Location\AssigninLocation\AssignGroups.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Location\AssigninLocation\AssignGroups.Designer.cs">
+      <DependentUpon>AssignGroups.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Location\AssigninLocation\AssignRoom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Location\AssigninLocation\AssignRoom.Designer.cs">
+      <DependentUpon>AssignRoom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Location\AssigninLocation\AssignSessions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Location\AssigninLocation\AssignSessions.Designer.cs">
+      <DependentUpon>AssignSessions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Location\AssigninLocation\LecturerAssign.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Location\AssigninLocation\LecturerAssign.Designer.cs">
+      <DependentUpon>LecturerAssign.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Location\AssigninLocation\TagAssign.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Location\AssigninLocation\TagAssign.Designer.cs">
+      <DependentUpon>TagAssign.cs</DependentUpon>
     </Compile>
     <Compile Include="Server\DBConnection.cs" />
     <Compile Include="Server\Infrastructure\BuildingCore.cs" />
@@ -115,6 +156,7 @@
     <Compile Include="Server\Infrastructure\StatisticsCore.cs" />
     <Compile Include="Server\Infrastructure\StudentCore.cs" />
     <Compile Include="Server\Infrastructure\SubjectController.cs" />
+    <Compile Include="Server\Infrastructure\AssignRoomController.cs" />
     <Compile Include="Server\Infrastructure\TagController.cs" />
     <Compile Include="Lecturer\AddLecturers.cs">
       <SubType>Form</SubType>
@@ -139,12 +181,6 @@
     </Compile>
     <Compile Include="Location\AddBuilding.Designer.cs">
       <DependentUpon>AddBuilding.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Location\AddRoom.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Location\AddRoom.Designer.cs">
-      <DependentUpon>AddRoom.cs</DependentUpon>
     </Compile>
     <Compile Include="Location\LocationMain.cs">
       <SubType>Form</SubType>
@@ -171,6 +207,7 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Server\Infrastructure\WorkingDaysHoursCore.cs" />
+    <Compile Include="Server\Model\AssignRooms.cs" />
     <Compile Include="Server\Model\BuildingModel.cs" />
     <Compile Include="Server\Model\LecturerModel.cs" />
     <Compile Include="Server\Model\RoomModel.cs" />
@@ -299,6 +336,21 @@
     <EmbeddedResource Include="Location\AddRoom.resx">
       <DependentUpon>AddRoom.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Location\AssigninLocation\AssignGroups.resx">
+      <DependentUpon>AssignGroups.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Location\AssigninLocation\AssignRoom.resx">
+      <DependentUpon>AssignRoom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Location\AssigninLocation\AssignSessions.resx">
+      <DependentUpon>AssignSessions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Location\AssigninLocation\LecturerAssign.resx">
+      <DependentUpon>LecturerAssign.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Location\AssigninLocation\TagAssign.resx">
+      <DependentUpon>TagAssign.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Location\LocationMain.resx">
       <DependentUpon>LocationMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -376,6 +428,17 @@
     </None>
     <None Include="CollegeDBDataSet.xss">
       <DependentUpon>CollegeDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="CollegeDBDataSet1.xsc">
+      <DependentUpon>CollegeDBDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="CollegeDBDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CollegeDBDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CollegeDBDataSet1.xss">
+      <DependentUpon>CollegeDBDataSet1.xsd</DependentUpon>
     </None>
     <None Include="CollegeManagement_TemporaryKey.pfx" />
     <None Include="data.xsc">
