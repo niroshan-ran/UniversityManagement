@@ -23,9 +23,12 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
+    <ProductName>College Manager</ProductName>
+    <PublisherName>SLIIT Titans Coperation</PublisherName>
     <ApplicationRevision>5</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -47,6 +50,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>25952F114E7DD5141C637CA24EEA4E5E6B4452B6</ManifestCertificateThumbprint>
@@ -59,6 +63,12 @@
   </PropertyGroup>
   <PropertyGroup>
     <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>CollegeCore.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Oxygen-Icons.org-Oxygen-Categories-applications-education-university.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BouncyCastle.Crypto, Version=1.8.3.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
@@ -87,9 +97,6 @@
     </Reference>
     <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
       <HintPath>..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
-    </Reference>
-    <Reference Include="MySql.Data, Version=8.0.21.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <HintPath>..\packages\MySql.Data.8.0.21\lib\net452\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="PdfSharp, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
       <HintPath>..\packages\PDFsharp.1.50.5147\lib\net20\PdfSharp.dll</HintPath>
@@ -186,11 +193,15 @@
     <Compile Include="AdvancedSession\ParallelSession.Designer.cs">
       <DependentUpon>ParallelSession.cs</DependentUpon>
     </Compile>
+    <Compile Include="CollegeDBDataSet.cs">
+      <DependentUpon>CollegeDBDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="CollegeDBDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CollegeDBDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="CollegeDBDataSet1.Designer.cs" />
     <Compile Include="data.cs">
       <DependentUpon>data.xsd</DependentUpon>
       <SubType>code</SubType>
@@ -233,6 +244,36 @@
     <Compile Include="Location\AddRoom.Designer.cs">
       <DependentUpon>AddRoom.cs</DependentUpon>
     </Compile>
+    <Compile Include="Location\AssigninLocation\AssignGroups.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Location\AssigninLocation\AssignGroups.Designer.cs">
+      <DependentUpon>AssignGroups.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Location\AssigninLocation\AssignRoom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Location\AssigninLocation\AssignRoom.Designer.cs">
+      <DependentUpon>AssignRoom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Location\AssigninLocation\AssignSessions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Location\AssigninLocation\AssignSessions.Designer.cs">
+      <DependentUpon>AssignSessions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Location\AssigninLocation\LecturerAssign.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Location\AssigninLocation\LecturerAssign.Designer.cs">
+      <DependentUpon>LecturerAssign.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Location\AssigninLocation\TagAssign.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Location\AssigninLocation\TagAssign.Designer.cs">
+      <DependentUpon>TagAssign.cs</DependentUpon>
+    </Compile>
     <Compile Include="Location\LocationMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -261,6 +302,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Server\DBConnection.cs" />
     <Compile Include="Server\Infrastructure\AdvancedSessionController.cs" />
+    <Compile Include="Server\Infrastructure\AssignRoomController.cs" />
     <Compile Include="Server\Infrastructure\BuildingCore.cs" />
     <Compile Include="Server\Infrastructure\LecturerController.cs" />
     <Compile Include="Server\Infrastructure\NotAvailableCore.cs" />
@@ -273,6 +315,7 @@
     <Compile Include="Server\Infrastructure\TimeTableGeneratorToPDFCore.cs" />
     <Compile Include="Server\Infrastructure\WorkingDaysHoursCore.cs" />
     <Compile Include="Server\Model\AdvancedSessionModel.cs" />
+    <Compile Include="Server\Model\AssignRooms.cs" />
     <Compile Include="Server\Model\BuildingModel.cs" />
     <Compile Include="Server\Model\LecturerModel.cs" />
     <Compile Include="Server\Model\NotAvailableModel.cs" />
@@ -446,6 +489,21 @@
     <EmbeddedResource Include="Location\AddRoom.resx">
       <DependentUpon>AddRoom.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Location\AssigninLocation\AssignGroups.resx">
+      <DependentUpon>AssignGroups.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Location\AssigninLocation\AssignRoom.resx">
+      <DependentUpon>AssignRoom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Location\AssigninLocation\AssignSessions.resx">
+      <DependentUpon>AssignSessions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Location\AssigninLocation\LecturerAssign.resx">
+      <DependentUpon>LecturerAssign.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Location\AssigninLocation\TagAssign.resx">
+      <DependentUpon>TagAssign.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Location\LocationMain.resx">
       <DependentUpon>LocationMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -479,6 +537,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Statistics\LecStat.resx">
       <DependentUpon>LecStat.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Statistics\StatisticMangement.resx">
       <DependentUpon>StatisticMangement.cs</DependentUpon>
@@ -535,6 +594,17 @@
     </None>
     <None Include="CollegeDBDataSet.xss">
       <DependentUpon>CollegeDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="CollegeDBDataSet1.xsc">
+      <DependentUpon>CollegeDBDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="CollegeDBDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CollegeDBDataSet11.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CollegeDBDataSet1.xss">
+      <DependentUpon>CollegeDBDataSet1.xsd</DependentUpon>
     </None>
     <None Include="CollegeManagement_TemporaryKey.pfx" />
     <None Include="data.xsc">

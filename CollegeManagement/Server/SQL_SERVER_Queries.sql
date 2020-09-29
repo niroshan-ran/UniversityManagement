@@ -134,8 +134,34 @@ CREATE TABLE [dbo].[Sessions] (
 );
 
 
+CREATE TABLE [dbo].[AssignTagRoom] (
+    [trid]     INT           IDENTITY (1, 1) NOT NULL,
+    [tag]      NVARCHAR (50) NULL,
+    [building] NVARCHAR (50) NOT NULL,
+    [room]     NVARCHAR (50) NOT NULL,
+    [lecturer] NVARCHAR (50) NULL,
+    [group]    NVARCHAR (50) NULL,
+    [subgroup] NVARCHAR (50) NULL,
+    PRIMARY KEY CLUSTERED ([trid] ASC)
+);
 
 
+CREATE TABLE [dbo].[buildings] (
+    [Building_Name]    NVARCHAR (50) NOT NULL,
+    [Block_Floor_Name] NVARCHAR (50) NULL,
+    [No_of_Rooms]      INT           NULL,
+    PRIMARY KEY CLUSTERED ([Building_Name] ASC)
+);
+
+CREATE TABLE [dbo].[rooms] (
+    [Room_Name]  NVARCHAR (50) NULL,
+    [Room_Block] NVARCHAR (50) NULL,
+    [Building]   NVARCHAR (50) NULL,
+    [Capacity]   INT           NULL,
+    [Room_Type]  NVARCHAR (50) NULL,
+    [rid]        INT           IDENTITY (1, 1) NOT NULL,
+    PRIMARY KEY CLUSTERED ([rid] ASC)
+);
 
 
 

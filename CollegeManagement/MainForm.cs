@@ -187,11 +187,14 @@ namespace CollegeManagement
             }
         }
 
-        private void icnBtnSatistics_Click(object sender, EventArgs e)
+        private void iconButton3_Click(object sender, EventArgs e)
         {
-            ActivateButton(sender, RGBColors.color1);
-            openChildForm(new Statistics.StatisticMangement());
-            lblTitle.Text = "Statistics Management";
+            DialogResult result = MessageBox.Show("Are you sure you want to Exit?", "Confirm Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (result.ToString().Equals("Yes"))
+            {
+                Application.Exit();
+            }
         }
     }
 }

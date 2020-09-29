@@ -1,4 +1,4 @@
-﻿namespace CollegeManagement.Statistics
+﻿namespace CollegeCore.Statistics
 {
     partial class LecStat
     {
@@ -39,10 +39,10 @@
             this.lblCenter = new System.Windows.Forms.Label();
             this.pieChart3 = new LiveCharts.WinForms.PieChart();
             this.dataBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.data = new CollegeManagement.data();
+            this.data = new data();
             this.lecturerCountBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.data2 = new CollegeManagement.data();
-            this.data1 = new CollegeManagement.data();
+            this.data2 = new data();
+            this.data1 = new data();
             this.lecturerCountBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.lecturerCountBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lecCountByDepBindingSource)).BeginInit();

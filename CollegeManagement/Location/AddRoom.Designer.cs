@@ -1,4 +1,6 @@
-﻿namespace CollegeManagement.Location
+﻿using CollegeManagement;
+
+namespace CollegeCore.Location
 {
     partial class AddRoom
     {
@@ -43,7 +45,7 @@
             this.txtCapacity = new System.Windows.Forms.TextBox();
             this.cmbBuilding = new System.Windows.Forms.ComboBox();
             this.buildingBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.data = new CollegeManagement.data();
+            this.data = new data();
             this.buildingBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cmbRoomType = new System.Windows.Forms.ComboBox();
             this.buildingsBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -314,7 +316,7 @@
         private System.Windows.Forms.BindingSource buildingsBindingSource;
         private CollegeDBDataSet1 collegeDBDataSet1;
         private System.Windows.Forms.BindingSource buildingsBindingSource1;
-        private CollegeDBDataSet1TableAdapters.buildingsTableAdapter buildingsTableAdapter1;
+        private CollegeManagement.CollegeDBDataSet1TableAdapters.buildingsTableAdapter buildingsTableAdapter1;
         private System.Windows.Forms.BindingSource buildingBindingSource1;
         private data data;
         private System.Windows.Forms.BindingSource buildingBindingSource;

@@ -1,4 +1,5 @@
-﻿using FontAwesome.Sharp;
+﻿using CollegeManagement.Location;
+using FontAwesome.Sharp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
