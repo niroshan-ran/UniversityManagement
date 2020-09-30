@@ -8,7 +8,7 @@ namespace CollegeCore.Infrastructure
 {
     public class WorkingDaysHoursCore
     {
-        readonly SqlConnection con = new SqlConnection(DBConnection.connectionStringNew);
+        readonly SqlConnection con = new SqlConnection(DBConnection.connectionString);
 
         public int SaveTimeSlot(TimeSlot timeSlots)
         {

@@ -85,7 +85,7 @@ namespace CollegeManagement.Location.AssigninLocation
         public void getTagDetails()
         {
             string query = "Select Building from rooms where Room_Type ='" + tag + "'";
-            con = new SqlConnection(DBConnection.connectionStringNew);
+            con = new SqlConnection(DBConnection.connectionString);
             DataSet ds = new DataSet();
             SqlDataAdapter sda = new SqlDataAdapter(query, con);
 
@@ -111,7 +111,7 @@ namespace CollegeManagement.Location.AssigninLocation
         public void getTagRoom(string tag, string building)
         {
             string query = "Select Room_Name from rooms where Room_Type ='" + tag + "' and Building='" + building + "'";
-            con = new SqlConnection(DBConnection.connectionStringNew);
+            con = new SqlConnection(DBConnection.connectionString);
             DataSet ds = new DataSet();
             SqlDataAdapter sda = new SqlDataAdapter(query, con);
 
@@ -137,7 +137,7 @@ namespace CollegeManagement.Location.AssigninLocation
         public void getLecturerNames()
         {
             string query = "Select lecturer_name from lecturers";
-            con = new SqlConnection(DBConnection.connectionStringNew);
+            con = new SqlConnection(DBConnection.connectionString);
             DataSet ds = new DataSet();
             SqlDataAdapter sda = new SqlDataAdapter(query, con);
 

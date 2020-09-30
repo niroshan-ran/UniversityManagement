@@ -10,7 +10,7 @@ namespace CollegeCore.Infrastructure
 {
     public class TagController
     {
-        SqlConnection con = new SqlConnection(DBConnection.connectionStringNew);
+        SqlConnection con = new SqlConnection(DBConnection.connectionString);
 
         public void insertTag(TagModel objstudent)
         {
@@ -18,7 +18,7 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Insert into tags(tag_code,tag_name,tag_desc) values('" + objstudent.TagCode + "','" + objstudent.TagName + "','" + objstudent.TagDescription + "')";
-                con = new SqlConnection(DBConnection.connectionStringNew);
+                con = new SqlConnection(DBConnection.connectionString);
 
                 con.Open();
 
@@ -41,7 +41,7 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Select * from tags";
-                con = new SqlConnection(DBConnection.connectionStringNew);
+                con = new SqlConnection(DBConnection.connectionString);
 
                 SqlCommand cmd = new SqlCommand(Query, con);
                 SqlDataReader myReader;
@@ -73,7 +73,7 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Update tags SET tag_code = '" + objstudent.TagCode + "' , tag_name = '" + objstudent.TagName + "',tag_desc = '" + objstudent.TagDescription + "' where tag_code = '" + objPrevStd.TagCode + "'";
-                con = new SqlConnection(DBConnection.connectionStringNew);
+                con = new SqlConnection(DBConnection.connectionString);
 
                 con.Open();
 
@@ -98,7 +98,7 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Delete from tags where tag_code = '" + objStudent.TagCode + "'";
-                SqlConnection con = new SqlConnection(DBConnection.connectionStringNew);
+                SqlConnection con = new SqlConnection(DBConnection.connectionString);
 
                 con.Open();
 

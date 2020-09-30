@@ -22,7 +22,7 @@ namespace CollegeManagement.Server.Infrastructure
                     "'"+ assignTagRoom.room + "')";
 
 
-                SqlConnection con = new SqlConnection(DBConnection.connectionStringNew);
+                SqlConnection con = new SqlConnection(DBConnection.connectionString);
 
                 SqlCommand cmd = new SqlCommand(Query, con);
                 SqlDataReader myReader;
@@ -54,7 +54,7 @@ namespace CollegeManagement.Server.Infrastructure
                     "'" + assignTagRoom.room + "')";
 
 
-                SqlConnection con = new SqlConnection(DBConnection.connectionStringNew);
+                SqlConnection con = new SqlConnection(DBConnection.connectionString);
 
                 SqlCommand cmd = new SqlCommand(Query, con);
                 SqlDataReader myReader;
@@ -87,7 +87,7 @@ namespace CollegeManagement.Server.Infrastructure
                     "'" + assignTagRoom.room + "')";
 
 
-                SqlConnection con = new SqlConnection(DBConnection.connectionStringNew);
+                SqlConnection con = new SqlConnection(DBConnection.connectionString);
 
                 SqlCommand cmd = new SqlCommand(Query, con);
                 SqlDataReader myReader;

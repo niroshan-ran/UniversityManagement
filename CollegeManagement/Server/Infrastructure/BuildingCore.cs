@@ -15,7 +15,7 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Insert into buildings(Building_Name,Block_Floor_Name,No_of_Rooms) values('" + objbuilding.Building_Name + "','" + objbuilding.Block_Floor_Name + "','" + objbuilding.No_of_Rooms + "')";
-                SqlConnection con = new SqlConnection(DBConnection.connectionStringNew);
+                SqlConnection con = new SqlConnection(DBConnection.connectionString);
 
                 SqlCommand cmd = new SqlCommand(Query, con);
                 SqlDataReader myReader;
@@ -40,7 +40,7 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Select Building_Name,Block_Floor_Name, No_of_Rooms from buildings;";
-                SqlConnection con = new SqlConnection(DBConnection.connectionStringNew);
+                SqlConnection con = new SqlConnection(DBConnection.connectionString);
 
                 SqlCommand cmd = new SqlCommand(Query, con);
 
@@ -72,7 +72,7 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Update buildings SET building_name = '" + objbuilding.Building_Name + "' , Block_Floor_Name = '" + objbuilding.Block_Floor_Name + "', No_of_Rooms = '" + objbuilding.No_of_Rooms + "' where building_name = '" + objPrevbuilding.Building_Name + "' and Block_Floor_Name = '" + objPrevbuilding.Block_Floor_Name + "' and No_of_Rooms = '" + objPrevbuilding.No_of_Rooms + "'";
-                SqlConnection con = new SqlConnection(DBConnection.connectionStringNew);
+                SqlConnection con = new SqlConnection(DBConnection.connectionString);
 
                 SqlCommand cmd = new SqlCommand(Query, con);
                 SqlDataReader myReader;
@@ -96,7 +96,7 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Delete from buildings where building_name = '" + objbuilding.Building_Name+ "' and Block_Floor_Name = '" + objbuilding.Block_Floor_Name + "'  and No_Of_Rooms = '" + objbuilding.No_of_Rooms + "'";
-                SqlConnection con = new SqlConnection(DBConnection.connectionStringNew);
+                SqlConnection con = new SqlConnection(DBConnection.connectionString);
 
                 SqlCommand cmd = new SqlCommand(Query, con);
                 SqlDataReader myReader;
