@@ -30,6 +30,7 @@ namespace CollegeManagement.Location.AssigninLocation
             lblSubgroup.Visible = false;
             tag = cmbTag.Text;
             getGroups();
+           
         }
 
         private void cmbTag_SelectedIndexChanged(object sender, EventArgs e)
@@ -53,9 +54,10 @@ namespace CollegeManagement.Location.AssigninLocation
                 lblSubgroup.Visible = true;
             }
 
-            
+          
             getGroups();
             groupNo = int.Parse(cmbGroup.Text);
+            getSubgroup(groupNo);
             getTagDetails();
             building = cmbBuilding.Text;
             getTagRoom(tag, building);
@@ -163,6 +165,11 @@ namespace CollegeManagement.Location.AssigninLocation
 
             cmbBuilding.DataSource = ds.Tables[0];
             cmbBuilding.DisplayMember = ds.Tables[0].Columns[0].ToString();
+
+        }
+
+        private void AssignGroups_Load(object sender, EventArgs e)
+        {
 
         }
 

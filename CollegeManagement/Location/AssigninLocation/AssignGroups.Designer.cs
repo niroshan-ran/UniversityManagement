@@ -191,6 +191,7 @@
             this.Controls.Add(this.lblTag);
             this.Name = "AssignGroups";
             this.Text = "AssignGroups";
+            this.Load += new System.EventHandler(this.AssignGroups_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

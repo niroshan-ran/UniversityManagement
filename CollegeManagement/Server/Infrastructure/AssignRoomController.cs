@@ -382,7 +382,42 @@ namespace CollegeManagement.Server.Infrastructure
             List<AssignRoomToSessionModel> listAssignRooms = new List<AssignRoomToSessionModel>();
             try
             {
-                string Query = "Select session_id,lecturer_id,subject_id,subject_code,tag_code,group_id,sub_group_id,student_count from Sessions";
+                string Query = "Select session_id,lecturer_id,subject_id,subject_code,tag_code,group_id,sub_group_id,student_count from Sessions where session_status != '2'";
+                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+
+                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlDataReader myReader;
+                con.Open();
+                myReader = cmd.ExecuteReader();
+
+                while (myReader.Read())
+                {
+                    AssignRoomToSessionModel objSessionAssign = new AssignRoomToSessionModel();
+                    objSessionAssign.session_id = int.Parse(myReader["session_id"].ToString());
+                    objSessionAssign.lecturer_id = myReader["lecturer_id"].ToString();
+                    objSessionAssign.subject_id = myReader["subject_id"].ToString();
+                    objSessionAssign.subject_code = myReader["subject_code"].ToString();
+                    objSessionAssign.tag_code = myReader["tag_code"].ToString();
+                    objSessionAssign.group_id = myReader["group_id"].ToString();
+                    objSessionAssign.sub_group_id = myReader["sub_group_id"].ToString();
+                    objSessionAssign.student_count = int.Parse(myReader["student_count"].ToString());
+                    listAssignRooms.Add(objSessionAssign);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+            return listAssignRooms;
+        }
+
+        public List<AssignRoomToSessionModel> getConsecutiveSessionsDetails()
+        {
+            List<AssignRoomToSessionModel> listAssignRooms = new List<AssignRoomToSessionModel>();
+            try
+            {
+                string Query = "Select session_id,lecturer_id,subject_id,subject_code,tag_code,group_id,sub_group_id,student_count from Sessions where session_status = '2'";
                 SqlConnection con = new SqlConnection(DBConnection.connectionString);
 
                 SqlCommand cmd = new SqlCommand(Query, con);

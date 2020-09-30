@@ -137,6 +137,11 @@ namespace CollegeManagement.Location.AssigninLocation
             building = cmbBuilding.Text;
         }
 
+        private void gvSessions_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
         private void icnBtnAdd_Click(object sender, EventArgs e)
         {
             sessionID = int.Parse(txtSessionID.Text);

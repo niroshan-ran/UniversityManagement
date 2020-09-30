@@ -154,6 +154,12 @@
     <Compile Include="Location\AssigninLocation\AssignSubject.Designer.cs">
       <DependentUpon>AssignSubject.cs</DependentUpon>
     </Compile>
+    <Compile Include="Location\AssigninLocation\consecutiveSessionRoom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Location\AssigninLocation\consecutiveSessionRoom.Designer.cs">
+      <DependentUpon>consecutiveSessionRoom.cs</DependentUpon>
+    </Compile>
     <Compile Include="Location\AssigninLocation\LecturerAssign.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -373,6 +379,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Location\AssigninLocation\AssignSubject.resx">
       <DependentUpon>AssignSubject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Location\AssigninLocation\consecutiveSessionRoom.resx">
+      <DependentUpon>consecutiveSessionRoom.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Location\AssigninLocation\LecturerAssign.resx">
       <DependentUpon>LecturerAssign.cs</DependentUpon>

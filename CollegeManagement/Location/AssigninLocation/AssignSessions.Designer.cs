@@ -45,6 +45,7 @@
             // gvSessions
             // 
             this.gvSessions.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gvSessions.BackgroundColor = System.Drawing.Color.White;
             this.gvSessions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvSessions.Location = new System.Drawing.Point(12, 259);
             this.gvSessions.Name = "gvSessions";
@@ -53,6 +54,7 @@
             this.gvSessions.Size = new System.Drawing.Size(1142, 259);
             this.gvSessions.TabIndex = 0;
             this.gvSessions.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvSessions_CellClick);
+            this.gvSessions.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvSessions_CellContentClick);
             // 
             // lblCount
             // 
