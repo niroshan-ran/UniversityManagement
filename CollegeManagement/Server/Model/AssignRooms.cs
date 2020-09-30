@@ -12,7 +12,8 @@ namespace CollegeManagement.Server.Model
         public string building { get; set; }
         public string room { get; set; }
         public string lecturer { get; set; }
-        public int group { get; set; }
+        public int groupNo { get; set; }
         public string subgroup { get; set; }
+        public string subject { get; set; }
     }
 }

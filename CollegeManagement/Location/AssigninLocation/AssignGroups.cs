@@ -18,7 +18,7 @@ namespace CollegeManagement.Location.AssigninLocation
     {
         SqlConnection con;
         string tag, building, room,subgroup;
-        int group;
+        int groupNo;
         AssignRoomController objAssign = new AssignRoomController();
         AssignRooms objCurrentAssign = new AssignRooms();
         public AssignGroups()
@@ -52,9 +52,10 @@ namespace CollegeManagement.Location.AssigninLocation
                 cmbSubgroup.Visible = true;
                 lblSubgroup.Visible = true;
             }
+
             
-            group = int.Parse(cmbGroup.Text);
             getGroups();
+            groupNo = int.Parse(cmbGroup.Text);
             getTagDetails();
             building = cmbBuilding.Text;
             getTagRoom(tag, building);
@@ -64,14 +65,14 @@ namespace CollegeManagement.Location.AssigninLocation
         private void cmbGroup_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            if (group == 0) 
+            if (groupNo == 0) 
             {
-                group = 0;
+                groupNo = 0;
             }
             else
             {
-                group = int.Parse(cmbGroup.Text);
-                getSubgroup(group);
+                groupNo = int.Parse(cmbGroup.Text);
+                getSubgroup(groupNo);
             }
            
             //if (group != null)
@@ -100,22 +101,31 @@ namespace CollegeManagement.Location.AssigninLocation
 
         private void icnBtnAdd_Click(object sender, EventArgs e)
         {
-            objCurrentAssign.group = group;
+            bool result;
+            groupNo = Convert.ToInt32(cmbGroup.Text);
+            objCurrentAssign.groupNo = groupNo;
             objCurrentAssign.subgroup = subgroup;
             objCurrentAssign.tag = tag;
             objCurrentAssign.building = building;
             objCurrentAssign.room = room;
 
-            bool result = objAssign.insertAssignedLecturer(objCurrentAssign);
-
+            if(tag == "Lecture") 
+            {
+                result = objAssign.insertAssignedGroups(objCurrentAssign);
+            }
+            else 
+            {
+                result = objAssign.insertAssignedGroupsNSubgroup(objCurrentAssign);
+            }
+            
             if (result == true)
             {
                 MessageBox.Show("Succesfully Inserted");
-                cmbGroup.Text = "0";
-                cmbSubgroup.Text = "--Select--";
-                cmbBuilding.Text = "--Select--";
-                cmbRoom.Text = "--Select--";
-                cmbTag.Text = "--Select--";
+                cmbGroup.Text = "";
+                cmbSubgroup.Text = "";
+                cmbBuilding.Text = "";
+                cmbRoom.Text = "";
+                cmbTag.Text = "";
 
                 lblGroup.Visible = false;
                 cmbGroup.Visible = false;
@@ -126,6 +136,8 @@ namespace CollegeManagement.Location.AssigninLocation
             {
                 MessageBox.Show("Insertion Failed");
             }
+
+            
         }
 
         public void getTagDetails()
@@ -231,5 +243,8 @@ namespace CollegeManagement.Location.AssigninLocation
             cmbSubgroup.DisplayMember = ds.Tables[0].Columns[0].ToString();
 
         }
+
+       
+
     }
 }

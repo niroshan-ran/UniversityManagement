@@ -244,6 +244,12 @@
     <Compile Include="Location\AddRoom.Designer.cs">
       <DependentUpon>AddRoom.cs</DependentUpon>
     </Compile>
+    <Compile Include="Location\AssigninLocation\AssigenedLocation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Location\AssigninLocation\AssigenedLocation.Designer.cs">
+      <DependentUpon>AssigenedLocation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Location\AssigninLocation\AssignGroups.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -261,6 +267,12 @@
     </Compile>
     <Compile Include="Location\AssigninLocation\AssignSessions.Designer.cs">
       <DependentUpon>AssignSessions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Location\AssigninLocation\AssignSubject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Location\AssigninLocation\AssignSubject.Designer.cs">
+      <DependentUpon>AssignSubject.cs</DependentUpon>
     </Compile>
     <Compile Include="Location\AssigninLocation\LecturerAssign.cs">
       <SubType>Form</SubType>
@@ -489,6 +501,9 @@
     <EmbeddedResource Include="Location\AddRoom.resx">
       <DependentUpon>AddRoom.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Location\AssigninLocation\AssigenedLocation.resx">
+      <DependentUpon>AssigenedLocation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Location\AssigninLocation\AssignGroups.resx">
       <DependentUpon>AssignGroups.cs</DependentUpon>
     </EmbeddedResource>
@@ -497,6 +512,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Location\AssigninLocation\AssignSessions.resx">
       <DependentUpon>AssignSessions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Location\AssigninLocation\AssignSubject.resx">
+      <DependentUpon>AssignSubject.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Location\AssigninLocation\LecturerAssign.resx">
       <DependentUpon>LecturerAssign.cs</DependentUpon>

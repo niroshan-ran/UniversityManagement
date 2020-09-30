@@ -14,59 +14,66 @@ using System.Windows.Forms;
 
 namespace CollegeManagement.Location.AssigninLocation
 {
-    public partial class LecturerAssign : Form
+    public partial class AssignSubject : Form
     {
         SqlConnection con;
-        string tag, building, room,lecturer;
+        string tag, building, room, subject;
         AssignRoomController objAssign = new AssignRoomController();
         AssignRooms objCurrentAssign = new AssignRooms();
-        public LecturerAssign()
+        public AssignSubject()
         {
             InitializeComponent();
-            getLecturerNames();
-            lecturer = cmbLecturer.Text;
-        }
-
-        private void cmbLecturer_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            getLecturerNames();
-            lecturer = cmbLecturer.Text;
         }
 
         private void cmbTag_SelectedIndexChanged(object sender, EventArgs e)
         {
             tag = cmbTag.Text;
-            building = cmbBuilding.Text;
             getTagDetails();
-            getTagRoom(tag,building);
+            building = cmbBuilding.Text;
+            getTagRoom(tag, building);
+            getTagSubject();
+        }
+
+        private void cmbSubject_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            subject = cmbSubject.Text;
+            //if (subject != null)
+            //{
+               
+            //}
         }
 
         private void cmbBuilding_SelectedIndexChanged(object sender, EventArgs e)
         {
             tag = cmbTag.Text;
-            building = cmbBuilding.Text;
-            getTagRoom(tag, building);
+            if(building != null)
+            {
+                building = cmbBuilding.Text;
+                tag = cmbTag.Text;
+                getTagRoom(tag, building);
+            }
+        
         }
 
         private void cmbRoom_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             room = cmbRoom.Text;
         }
 
         private void icnBtnAdd_Click(object sender, EventArgs e)
         {
-            lecturer = cmbLecturer.Text;
-            objCurrentAssign.lecturer = lecturer;
-            objCurrentAssign.tag = tag;
-            objCurrentAssign.building = building;
-            objCurrentAssign.room = room;
+            objCurrentAssign.tag = cmbTag.Text;
+            objCurrentAssign.building = cmbBuilding.Text;
+            objCurrentAssign.room = cmbRoom.Text;
+            objCurrentAssign.subject = cmbSubject.Text;
 
-            bool result = objAssign.insertAssignedLecturer(objCurrentAssign);
+            bool result = objAssign.insertAssignedSubject(objCurrentAssign);
 
             if (result == true)
             {
-                MessageBox.Show("Succesfully Insrted");
-                cmbLecturer.Text = "";
+                MessageBox.Show("Succesfully Inserted");
+                cmbSubject.Text = "";
                 cmbBuilding.Text = "";
                 cmbRoom.Text = "";
                 cmbTag.Text = "";
@@ -77,10 +84,6 @@ namespace CollegeManagement.Location.AssigninLocation
             }
         }
 
-        private void LecturerAssign_Load(object sender, EventArgs e)
-        {
-
-        }
 
         public void getTagDetails()
         {
@@ -134,9 +137,9 @@ namespace CollegeManagement.Location.AssigninLocation
 
         }
 
-        public void getLecturerNames()
+        public void getTagSubject()
         {
-            string query = "Select lecturer_name from lecturers";
+            string query = "Select sub_name from subjects";
             con = new SqlConnection(DBConnection.connectionString);
             DataSet ds = new DataSet();
             SqlDataAdapter sda = new SqlDataAdapter(query, con);
@@ -155,8 +158,8 @@ namespace CollegeManagement.Location.AssigninLocation
                 con.Close();
             }
 
-            cmbLecturer.DataSource = ds.Tables[0];
-            cmbLecturer.DisplayMember = ds.Tables[0].Columns[0].ToString();
+            cmbSubject.DataSource = ds.Tables[0];
+            cmbSubject.DisplayMember = ds.Tables[0].Columns[0].ToString();
 
         }
     }

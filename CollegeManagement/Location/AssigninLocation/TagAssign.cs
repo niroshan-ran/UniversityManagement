@@ -73,10 +73,10 @@ namespace CollegeManagement.Location.AssigninLocation
 
             if (result == true)
             {
-                MessageBox.Show("Succesfully Insrted");
-                comboBox3.Text = "--Select--";
-                comboBox2.Text = "--Select--";
-                comboBox1.Text = "--Select--";
+                MessageBox.Show("Succesfully Inserted");
+                comboBox3.Text = "";
+                comboBox2.Text = "";
+                comboBox1.Text = "";
             }
             else 
             {
