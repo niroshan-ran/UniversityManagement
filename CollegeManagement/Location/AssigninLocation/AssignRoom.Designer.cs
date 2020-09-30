@@ -35,6 +35,7 @@
             this.pannelChild = new System.Windows.Forms.Panel();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.lnlShow = new System.Windows.Forms.LinkLabel();
+            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // lnkTag
@@ -122,12 +123,26 @@
             this.lnlShow.Text = "All Assigned Locations";
             this.lnlShow.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnlShow_LinkClicked);
             // 
+            // linkLabel2
+            // 
+            this.linkLabel2.AutoSize = true;
+            this.linkLabel2.DisabledLinkColor = System.Drawing.Color.Teal;
+            this.linkLabel2.LinkColor = System.Drawing.Color.Navy;
+            this.linkLabel2.Location = new System.Drawing.Point(247, 70);
+            this.linkLabel2.Name = "linkLabel2";
+            this.linkLabel2.Size = new System.Drawing.Size(206, 17);
+            this.linkLabel2.TabIndex = 7;
+            this.linkLabel2.TabStop = true;
+            this.linkLabel2.Text = "Assigned Location for Sessions";
+            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
+            // 
             // AssignRoom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1161, 642);
+            this.Controls.Add(this.linkLabel2);
             this.Controls.Add(this.lnlShow);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.pannelChild);
@@ -151,5 +166,6 @@
         private System.Windows.Forms.Panel pannelChild;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.LinkLabel lnlShow;
+        private System.Windows.Forms.LinkLabel linkLabel2;
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CollegeManagement.Server.Model
 {
-    class AssignRooms
+    public class AssignRooms
     {
         public string tag { get; set; }
         public string building { get; set; }
