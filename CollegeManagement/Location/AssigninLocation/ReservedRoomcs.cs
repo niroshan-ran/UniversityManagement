@@ -19,7 +19,6 @@ namespace CollegeManagement.Location.AssigninLocation
     {
         ReserveRoomController roomtime = new ReserveRoomController();
         ReservedRoomModel roomtimemodel = new ReservedRoomModel();
-        SqlConnection con;
         int session_id;
         string start_time, end_time, day, room, building;
         public ReservedRoomcs()
@@ -165,13 +164,13 @@ namespace CollegeManagement.Location.AssigninLocation
         public void getSessionBuilding(int session_id)
         {
             string query = "Select building from RoomSession where session_id =" + session_id + "";
-            con = new SqlConnection(DBConnection.connectionString);
+            
             DataSet ds = new DataSet();
-            SqlDataAdapter sda = new SqlDataAdapter(query, con);
+            SqlDataAdapter sda = new SqlDataAdapter(query, DBConnection.DatabaseConnection);
 
             try
             {
-                con.Open();
+                DBConnection.OpenConnection();
                 sda.Fill(ds);
             }
             catch (SqlException se)
@@ -180,7 +179,7 @@ namespace CollegeManagement.Location.AssigninLocation
             }
             finally
             {
-                con.Close();
+                DBConnection.CloseConnection();
             }
 
             cmbBuilding.DataSource = ds.Tables[0];
@@ -191,13 +190,13 @@ namespace CollegeManagement.Location.AssigninLocation
         public void getSessionRoom(int session_id)
         {
             string query = "Select room from RoomSession where session_id=" + session_id + "";
-            con = new SqlConnection(DBConnection.connectionString);
+            
             DataSet ds = new DataSet();
-            SqlDataAdapter sda = new SqlDataAdapter(query, con);
+            SqlDataAdapter sda = new SqlDataAdapter(query, DBConnection.DatabaseConnection);
 
             try
             {
-                con.Open();
+                DBConnection.OpenConnection();
                 sda.Fill(ds);
             }
             catch (SqlException se)
@@ -206,7 +205,7 @@ namespace CollegeManagement.Location.AssigninLocation
             }
             finally
             {
-                con.Close();
+                DBConnection.CloseConnection();
             }
 
             cmbRoom.DataSource = ds.Tables[0];

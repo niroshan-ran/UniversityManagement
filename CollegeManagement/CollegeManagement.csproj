@@ -307,6 +307,24 @@
     <Compile Include="Location\AssigninLocation\LecturerAssign.Designer.cs">
       <DependentUpon>LecturerAssign.cs</DependentUpon>
     </Compile>
+    <Compile Include="Location\AssigninLocation\ReservedRoomcs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Location\AssigninLocation\ReservedRoomcs.Designer.cs">
+      <DependentUpon>ReservedRoomcs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Location\AssigninLocation\ReservedRoomForSession.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Location\AssigninLocation\ReservedRoomForSession.Designer.cs">
+      <DependentUpon>ReservedRoomForSession.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Location\AssigninLocation\ReservedTime.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Location\AssigninLocation\ReservedTime.Designer.cs">
+      <DependentUpon>ReservedTime.cs</DependentUpon>
+    </Compile>
     <Compile Include="Location\AssigninLocation\TagAssign.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -345,6 +363,8 @@
     <Compile Include="Server\Infrastructure\BuildingCore.cs" />
     <Compile Include="Server\Infrastructure\LecturerController.cs" />
     <Compile Include="Server\Infrastructure\NotAvailableCore.cs" />
+    <Compile Include="Server\Infrastructure\ReservedRoomsForSessionController.cs" />
+    <Compile Include="Server\Infrastructure\ReserveRoomController.cs" />
     <Compile Include="Server\Infrastructure\RoomCore.cs" />
     <Compile Include="Server\Infrastructure\SessionController.cs" />
     <Compile Include="Server\Infrastructure\StatisticsCore.cs" />
@@ -359,6 +379,8 @@
     <Compile Include="Server\Model\BuildingModel.cs" />
     <Compile Include="Server\Model\LecturerModel.cs" />
     <Compile Include="Server\Model\NotAvailableModel.cs" />
+    <Compile Include="Server\Model\ReservedRoomForSessionModel.cs" />
+    <Compile Include="Server\Model\ReservedRoomModel.cs" />
     <Compile Include="Server\Model\RetireiveSessionRoomModel.cs" />
     <Compile Include="Server\Model\RoomModel.cs" />
     <Compile Include="Server\Model\SessionModel.cs" />
@@ -553,6 +575,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Location\AssigninLocation\LecturerAssign.resx">
       <DependentUpon>LecturerAssign.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Location\AssigninLocation\ReservedRoomcs.resx">
+      <DependentUpon>ReservedRoomcs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Location\AssigninLocation\ReservedRoomForSession.resx">
+      <DependentUpon>ReservedRoomForSession.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Location\AssigninLocation\ReservedTime.resx">
+      <DependentUpon>ReservedTime.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Location\AssigninLocation\TagAssign.resx">
       <DependentUpon>TagAssign.cs</DependentUpon>

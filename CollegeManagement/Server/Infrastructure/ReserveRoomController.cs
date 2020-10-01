@@ -17,11 +17,11 @@ namespace CollegeManagement.Server.Infrastructure
             try
             {
                 string Query = "Select session_id,start_time,end_time,day from Sessions";
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                SqlConnection DBConnection.DatabaseConnection = new SqlConnection(DBConnection.connectionString);
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataReader myReader;
-                con.Open();
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())

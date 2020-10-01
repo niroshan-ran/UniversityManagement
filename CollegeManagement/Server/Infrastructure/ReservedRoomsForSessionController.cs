@@ -17,17 +17,17 @@ namespace CollegeManagement.Server.Infrastructure
             try
             {
                 string Query = "Insert into ReservedRoom(session_id,start_time,end_time,room,building,day) values(" + objSession.session_id + ",'" + objSession.start_time + "','" + objSession.end_time + "','" + objSession.room + "','" + objSession.building + "','" + objSession.day + "')";
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataReader myReader;
-                con.Open();
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
                 {
                 }
-                con.Close();
+                DBConnection.CloseConnection();
 
             }
             catch (Exception ex)
@@ -42,11 +42,11 @@ namespace CollegeManagement.Server.Infrastructure
             try
             {
                 string Query = "Select session_id,start_time,end_time,day,room,building from ReservedRoom";
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataReader myReader;
-                con.Open();
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
