@@ -17,7 +17,7 @@ namespace CollegeManagement.Server.Infrastructure
             try
             {
                 string Query = "Select session_id,start_time,end_time,day from Sessions";
-                SqlConnection DBConnection.DatabaseConnection = new SqlConnection(DBConnection.connectionString);
+
 
                 SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataReader myReader;
