@@ -113,5 +113,34 @@ namespace CollegeCore.Infrastructure
                 Console.WriteLine(ex);
             }
         }
+        public List<RoomModel> getBuildings()
+        {
+            List<RoomModel> listBuldings = new List<RoomModel>();
+            try
+            {
+                string Query = "Select tag,building,room,lecturer from AssignTagRoom";
+                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+
+                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlDataReader myReader;
+                con.Open();
+                myReader = cmd.ExecuteReader();
+
+                while (myReader.Read())
+                {
+                    RoomModel objBuildings = new RoomModel();
+
+                    objBuildings.Building = myReader["Building"].ToString();
+
+                    listBuldings.Add(objBuildings);
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            return listBuldings;
+        }
     }
 }

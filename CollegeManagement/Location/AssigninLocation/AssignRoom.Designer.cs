@@ -35,6 +35,8 @@
             this.pannelChild = new System.Windows.Forms.Panel();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.lnlShow = new System.Windows.Forms.LinkLabel();
+            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel3 = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // lnkTag
@@ -42,7 +44,7 @@
             this.lnkTag.AutoSize = true;
             this.lnkTag.DisabledLinkColor = System.Drawing.Color.Teal;
             this.lnkTag.LinkColor = System.Drawing.Color.Navy;
-            this.lnkTag.Location = new System.Drawing.Point(50, 23);
+            this.lnkTag.Location = new System.Drawing.Point(9, 23);
             this.lnkTag.Name = "lnkTag";
             this.lnkTag.Size = new System.Drawing.Size(107, 17);
             this.lnkTag.TabIndex = 0;
@@ -55,7 +57,7 @@
             this.lnlLecturer.AutoSize = true;
             this.lnlLecturer.DisabledLinkColor = System.Drawing.Color.Teal;
             this.lnlLecturer.LinkColor = System.Drawing.Color.Navy;
-            this.lnlLecturer.Location = new System.Drawing.Point(247, 23);
+            this.lnlLecturer.Location = new System.Drawing.Point(163, 23);
             this.lnlLecturer.Name = "lnlLecturer";
             this.lnlLecturer.Size = new System.Drawing.Size(135, 17);
             this.lnlLecturer.TabIndex = 1;
@@ -68,7 +70,7 @@
             this.lnkSessions.AutoSize = true;
             this.lnkSessions.DisabledLinkColor = System.Drawing.Color.Teal;
             this.lnkSessions.LinkColor = System.Drawing.Color.Navy;
-            this.lnkSessions.Location = new System.Drawing.Point(459, 23);
+            this.lnkSessions.Location = new System.Drawing.Point(353, 23);
             this.lnkSessions.Name = "lnkSessions";
             this.lnkSessions.Size = new System.Drawing.Size(132, 17);
             this.lnkSessions.TabIndex = 2;
@@ -81,7 +83,7 @@
             this.lnkAssignGroups.AutoSize = true;
             this.lnkAssignGroups.DisabledLinkColor = System.Drawing.Color.Teal;
             this.lnkAssignGroups.LinkColor = System.Drawing.Color.Navy;
-            this.lnkAssignGroups.Location = new System.Drawing.Point(671, 23);
+            this.lnkAssignGroups.Location = new System.Drawing.Point(885, 23);
             this.lnkAssignGroups.Name = "lnkAssignGroups";
             this.lnkAssignGroups.Size = new System.Drawing.Size(198, 17);
             this.lnkAssignGroups.TabIndex = 3;
@@ -101,7 +103,7 @@
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.DisabledLinkColor = System.Drawing.Color.Teal;
             this.linkLabel1.LinkColor = System.Drawing.Color.Navy;
-            this.linkLabel1.Location = new System.Drawing.Point(933, 23);
+            this.linkLabel1.Location = new System.Drawing.Point(12, 53);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(129, 17);
             this.linkLabel1.TabIndex = 5;
@@ -114,7 +116,7 @@
             this.lnlShow.AutoSize = true;
             this.lnlShow.DisabledLinkColor = System.Drawing.Color.Teal;
             this.lnlShow.LinkColor = System.Drawing.Color.Navy;
-            this.lnlShow.Location = new System.Drawing.Point(50, 70);
+            this.lnlShow.Location = new System.Drawing.Point(188, 53);
             this.lnlShow.Name = "lnlShow";
             this.lnlShow.Size = new System.Drawing.Size(150, 17);
             this.lnlShow.TabIndex = 6;
@@ -122,12 +124,40 @@
             this.lnlShow.Text = "All Assigned Locations";
             this.lnlShow.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnlShow_LinkClicked);
             // 
+            // linkLabel2
+            // 
+            this.linkLabel2.AutoSize = true;
+            this.linkLabel2.DisabledLinkColor = System.Drawing.Color.Teal;
+            this.linkLabel2.LinkColor = System.Drawing.Color.Navy;
+            this.linkLabel2.Location = new System.Drawing.Point(396, 53);
+            this.linkLabel2.Name = "linkLabel2";
+            this.linkLabel2.Size = new System.Drawing.Size(206, 17);
+            this.linkLabel2.TabIndex = 7;
+            this.linkLabel2.TabStop = true;
+            this.linkLabel2.Text = "Assigned Location for Sessions";
+            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
+            // 
+            // linkLabel3
+            // 
+            this.linkLabel3.AutoSize = true;
+            this.linkLabel3.DisabledLinkColor = System.Drawing.Color.Teal;
+            this.linkLabel3.LinkColor = System.Drawing.Color.Navy;
+            this.linkLabel3.Location = new System.Drawing.Point(575, 23);
+            this.linkLabel3.Name = "linkLabel3";
+            this.linkLabel3.Size = new System.Drawing.Size(213, 17);
+            this.linkLabel3.TabIndex = 8;
+            this.linkLabel3.TabStop = true;
+            this.linkLabel3.Text = "Assign To Consecutive Sessions";
+            this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel3_LinkClicked_1);
+            // 
             // AssignRoom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1161, 642);
+            this.Controls.Add(this.linkLabel3);
+            this.Controls.Add(this.linkLabel2);
             this.Controls.Add(this.lnlShow);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.pannelChild);
@@ -151,5 +181,7 @@
         private System.Windows.Forms.Panel pannelChild;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.LinkLabel lnlShow;
+        private System.Windows.Forms.LinkLabel linkLabel2;
+        private System.Windows.Forms.LinkLabel linkLabel3;
     }
 }

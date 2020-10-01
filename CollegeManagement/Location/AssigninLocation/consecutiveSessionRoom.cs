@@ -1,5 +1,4 @@
 ﻿using CollegeCore;
-using CollegeManagement.Model;
 using CollegeManagement.Server.Infrastructure;
 using CollegeManagement.Server.Model;
 using System;
@@ -15,31 +14,31 @@ using System.Windows.Forms;
 
 namespace CollegeManagement.Location.AssigninLocation
 {
-    public partial class AssignSessions : Form
+    public partial class consecutiveSessionRoom : Form
     {
+
         AssignRoomController objRoomAssign = new AssignRoomController();
         AssignRoomToSessionModel objCurrent = new AssignRoomToSessionModel();
         SqlConnection con;
 
-        int studentCount,sessionID;
-        string room,building;
-        public AssignSessions()
+        int studentCount, sessionID;
+        string room, building;
+        public consecutiveSessionRoom()
         {
             InitializeComponent();
             loadData();
-
         }
 
-        private void AssignSessions_Load(object sender, EventArgs e)
+        private void consecutiveSessionRoom_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void loadData()
 
         {
 
-            gvSessions.DataSource = objRoomAssign.getSessionsDetails();
+            gvSessions.DataSource = objRoomAssign.getConsecutiveSessionsDetails();
 
 
 
@@ -77,35 +76,10 @@ namespace CollegeManagement.Location.AssigninLocation
 
         }
 
-       
-        private void gvSessions_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void gvSessions_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (gvSessions.CurrentRow.Index != -1)
-
-            {
-
-                objCurrent.session_id = int.Parse(gvSessions.CurrentRow.Cells[0].Value.ToString());
-
-                objCurrent.student_count = int.Parse(gvSessions.CurrentRow.Cells[7].Value.ToString());
-
-                txtSessionID.Text = gvSessions.CurrentRow.Cells[0].Value.ToString();
-
-                txtStudentCount.Text = gvSessions.CurrentRow.Cells[7].Value.ToString();
-
-                studentCount = int.Parse(txtStudentCount.Text);
-                getSessionRoom(studentCount);
-                
-
-            }
+            
         }
-
-        private void cmbRoom_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            studentCount = int.Parse(txtStudentCount.Text);
-            room = cmbRoom.Text;
-            getSessionBuilding(room);
-        }
-
         public void getSessionRoom(int count)
         {
             string query = "Select Room_Name from rooms where Capacity >=" + count + "";
@@ -132,17 +106,42 @@ namespace CollegeManagement.Location.AssigninLocation
 
         }
 
+        private void cmbRoom_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            studentCount = int.Parse(txtStudentCount.Text);
+            room = cmbRoom.Text;
+            getSessionBuilding(room);
+
+        }
+
         private void cmbBuilding_SelectedIndexChanged(object sender, EventArgs e)
         {
             building = cmbBuilding.Text;
         }
 
-        private void gvSessions_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void gvSessions_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (gvSessions.CurrentRow.Index != -1)
+
+            {
+
+                objCurrent.session_id = int.Parse(gvSessions.CurrentRow.Cells[0].Value.ToString());
+
+                objCurrent.student_count = int.Parse(gvSessions.CurrentRow.Cells[7].Value.ToString());
+
+                txtSessionID.Text = gvSessions.CurrentRow.Cells[0].Value.ToString();
+
+                txtStudentCount.Text = gvSessions.CurrentRow.Cells[7].Value.ToString();
+
+                studentCount = int.Parse(txtStudentCount.Text);
+                getSessionRoom(studentCount);
+
+
+            }
 
         }
 
-        private void icnBtnAdd_Click(object sender, EventArgs e)
+        private void icnBtnAdd_Click_1(object sender, EventArgs e)
         {
             sessionID = int.Parse(txtSessionID.Text);
             studentCount = int.Parse(txtStudentCount.Text);
@@ -176,7 +175,6 @@ namespace CollegeManagement.Location.AssigninLocation
             loadData();
 
             MessageBox.Show("Insert Successfully!");
-        
 
         }
 

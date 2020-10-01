@@ -1,6 +1,6 @@
 ﻿namespace CollegeManagement.Location.AssigninLocation
 {
-    partial class AssigenedLocation
+    partial class AssignedRoomSession
     {
         /// <summary>
         /// Required designer variable.
@@ -28,48 +28,47 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.gvGroup = new System.Windows.Forms.DataGridView();
+            this.gvSessionRoom = new System.Windows.Forms.DataGridView();
             this.Topic = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.gvGroup)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvSessionRoom)).BeginInit();
             this.SuspendLayout();
             // 
-            // gvGroup
+            // gvSessionRoom
             // 
-            this.gvGroup.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.gvGroup.BackgroundColor = System.Drawing.Color.White;
-            this.gvGroup.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gvGroup.GridColor = System.Drawing.Color.White;
-            this.gvGroup.Location = new System.Drawing.Point(25, 121);
-            this.gvGroup.Name = "gvGroup";
-            this.gvGroup.RowHeadersWidth = 51;
-            this.gvGroup.RowTemplate.Height = 24;
-            this.gvGroup.Size = new System.Drawing.Size(1118, 408);
-            this.gvGroup.TabIndex = 35;
+            this.gvSessionRoom.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gvSessionRoom.BackgroundColor = System.Drawing.Color.White;
+            this.gvSessionRoom.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gvSessionRoom.Location = new System.Drawing.Point(12, 129);
+            this.gvSessionRoom.Name = "gvSessionRoom";
+            this.gvSessionRoom.RowHeadersWidth = 51;
+            this.gvSessionRoom.RowTemplate.Height = 24;
+            this.gvSessionRoom.Size = new System.Drawing.Size(1142, 400);
+            this.gvSessionRoom.TabIndex = 1;
             // 
             // Topic
             // 
             this.Topic.AutoSize = true;
             this.Topic.Font = new System.Drawing.Font("Microsoft Sans Serif", 28.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Topic.ForeColor = System.Drawing.Color.Teal;
-            this.Topic.Location = new System.Drawing.Point(329, 36);
+            this.Topic.Location = new System.Drawing.Point(161, 46);
             this.Topic.Name = "Topic";
-            this.Topic.Size = new System.Drawing.Size(519, 55);
-            this.Topic.TabIndex = 36;
-            this.Topic.Text = " Assigned All Locations";
+            this.Topic.Size = new System.Drawing.Size(850, 55);
+            this.Topic.TabIndex = 29;
+            this.Topic.Text = "Assigned Consecutive Session Rooms";
             this.Topic.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // AssigenedLocation
+            // AssignedRoomSession
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1166, 541);
             this.Controls.Add(this.Topic);
-            this.Controls.Add(this.gvGroup);
-            this.Name = "AssigenedLocation";
-            this.Text = "AssigenedLocation";
-            this.Load += new System.EventHandler(this.AssigenedLocation_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.gvGroup)).EndInit();
+            this.Controls.Add(this.gvSessionRoom);
+            this.Name = "AssignedRoomSession";
+            this.Text = "AssignedRoomSession";
+            this.Load += new System.EventHandler(this.AssignedRoomSession_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.gvSessionRoom)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -77,7 +76,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView gvGroup;
+        private System.Windows.Forms.DataGridView gvSessionRoom;
         private System.Windows.Forms.Label Topic;
     }
 }

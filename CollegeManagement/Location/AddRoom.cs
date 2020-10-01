@@ -1,9 +1,11 @@
-﻿using CollegeCore.Infrastructure;
+﻿using CollegeCore;
+using CollegeCore.Infrastructure;
 using CollegeCore.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -18,13 +20,19 @@ namespace CollegeCore.Location
 
         RoomModel objCurrentRoom = new RoomModel();
 
+        SqlConnection con;
+
         public AddRoom()
 
         {
 
             InitializeComponent();
-
+           
             loadData();
+
+            getBuildings();
+
+
 
         }
 
@@ -292,6 +300,32 @@ namespace CollegeCore.Location
 
         private void cmbBuilding_SelectedIndexChanged(object sender, EventArgs e)
         {
+            
+        }
+
+        public void getBuildings()
+        {
+            string query = "Select Building_Name from buildings";
+            con = new SqlConnection(DBConnection.connectionString);
+            DataSet ds = new DataSet();
+            SqlDataAdapter sda = new SqlDataAdapter(query, con);
+
+            try
+            {
+                con.Open();
+                sda.Fill(ds);
+            }
+            catch (SqlException se)
+            {
+                MessageBox.Show("An error occured while connecting to database" + se.ToString());
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            cmbBuilding.DataSource = ds.Tables[0];
+            cmbBuilding.DisplayMember = ds.Tables[0].Columns[0].ToString();
 
         }
     }

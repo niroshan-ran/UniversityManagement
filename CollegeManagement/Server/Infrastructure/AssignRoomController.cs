@@ -1,4 +1,5 @@
 ﻿using CollegeCore;
+using CollegeManagement.Model;
 using CollegeManagement.Server.Model;
 using System;
 using System.Collections.Generic;
@@ -115,6 +116,34 @@ namespace CollegeManagement.Server.Infrastructure
             try
             {
                 string Query = "Insert into AssignTagRoom(groupNo,subgroup,tag,building,room) values(" + assignTagRoom.groupNo + ",'" + assignTagRoom.subgroup + "','" + assignTagRoom.tag + "', '" + assignTagRoom.building + "', '" + assignTagRoom.room + "')";
+
+
+                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+
+                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlDataReader myReader;
+                con.Open();
+                myReader = cmd.ExecuteReader();
+
+                while (myReader.Read())
+                {
+                }
+                con.Close();
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public bool insertAssignedRoomToSessions(RetireiveSessionRoomModel assignSessionRoom)
+        {
+            try
+            {
+                string Query = "Insert into RoomSession(session_id,building,room) values(" + assignSessionRoom.session_id + ",'" + assignSessionRoom.building + "', '" + assignSessionRoom.room + "')";
 
 
                 SqlConnection con = new SqlConnection(DBConnection.connectionString);
@@ -346,6 +375,106 @@ namespace CollegeManagement.Server.Infrastructure
             }
 
             return listAssignRoom;
+        }
+
+        public List<AssignRoomToSessionModel> getSessionsDetails()
+        {
+            List<AssignRoomToSessionModel> listAssignRooms = new List<AssignRoomToSessionModel>();
+            try
+            {
+                string Query = "Select session_id,lecturer_id,subject_id,subject_code,tag_code,group_id,sub_group_id,student_count from Sessions where session_status != '2'";
+                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+
+                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlDataReader myReader;
+                con.Open();
+                myReader = cmd.ExecuteReader();
+
+                while (myReader.Read())
+                {
+                    AssignRoomToSessionModel objSessionAssign = new AssignRoomToSessionModel();
+                    objSessionAssign.session_id = int.Parse(myReader["session_id"].ToString());
+                    objSessionAssign.lecturer_id = myReader["lecturer_id"].ToString();
+                    objSessionAssign.subject_id = myReader["subject_id"].ToString();
+                    objSessionAssign.subject_code = myReader["subject_code"].ToString();
+                    objSessionAssign.tag_code = myReader["tag_code"].ToString();
+                    objSessionAssign.group_id = myReader["group_id"].ToString();
+                    objSessionAssign.sub_group_id = myReader["sub_group_id"].ToString();
+                    objSessionAssign.student_count = int.Parse(myReader["student_count"].ToString());
+                    listAssignRooms.Add(objSessionAssign);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+            return listAssignRooms;
+        }
+
+        public List<AssignRoomToSessionModel> getConsecutiveSessionsDetails()
+        {
+            List<AssignRoomToSessionModel> listAssignRooms = new List<AssignRoomToSessionModel>();
+            try
+            {
+                string Query = "Select session_id,lecturer_id,subject_id,subject_code,tag_code,group_id,sub_group_id,student_count from Sessions where session_status = '2'";
+                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+
+                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlDataReader myReader;
+                con.Open();
+                myReader = cmd.ExecuteReader();
+
+                while (myReader.Read())
+                {
+                    AssignRoomToSessionModel objSessionAssign = new AssignRoomToSessionModel();
+                    objSessionAssign.session_id = int.Parse(myReader["session_id"].ToString());
+                    objSessionAssign.lecturer_id = myReader["lecturer_id"].ToString();
+                    objSessionAssign.subject_id = myReader["subject_id"].ToString();
+                    objSessionAssign.subject_code = myReader["subject_code"].ToString();
+                    objSessionAssign.tag_code = myReader["tag_code"].ToString();
+                    objSessionAssign.group_id = myReader["group_id"].ToString();
+                    objSessionAssign.sub_group_id = myReader["sub_group_id"].ToString();
+                    objSessionAssign.student_count = int.Parse(myReader["student_count"].ToString());
+                    listAssignRooms.Add(objSessionAssign);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+            return listAssignRooms;
+        }
+
+        public List<RetireiveSessionRoomModel> getSessionsRooms()
+        {
+            List<RetireiveSessionRoomModel> listAssignRooms = new List<RetireiveSessionRoomModel>();
+            try
+            {
+                string Query = "Select session_id,room,building from RoomSession";
+                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+
+                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlDataReader myReader;
+                con.Open();
+                myReader = cmd.ExecuteReader();
+
+                while (myReader.Read())
+                {
+                    RetireiveSessionRoomModel objSessionAssign = new RetireiveSessionRoomModel();
+                    objSessionAssign.session_id = int.Parse(myReader["session_id"].ToString());
+                    objSessionAssign.room = myReader["room"].ToString();
+                    objSessionAssign.building = myReader["building"].ToString();
+                    listAssignRooms.Add(objSessionAssign);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+            return listAssignRooms;
         }
     }
 }

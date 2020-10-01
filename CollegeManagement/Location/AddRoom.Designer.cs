@@ -237,6 +237,10 @@ namespace CollegeCore.Location
             // cmbRoomType
             // 
             this.cmbRoomType.FormattingEnabled = true;
+            this.cmbRoomType.Items.AddRange(new object[] {
+            "Lecture",
+            "Lab",
+            "Tutorial"});
             this.cmbRoomType.Location = new System.Drawing.Point(474, 254);
             this.cmbRoomType.Name = "cmbRoomType";
             this.cmbRoomType.Size = new System.Drawing.Size(121, 24);
