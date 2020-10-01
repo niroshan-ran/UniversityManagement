@@ -119,5 +119,18 @@ namespace CollegeManagement.Location
             ActivateButton(sender, RGBColors.color1);
             openChildForm(new consecutiveSessionRoom());
         }
+
+        private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ActivateButton(sender, RGBColors.color1);
+            openChildForm(new ReservedRoomcs());
+
+        }
+
+        private void linkLabel5_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ActivateButton(sender, RGBColors.color1);
+            openChildForm(new ReservedRoomForSession());
+        }
     }
 }
