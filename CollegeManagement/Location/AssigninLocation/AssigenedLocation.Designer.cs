@@ -45,6 +45,7 @@
             this.gvGroup.RowTemplate.Height = 24;
             this.gvGroup.Size = new System.Drawing.Size(1118, 408);
             this.gvGroup.TabIndex = 35;
+            this.gvGroup.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvGroup_CellContentClick);
             // 
             // Topic
             // 

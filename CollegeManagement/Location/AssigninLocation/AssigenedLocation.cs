@@ -45,5 +45,10 @@ namespace CollegeManagement.Location.AssigninLocation
             gvGroup.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             gvGroup.AllowUserToResizeColumns = false;
         }
+
+        private void gvGroup_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
