@@ -25,17 +25,17 @@ namespace CollegeCore.Infrastructure
                     + objLec.EveHour + "')";
 
 
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataReader myReader;
-                con.Open();
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
                 {
                 }
-                con.Close();
+                DBConnection.CloseConnection();
 
             }
             catch (Exception ex)
@@ -50,11 +50,11 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Select subject_Code,year,semester,sub_name,lec_hours,tut_hours,lab_hours,eve_hours from subjects";
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataReader myReader;
-                con.Open();
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
@@ -89,17 +89,17 @@ namespace CollegeCore.Infrastructure
                 string Query = "Update subjects SET year = '" + objSub.Year + "', semester = '" + objSub.Semester + "', sub_name = '" + objSub.SubName + "', subject_Code = '" + objSub.SubCode + "',  lec_hours = '" + objSub.LecHour + "', tut_hours = '" + objSub.TutHour + "', lab_hours = '" + objSub.LabHour + "', eve_hours = '" + objSub.EveHour + "'where subject_Code = '" + objPrevSub.SubCode + "'";
 
 
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataReader myReader;
-                con.Open();
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
                 {
                 }
-                con.Close();
+                DBConnection.CloseConnection();
 
             }
             catch (Exception ex)
@@ -113,17 +113,17 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Delete from subjects where subject_Code = '" + objSub.SubCode + "'";
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataReader myReader;
-                con.Open();
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
                 {
                 }
-                con.Close();
+                DBConnection.CloseConnection();
 
             }
             catch (Exception ex)

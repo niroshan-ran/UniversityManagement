@@ -16,7 +16,7 @@ namespace CollegeManagement.Location.AssigninLocation
 {
     public partial class LecturerAssign : Form
     {
-        SqlConnection con;
+
         string tag, building, room,lecturer;
         AssignRoomController objAssign = new AssignRoomController();
         AssignRooms objCurrentAssign = new AssignRooms();
@@ -85,13 +85,13 @@ namespace CollegeManagement.Location.AssigninLocation
         public void getTagDetails()
         {
             string query = "Select Building from rooms where Room_Type ='" + tag + "'";
-            con = new SqlConnection(DBConnection.connectionString);
+            
             DataSet ds = new DataSet();
-            SqlDataAdapter sda = new SqlDataAdapter(query, con);
+            SqlDataAdapter sda = new SqlDataAdapter(query, DBConnection.DatabaseConnection);
 
             try
             {
-                con.Open();
+                DBConnection.OpenConnection();
                 sda.Fill(ds);
             }
             catch (SqlException se)
@@ -100,7 +100,7 @@ namespace CollegeManagement.Location.AssigninLocation
             }
             finally
             {
-                con.Close();
+                DBConnection.CloseConnection();
             }
 
             cmbBuilding.DataSource = ds.Tables[0];
@@ -111,13 +111,13 @@ namespace CollegeManagement.Location.AssigninLocation
         public void getTagRoom(string tag, string building)
         {
             string query = "Select Room_Name from rooms where Room_Type ='" + tag + "' and Building='" + building + "'";
-            con = new SqlConnection(DBConnection.connectionString);
+            
             DataSet ds = new DataSet();
-            SqlDataAdapter sda = new SqlDataAdapter(query, con);
+            SqlDataAdapter sda = new SqlDataAdapter(query, DBConnection.DatabaseConnection);
 
             try
             {
-                con.Open();
+                DBConnection.OpenConnection();
                 sda.Fill(ds);
             }
             catch (SqlException se)
@@ -126,7 +126,7 @@ namespace CollegeManagement.Location.AssigninLocation
             }
             finally
             {
-                con.Close();
+                DBConnection.CloseConnection();
             }
 
             cmbRoom.DataSource = ds.Tables[0];
@@ -137,13 +137,13 @@ namespace CollegeManagement.Location.AssigninLocation
         public void getLecturerNames()
         {
             string query = "Select lecturer_name from lecturers";
-            con = new SqlConnection(DBConnection.connectionString);
+            
             DataSet ds = new DataSet();
-            SqlDataAdapter sda = new SqlDataAdapter(query, con);
+            SqlDataAdapter sda = new SqlDataAdapter(query, DBConnection.DatabaseConnection);
 
             try
             {
-                con.Open();
+                DBConnection.OpenConnection();
                 sda.Fill(ds);
             }
             catch (SqlException se)
@@ -152,7 +152,7 @@ namespace CollegeManagement.Location.AssigninLocation
             }
             finally
             {
-                con.Close();
+                DBConnection.CloseConnection();
             }
 
             cmbLecturer.DataSource = ds.Tables[0];

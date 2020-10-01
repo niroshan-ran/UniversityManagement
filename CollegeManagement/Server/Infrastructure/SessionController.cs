@@ -27,17 +27,17 @@ namespace CollegeCore.Server.Infrastructure
                     + SessionStatus + ")";
 
 
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataReader myReader;
-                con.Open();
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
                 {
                 }
-                con.Close();
+                DBConnection.CloseConnection();
 
             }
             catch (Exception ex)
@@ -52,11 +52,11 @@ namespace CollegeCore.Server.Infrastructure
             try
             {
                 string Query = "Select session_id,lecturer_id,subject_id,subject_code,tag_code,group_id,sub_group_id,student_count,duration,session_status from Sessions";
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataReader myReader;
-                con.Open();
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
@@ -91,17 +91,17 @@ namespace CollegeCore.Server.Infrastructure
                 string Query = "Update Sessions SET lecturer_id = '" + objsession.Lecturer + "', subject_id = '" + objsession.Subject + "', subject_code = '" + objsession.SubjCode + "', tag_code = '" + objsession.Tag + "', group_id = '" + objsession.Group + "', sub_group_id = '" + objsession.SubGroup + "', student_count = '" + objsession.Stucount + "', duration = '" + objsession.Duration + "'where session_id = '" + objPrevLtr.SessionId + "'";
 
 
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataReader myReader;
-                con.Open();
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
                 {
                 }
-                con.Close();
+                DBConnection.CloseConnection();
 
             }
             catch (Exception ex)
@@ -115,17 +115,17 @@ namespace CollegeCore.Server.Infrastructure
             try
             {
                 string Query = "Delete from Sessions where session_id = '" + objsession.SessionId + "'";
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataReader myReader;
-                con.Open();
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
                 {
                 }
-                con.Close();
+                DBConnection.CloseConnection();
 
             }
             catch (Exception ex)

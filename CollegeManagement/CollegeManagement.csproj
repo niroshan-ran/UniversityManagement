@@ -265,6 +265,12 @@
     <Compile Include="Location\AssigninLocation\AssigenedLocation.Designer.cs">
       <DependentUpon>AssigenedLocation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Location\AssigninLocation\AssignedRoomSession.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Location\AssigninLocation\AssignedRoomSession.Designer.cs">
+      <DependentUpon>AssignedRoomSession.cs</DependentUpon>
+    </Compile>
     <Compile Include="Location\AssigninLocation\AssignGroups.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -288,6 +294,12 @@
     </Compile>
     <Compile Include="Location\AssigninLocation\AssignSubject.Designer.cs">
       <DependentUpon>AssignSubject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Location\AssigninLocation\consecutiveSessionRoom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Location\AssigninLocation\consecutiveSessionRoom.Designer.cs">
+      <DependentUpon>consecutiveSessionRoom.cs</DependentUpon>
     </Compile>
     <Compile Include="Location\AssigninLocation\LecturerAssign.cs">
       <SubType>Form</SubType>
@@ -343,9 +355,11 @@
     <Compile Include="Server\Infrastructure\WorkingDaysHoursCore.cs" />
     <Compile Include="Server\Model\AdvancedSessionModel.cs" />
     <Compile Include="Server\Model\AssignRooms.cs" />
+    <Compile Include="Server\Model\AssignRoomToSessionModel.cs" />
     <Compile Include="Server\Model\BuildingModel.cs" />
     <Compile Include="Server\Model\LecturerModel.cs" />
     <Compile Include="Server\Model\NotAvailableModel.cs" />
+    <Compile Include="Server\Model\RetireiveSessionRoomModel.cs" />
     <Compile Include="Server\Model\RoomModel.cs" />
     <Compile Include="Server\Model\SessionModel.cs" />
     <Compile Include="Server\Model\StatisticsModel.cs" />
@@ -519,6 +533,9 @@
     <EmbeddedResource Include="Location\AssigninLocation\AssigenedLocation.resx">
       <DependentUpon>AssigenedLocation.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Location\AssigninLocation\AssignedRoomSession.resx">
+      <DependentUpon>AssignedRoomSession.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Location\AssigninLocation\AssignGroups.resx">
       <DependentUpon>AssignGroups.cs</DependentUpon>
     </EmbeddedResource>
@@ -530,6 +547,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Location\AssigninLocation\AssignSubject.resx">
       <DependentUpon>AssignSubject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Location\AssigninLocation\consecutiveSessionRoom.resx">
+      <DependentUpon>consecutiveSessionRoom.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Location\AssigninLocation\LecturerAssign.resx">
       <DependentUpon>LecturerAssign.cs</DependentUpon>

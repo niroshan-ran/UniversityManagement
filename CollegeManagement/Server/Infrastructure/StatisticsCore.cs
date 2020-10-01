@@ -17,11 +17,11 @@ namespace CollegeCore.Infrastructure
             {
 
                 string Query = "Select * from program group by name";
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataReader myReader;
-                con.Open();
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
@@ -47,11 +47,11 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "SELECT faculty,count(*) as Lecturers_Count FROM lecturers group by faculty";
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataReader myReader;
-                con.Open();
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
@@ -76,11 +76,11 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "SELECT department,count(*) as Lecturers_Count FROM lecturers group by department";
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataReader myReader;
-                con.Open();
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
@@ -105,11 +105,11 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "SELECT center,count(*) as Lecturers_Count FROM lecturers group by center";
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataReader myReader;
-                con.Open();
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
@@ -135,11 +135,11 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "SELECT year,count(*) as Offered_Subject_Count FROM subjects group by year";
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataReader myReader;
-                con.Open();
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
@@ -165,11 +165,11 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "SELECT Year, count(*) as Student_Count FROM groups group by Year";
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataReader myReader;
-                con.Open();
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
@@ -195,11 +195,11 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = " SELECT program, count(*) as Student_Count FROM groups group by program";
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataReader myReader;
-                con.Open();
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())

@@ -16,7 +16,6 @@ namespace CollegeManagement.Location.AssigninLocation
 {
     public partial class AssignGroups : Form
     {
-        SqlConnection con;
         string tag, building, room,subgroup;
         int groupNo;
         AssignRoomController objAssign = new AssignRoomController();
@@ -145,13 +144,13 @@ namespace CollegeManagement.Location.AssigninLocation
         public void getTagDetails()
         {
             string query = "Select Building from rooms where Room_Type ='" + tag + "'";
-            con = new SqlConnection(DBConnection.connectionString);
+            
             DataSet ds = new DataSet();
-            SqlDataAdapter sda = new SqlDataAdapter(query, con);
+            SqlDataAdapter sda = new SqlDataAdapter(query, DBConnection.DatabaseConnection);
 
             try
             {
-                con.Open();
+                DBConnection.OpenConnection();
                 sda.Fill(ds);
             }
             catch (SqlException se)
@@ -160,7 +159,7 @@ namespace CollegeManagement.Location.AssigninLocation
             }
             finally
             {
-                con.Close();
+                DBConnection.CloseConnection();
             }
 
             cmbBuilding.DataSource = ds.Tables[0];
@@ -176,13 +175,13 @@ namespace CollegeManagement.Location.AssigninLocation
         public void getTagRoom(string tag, string building)
         {
             string query = "Select Room_Name from rooms where Room_Type ='" + tag + "' and Building='" + building + "'";
-            con = new SqlConnection(DBConnection.connectionString);
+            
             DataSet ds = new DataSet();
-            SqlDataAdapter sda = new SqlDataAdapter(query, con);
+            SqlDataAdapter sda = new SqlDataAdapter(query, DBConnection.DatabaseConnection);
 
             try
             {
-                con.Open();
+                DBConnection.OpenConnection();
                 sda.Fill(ds);
             }
             catch (SqlException se)
@@ -191,7 +190,7 @@ namespace CollegeManagement.Location.AssigninLocation
             }
             finally
             {
-                con.Close();
+                DBConnection.CloseConnection();
             }
 
             cmbRoom.DataSource = ds.Tables[0];
@@ -202,13 +201,13 @@ namespace CollegeManagement.Location.AssigninLocation
         public void getGroups()
         {
             string query = "Select group_no from groups";
-            con = new SqlConnection(DBConnection.connectionString);
+            
             DataSet ds = new DataSet();
-            SqlDataAdapter sda = new SqlDataAdapter(query, con);
+            SqlDataAdapter sda = new SqlDataAdapter(query, DBConnection.DatabaseConnection);
 
             try
             {
-                con.Open();
+                DBConnection.OpenConnection();
                 sda.Fill(ds);
             }
             catch (SqlException se)
@@ -217,7 +216,7 @@ namespace CollegeManagement.Location.AssigninLocation
             }
             finally
             {
-                con.Close();
+                DBConnection.CloseConnection();
             }
 
             cmbGroup.DataSource = ds.Tables[0];
@@ -228,13 +227,13 @@ namespace CollegeManagement.Location.AssigninLocation
         public void getSubgroup(int groupNo)
         { 
             string query = "Select sub_group_no from sub_group where group_id=(select group_id from groups where group_no = " + groupNo + " )";
-            con = new SqlConnection(DBConnection.connectionString);
+            
             DataSet ds = new DataSet();
-            SqlDataAdapter sda = new SqlDataAdapter(query, con);
+            SqlDataAdapter sda = new SqlDataAdapter(query, DBConnection.DatabaseConnection);
 
             try
             {
-                con.Open();
+                DBConnection.OpenConnection();
                 sda.Fill(ds);
             }
             catch (SqlException se)
@@ -243,7 +242,7 @@ namespace CollegeManagement.Location.AssigninLocation
             }
             finally
             {
-                con.Close();
+                DBConnection.CloseConnection();
             }
 
             cmbSubgroup.DataSource = ds.Tables[0];

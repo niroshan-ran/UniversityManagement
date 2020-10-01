@@ -11,7 +11,7 @@ namespace CollegeCore.Infrastructure
 {
     public class StudentCore
     {
-        SqlConnection con = new SqlConnection(DBConnection.connectionString);
+        
 
         #region Year & semester
 
@@ -21,13 +21,13 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Insert into year_sem(year,semester) values('" + objstudent.Year + "','" + objstudent.Semester + "')";
-                con = new SqlConnection(DBConnection.connectionString);
+                
 
-                con.Open();
+                DBConnection.OpenConnection();
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 count = cmd.ExecuteNonQuery();
-                con.Close();
+                DBConnection.CloseConnection();
             }
             catch(Exception ex)
             {
@@ -41,11 +41,11 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Select year,semester from year_sem";
-                con = new SqlConnection(DBConnection.connectionString);
+                
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataReader myReader;
-                con.Open();
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
                 List<string> weekdayArray = new List<string>();
 
@@ -56,7 +56,7 @@ namespace CollegeCore.Infrastructure
                     objStudent.Semester = myReader["semester"].ToString();
                     listStudent.Add(objStudent);
                 }
-                con.Close();
+                DBConnection.CloseConnection();
             }
             catch (Exception ex)
             {
@@ -72,13 +72,13 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Update year_sem SET year = '"+objstudent.Year+"' , semester = '"+objstudent.Semester+ "' where year = '" + objPrevStd.Year + "' and semester = '"+objPrevStd.Semester+"'";
-                con = new SqlConnection(DBConnection.connectionString);
+                
 
-                con.Open();
-                SqlCommand cmd = new SqlCommand(Query, con);
+                DBConnection.OpenConnection();
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
 
                 count = cmd.ExecuteNonQuery();
-                con.Close();
+                DBConnection.CloseConnection();
             }
             catch (Exception ex)
             {
@@ -92,14 +92,14 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Delete from year_sem where year = '"+objStudent.Year+"' and semester = '"+objStudent.Semester+"'";
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                
 
-                con.Open();
+                DBConnection.OpenConnection();
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
 
                 count = cmd.ExecuteNonQuery();
-                con.Close();
+                DBConnection.CloseConnection();
             }
             catch (Exception ex)
             {
@@ -115,13 +115,13 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Insert into program(code,name,description) values('" + objstudent.ProgramCode + "','" + objstudent.ProgramName + "','"+objstudent.ProgramDescription+"')";
-                con = new SqlConnection(DBConnection.connectionString);
+                
 
-                con.Open();
+                DBConnection.OpenConnection();
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 count = cmd.ExecuteNonQuery();
-                con.Close();
+                DBConnection.CloseConnection();
             }
             catch (Exception ex)
             {
@@ -135,11 +135,11 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Select code,name,description from program";
-                con = new SqlConnection(DBConnection.connectionString);
+                
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataReader myReader;
-                con.Open();
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
@@ -150,7 +150,7 @@ namespace CollegeCore.Infrastructure
                     objStudent.ProgramDescription = myReader["description"].ToString();
                     listStudent.Add(objStudent);
                 }
-                con.Close();
+                DBConnection.CloseConnection();
             }
             catch (Exception ex)
             {
@@ -166,13 +166,13 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Update program SET code = '" + objstudent.ProgramCode + "' , name = '" + objstudent.ProgramName + "', description='"+objstudent.ProgramDescription+"' where code = '" + objPrevStd.ProgramCode+"' ";
-                con = new SqlConnection(DBConnection.connectionString);
+                
 
-                con.Open();
-                SqlCommand cmd = new SqlCommand(Query, con);
+                DBConnection.OpenConnection();
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
 
                 count = cmd.ExecuteNonQuery();
-                con.Close();
+                DBConnection.CloseConnection();
             }
             catch (Exception ex)
             {
@@ -186,13 +186,13 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Delete from program where code = '" + objStudent.ProgramCode+"'" ;
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                
 
-                con.Open();
+                DBConnection.OpenConnection();
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 count = cmd.ExecuteNonQuery();
-                con.Close();
+                DBConnection.CloseConnection();
             }
             catch (Exception ex)
             {
@@ -209,16 +209,16 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Select distinct year from year_sem";
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataAdapter myAdapter = new SqlDataAdapter();
                 DataRow row = dt.NewRow();
                 myAdapter.SelectCommand = cmd;
-                con.Open();
+                DBConnection.OpenConnection();
                 myAdapter.Fill(dt);
-                con.Close();
-                con.Close();
+                DBConnection.CloseConnection();
+                DBConnection.CloseConnection();
                 //row[0] = 0;
                 //row[1] = "--Select--";
             }
@@ -235,15 +235,15 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Select semester from year_sem where year = '"+year+"'";
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataAdapter myAdapter = new SqlDataAdapter();
                 DataRow row = dt.NewRow();
                 myAdapter.SelectCommand = cmd;
-                con.Open();
+                DBConnection.OpenConnection();
                 myAdapter.Fill(dt);
-                con.Close();
+                DBConnection.CloseConnection();
                 //DataRow row = dt.NewRow();
                 //row[0] = 0;
                 //row[1] = "--Select--";
@@ -261,15 +261,15 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Select code from program";
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataAdapter myAdapter = new SqlDataAdapter();
                 DataRow row = dt.NewRow();
                 myAdapter.SelectCommand = cmd;
-                con.Open();
+                DBConnection.OpenConnection();
                 myAdapter.Fill(dt);
-                con.Close();
+                DBConnection.CloseConnection();
                 //DataRow row = dt.NewRow();
                 //row[0] = 0;
                 //row[1] = "--Select--";
@@ -286,17 +286,18 @@ namespace CollegeCore.Infrastructure
             int count = 0;
             try
             {
-                string Query = "Insert into groups (group_id,year,semester,program,group_no) values('" + objstudent.GrouID + "','" + objstudent.Year + "','" + objstudent.Semester + "','" + objstudent.Program + "'," + objstudent.GroupNo + ")";
-                con = new SqlConnection(DBConnection.connectionString);
+                string Query = "Insert into groups (group_id,Year,semester,program,group_no) values('" + objstudent.GrouID + "','" + objstudent.Year + "','" + objstudent.Semester + "','" + objstudent.Program + "'," + objstudent.GroupNo + ");";
 
-                con.Open();
-                SqlCommand cmd = new SqlCommand(Query, con);
+                Console.WriteLine(Query);
+                DBConnection.OpenConnection();
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 count = cmd.ExecuteNonQuery();
-                con.Close();
+                
+                DBConnection.CloseConnection();
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex);
             }
         }
 
@@ -306,24 +307,24 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Select * from groups";
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataReader myReader;
-                con.Open();
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
                 {
                     GroupModel objStudent = new GroupModel();
                     objStudent.GrouID = myReader["group_id"].ToString();
-                    objStudent.Year = myReader["year"].ToString();
+                    objStudent.Year = myReader["Year"].ToString();
                     objStudent.Semester = myReader["semester"].ToString();
                     objStudent.Program = myReader["program"].ToString();
                     objStudent.GroupNo = Convert.ToInt32(myReader["group_no"].ToString());
                     listStudent.Add(objStudent);
                 }
-                con.Close();
+                DBConnection.CloseConnection();
             }
             catch (Exception ex)
             {
@@ -338,13 +339,13 @@ namespace CollegeCore.Infrastructure
             int count = 0;
             try
             {
-                string Query = "Update groups SET group_id = '" + objstudent.GrouID + "' , year = '" + objstudent.Year + "', semester='" + objstudent.Semester + "', program= '" + objstudent.Program + "' , group_no='" + objstudent.GroupNo + "'  where group_id = '" + objPrevStd.GrouID +"'";
-                con = new SqlConnection(DBConnection.connectionString);
+                string Query = "Update groups SET group_id = '" + objstudent.GrouID + "' , Year = '" + objstudent.Year + "', semester='" + objstudent.Semester + "', program= '" + objstudent.Program + "' , group_no='" + objstudent.GroupNo + "'  where group_id = '" + objPrevStd.GrouID +"'";
+                
 
-                con.Open();
-                SqlCommand cmd = new SqlCommand(Query, con);
+                DBConnection.OpenConnection();
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 count = cmd.ExecuteNonQuery();
-                con.Close();
+                DBConnection.CloseConnection();
             }
             catch (Exception ex)
             {
@@ -358,12 +359,12 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Delete from groups where group_id = '" + objStudent.GrouID + "'";
-                con = new SqlConnection(DBConnection.connectionString);
+                
 
-                con.Open();
-                SqlCommand cmd = new SqlCommand(Query, con);
+                DBConnection.OpenConnection();
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 count = cmd.ExecuteNonQuery();
-                con.Close();
+                DBConnection.CloseConnection();
 
             }
             catch (Exception ex)
@@ -382,15 +383,15 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Select group_id from groups";
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataAdapter myAdapter = new SqlDataAdapter();
                 DataRow row = dt.NewRow();
                 myAdapter.SelectCommand = cmd;
-                con.Open();
+                DBConnection.OpenConnection();
                 myAdapter.Fill(dt);
-                con.Close();
+                DBConnection.CloseConnection();
 
                 //DataRow row = dt.NewRow();
                 //row[0] = 0;
@@ -409,17 +410,17 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Insert into sub_group(sub_group_id,group_id,sub_group_no) values('" + objstudent.SubGroupID + "','" + objstudent.GrouID + "','" + objstudent.SubGroupNo + "' )";
-                con = new SqlConnection(DBConnection.connectionString);
+                
 
-                con.Open();
-                SqlCommand cmd = new SqlCommand(Query, con);
+                DBConnection.OpenConnection();
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 count = cmd.ExecuteNonQuery();
-                con.Close();
+                DBConnection.CloseConnection();
 
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex);
             }
         }
 
@@ -429,11 +430,11 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Select * from sub_group";
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataReader myReader;
-                con.Open();
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
@@ -459,12 +460,12 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Update sub_group SET sub_group_id = '" + objstudent.SubGroupID + "' , group_id = '" + objstudent.GrouID + "', sub_group_no='" + objstudent.SubGroupNo + "'  where sub_group_id = '" + objPrevStd.SubGroupID + "'";
-                con = new SqlConnection(DBConnection.connectionString);
+                
 
-                con.Open();
-                SqlCommand cmd = new SqlCommand(Query, con);
+                DBConnection.OpenConnection();
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 count = cmd.ExecuteNonQuery();
-                con.Close();
+                DBConnection.CloseConnection();
 
             }
             catch (Exception ex)
@@ -479,12 +480,12 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Delete from sub_group where sub_group_id = '" + objStudent.SubGroupID + "'";
-                con = new SqlConnection(DBConnection.connectionString);
+                
 
-                con.Open();
-                SqlCommand cmd = new SqlCommand(Query, con);
+                DBConnection.OpenConnection();
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 count = cmd.ExecuteNonQuery();
-                con.Close();
+                DBConnection.CloseConnection();
 
              
 

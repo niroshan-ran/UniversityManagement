@@ -17,7 +17,6 @@ namespace CollegeManagement.Location.AssigninLocation
     public partial class TagAssign : Form
     {
         AssignRoomController objTagName = new AssignRoomController();
-        SqlConnection con;
         string tag,building,room;
         AssignRooms objCurrentAssignTag = new AssignRooms();
 
@@ -87,13 +86,13 @@ namespace CollegeManagement.Location.AssigninLocation
         public void getTagDetails()
         {
             string query = "Select Building from rooms where Room_Type ='" + tag + "'";
-            con = new SqlConnection(DBConnection.connectionString);
+            
             DataSet ds = new DataSet();
-            SqlDataAdapter sda = new SqlDataAdapter(query, con);
+            SqlDataAdapter sda = new SqlDataAdapter(query, DBConnection.DatabaseConnection);
 
             try
             {
-                con.Open();
+                DBConnection.OpenConnection();
                 sda.Fill(ds);
             }
             catch (SqlException se)
@@ -102,7 +101,7 @@ namespace CollegeManagement.Location.AssigninLocation
             }
             finally
             {
-                con.Close();
+                DBConnection.CloseConnection();
             }
 
             comboBox2.DataSource = ds.Tables[0];
@@ -113,13 +112,13 @@ namespace CollegeManagement.Location.AssigninLocation
         public void getTagRoom(string tag, string building)
         {
             string query = "Select Room_Name from rooms where Room_Type ='" + tag + "' and Building='" + building + "'";
-            con = new SqlConnection(DBConnection.connectionString);
+            
             DataSet ds = new DataSet();
-            SqlDataAdapter sda = new SqlDataAdapter(query, con);
+            SqlDataAdapter sda = new SqlDataAdapter(query, DBConnection.DatabaseConnection);
 
             try
             {
-                con.Open();
+                DBConnection.OpenConnection();
                 sda.Fill(ds);
             }
             catch (SqlException se)
@@ -128,7 +127,7 @@ namespace CollegeManagement.Location.AssigninLocation
             }
             finally
             {
-                con.Close();
+                DBConnection.CloseConnection();
             }
 
             comboBox3.DataSource = ds.Tables[0];

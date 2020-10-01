@@ -8,7 +8,7 @@ namespace CollegeCore.Infrastructure
 {
     public class WorkingDaysHoursCore
     {
-        readonly SqlConnection con = new SqlConnection(DBConnection.connectionString);
+        
 
         public int SaveTimeSlot(TimeSlot timeSlots)
         {
@@ -19,11 +19,11 @@ namespace CollegeCore.Infrastructure
             try
             {
 
-                con.Open();
+                DBConnection.OpenConnection();
 
                 
 
-                SqlCommand cmd2 = new SqlCommand(CommonConstants.QUERY_GET_TIMESLOT, con);
+                SqlCommand cmd2 = new SqlCommand(CommonConstants.QUERY_GET_TIMESLOT, DBConnection.DatabaseConnection);
 
                 cmd2.Parameters.AddWithValue(CommonConstants.PARAMETER_DAY_OF_THE_WEEK, timeSlots.GetDay_of_the_Week());
                 cmd2.Parameters.AddWithValue(CommonConstants.PARAMETER_START_TIME, timeSlots.GetStart_Time());
@@ -35,7 +35,7 @@ namespace CollegeCore.Infrastructure
                 if (reader.Read())
                 {
                     reader.Close();
-                    con.Close();
+                    DBConnection.CloseConnection();
                     return 0;
                     
                 }
@@ -44,12 +44,12 @@ namespace CollegeCore.Infrastructure
 
                 reader.Close();
 
-                con.Close();
+                DBConnection.CloseConnection();
 
                 if (timeSlots.GetSlotType().Trim() == "Lunch Break") 
                 {
-                    con.Open();
-                    SqlCommand cmd3 = new SqlCommand(CommonConstants.QUERY_GET_LUNCH_BREAK_COUNT_FOR_THE_DAY, con);
+                    DBConnection.OpenConnection();
+                    SqlCommand cmd3 = new SqlCommand(CommonConstants.QUERY_GET_LUNCH_BREAK_COUNT_FOR_THE_DAY, DBConnection.DatabaseConnection);
 
                     cmd3.Parameters.AddWithValue(CommonConstants.PARAMETER_DAY_OF_THE_WEEK, timeSlots.GetDay_of_the_Week());
                     cmd3.Parameters.AddWithValue(CommonConstants.PARAMETER_TYPE, timeSlots.GetSlotType());
@@ -63,7 +63,7 @@ namespace CollegeCore.Infrastructure
                     if (int.Parse(reader2[CommonConstants.COLUMN_BREAK_COUNT].ToString()) >= 1)
                     {
                         reader2.Close();
-                        con.Close();
+                        DBConnection.CloseConnection();
                         return -2;
                     }
                         
@@ -72,14 +72,14 @@ namespace CollegeCore.Infrastructure
 
 
 
-                    con.Close();
+                    DBConnection.CloseConnection();
                 }
 
                 
 
-                con.Open();
+                DBConnection.OpenConnection();
 
-                SqlCommand cmd = new SqlCommand(CommonConstants.QUERY_SAVE_TIMESLOT, con);
+                SqlCommand cmd = new SqlCommand(CommonConstants.QUERY_SAVE_TIMESLOT, DBConnection.DatabaseConnection);
 
                 cmd.Parameters.AddWithValue(CommonConstants.PARAMETER_DAY_OF_THE_WEEK, timeSlots.GetDay_of_the_Week());
                 cmd.Parameters.AddWithValue(CommonConstants.PARAMETER_START_TIME, timeSlots.GetStart_Time());
@@ -98,7 +98,7 @@ namespace CollegeCore.Infrastructure
                 try
                 {
                     Console.WriteLine(ex);
-                    con.Close();
+                    DBConnection.CloseConnection();
                 }
                 catch (Exception)
                 {
@@ -111,7 +111,7 @@ namespace CollegeCore.Infrastructure
             {
                 try
                 {
-                    con.Close();
+                    DBConnection.CloseConnection();
                 }
                 catch (Exception)
                 {
@@ -137,7 +137,7 @@ namespace CollegeCore.Infrastructure
                 foreach (WorkDays day in dayList)
                 {
 
-                    SqlCommand cmd = new SqlCommand(CommonConstants.QUERY_GET_ALL_WORK_DAYS, con);
+                    SqlCommand cmd = new SqlCommand(CommonConstants.QUERY_GET_ALL_WORK_DAYS, DBConnection.DatabaseConnection);
                     SqlDataReader myReader;
 
                     if (day.getDayChecked())
@@ -145,7 +145,7 @@ namespace CollegeCore.Infrastructure
 
                         bool status = true;
 
-                        con.Open();
+                        DBConnection.OpenConnection();
                         myReader = cmd.ExecuteReader();
 
                         while (myReader.Read())
@@ -162,15 +162,15 @@ namespace CollegeCore.Infrastructure
                             }
                         }
 
-                        con.Close();
+                        DBConnection.CloseConnection();
 
                         if (status)
                         {
                             // Add the day
 
-                            con.Open();
+                            DBConnection.OpenConnection();
 
-                            SqlCommand cmd2 = new SqlCommand(CommonConstants.QUERY_INSERT_WORK_DAY, con);
+                            SqlCommand cmd2 = new SqlCommand(CommonConstants.QUERY_INSERT_WORK_DAY, DBConnection.DatabaseConnection);
 
                             cmd2.Parameters.AddWithValue(CommonConstants.PARAMETER_DAY, day.GetDay_of_the_Week().Trim());
 
@@ -178,7 +178,7 @@ namespace CollegeCore.Infrastructure
 
                             int countValue = cmd2.ExecuteNonQuery();
 
-                            con.Close();
+                            DBConnection.CloseConnection();
 
 
                             if (countValue == -1)
@@ -198,7 +198,7 @@ namespace CollegeCore.Infrastructure
 
                         bool status = false;
 
-                        con.Open();
+                        DBConnection.OpenConnection();
                         myReader = cmd.ExecuteReader();
 
                         while (myReader.Read())
@@ -215,15 +215,15 @@ namespace CollegeCore.Infrastructure
                             }
                         }
 
-                        con.Close();
+                        DBConnection.CloseConnection();
 
                         if (status)
                         {
                             // Remove the day
 
-                            con.Open();
+                            DBConnection.OpenConnection();
 
-                            SqlCommand cmd2 = new SqlCommand(CommonConstants.QUERY_REMOVE_WORK_DAY, con);
+                            SqlCommand cmd2 = new SqlCommand(CommonConstants.QUERY_REMOVE_WORK_DAY, DBConnection.DatabaseConnection);
 
                             cmd2.Parameters.AddWithValue(CommonConstants.PARAMETER_DAY, day.GetDay_of_the_Week().Trim());
 
@@ -231,7 +231,7 @@ namespace CollegeCore.Infrastructure
 
                             int countValue = cmd2.ExecuteNonQuery();
 
-                            con.Close();
+                            DBConnection.CloseConnection();
 
 
                             if (countValue == -1)
@@ -262,7 +262,7 @@ namespace CollegeCore.Infrastructure
                 try
                 {
                     Console.WriteLine(ex);
-                    con.Close();
+                    DBConnection.CloseConnection();
                 }
                 catch (Exception)
                 {
@@ -274,7 +274,7 @@ namespace CollegeCore.Infrastructure
             {
                 try
                 {
-                    con.Close();
+                    DBConnection.CloseConnection();
                 }
                 catch (Exception)
                 {
@@ -296,7 +296,7 @@ namespace CollegeCore.Infrastructure
             try
             {
 
-                SqlDataAdapter dataAdapter = new SqlDataAdapter(CommonConstants.QUERY_GET_WORK_DAYS, con);
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(CommonConstants.QUERY_GET_WORK_DAYS, DBConnection.DatabaseConnection);
 
                 SqlCommandBuilder cmdBuilder = new SqlCommandBuilder(dataAdapter);
 
@@ -310,7 +310,7 @@ namespace CollegeCore.Infrastructure
                 try
                 {
                     Console.WriteLine(ex);
-                    con.Close();
+                    DBConnection.CloseConnection();
                 }
                 catch (Exception)
                 {
@@ -321,7 +321,7 @@ namespace CollegeCore.Infrastructure
             {
                 try
                 {
-                    con.Close();
+                    DBConnection.CloseConnection();
                 }
                 catch (Exception)
                 {
@@ -340,7 +340,7 @@ namespace CollegeCore.Infrastructure
             try
             {
 
-                SqlDataAdapter dataAdapter = new SqlDataAdapter(CommonConstants.QUERY_GET_WORK_HOURS, con);
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(CommonConstants.QUERY_GET_WORK_HOURS, DBConnection.DatabaseConnection);
 
                 SqlCommandBuilder cmdBuilder = new SqlCommandBuilder(dataAdapter);
 
@@ -354,7 +354,7 @@ namespace CollegeCore.Infrastructure
                 try
                 {
                     Console.WriteLine(ex);
-                    con.Close();
+                    DBConnection.CloseConnection();
                 }
                 catch (Exception)
                 {
@@ -365,7 +365,7 @@ namespace CollegeCore.Infrastructure
             {
                 try
                 {
-                    con.Close();
+                    DBConnection.CloseConnection();
                 }
                 catch (Exception)
                 {
@@ -384,9 +384,9 @@ namespace CollegeCore.Infrastructure
             try
             {
 
-                SqlCommand cmd = new SqlCommand(query, con);
+                SqlCommand cmd = new SqlCommand(query, DBConnection.DatabaseConnection);
                 SqlDataReader myReader;
-                con.Open();
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
@@ -408,7 +408,7 @@ namespace CollegeCore.Infrastructure
                 try
                 {
                     Console.WriteLine(ex);
-                    con.Close();
+                    DBConnection.CloseConnection();
                 }
                 catch (Exception)
                 {
@@ -419,7 +419,7 @@ namespace CollegeCore.Infrastructure
             {
                 try
                 {
-                    con.Close();
+                    DBConnection.CloseConnection();
                 }
                 catch (Exception)
                 {
@@ -442,9 +442,9 @@ namespace CollegeCore.Infrastructure
             try
             {
               
-                con.Open();
-                SqlCommand cmd = new SqlCommand(CommonConstants.QUERY_SAVE_WORK_HOURS, con);
-                SqlCommand cmd2 = new SqlCommand(CommonConstants.QUERY_REMOVE_TIMESLOTS_BY_DAY, con);
+                DBConnection.OpenConnection();
+                SqlCommand cmd = new SqlCommand(CommonConstants.QUERY_SAVE_WORK_HOURS, DBConnection.DatabaseConnection);
+                SqlCommand cmd2 = new SqlCommand(CommonConstants.QUERY_REMOVE_TIMESLOTS_BY_DAY, DBConnection.DatabaseConnection);
 
 
                 cmd.Parameters.AddWithValue(CommonConstants.PARAMETER_START_TIME, day.GetStart_Time());
@@ -470,7 +470,7 @@ namespace CollegeCore.Infrastructure
                 try
                 {
                     Console.WriteLine(ex);
-                    con.Close();
+                    DBConnection.CloseConnection();
                 }
                 catch (Exception)
                 {
@@ -482,7 +482,7 @@ namespace CollegeCore.Infrastructure
             {
                 try
                 {
-                    con.Close();
+                    DBConnection.CloseConnection();
                 }
                 catch (Exception)
                 {
@@ -503,8 +503,8 @@ namespace CollegeCore.Infrastructure
 
                 workHours.SetDay_of_the_Week(day);
 
-                con.Open();
-                SqlCommand cmd = new SqlCommand(CommonConstants.QUERY_GET_START_AND_END_TIME_BY_DAY, con);
+                DBConnection.OpenConnection();
+                SqlCommand cmd = new SqlCommand(CommonConstants.QUERY_GET_START_AND_END_TIME_BY_DAY, DBConnection.DatabaseConnection);
                 cmd.Parameters.AddWithValue(CommonConstants.PARAMETER_DAY_OF_THE_WEEK, workHours.GetDay_of_the_Week());
 
                 SqlDataReader myReader = cmd.ExecuteReader();
@@ -522,7 +522,7 @@ namespace CollegeCore.Infrastructure
                 try
                 {
                     Console.WriteLine(ex);
-                    con.Close();
+                    DBConnection.CloseConnection();
                 }
                 catch (Exception)
                 {
@@ -533,7 +533,7 @@ namespace CollegeCore.Infrastructure
             {
                 try
                 {
-                    con.Close();
+                    DBConnection.CloseConnection();
                 }
                 catch (Exception)
                 {
@@ -556,9 +556,9 @@ namespace CollegeCore.Infrastructure
 
                 string Query = "SELECT * FROM workingdays ORDER BY CASE [dayOfTheWeek] WHEN 'Monday' THEN 1 WHEN 'Tuesday' THEN 2 WHEN 'Wednesday' THEN 3 WHEN 'Thursday' THEN 4 WHEN 'Friday' THEN 5 WHEN 'Saturday' THEN 6 WHEN 'Sunday' THEN 7 END;";
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.connection);
                 SqlDataReader myReader;
-                con.Open();
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
                 //List<WorkHours> weekdayArray = new List<WorkHours>();
 
@@ -607,7 +607,7 @@ namespace CollegeCore.Infrastructure
             }
             finally
             {
-                con.Close();
+                DBConnection.CloseConnection();
             }
 
             return workDays;
@@ -628,7 +628,7 @@ namespace CollegeCore.Infrastructure
             try
             {
 
-                SqlDataAdapter dataAdapter = new SqlDataAdapter(CommonConstants.QUERY_GET_ALL_TIMESLOTS, con);
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(CommonConstants.QUERY_GET_ALL_TIMESLOTS, DBConnection.DatabaseConnection);
 
                 SqlCommandBuilder cmdBuilder = new SqlCommandBuilder(dataAdapter);
 
@@ -643,7 +643,7 @@ namespace CollegeCore.Infrastructure
                 try
                 {
                     Console.WriteLine(ex);
-                    con.Close();
+                    DBConnection.CloseConnection();
                 }
                 catch (Exception)
                 {
@@ -654,7 +654,7 @@ namespace CollegeCore.Infrastructure
             {
                 try
                 {
-                    con.Close();
+                    DBConnection.CloseConnection();
                 }
                 catch (Exception)
                 {
@@ -676,9 +676,9 @@ namespace CollegeCore.Infrastructure
             try
             {
 
-                con.Open();
+                DBConnection.OpenConnection();
 
-                SqlCommand cmd = new SqlCommand(CommonConstants.QUERY_REMOVE_TIMESLOT, con);
+                SqlCommand cmd = new SqlCommand(CommonConstants.QUERY_REMOVE_TIMESLOT, DBConnection.DatabaseConnection);
 
 
                 
@@ -697,7 +697,7 @@ namespace CollegeCore.Infrastructure
                 try
                 {
                     Console.WriteLine(ex);
-                    con.Close();
+                    DBConnection.CloseConnection();
                 }
                 catch (Exception)
                 {
@@ -709,7 +709,7 @@ namespace CollegeCore.Infrastructure
             {
                 try
                 {
-                    con.Close();
+                    DBConnection.CloseConnection();
                 }
                 catch (Exception)
                 {

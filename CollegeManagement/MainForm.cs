@@ -19,6 +19,7 @@ using CollegeManagement.Session;
 using CollegeManagement.AdvancedSession;
 using CollegeManagement.TimeTable;
 using System.Runtime.InteropServices;
+using CollegeCore;
 
 namespace CollegeManagement
 {
@@ -193,6 +194,7 @@ namespace CollegeManagement
 
             if (result.ToString().Equals("Yes"))
             {
+                DBConnection.CloseConnection();
                 Application.Exit();
             }
         }

@@ -20,14 +20,12 @@ namespace CollegeCore.Location
 
         RoomModel objCurrentRoom = new RoomModel();
 
-        SqlConnection con;
-
         public AddRoom()
 
         {
 
             InitializeComponent();
-           
+
             loadData();
 
             getBuildings();
@@ -254,7 +252,7 @@ namespace CollegeCore.Location
 
         private void gvRooms_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-           
+
         }
 
         private void gvRooms_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -300,19 +298,26 @@ namespace CollegeCore.Location
 
         private void cmbBuilding_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         public void getBuildings()
         {
+
+
             string query = "Select Building_Name from buildings";
-            con = new SqlConnection(DBConnection.connectionString);
+
             DataSet ds = new DataSet();
-            SqlDataAdapter sda = new SqlDataAdapter(query, con);
 
             try
             {
-                con.Open();
+
+                DBConnection.OpenConnection();
+
+                SqlDataAdapter sda = new SqlDataAdapter(query, DBConnection.DatabaseConnection);
+
+
+
                 sda.Fill(ds);
             }
             catch (SqlException se)
@@ -321,7 +326,7 @@ namespace CollegeCore.Location
             }
             finally
             {
-                con.Close();
+                DBConnection.CloseConnection();
             }
 
             cmbBuilding.DataSource = ds.Tables[0];

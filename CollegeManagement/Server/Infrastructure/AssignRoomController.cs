@@ -1,5 +1,5 @@
 ﻿using CollegeCore;
-using CollegeManagement.Model;
+using CollegeCore.Model;
 using CollegeManagement.Server.Model;
 using System;
 using System.Collections.Generic;
@@ -23,17 +23,17 @@ namespace CollegeManagement.Server.Infrastructure
                     "'"+ assignTagRoom.room + "')";
 
 
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataReader myReader;
-                con.Open();
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
                 {
                 }
-                con.Close();
+                DBConnection.CloseConnection();
 
                 return true;
 
@@ -55,17 +55,17 @@ namespace CollegeManagement.Server.Infrastructure
                     "'" + assignTagRoom.room + "')";
 
 
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataReader myReader;
-                con.Open();
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
                 {
                 }
-                con.Close();
+                DBConnection.CloseConnection();
 
                 return true;
 
@@ -90,17 +90,17 @@ namespace CollegeManagement.Server.Infrastructure
                 string Query = "Insert into AssignTagRoom(groupNo,tag,building,room) values(" + groupNonew + ",'" + assignTagRoom.tag + "', '" + assignTagRoom.building + "', '" + assignTagRoom.room + "')";
 
 
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataReader myReader;
-                con.Open();
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
                 {
                 }
-                con.Close();
+                DBConnection.CloseConnection();
 
                 return true;
 
@@ -118,17 +118,17 @@ namespace CollegeManagement.Server.Infrastructure
                 string Query = "Insert into AssignTagRoom(groupNo,subgroup,tag,building,room) values(" + assignTagRoom.groupNo + ",'" + assignTagRoom.subgroup + "','" + assignTagRoom.tag + "', '" + assignTagRoom.building + "', '" + assignTagRoom.room + "')";
 
 
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataReader myReader;
-                con.Open();
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
                 {
                 }
-                con.Close();
+                DBConnection.CloseConnection();
 
                 return true;
 
@@ -146,17 +146,17 @@ namespace CollegeManagement.Server.Infrastructure
                 string Query = "Insert into RoomSession(session_id,building,room) values(" + assignSessionRoom.session_id + ",'" + assignSessionRoom.building + "', '" + assignSessionRoom.room + "')";
 
 
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataReader myReader;
-                con.Open();
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
                 {
                 }
-                con.Close();
+                DBConnection.CloseConnection();
 
                 return true;
 
@@ -178,17 +178,17 @@ namespace CollegeManagement.Server.Infrastructure
                     "'" + assignTagRoom.room + "')";
 
 
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataReader myReader;
-                con.Open();
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
                 {
                 }
-                con.Close();
+                DBConnection.CloseConnection();
 
                 return true;
 
@@ -206,11 +206,11 @@ namespace CollegeManagement.Server.Infrastructure
             try
             {
                 string Query = "Select tag,building,room from AssignTagRoom";
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataReader myReader;
-                con.Open();
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
@@ -238,11 +238,11 @@ namespace CollegeManagement.Server.Infrastructure
             try
             {
                 string Query = "Select tag,building,room,lecturer from AssignTagRoom";
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataReader myReader;
-                con.Open();
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
@@ -272,11 +272,11 @@ namespace CollegeManagement.Server.Infrastructure
             {
                 
                 string Query = "Select tag,building,room,lecturer, groupNo,subgroup,subject from AssignTagRoom";
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+               
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataReader myReader;
-                con.Open();
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
@@ -316,11 +316,11 @@ namespace CollegeManagement.Server.Infrastructure
         //    try
         //    {
         //        string Query = "Select tag,building,room,groupNo,subgroup from AssignTagRoom";
-        //        SqlConnection con = new SqlConnection(DBConnection.connectionString);
+        //        SqlConnection DBConnection.connection = new SqlConnection(DBConnection.connectionString);
 
-        //        SqlCommand cmd = new SqlCommand(Query, con);
+        //        SqlCommand cmd = new SqlCommand(Query, DBConnection.connection);
         //        SqlDataReader myReader;
-        //        con.Open();
+        //        DBConnection.OpenConnection();
         //        myReader = cmd.ExecuteReader();
 
         //        while (myReader.Read())
@@ -350,11 +350,11 @@ namespace CollegeManagement.Server.Infrastructure
             try
             {
                 string Query = "Select tag,building,room,subject from AssignTagRoom";
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataReader myReader;
-                con.Open();
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
@@ -383,11 +383,11 @@ namespace CollegeManagement.Server.Infrastructure
             try
             {
                 string Query = "Select session_id,lecturer_id,subject_id,subject_code,tag_code,group_id,sub_group_id,student_count from Sessions where session_status != '2'";
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataReader myReader;
-                con.Open();
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
@@ -418,11 +418,11 @@ namespace CollegeManagement.Server.Infrastructure
             try
             {
                 string Query = "Select session_id,lecturer_id,subject_id,subject_code,tag_code,group_id,sub_group_id,student_count from Sessions where session_status = '2'";
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataReader myReader;
-                con.Open();
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
@@ -453,11 +453,11 @@ namespace CollegeManagement.Server.Infrastructure
             try
             {
                 string Query = "Select session_id,room,building from RoomSession";
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataReader myReader;
-                con.Open();
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())

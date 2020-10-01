@@ -1,5 +1,5 @@
 ﻿using CollegeCore;
-using CollegeManagement.Model;
+using CollegeCore.Model;
 using CollegeManagement.Server.Infrastructure;
 using CollegeManagement.Server.Model;
 using System;
@@ -19,7 +19,7 @@ namespace CollegeManagement.Location.AssigninLocation
     {
         AssignRoomController objRoomAssign = new AssignRoomController();
         AssignRoomToSessionModel objCurrent = new AssignRoomToSessionModel();
-        SqlConnection con;
+
 
         int studentCount,sessionID;
         string room,building;
@@ -109,13 +109,13 @@ namespace CollegeManagement.Location.AssigninLocation
         public void getSessionRoom(int count)
         {
             string query = "Select Room_Name from rooms where Capacity >=" + count + "";
-            con = new SqlConnection(DBConnection.connectionString);
+            
             DataSet ds = new DataSet();
-            SqlDataAdapter sda = new SqlDataAdapter(query, con);
+            SqlDataAdapter sda = new SqlDataAdapter(query, DBConnection.DatabaseConnection);
 
             try
             {
-                con.Open();
+                DBConnection.OpenConnection();
                 sda.Fill(ds);
             }
             catch (SqlException se)
@@ -124,7 +124,7 @@ namespace CollegeManagement.Location.AssigninLocation
             }
             finally
             {
-                con.Close();
+                DBConnection.CloseConnection();
             }
 
             cmbRoom.DataSource = ds.Tables[0];
@@ -183,13 +183,13 @@ namespace CollegeManagement.Location.AssigninLocation
         public void getSessionBuilding(string room)
         {
             string query = "Select Building from rooms where Room_Name ='" + room + "'";
-            con = new SqlConnection(DBConnection.connectionString);
+            
             DataSet ds = new DataSet();
-            SqlDataAdapter sda = new SqlDataAdapter(query, con);
+            SqlDataAdapter sda = new SqlDataAdapter(query, DBConnection.DatabaseConnection);
 
             try
             {
-                con.Open();
+                DBConnection.OpenConnection();
                 sda.Fill(ds);
             }
             catch (SqlException se)
@@ -198,7 +198,7 @@ namespace CollegeManagement.Location.AssigninLocation
             }
             finally
             {
-                con.Close();
+                DBConnection.CloseConnection();
             }
 
             cmbBuilding.DataSource = ds.Tables[0];

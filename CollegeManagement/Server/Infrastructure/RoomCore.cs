@@ -15,17 +15,17 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Insert into rooms(Room_Name,Room_Block,Building,Capacity,Room_Type) values('" + objRoom.Room_Name + "','" + objRoom.Room_Block + "','" + objRoom.Building + "','" + objRoom.Capacity + "','" + objRoom.Room_Type + "')";
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataReader myReader;
-                con.Open();
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
                 {
                 }
-                con.Close();
+                DBConnection.CloseConnection();
 
             }
             catch (Exception ex)
@@ -40,11 +40,11 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Select Room_Name,Room_Block,Building,Capacity,Room_Type from rooms";
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataReader myReader;
-                con.Open();
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
@@ -71,17 +71,17 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Update rooms SET room_name = '" + objRoom.Room_Name + "' , room_block = '" + objRoom.Room_Block + "' , Building = '" + objRoom.Building + "' , Capacity = '" + objRoom.Capacity + "' , room_type = '" + objRoom.Room_Type + "' where room_name = '" + objPrevRoom.Room_Name + "' and room_block = '" + objPrevRoom.Room_Block + "' and Building = '" + objPrevRoom.Building + "' and Capacity = '" + objPrevRoom.Capacity + "' and room_type = '" + objPrevRoom.Room_Type + "'";
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataReader myReader;
-                con.Open();
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
                 {
                 }
-                con.Close();
+                DBConnection.CloseConnection();
 
             }
             catch (Exception ex)
@@ -95,17 +95,17 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Delete from rooms where room_name = '" + objRoom.Room_Name + "' and room_block = '" + objRoom.Room_Block + "' and Building = '" + objRoom.Building + "' and Capacity = '" + objRoom.Capacity + "' and room_type = '" + objRoom.Room_Type + "'";
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataReader myReader;
-                con.Open();
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
                 {
                 }
-                con.Close();
+                DBConnection.CloseConnection();
 
             }
             catch (Exception ex)
@@ -119,11 +119,11 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Select tag,building,room,lecturer from AssignTagRoom";
-                SqlConnection con = new SqlConnection(DBConnection.connectionString);
+                
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataReader myReader;
-                con.Open();
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())

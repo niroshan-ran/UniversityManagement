@@ -186,11 +186,11 @@ namespace CollegeManagement.Server.Infrastructure
 
         void FillContent()
         {
-            SqlConnection con = new SqlConnection(DBConnection.connectionString);
+            
 
-            con.Open();
+            DBConnection.OpenConnection();
 
-            SqlCommand command = new SqlCommand(CommonConstants.QUERY_GET_ALL_TIMESLOTS, con);
+            SqlCommand command = new SqlCommand(CommonConstants.QUERY_GET_ALL_TIMESLOTS, DBConnection.DatabaseConnection);
 
             SqlDataReader sqlDataReader = command.ExecuteReader();
 
@@ -242,7 +242,7 @@ namespace CollegeManagement.Server.Infrastructure
                 this.table.SetEdge(0, this.table.Rows.Count - 2, 6, 2, Edge.Box, BorderStyle.Single, 0.75);
             }
 
-            con.Close();
+            DBConnection.CloseConnection();
 
             // Add an invisible row as a space line to the table
             Row row = this.table.AddRow();
