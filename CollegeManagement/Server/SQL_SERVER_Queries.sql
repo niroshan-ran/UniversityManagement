@@ -133,7 +133,7 @@ CREATE TABLE [dbo].[Sessions] (
     PRIMARY KEY CLUSTERED ([session_id] ASC)
 );
 
-
+GO
 CREATE TABLE [dbo].[AssignTagRoom] (
     [trid]     INT           IDENTITY (1, 1) NOT NULL,
     [tag]      NVARCHAR (50) NULL,
@@ -145,14 +145,14 @@ CREATE TABLE [dbo].[AssignTagRoom] (
     PRIMARY KEY CLUSTERED ([trid] ASC)
 );
 
-
+GO
 CREATE TABLE [dbo].[buildings] (
     [Building_Name]    NVARCHAR (50) NOT NULL,
     [Block_Floor_Name] NVARCHAR (50) NULL,
     [No_of_Rooms]      INT           NULL,
     PRIMARY KEY CLUSTERED ([Building_Name] ASC)
 );
-
+GO
 CREATE TABLE [dbo].[rooms] (
     [Room_Name]  NVARCHAR (50) NULL,
     [Room_Block] NVARCHAR (50) NULL,
@@ -163,9 +163,25 @@ CREATE TABLE [dbo].[rooms] (
     PRIMARY KEY CLUSTERED ([rid] ASC)
 );
 
-
-
-
+GO
+CREATE TABLE [dbo].[ReservedRoom] (
+    [reservedId] INT           IDENTITY (1, 1) NOT NULL,
+    [session_id] INT           NULL,
+    [start_time] NVARCHAR (50) NULL,
+    [end_time]   NVARCHAR (50) NULL,
+    [room]       NVARCHAR (50) NULL,
+    [building]   NVARCHAR (50) NULL,
+    [day]        NVARCHAR (50) NULL,
+    PRIMARY KEY CLUSTERED ([reservedId] ASC)
+);
+GO
+CREATE TABLE [dbo].[RoomSession] (
+    [rsid]       INT           IDENTITY (1, 1) NOT NULL,
+    [session_id] INT           NOT NULL,
+    [room]       NVARCHAR (50) NOT NULL,
+    [building]   NVARCHAR (50) NOT NULL,
+    PRIMARY KEY CLUSTERED ([rsid] ASC)
+);
 
 
 
