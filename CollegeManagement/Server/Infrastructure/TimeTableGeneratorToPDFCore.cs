@@ -28,21 +28,20 @@ namespace CollegeManagement.Server.Infrastructure
     class TimeTableGeneratorToPDFCore
     {
         private Document document = null;
-        private TextFrame addressFrame = null;
         private Table table = null;
-        public Document CreateDocument()
+        public Document CreateDocument(string query, string value)
         {
             // Create a new MigraDoc document
             this.document = new Document();
-            this.document.Info.Title = "A sample invoice";
-            this.document.Info.Subject = "Demonstrates how to create an invoice.";
-            this.document.Info.Author = "Stefan Lange";
+            this.document.Info.Title = "A Sample Time Table";
+            this.document.Info.Subject = "Demonstrates how to generate a timetable.";
+            this.document.Info.Author = "Niroshan Ranasinghe";
 
             DefineStyles();
 
-            CreatePage();
+            CreatePage(value);
 
-            FillContent();
+            FillContent(query, value);
 
             return this.document;
         }
@@ -51,20 +50,9 @@ namespace CollegeManagement.Server.Infrastructure
         {
             // Get the predefined style Normal.
             Style style = this.document.Styles["Normal"];
-            // Because all styles are derived from Normal, the next line changes the 
-            // font of the whole document. Or, more exactly, it changes the font of
-            // all styles and paragraphs that do not redefine the font.
-            style.Font.Name = "Verdana";
-
-            style = this.document.Styles[StyleNames.Header];
-            style.ParagraphFormat.AddTabStop("16cm", TabAlignment.Right);
-
-            style = this.document.Styles[StyleNames.Footer];
-            style.ParagraphFormat.AddTabStop("8cm", TabAlignment.Center);
 
             // Create a new style called Table based on style Normal
             style = this.document.Styles.AddStyle("Table", "Normal");
-            style.Font.Name = "Verdana";
             style.Font.Name = "Times New Roman";
             style.Font.Size = 9;
 
@@ -72,239 +60,258 @@ namespace CollegeManagement.Server.Infrastructure
             style = this.document.Styles.AddStyle("Reference", "Normal");
             style.ParagraphFormat.SpaceBefore = "5mm";
             style.ParagraphFormat.SpaceAfter = "5mm";
-            style.ParagraphFormat.TabStops.AddTabStop("16cm", TabAlignment.Right);
+            style.ParagraphFormat.TabStops.AddTabStop("30.5cm", TabAlignment.Right);
         }
 
-        void CreatePage()
+        void CreatePage(string value)
         {
             // Each MigraDoc document needs at least one section.
             Section section = this.document.AddSection();
 
-            // Put a logo in the header
-            Image image = section.Headers.Primary.AddImage("../../PowerBooks.png");
-            image.Height = "2.5cm";
-            image.LockAspectRatio = true;
-            image.RelativeVertical = RelativeVertical.Line;
-            image.RelativeHorizontal = RelativeHorizontal.Margin;
-            image.Top = ShapePosition.Top;
-            image.Left = ShapePosition.Right;
-            image.WrapFormat.Style = WrapStyle.Through;
 
-            // Create footer
-            Paragraph paragraph = section.Footers.Primary.AddParagraph();
-            paragraph.AddText("PowerBooks Inc · Sample Street 42 · 56789 Cologne · Germany");
-            paragraph.Format.Font.Size = 9;
-            paragraph.Format.Alignment = ParagraphAlignment.Center;
-
-            // Create the text frame for the address
-            this.addressFrame = section.AddTextFrame();
-            this.addressFrame.Height = "3.0cm";
-            this.addressFrame.Width = "7.0cm";
-            this.addressFrame.Left = ShapePosition.Left;
-            this.addressFrame.RelativeHorizontal = RelativeHorizontal.Margin;
-            this.addressFrame.Top = "5.0cm";
-            this.addressFrame.RelativeVertical = RelativeVertical.Page;
-
-            // Put sender in address frame
-            paragraph = this.addressFrame.AddParagraph("PowerBooks Inc · Sample Street 42 · 56789 Cologne");
-            paragraph.Format.Font.Name = "Times New Roman";
-            paragraph.Format.Font.Size = 7;
-            paragraph.Format.SpaceAfter = 3;
-
-            // Add the print date field
-            paragraph = section.AddParagraph();
-            paragraph.Format.SpaceBefore = "8cm";
-            paragraph.Style = "Reference";
-            paragraph.AddFormattedText("INVOICE", TextFormat.Bold);
-            paragraph.AddTab();
-            paragraph.AddText("Cologne, ");
-            paragraph.AddDateField("dd.MM.yyyy");
 
             // Create the item table
             this.table = section.AddTable();
             this.table.Style = "Table";
-            this.table.Borders.Color = Color.FromRgb(0,0,0);
+            this.table.Borders.Color = Color.Parse("#000000");
             this.table.Borders.Width = 0.25;
             this.table.Borders.Left.Width = 0.5;
             this.table.Borders.Right.Width = 0.5;
             this.table.Rows.LeftIndent = 0;
 
             // Before you can add a row, you must define the columns
-            Column column = this.table.AddColumn("1cm");
-            column.Format.Alignment = ParagraphAlignment.Center;
-
-            column = this.table.AddColumn("2.5cm");
-            column.Format.Alignment = ParagraphAlignment.Right;
-
-            column = this.table.AddColumn("3cm");
-            column.Format.Alignment = ParagraphAlignment.Right;
-
-            column = this.table.AddColumn("3.5cm");
-            column.Format.Alignment = ParagraphAlignment.Right;
+            Column column = this.table.AddColumn("12.5mm");
+            column.Format.Alignment = ParagraphAlignment.Left;
 
             column = this.table.AddColumn("2cm");
-            column.Format.Alignment = ParagraphAlignment.Center;
+            column.Format.Alignment = ParagraphAlignment.Left;
 
-            column = this.table.AddColumn("4cm");
-            column.Format.Alignment = ParagraphAlignment.Right;
+            column = this.table.AddColumn("2cm");
+            column.Format.Alignment = ParagraphAlignment.Left;
+
+            column = this.table.AddColumn("2cm");
+            column.Format.Alignment = ParagraphAlignment.Left;
+
+            column = this.table.AddColumn("2cm");
+            column.Format.Alignment = ParagraphAlignment.Left;
+
+            column = this.table.AddColumn("2cm");
+            column.Format.Alignment = ParagraphAlignment.Left;
+
+            column = this.table.AddColumn("2cm");
+            column.Format.Alignment = ParagraphAlignment.Left;
+
+            column = this.table.AddColumn("2cm");
+            column.Format.Alignment = ParagraphAlignment.Left;
+
+
 
             // Create the header of the table
             Row row = this.table.AddRow();
             row.HeadingFormat = true;
             row.Format.Alignment = ParagraphAlignment.Center;
             row.Format.Font.Bold = true;
-            row.Shading.Color = Color.FromRgb(0,0,32);
-            row.Cells[0].AddParagraph("Item");
-            row.Cells[0].Format.Font.Bold = false;
-            row.Cells[0].Format.Alignment = ParagraphAlignment.Left;
-            row.Cells[0].VerticalAlignment = VerticalAlignment.Bottom;
-            row.Cells[0].MergeDown = 1;
-            row.Cells[1].AddParagraph("Title and Author");
-            row.Cells[1].Format.Alignment = ParagraphAlignment.Left;
-            row.Cells[1].MergeRight = 3;
-            row.Cells[5].AddParagraph("Extended Price");
-            row.Cells[5].Format.Alignment = ParagraphAlignment.Left;
-            row.Cells[5].VerticalAlignment = VerticalAlignment.Bottom;
-            row.Cells[5].MergeDown = 1;
 
-            row = table.AddRow();
+            row.Cells[0].AddParagraph("");
+            row.Cells[0].MergeDown = 1;
+            row.Cells[1].AddParagraph(value);
+            row.Cells[1].Format.Alignment = ParagraphAlignment.Center;
+            row.Cells[1].MergeRight = 6;
+
+
+            row = this.table.AddRow();
             row.HeadingFormat = true;
             row.Format.Alignment = ParagraphAlignment.Center;
             row.Format.Font.Bold = true;
-            row.Shading.Color = Color.FromRgb(0, 0, 32);
-            row.Cells[1].AddParagraph("Quantity");
-            row.Cells[1].Format.Alignment = ParagraphAlignment.Left;
-            row.Cells[2].AddParagraph("Unit Price");
-            row.Cells[2].Format.Alignment = ParagraphAlignment.Left;
-            row.Cells[3].AddParagraph("Discount (%)");
-            row.Cells[3].Format.Alignment = ParagraphAlignment.Left;
-            row.Cells[4].AddParagraph("Taxable");
-            row.Cells[4].Format.Alignment = ParagraphAlignment.Left;
 
-            this.table.SetEdge(0, 0, 6, 2, Edge.Box, BorderStyle.Single, 0.75, Color.Empty);
+            row.Cells[1].AddParagraph("Monday");
+            row.Cells[1].Format.Alignment = ParagraphAlignment.Center;
+            row.Cells[2].AddParagraph("Tuesday");
+            row.Cells[2].Format.Alignment = ParagraphAlignment.Center;
+            row.Cells[3].AddParagraph("Wednesday");
+            row.Cells[3].Format.Alignment = ParagraphAlignment.Center;
+            row.Cells[4].AddParagraph("Thursday");
+            row.Cells[4].Format.Alignment = ParagraphAlignment.Center;
+            row.Cells[5].AddParagraph("Friday");
+            row.Cells[5].Format.Alignment = ParagraphAlignment.Center;
+            row.Cells[6].AddParagraph("Saturday");
+            row.Cells[6].Format.Alignment = ParagraphAlignment.Center;
+            row.Cells[7].AddParagraph("Sunday");
+            row.Cells[7].Format.Alignment = ParagraphAlignment.Center;
+
+            
         }
 
-        void FillContent()
+        public List<string> GetData(string query)
         {
-            
+            List<string> stringlist = new List<string>();
+
+            try
+            {
+
+                SqlCommand cmd = new SqlCommand(query, DBConnection.DatabaseConnection);
+                SqlDataReader myReader;
+                DBConnection.OpenConnection();
+                myReader = cmd.ExecuteReader();
+
+                while (myReader.Read())
+                {
+
+
+                    stringlist.Add(myReader[0].ToString());
+
+                }
+
+
+
+
+            }
+            catch (Exception ex)
+            {
+                try
+                {
+                    Console.WriteLine(ex);
+                    DBConnection.CloseConnection();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+            finally
+            {
+                try
+                {
+                    DBConnection.CloseConnection();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+
+            return stringlist;
+        }
+
+        void FillContent(string query, string value)
+        {
+
 
             DBConnection.OpenConnection();
 
-            SqlCommand command = new SqlCommand(CommonConstants.QUERY_GET_ALL_TIMESLOTS, DBConnection.DatabaseConnection);
+            SqlCommand command = new SqlCommand(query, DBConnection.DatabaseConnection);
+
+            command.Parameters.AddWithValue(CommonConstants.PARAMETER_COMMON, value);
 
             SqlDataReader sqlDataReader = command.ExecuteReader();
 
-            
+            Row row1 = this.table.AddRow();
+            Row row2 = this.table.AddRow();
+            Row row3 = this.table.AddRow();
+            Row row4 = this.table.AddRow();
+            Row row5 = this.table.AddRow();
+            Row row6 = this.table.AddRow();
+            Row row7 = this.table.AddRow();
+            Row row8 = this.table.AddRow();
+            Row row9 = this.table.AddRow();
+            Row row10 = this.table.AddRow();
+            Row row11 = this.table.AddRow();
 
 
-            // Fill address in address text frame
-            Paragraph paragraph = this.addressFrame.AddParagraph();
-            paragraph.AddText("Test 150");
-            paragraph.AddLineBreak();
-            paragraph.AddText("Test 150");
-            paragraph.AddLineBreak();
-            paragraph.AddText("Test 150");
 
-            // Iterate the invoice items
-            double totalExtendedPrice = 0;
+
+
+            row1.Cells[0].AddParagraph("08:30");
+            row1.Cells[1].AddParagraph("");
+            row1.Cells[1].MergeRight = 6;
+
+            row2.Cells[0].AddParagraph("09:30");
+            row2.Cells[1].AddParagraph("");
+            row2.Cells[1].MergeRight = 6;
+
+            row3.Cells[0].AddParagraph("10:30");
+            row3.Cells[1].AddParagraph("");
+            row3.Cells[1].MergeRight = 6;
+
+            row4.Cells[0].AddParagraph("11:30");
+            row4.Cells[1].AddParagraph("");
+            row4.Cells[1].MergeRight = 6;
+
+            row5.Cells[0].AddParagraph("12:30");
+            row5.Cells[1].AddParagraph("");
+            row5.Cells[1].MergeRight = 6;
+
+            row6.Cells[0].AddParagraph("13:30");
+            row6.Cells[1].AddParagraph("");
+            row6.Cells[1].MergeRight = 6;
+
+            row7.Cells[0].AddParagraph("14:30");
+            row7.Cells[1].AddParagraph("");
+            row7.Cells[1].MergeRight = 6;
+
+            row8.Cells[0].AddParagraph("15:30");
+            row8.Cells[1].AddParagraph("");
+            row8.Cells[1].MergeRight = 6;
+
+            row9.Cells[0].AddParagraph("16:30");
+            row9.Cells[1].AddParagraph("");
+            row9.Cells[1].MergeRight = 6;
+
+            row10.Cells[0].AddParagraph("17:30");
+            row10.Cells[1].AddParagraph("");
+            row10.Cells[1].MergeRight = 6;
+
+            row11.Cells[0].AddParagraph("");
+            row11.Cells[1].AddParagraph("Time Table Generated on " + DateTime.Now.ToString());
+            row11.Cells[1].MergeRight = 6;
+
+
+
             while (sqlDataReader.Read())
             {
 
 
 
-                // Each item fills two rows
-                Row row1 = this.table.AddRow();
-                Row row2 = this.table.AddRow();
-                row1.TopPadding = 1.5;
-                row1.Cells[0].Shading.Color = Color.FromRgb(10, 10, 10);
-                row1.Cells[0].VerticalAlignment = VerticalAlignment.Center;
-                row1.Cells[0].MergeDown = 1;
-                row1.Cells[1].Format.Alignment = ParagraphAlignment.Left;
-                row1.Cells[1].MergeRight = 3;
-                row1.Cells[5].Shading.Color = Color.FromRgb(10, 10, 10);
-                row1.Cells[5].MergeDown = 1;
+                switch (sqlDataReader[0].ToString().ToUpper())
+                {
+                    case "MONDAY":
 
-                row1.Cells[0].AddParagraph(sqlDataReader[0].ToString());
-                paragraph = row1.Cells[1].AddParagraph();
-                paragraph.AddFormattedText(sqlDataReader[1].ToString(), TextFormat.Bold);
-                paragraph.AddFormattedText(" by ", TextFormat.Italic);
-                paragraph.AddText("Test 150");
-                row2.Cells[1].AddParagraph(sqlDataReader[2].ToString());
-                row2.Cells[2].AddParagraph("Test 150" + " €");
-                row2.Cells[3].AddParagraph("Test 150");
-                row2.Cells[4].AddParagraph();
-                row2.Cells[5].AddParagraph(sqlDataReader[3].ToString());
+                        break;
+                    case "TUESDAY":
+                        break;
+                    case "WEDNESDAY":
+                        break;
+                    case "THURSDAY":
+                        break;
+                    case "FRIDAY":
+                        break;
+                    case "SATURDAY":
+                        break;
+                    case "SUNDAY":
+                        break;
+                }
 
 
-                row1.Cells[5].AddParagraph("Test 150" + " €");
-                row1.Cells[5].VerticalAlignment = VerticalAlignment.Bottom;
 
-                this.table.SetEdge(0, this.table.Rows.Count - 2, 6, 2, Edge.Box, BorderStyle.Single, 0.75);
+                
             }
 
             DBConnection.CloseConnection();
 
-            // Add an invisible row as a space line to the table
-            Row row = this.table.AddRow();
-            row.Borders.Visible = false;
 
-            // Add the total price row
-            row = this.table.AddRow();
-            row.Cells[0].Borders.Visible = false;
-            row.Cells[0].AddParagraph("Total Price");
-            row.Cells[0].Format.Font.Bold = true;
-            row.Cells[0].Format.Alignment = ParagraphAlignment.Right;
-            row.Cells[0].MergeRight = 4;
-            row.Cells[5].AddParagraph(totalExtendedPrice.ToString("0.00") + " €");
+            this.table.SetEdge(0, 0, this.table.Columns.Count, this.table.Rows.Count, Edge.Box, BorderStyle.Single, 0.75);
 
-            // Add the VAT row
-            row = this.table.AddRow();
-            row.Cells[0].Borders.Visible = false;
-            row.Cells[0].AddParagraph("VAT (19%)");
-            row.Cells[0].Format.Font.Bold = true;
-            row.Cells[0].Format.Alignment = ParagraphAlignment.Right;
-            row.Cells[0].MergeRight = 4;
-            row.Cells[5].AddParagraph((0.19 * totalExtendedPrice).ToString("0.00") + " €");
 
-            // Add the additional fee row
-            row = this.table.AddRow();
-            row.Cells[0].Borders.Visible = false;
-            row.Cells[0].AddParagraph("Shipping and Handling");
-            row.Cells[5].AddParagraph(0.ToString("0.00") + " €");
-            row.Cells[0].Format.Font.Bold = true;
-            row.Cells[0].Format.Alignment = ParagraphAlignment.Right;
-            row.Cells[0].MergeRight = 4;
 
-            // Add the total due row
-            row = this.table.AddRow();
-            row.Cells[0].AddParagraph("Total Due");
-            row.Cells[0].Borders.Visible = false;
-            row.Cells[0].Format.Font.Bold = true;
-            row.Cells[0].Format.Alignment = ParagraphAlignment.Right;
-            row.Cells[0].MergeRight = 4;
-            totalExtendedPrice += 0.19 * totalExtendedPrice;
-            row.Cells[5].AddParagraph(totalExtendedPrice.ToString("0.00") + " €");
 
-            // Set the borders of the specified cell range
-            this.table.SetEdge(5, this.table.Rows.Count - 4, 1, 4, Edge.Box, BorderStyle.Single, 0.75);
-
-            // Add the notes paragraph
-            paragraph = this.document.LastSection.AddParagraph();
-            paragraph.Format.SpaceBefore = "1cm";
-            paragraph.Format.Borders.Width = 0.75;
-            paragraph.Format.Borders.Distance = 3;
-            paragraph.Format.Borders.Color = Color.FromRgb(0, 0, 0);
-            paragraph.Format.Shading.Color = Color.FromRgb(10, 10, 10);
-
-            paragraph.AddText("Test 150");
         }
 
-        public void GenerateTimeTable()
+        public void GenerateTimeTable(string filename, string query, string value)
         {
             try
             {
 
-                Document document = CreateDocument();
+                Document document = CreateDocument(query, value);
                 document.Info.Title = "Created with PDFsharp";
 
                 document.UseCmykColor = true;
@@ -329,10 +336,6 @@ namespace CollegeManagement.Server.Infrastructure
                 // Layout and render document to PDF
                 pdfRenderer.RenderDocument();
 
-
-
-                const string filename = @"C:\Users\niros\OneDrive\Desktop\HelloWorld.pdf";
-
                 pdfRenderer.PdfDocument.Save(filename);
 
                 Process.Start(filename);
@@ -343,6 +346,6 @@ namespace CollegeManagement.Server.Infrastructure
             }
         }
 
-        
+
     }
 }

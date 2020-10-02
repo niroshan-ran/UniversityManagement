@@ -490,3 +490,7 @@ INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) V
 INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Wednesday', N'16:30:00', N'17:00:00', N'Work Time')
 INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Wednesday', N'16:30:00', N'17:30:00', N'Work Time')
 INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Wednesday', N'17:00:00', N'17:30:00', N'Work Time')
+
+
+
+SELECT s.[day], s.[group_id], s.[sub_group_id], rs.[room], t.[tag_name], su.[sub_name], su.[subject_Code], s.[consecutive_id], s.[parallel_id], s.[not_parallel_id], s.[session_status]  FROM (((([Sessions] s INNER JOIN [RoomSession] rs ON s.[session_id] = rs.[session_id]) INNER JOIN [tags] t ON t.[tag_code] = s.[tag_code]) INNER JOIN [subjects] su ON su.subject_id = s.subject_id) INNER JOIN [lecturers] l ON l.[idlecturer] = s.[lecturer_id]) WHERE s.[sub_group_id] = @SubGroupID;
