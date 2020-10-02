@@ -23,12 +23,21 @@ namespace CollegeCore.Utilities
         public static string QUERY_REMOVE_TIMESLOTS_BY_DAY = "DELETE FROM timeslots WHERE dayOfTheWeek = @Day_of_the_Week;";
         public static string QUERY_GET_TIMESLOT = "SELECT * FROM timeslots WHERE dayOfTheWeek = @Day_of_the_Week AND startTime = @Start_Time AND endTime = @End_Time AND [type] = @Type;";
         public static string QUERY_GET_LUNCH_BREAK_COUNT_FOR_THE_DAY = "SELECT COUNT(*) AS 'breakCount' FROM timeslots WHERE dayOfTheWeek = @Day_of_the_Week AND [type] LIKE '%Lunch Break%';";
+        public static string QUERY_GET_SUBGROUPS = "SELECT [sub_group_id] FROM sub_group";
+        public static string QUERY_GET_LECTURERS = "SELECT [lecturer_name] FROM [lecturers];";
+        public static string QUERY_GET_ROOMS = "SELECT [Room_Name] FROM [rooms]";
+        public static string QUERY_GET_TIMETABLE_BY_STUDENT_GROUP = "SELECT s.[day], s.[group_id], s.[sub_group_id], rs.[room], t.[tag_name], su.[sub_name], su.[subject_Code], s.[consecutive_id], s.[parallel_id], s.[not_parallel_id], s.[session_status]  FROM (((([Sessions] s INNER JOIN [RoomSession] rs ON s.[session_id] = rs.[session_id]) INNER JOIN [tags] t ON t.[tag_code] = s.[tag_code]) INNER JOIN [subjects] su ON su.subject_id = s.subject_id) INNER JOIN [lecturers] l ON l.[idlecturer] = s.[lecturer_id]) WHERE s.[sub_group_id] = @Common;";
+        public static string QUERY_GET_TIMETABLE_BY_ROOM = "SELECT s.[day], s.[group_id], s.[sub_group_id], rs.[room], t.[tag_name], su.[sub_name], su.[subject_Code], s.[consecutive_id], s.[parallel_id], s.[not_parallel_id], s.[session_status]  FROM (((([Sessions] s INNER JOIN [RoomSession] rs ON s.[session_id] = rs.[session_id]) INNER JOIN [tags] t ON t.[tag_code] = s.[tag_code]) INNER JOIN [subjects] su ON su.subject_id = s.subject_id) INNER JOIN [lecturers] l ON l.[idlecturer] = s.[lecturer_id]) WHERE rs.[room] = @Common";
+        public static string QUERY_GET_TIMETABLE_BY_LECTURER = "SELECT s.[day], s.[group_id], s.[sub_group_id], rs.[room], t.[tag_name], su.[sub_name], su.[subject_Code], s.[consecutive_id], s.[parallel_id], s.[not_parallel_id], s.[session_status]  FROM (((([Sessions] s INNER JOIN [RoomSession] rs ON s.[session_id] = rs.[session_id]) INNER JOIN [tags] t ON t.[tag_code] = s.[tag_code]) INNER JOIN [subjects] su ON su.subject_id = s.subject_id) INNER JOIN [lecturers] l ON l.[idlecturer] = s.[lecturer_id]) WHERE l.[lecturer_name] = @Common;";
+
+
 
         public static string PARAMETER_DAY_OF_THE_WEEK = "@Day_of_the_Week";
         public static string PARAMETER_START_TIME = "@Start_Time";
         public static string PARAMETER_END_TIME = "@End_Time";
         public static string PARAMETER_TYPE = "@Type";
         public static string PARAMETER_DAY = "@day";
+        public static string PARAMETER_COMMON = "@Common";
 
         public static string COLUMN_DAY_OF_THE_WEEK = "dayOfTheWeek";
         public static string COLUMN_DAY_OF_THE_WEEK_NEW = "Day of the Week";

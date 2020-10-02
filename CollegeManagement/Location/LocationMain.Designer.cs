@@ -34,6 +34,7 @@
             this.panelLocationChild = new System.Windows.Forms.Panel();
             this.lblLocation = new System.Windows.Forms.Label();
             this.icnPicHome = new FontAwesome.Sharp.IconPictureBox();
+            this.icnAssignRoom = new FontAwesome.Sharp.IconButton();
             this.menuPanel.SuspendLayout();
             this.panelLocationChild.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.icnPicHome)).BeginInit();
@@ -42,6 +43,7 @@
             // menuPanel
             // 
             this.menuPanel.BackColor = System.Drawing.Color.Teal;
+            this.menuPanel.Controls.Add(this.icnAssignRoom);
             this.menuPanel.Controls.Add(this.icnBtnAddRoom);
             this.menuPanel.Controls.Add(this.icnBtnAddBuild);
             this.menuPanel.Dock = System.Windows.Forms.DockStyle.Top;
@@ -122,6 +124,25 @@
             this.icnPicHome.TabIndex = 0;
             this.icnPicHome.TabStop = false;
             // 
+            // icnAssignRoom
+            // 
+            this.icnAssignRoom.FlatAppearance.BorderSize = 0;
+            this.icnAssignRoom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.icnAssignRoom.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.icnAssignRoom.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.icnAssignRoom.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.icnAssignRoom.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.icnAssignRoom.IconColor = System.Drawing.Color.Black;
+            this.icnAssignRoom.IconSize = 16;
+            this.icnAssignRoom.Location = new System.Drawing.Point(854, 12);
+            this.icnAssignRoom.Name = "icnAssignRoom";
+            this.icnAssignRoom.Rotation = 0D;
+            this.icnAssignRoom.Size = new System.Drawing.Size(183, 36);
+            this.icnAssignRoom.TabIndex = 2;
+            this.icnAssignRoom.Text = "Assign Rooms";
+            this.icnAssignRoom.UseVisualStyleBackColor = true;
+            this.icnAssignRoom.Click += new System.EventHandler(this.icnAssignRoom_Click);
+            // 
             // LocationMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -147,5 +168,6 @@
         private System.Windows.Forms.Panel panelLocationChild;
         private FontAwesome.Sharp.IconPictureBox icnPicHome;
         private System.Windows.Forms.Label lblLocation;
+        private FontAwesome.Sharp.IconButton icnAssignRoom;
     }
 }

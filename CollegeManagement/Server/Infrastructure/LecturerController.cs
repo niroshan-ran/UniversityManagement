@@ -25,17 +25,17 @@ namespace CollegeCore.Infrastructure
                     + objLec.Rank + "')";
 
 
-                SqlConnection con = new SqlConnection(DBConnection.connectionStringNew);
+                
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataReader myReader;
-                con.Open();
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
                 {
                 }
-                con.Close();
+                DBConnection.CloseConnection();
 
             }
             catch (Exception ex)
@@ -50,11 +50,11 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Select lecturer_name,emp_id,faculty,department,center,building,level_s,rank_s from lecturers";
-                SqlConnection con = new SqlConnection(DBConnection.connectionStringNew);
+                
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataReader myReader;
-                con.Open();
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
@@ -87,17 +87,17 @@ namespace CollegeCore.Infrastructure
                 string Query = "Update lecturers SET lecturer_name = '"+objlecture.Name+"', faculty = '" + objlecture.Faculty + "', department = '" + objlecture.Department + "', center = '" + objlecture.Center + "', building = '" + objlecture.Building + "', level_s = '" + objlecture.Level + "', rank_s = '" + objlecture.Rank + "'where emp_id = '" + objPrevLtr.EmpId + "'";
                 
                 
-                SqlConnection con = new SqlConnection(DBConnection.connectionStringNew);
+                
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataReader myReader;
-                con.Open();
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
                 {
                 }
-                con.Close();
+                DBConnection.CloseConnection();
 
             }
             catch (Exception ex)
@@ -111,17 +111,17 @@ namespace CollegeCore.Infrastructure
             try
             {
                 string Query = "Delete from lecturers where emp_id = '" + objlecture.EmpId + "'";
-                SqlConnection con = new SqlConnection(DBConnection.connectionStringNew);
+                
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataReader myReader;
-                con.Open();
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
                 {
                 }
-                con.Close();
+                DBConnection.CloseConnection();
 
             }
             catch (Exception ex)

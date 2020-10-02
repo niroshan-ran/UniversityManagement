@@ -11,7 +11,7 @@ namespace CollegeManagement.Server.Infrastructure
 {
     public class AdvancedSessionController
     {
-        SqlConnection con = new SqlConnection(DBConnection.connectionStringNew);
+        
 
         public int getMaxID(int type)
         {
@@ -32,11 +32,11 @@ namespace CollegeManagement.Server.Infrastructure
                     Query = "select ISNULL(max(not_parallel_id),0) as ID from Sessions";
                 }
                  
-                SqlConnection con = new SqlConnection(DBConnection.connectionStringNew);
+                
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataReader myReader;
-                con.Open();
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
@@ -64,12 +64,12 @@ namespace CollegeManagement.Server.Infrastructure
                 foreach (AdvancedSessionModel objstudent in objList)
                 {
                     string Query = "Insert into Sessions (lecturer_id,subject_id,tag_code,group_id,sub_group_id,consecutive_id,session_status,subject_code,student_count,duration) values('" + objstudent.Lecturer + "','" + objstudent.Subject + "','" + objstudent.Tag + "','" + objstudent.Group + "','" + objstudent.SubGroup + "'," + consID + ",'2','"+ objstudent .SubjCode+ "','"+ objstudent .Stucount+ "','"+ objstudent.Duration + "')";
-                    con = new SqlConnection(DBConnection.connectionStringNew);
+                    
 
-                    con.Open();
-                    SqlCommand cmd = new SqlCommand(Query, con);
+                    DBConnection.OpenConnection();
+                    SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                     count = cmd.ExecuteNonQuery();
-                    con.Close();
+                    DBConnection.CloseConnection();
                 }
                 
             }
@@ -85,11 +85,11 @@ namespace CollegeManagement.Server.Infrastructure
             try
             {
                 string Query = "Select * from Sessions";
-                SqlConnection con = new SqlConnection(DBConnection.connectionStringNew);
+                
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataReader myReader;
-                con.Open();
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
@@ -107,7 +107,7 @@ namespace CollegeManagement.Server.Infrastructure
                     //objStudent.ConsecutiveID = Convert.ToInt32(myReader["consecutive_id"].ToString());
                     listStudent.Add(objStudent);
                 }
-                con.Close();
+                DBConnection.CloseConnection();
             }
             catch (Exception ex)
             {
@@ -127,11 +127,11 @@ namespace CollegeManagement.Server.Infrastructure
                 string Query = @"Select a.*,b.sub_name from Sessions a 
                                 left outer join subjects b on b.subject_id = a.subject_id 
                                 where session_status = 2";
-                SqlConnection con = new SqlConnection(DBConnection.connectionStringNew);
+                
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataReader myReader;
-                con.Open();
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
@@ -149,7 +149,7 @@ namespace CollegeManagement.Server.Infrastructure
                     objStudent.ConsecutiveID = Convert.ToInt32(myReader["consecutive_id"].ToString());
                     listStudent.Add(objStudent);
                 }
-                con.Close();
+                DBConnection.CloseConnection();
             }
             catch (Exception ex)
             {
@@ -167,11 +167,11 @@ namespace CollegeManagement.Server.Infrastructure
                 string Query = @"Select a.*,b.sub_name from Sessions a 
                                 left outer join subjects b on b.subject_id = a.subject_id  
                                 where session_status = 2 and consecutive_id = " + consID + "";
-                SqlConnection con = new SqlConnection(DBConnection.connectionStringNew);
+                
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataReader myReader;
-                con.Open();
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
@@ -189,7 +189,7 @@ namespace CollegeManagement.Server.Infrastructure
                     objStudent.ConsecutiveID = Convert.ToInt32(myReader["consecutive_id"].ToString());
                     listStudent.Add(objStudent);
                 }
-                con.Close();
+                DBConnection.CloseConnection();
             }
             catch (Exception ex)
             {
@@ -207,11 +207,11 @@ namespace CollegeManagement.Server.Infrastructure
                 string Query = @"Select a.*,b.sub_name from Sessions a 
                                 left outer join subjects b on b.subject_id = a.subject_id  
                                 where session_status = 3";
-                SqlConnection con = new SqlConnection(DBConnection.connectionStringNew);
+                
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataReader myReader;
-                con.Open();
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
@@ -229,7 +229,7 @@ namespace CollegeManagement.Server.Infrastructure
                     objStudent.ParallelID = Convert.ToInt32(myReader["parallel_id"].ToString());
                     listStudent.Add(objStudent);
                 }
-                con.Close();
+                DBConnection.CloseConnection();
             }
             catch (Exception ex)
             {
@@ -247,11 +247,11 @@ namespace CollegeManagement.Server.Infrastructure
                 string Query = @"Select a.*,b.sub_name from Sessions a 
                                 left outer join subjects b on b.subject_id = a.subject_id   
                                 where session_status = 3 and parallel_id = " + consID + "";
-                SqlConnection con = new SqlConnection(DBConnection.connectionStringNew);
+                
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataReader myReader;
-                con.Open();
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
@@ -268,7 +268,7 @@ namespace CollegeManagement.Server.Infrastructure
                     objStudent.ParallelID = Convert.ToInt32(myReader["parallel_id"].ToString());
                     listStudent.Add(objStudent);
                 }
-                con.Close();
+                DBConnection.CloseConnection();
             }
             catch (Exception ex)
             {
@@ -286,11 +286,11 @@ namespace CollegeManagement.Server.Infrastructure
                 string Query = @"Select a.*,b.sub_name from Sessions a 
                                 left outer join subjects b on b.subject_id = a.subject_id   
                                 where session_status = 4";
-                SqlConnection con = new SqlConnection(DBConnection.connectionStringNew);
+                
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataReader myReader;
-                con.Open();
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
@@ -308,7 +308,7 @@ namespace CollegeManagement.Server.Infrastructure
                     objStudent.NotParallelID = Convert.ToInt32(myReader["not_parallel_id"].ToString());
                     listStudent.Add(objStudent);
                 }
-                con.Close();
+                DBConnection.CloseConnection();
             }
             catch (Exception ex)
             {
@@ -326,11 +326,11 @@ namespace CollegeManagement.Server.Infrastructure
                 string Query = @"Select a.*,b.sub_name from Sessions a 
                                 left outer join subjects b on b.subject_id = a.subject_id  
                                 where session_status = 4 and not_parallel_id = " + consID + "";
-                SqlConnection con = new SqlConnection(DBConnection.connectionStringNew);
+                
 
-                SqlCommand cmd = new SqlCommand(Query, con);
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 SqlDataReader myReader;
-                con.Open();
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
@@ -347,7 +347,7 @@ namespace CollegeManagement.Server.Infrastructure
                     objStudent.NotParallelID = Convert.ToInt32(myReader["not_parallel_id"].ToString());
                     listStudent.Add(objStudent);
                 }
-                con.Close();
+                DBConnection.CloseConnection();
             }
             catch (Exception ex)
             {
@@ -365,12 +365,12 @@ namespace CollegeManagement.Server.Infrastructure
                 //Insert into NotAvailableStudent (group_id,sub_grou_id,day,start_time,end_time,start_slot,end_slot) values('" + objstudent.groupID + "','" + objstudent.sub_group_id + "','" + objstudent.day + "','" + objstudent.startTime + "','" + objstudent.endTime + "'," + objstudent.startSlot + "," + objstudent.endSlot + ")";
 
                 string Query = "DELETE from Sessions where session_status = 2 and consecutive_id = " + consID + "";
-                con = new SqlConnection(DBConnection.connectionStringNew);
+                
 
-                con.Open();
-                SqlCommand cmd = new SqlCommand(Query, con);
+                DBConnection.OpenConnection();
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 count = cmd.ExecuteNonQuery();
-                con.Close();
+                DBConnection.CloseConnection();
             }
             catch (Exception ex)
             {
@@ -389,12 +389,12 @@ namespace CollegeManagement.Server.Infrastructure
                 foreach (AdvancedSessionModel objstudent in objList)
                 {
                     string Query = "UPDATE Sessions SET parallel_id = " + consID + " ,session_status = 3 WHERE session_id = '" + objstudent.SessionId + "'";
-                    con = new SqlConnection(DBConnection.connectionStringNew);
+                    
 
-                    con.Open();
-                    SqlCommand cmd = new SqlCommand(Query, con);
+                    DBConnection.OpenConnection();
+                    SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                     count = cmd.ExecuteNonQuery();
-                    con.Close();
+                    DBConnection.CloseConnection();
                 }
 
             }
@@ -412,12 +412,12 @@ namespace CollegeManagement.Server.Infrastructure
                 //Insert into NotAvailableStudent (group_id,sub_grou_id,day,start_time,end_time,start_slot,end_slot) values('" + objstudent.groupID + "','" + objstudent.sub_group_id + "','" + objstudent.day + "','" + objstudent.startTime + "','" + objstudent.endTime + "'," + objstudent.startSlot + "," + objstudent.endSlot + ")";
 
                 string Query = "DELETE from Sessions where session_status = 3 and parallel_id = " + consID + "";
-                con = new SqlConnection(DBConnection.connectionStringNew);
+                
 
-                con.Open();
-                SqlCommand cmd = new SqlCommand(Query, con);
+                DBConnection.OpenConnection();
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 count = cmd.ExecuteNonQuery();
-                con.Close();
+                DBConnection.CloseConnection();
             }
             catch (Exception ex)
             {
@@ -436,12 +436,12 @@ namespace CollegeManagement.Server.Infrastructure
                 foreach (AdvancedSessionModel objstudent in objList)
                 {
                     string Query = "UPDATE Sessions SET not_parallel_id = " + consID + " ,session_status = 4 WHERE session_id = '" + objstudent.SessionId + "'";
-                    con = new SqlConnection(DBConnection.connectionStringNew);
+                    
 
-                    con.Open();
-                    SqlCommand cmd = new SqlCommand(Query, con);
+                    DBConnection.OpenConnection();
+                    SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                     count = cmd.ExecuteNonQuery();
-                    con.Close();
+                    DBConnection.CloseConnection();
                 }
 
             }
@@ -459,12 +459,12 @@ namespace CollegeManagement.Server.Infrastructure
                 //Insert into NotAvailableStudent (group_id,sub_grou_id,day,start_time,end_time,start_slot,end_slot) values('" + objstudent.groupID + "','" + objstudent.sub_group_id + "','" + objstudent.day + "','" + objstudent.startTime + "','" + objstudent.endTime + "'," + objstudent.startSlot + "," + objstudent.endSlot + ")";
 
                 string Query = "DELETE from Sessions where session_status = 4 and not_parallel_id = " + consID + "";
-                con = new SqlConnection(DBConnection.connectionStringNew);
+                
 
-                con.Open();
-                SqlCommand cmd = new SqlCommand(Query, con);
+                DBConnection.OpenConnection();
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
                 count = cmd.ExecuteNonQuery();
-                con.Close();
+                DBConnection.CloseConnection();
             }
             catch (Exception ex)
             {

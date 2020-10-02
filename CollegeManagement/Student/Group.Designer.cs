@@ -49,7 +49,7 @@
             this.ddlYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlYear.FormattingEnabled = true;
             this.ddlYear.Location = new System.Drawing.Point(205, 103);
-            this.ddlYear.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ddlYear.Margin = new System.Windows.Forms.Padding(2);
             this.ddlYear.Name = "ddlYear";
             this.ddlYear.Size = new System.Drawing.Size(213, 25);
             this.ddlYear.TabIndex = 0;
@@ -115,7 +115,7 @@
             this.ddlSem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlSem.FormattingEnabled = true;
             this.ddlSem.Location = new System.Drawing.Point(205, 136);
-            this.ddlSem.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ddlSem.Margin = new System.Windows.Forms.Padding(2);
             this.ddlSem.Name = "ddlSem";
             this.ddlSem.Size = new System.Drawing.Size(213, 25);
             this.ddlSem.TabIndex = 6;
@@ -125,7 +125,7 @@
             this.ddlProgram.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlProgram.FormattingEnabled = true;
             this.ddlProgram.Location = new System.Drawing.Point(205, 169);
-            this.ddlProgram.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ddlProgram.Margin = new System.Windows.Forms.Padding(2);
             this.ddlProgram.Name = "ddlProgram";
             this.ddlProgram.Size = new System.Drawing.Size(213, 25);
             this.ddlProgram.TabIndex = 7;
@@ -134,7 +134,7 @@
             // 
             this.txtGroupNO.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtGroupNO.Location = new System.Drawing.Point(205, 202);
-            this.txtGroupNO.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtGroupNO.Margin = new System.Windows.Forms.Padding(2);
             this.txtGroupNO.Name = "txtGroupNO";
             this.txtGroupNO.Size = new System.Drawing.Size(213, 24);
             this.txtGroupNO.TabIndex = 8;
@@ -151,9 +151,9 @@
             this.btnSave.IconSize = 32;
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSave.Location = new System.Drawing.Point(108, 252);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSave.Padding = new System.Windows.Forms.Padding(2);
             this.btnSave.Rotation = 0D;
             this.btnSave.Size = new System.Drawing.Size(78, 30);
             this.btnSave.TabIndex = 9;
@@ -173,9 +173,9 @@
             this.btnUpdate.IconSize = 32;
             this.btnUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnUpdate.Location = new System.Drawing.Point(190, 252);
-            this.btnUpdate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(2);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnUpdate.Padding = new System.Windows.Forms.Padding(2);
             this.btnUpdate.Rotation = 0D;
             this.btnUpdate.Size = new System.Drawing.Size(86, 30);
             this.btnUpdate.TabIndex = 10;
@@ -195,9 +195,9 @@
             this.btnDelete.IconSize = 32;
             this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDelete.Location = new System.Drawing.Point(281, 252);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(2);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDelete.Padding = new System.Windows.Forms.Padding(2);
             this.btnDelete.Rotation = 0D;
             this.btnDelete.Size = new System.Drawing.Size(88, 30);
             this.btnDelete.TabIndex = 11;
@@ -214,7 +214,7 @@
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(90, 297);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 24;
@@ -227,7 +227,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(600, 366);
+            this.ClientSize = new System.Drawing.Size(697, 585);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
@@ -241,7 +241,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ddlYear);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Group";
             this.Text = "Group";
             this.Load += new System.EventHandler(this.Group_Load);

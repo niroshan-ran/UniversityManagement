@@ -1,7 +1,7 @@
 ﻿using CollegeCore.Model;
-using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,18 +14,18 @@ namespace CollegeCore.Infrastructure
         {
             try
             {
-                string Query = "Insert into college_db.rooms(Room_Name,Room_Block,Building,Capacity,Room_Type) values('" + objRoom.Room_Name + "','" + objRoom.Room_Block + "','" + objRoom.Building + "','" + objRoom.Capacity + "','" + objRoom.Room_Type + "')";
-                MySqlConnection con = new MySqlConnection(DBConnection.ConnectionString);
+                string Query = "Insert into rooms(Room_Name,Room_Block,Building,Capacity,Room_Type) values('" + objRoom.Room_Name + "','" + objRoom.Room_Block + "','" + objRoom.Building + "','" + objRoom.Capacity + "','" + objRoom.Room_Type + "')";
+                
 
-                MySqlCommand cmd = new MySqlCommand(Query, con);
-                MySqlDataReader myReader;
-                con.Open();
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
+                SqlDataReader myReader;
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
                 {
                 }
-                con.Close();
+                DBConnection.CloseConnection();
 
             }
             catch (Exception ex)
@@ -39,12 +39,12 @@ namespace CollegeCore.Infrastructure
             List<RoomModel> listRooms = new List<RoomModel>();
             try
             {
-                string Query = "Select Room_Name,Room_Block,Building,Capacity,Room_Type from college_db.rooms";
-                MySqlConnection con = new MySqlConnection(DBConnection.ConnectionString);
+                string Query = "Select Room_Name,Room_Block,Building,Capacity,Room_Type from rooms";
+                
 
-                MySqlCommand cmd = new MySqlCommand(Query, con);
-                MySqlDataReader myReader;
-                con.Open();
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
+                SqlDataReader myReader;
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
@@ -70,18 +70,18 @@ namespace CollegeCore.Infrastructure
         {
             try
             {
-                string Query = "Update college_db.rooms SET room_name = '" + objRoom.Room_Name + "' , room_block = '" + objRoom.Room_Block + "' , Building = '" + objRoom.Building + "' , Capacity = '" + objRoom.Capacity + "' , room_type = '" + objRoom.Room_Type + "' where room_name = '" + objPrevRoom.Room_Name + "' and room_block = '" + objPrevRoom.Room_Block + "' and Building = '" + objPrevRoom.Building + "' and Capacity = '" + objPrevRoom.Capacity + "' and room_type = '" + objPrevRoom.Room_Type + "'";
-                MySqlConnection con = new MySqlConnection(DBConnection.ConnectionString);
+                string Query = "Update rooms SET room_name = '" + objRoom.Room_Name + "' , room_block = '" + objRoom.Room_Block + "' , Building = '" + objRoom.Building + "' , Capacity = '" + objRoom.Capacity + "' , room_type = '" + objRoom.Room_Type + "' where room_name = '" + objPrevRoom.Room_Name + "' and room_block = '" + objPrevRoom.Room_Block + "' and Building = '" + objPrevRoom.Building + "' and Capacity = '" + objPrevRoom.Capacity + "' and room_type = '" + objPrevRoom.Room_Type + "'";
+                
 
-                MySqlCommand cmd = new MySqlCommand(Query, con);
-                MySqlDataReader myReader;
-                con.Open();
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
+                SqlDataReader myReader;
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
                 {
                 }
-                con.Close();
+                DBConnection.CloseConnection();
 
             }
             catch (Exception ex)
@@ -94,24 +94,53 @@ namespace CollegeCore.Infrastructure
         {
             try
             {
-                string Query = "Delete from college_db.rooms where room_name = '" + objRoom.Room_Name + "' and room_block = '" + objRoom.Room_Block + "' and Building = '" + objRoom.Building + "' and Capacity = '" + objRoom.Capacity + "' and room_type = '" + objRoom.Room_Type + "'";
-                MySqlConnection con = new MySqlConnection(DBConnection.ConnectionString);
+                string Query = "Delete from rooms where room_name = '" + objRoom.Room_Name + "' and room_block = '" + objRoom.Room_Block + "' and Building = '" + objRoom.Building + "' and Capacity = '" + objRoom.Capacity + "' and room_type = '" + objRoom.Room_Type + "'";
+                
 
-                MySqlCommand cmd = new MySqlCommand(Query, con);
-                MySqlDataReader myReader;
-                con.Open();
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
+                SqlDataReader myReader;
+                DBConnection.OpenConnection();
                 myReader = cmd.ExecuteReader();
 
                 while (myReader.Read())
                 {
                 }
-                con.Close();
+                DBConnection.CloseConnection();
 
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
             }
+        }
+        public List<RoomModel> getBuildings()
+        {
+            List<RoomModel> listBuldings = new List<RoomModel>();
+            try
+            {
+                string Query = "Select tag,building,room,lecturer from AssignTagRoom";
+                
+
+                SqlCommand cmd = new SqlCommand(Query, DBConnection.DatabaseConnection);
+                SqlDataReader myReader;
+                DBConnection.OpenConnection();
+                myReader = cmd.ExecuteReader();
+
+                while (myReader.Read())
+                {
+                    RoomModel objBuildings = new RoomModel();
+
+                    objBuildings.Building = myReader["Building"].ToString();
+
+                    listBuldings.Add(objBuildings);
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            return listBuldings;
         }
     }
 }

@@ -19,6 +19,7 @@ using CollegeManagement.Session;
 using CollegeManagement.AdvancedSession;
 using CollegeManagement.TimeTable;
 using System.Runtime.InteropServices;
+using CollegeCore;
 
 namespace CollegeManagement
 {
@@ -187,6 +188,15 @@ namespace CollegeManagement
             }
         }
 
-        
+        private void iconButton3_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure you want to Exit?", "Confirm Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (result.ToString().Equals("Yes"))
+            {
+                DBConnection.CloseConnection();
+                Application.Exit();
+            }
+        }
     }
 }

@@ -72,7 +72,7 @@
             // txtBuildingName
             // 
             this.txtBuildingName.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBuildingName.Location = new System.Drawing.Point(523, 12);
+            this.txtBuildingName.Location = new System.Drawing.Point(523, 23);
             this.txtBuildingName.Multiline = true;
             this.txtBuildingName.Name = "txtBuildingName";
             this.txtBuildingName.Size = new System.Drawing.Size(433, 33);
@@ -94,7 +94,7 @@
             // 
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(283, 23);
+            this.lblName.Location = new System.Drawing.Point(283, 33);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(150, 23);
             this.lblName.TabIndex = 5;
@@ -151,6 +151,7 @@
             this.gvBuildings.Size = new System.Drawing.Size(1030, 329);
             this.gvBuildings.TabIndex = 42;
             this.gvBuildings.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvBuildings_CellClick_1);
+            this.gvBuildings.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvBuildings_CellContentClick);
             // 
             // lblNoofRooms
             // 

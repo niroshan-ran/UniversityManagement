@@ -36,8 +36,8 @@ namespace CollegeCore.Student
         private void loadDropdowns()
         {
             ddlYear.DataSource = objCore.loadYear();
-            ddlYear.DisplayMember = "year";
-            ddlYear.ValueMember = "year";
+            ddlYear.DisplayMember = "Year";
+            ddlYear.ValueMember = "Year";
 
             ddlProgram.DataSource = objCore.LoadProgram();
             ddlProgram.DisplayMember = "code";
@@ -58,7 +58,11 @@ namespace CollegeCore.Student
         {
             GroupModel objStudent = new GroupModel();
 
-            objStudent.GroupNo = Convert.ToInt32(txtGroupNO.Text);
+            if (txtGroupNO.Text.ToString() != "")
+                objStudent.GroupNo = int.Parse(txtGroupNO.Text.ToString());
+            else
+                objStudent.GroupNo = 0;
+
             objStudent.Year = ddlYear.SelectedValue.ToString();
             objStudent.Semester = ddlSem.SelectedValue.ToString();
             objStudent.Program = ddlProgram.SelectedValue.ToString();

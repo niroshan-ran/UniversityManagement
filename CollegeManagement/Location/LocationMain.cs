@@ -1,4 +1,5 @@
-﻿using FontAwesome.Sharp;
+﻿using CollegeManagement.Location;
+using FontAwesome.Sharp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -88,5 +89,10 @@ namespace CollegeCore.Location
 
         }
 
+        private void icnAssignRoom_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBColors.color1);
+            openChildForm(new AssignRoom());
+        }
     }
 }

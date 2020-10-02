@@ -133,3 +133,364 @@ CREATE TABLE [dbo].[Sessions] (
     PRIMARY KEY CLUSTERED ([session_id] ASC)
 );
 
+GO
+CREATE TABLE [dbo].[AssignTagRoom] (
+    [trid]     INT           IDENTITY (1, 1) NOT NULL,
+    [tag]      NVARCHAR (50) NULL,
+    [building] NVARCHAR (50) NOT NULL,
+    [room]     NVARCHAR (50) NOT NULL,
+    [lecturer] NVARCHAR (50) NULL,
+    [group]    NVARCHAR (50) NULL,
+    [subgroup] NVARCHAR (50) NULL,
+    PRIMARY KEY CLUSTERED ([trid] ASC)
+);
+
+GO
+CREATE TABLE [dbo].[buildings] (
+    [Building_Name]    NVARCHAR (50) NOT NULL,
+    [Block_Floor_Name] NVARCHAR (50) NULL,
+    [No_of_Rooms]      INT           NULL,
+    PRIMARY KEY CLUSTERED ([Building_Name] ASC)
+);
+GO
+CREATE TABLE [dbo].[rooms] (
+    [Room_Name]  NVARCHAR (50) NULL,
+    [Room_Block] NVARCHAR (50) NULL,
+    [Building]   NVARCHAR (50) NULL,
+    [Capacity]   INT           NULL,
+    [Room_Type]  NVARCHAR (50) NULL,
+    [rid]        INT           IDENTITY (1, 1) NOT NULL,
+    PRIMARY KEY CLUSTERED ([rid] ASC)
+);
+
+GO
+CREATE TABLE [dbo].[ReservedRoom] (
+    [reservedId] INT           IDENTITY (1, 1) NOT NULL,
+    [session_id] INT           NULL,
+    [start_time] NVARCHAR (50) NULL,
+    [end_time]   NVARCHAR (50) NULL,
+    [room]       NVARCHAR (50) NULL,
+    [building]   NVARCHAR (50) NULL,
+    [day]        NVARCHAR (50) NULL,
+    PRIMARY KEY CLUSTERED ([reservedId] ASC)
+);
+GO
+CREATE TABLE [dbo].[RoomSession] (
+    [rsid]       INT           IDENTITY (1, 1) NOT NULL,
+    [session_id] INT           NOT NULL,
+    [room]       NVARCHAR (50) NOT NULL,
+    [building]   NVARCHAR (50) NOT NULL,
+    PRIMARY KEY CLUSTERED ([rsid] ASC)
+);
+
+
+
+/* Lecturer Sample data */
+
+SET IDENTITY_INSERT [dbo].[lecturers] ON
+INSERT INTO [dbo].[lecturers] ([idlecturer], [lecturer_name], [emp_id], [faculty], [department], [center], [building], [level_s], [rank_s]) VALUES (1, N'Mr. Perera', N'E0001', N'Faculty of Computing', N'IT', N'Malabe', N'Building 1', N'4', N'4.0001')
+INSERT INTO [dbo].[lecturers] ([idlecturer], [lecturer_name], [emp_id], [faculty], [department], [center], [building], [level_s], [rank_s]) VALUES (2, N'Ms. Nishi', N'E0002', N'Faculty of Computing', N'IT', N'Malabe', N'Building 2', N'5', N'5.0002')
+INSERT INTO [dbo].[lecturers] ([idlecturer], [lecturer_name], [emp_id], [faculty], [department], [center], [building], [level_s], [rank_s]) VALUES (3, N'Mr. Hashan', N'E0003', N'Faculty of Computing', N'IT', N'Malabe', N'Building 3', N'4', N'4.0003')
+INSERT INTO [dbo].[lecturers] ([idlecturer], [lecturer_name], [emp_id], [faculty], [department], [center], [building], [level_s], [rank_s]) VALUES (4, N'Mr. Kamal', N'E0004', N'Faculty of Engineering', N'EI', N'Malabe', N'Building 4', N'4', N'4.0004')
+INSERT INTO [dbo].[lecturers] ([idlecturer], [lecturer_name], [emp_id], [faculty], [department], [center], [building], [level_s], [rank_s]) VALUES (5, N'Mr. Mohomad', N'E0005', N'Faculty of Engineering', N'EI', N'Malabe', N'Building 4', N'4', N'4.0005')
+INSERT INTO [dbo].[lecturers] ([idlecturer], [lecturer_name], [emp_id], [faculty], [department], [center], [building], [level_s], [rank_s]) VALUES (6, N'Mr. Shiva', N'E0006', N'Faculty of Business', N'BA', N'Malabe', N'Building 5', N'4', N'4.0006')
+
+SET IDENTITY_INSERT [dbo].[lecturers] OFF
+
+/*Building Sample Data*/
+INSERT INTO [dbo].[buildings] ([Building_Name], [Block_Floor_Name], [No_of_Rooms]) VALUES (N'Computing', N'A', 30)
+INSERT INTO [dbo].[buildings] ([Building_Name], [Block_Floor_Name], [No_of_Rooms]) VALUES (N'New Building', N'NB', 20)
+
+/*Tags Sample Data*/
+INSERT INTO [dbo].[tags] ([tag_code], [tag_name], [tag_desc]) VALUES (N'LEC', N'Lecture', N'Lecture')
+INSERT INTO [dbo].[tags] ([tag_code], [tag_name], [tag_desc]) VALUES (N'TUTE', N'Tutorial', N'Tutorial')
+INSERT INTO [dbo].[tags] ([tag_code], [tag_name], [tag_desc]) VALUES (N'PRAC', N'Practical', N'Practical')
+
+/*Program Sample Data*/
+INSERT INTO [dbo].[program] ([code], [Name], [description]) VALUES (N'BSCIT', N'Bsc in IT', N'Bachelor of Science Degree in Information Technology')
+
+/*Subjects Sample Data*/
+SET IDENTITY_INSERT [dbo].[subjects] ON
+INSERT INTO [dbo].[subjects] ([subject_id], [subject_Code], [year], [semester], [sub_name], [lec_hours], [tut_hours], [lab_hours], [eve_hours]) VALUES (1, N'IT1010', N'1', N'1', N'IP', N'140', N'70', N'140', N'0')
+INSERT INTO [dbo].[subjects] ([subject_id], [subject_Code], [year], [semester], [sub_name], [lec_hours], [tut_hours], [lab_hours], [eve_hours]) VALUES (2, N'IT1020', N'1', N'1', N'ICS', N'140', N'70', N'140', N'0')
+INSERT INTO [dbo].[subjects] ([subject_id], [subject_Code], [year], [semester], [sub_name], [lec_hours], [tut_hours], [lab_hours], [eve_hours]) VALUES (3, N'IT1030', N'1', N'1', N'MC', N'140', N'70', N'70', N'0')
+INSERT INTO [dbo].[subjects] ([subject_id], [subject_Code], [year], [semester], [sub_name], [lec_hours], [tut_hours], [lab_hours], [eve_hours]) VALUES (4, N'IT1040', N'1', N'1', N'CS', N'140', N'70', N'0', N'20')
+INSERT INTO [dbo].[subjects] ([subject_id], [subject_Code], [year], [semester], [sub_name], [lec_hours], [tut_hours], [lab_hours], [eve_hours]) VALUES (5, N'IT1050', N'1', N'2', N'SPM', N'140', N'70', N'140', N'20')
+INSERT INTO [dbo].[subjects] ([subject_id], [subject_Code], [year], [semester], [sub_name], [lec_hours], [tut_hours], [lab_hours], [eve_hours]) VALUES (6, N'IT1060', N'1', N'2', N'IWT', N'140', N'70', N'140', N'20')
+INSERT INTO [dbo].[subjects] ([subject_id], [subject_Code], [year], [semester], [sub_name], [lec_hours], [tut_hours], [lab_hours], [eve_hours]) VALUES (7, N'IT1070', N'1', N'2', N'EAP', N'140', N'70', N'0', N'20')
+INSERT INTO [dbo].[subjects] ([subject_id], [subject_Code], [year], [semester], [sub_name], [lec_hours], [tut_hours], [lab_hours], [eve_hours]) VALUES (8, N'IT1080', N'1', N'2', N'ISDM', N'140', N'70', N'140', N'20')
+INSERT INTO [dbo].[subjects] ([subject_id], [subject_Code], [year], [semester], [sub_name], [lec_hours], [tut_hours], [lab_hours], [eve_hours]) VALUES (9, N'IT1090', N'1', N'2', N'PS', N'140', N'70', N'70', N'0')
+SET IDENTITY_INSERT [dbo].[subjects] OFF
+
+
+/* Year Semster Sample Data */
+INSERT INTO [dbo].[year_sem] ([year], [semester]) VALUES (N'1', N'1')
+INSERT INTO [dbo].[year_sem] ([year], [semester]) VALUES (N'1', N'2')
+INSERT INTO [dbo].[year_sem] ([year], [semester]) VALUES (N'2', N'1')
+INSERT INTO [dbo].[year_sem] ([year], [semester]) VALUES (N'2', N'2')
+INSERT INTO [dbo].[year_sem] ([year], [semester]) VALUES (N'3', N'1')
+INSERT INTO [dbo].[year_sem] ([year], [semester]) VALUES (N'3', N'2')
+INSERT INTO [dbo].[year_sem] ([year], [semester]) VALUES (N'4', N'1')
+INSERT INTO [dbo].[year_sem] ([year], [semester]) VALUES (N'4', N'2')
+
+
+/* Working Days Sample Data */
+INSERT INTO [dbo].[workingdays] ([dayOfTheWeek], [startTime], [endTime]) VALUES (N'Friday', N'08:30:00', N'17:30:00')
+INSERT INTO [dbo].[workingdays] ([dayOfTheWeek], [startTime], [endTime]) VALUES (N'Monday', N'08:30:00', N'17:30:00')
+INSERT INTO [dbo].[workingdays] ([dayOfTheWeek], [startTime], [endTime]) VALUES (N'Saturday', N'08:30:00', N'17:30:00')
+INSERT INTO [dbo].[workingdays] ([dayOfTheWeek], [startTime], [endTime]) VALUES (N'Sunday', N'08:30:00', N'17:30:00')
+INSERT INTO [dbo].[workingdays] ([dayOfTheWeek], [startTime], [endTime]) VALUES (N'Thursday', N'08:30:00', N'17:30:00')
+INSERT INTO [dbo].[workingdays] ([dayOfTheWeek], [startTime], [endTime]) VALUES (N'Tuesday', N'08:30:00', N'17:30:00')
+INSERT INTO [dbo].[workingdays] ([dayOfTheWeek], [startTime], [endTime]) VALUES (N'Wednesday', N'08:30:00', N'17:30:00')
+
+/* TimeSlots Sample Data */
+
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Friday', N'08:30:00', N'09:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Friday', N'08:30:00', N'09:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Friday', N'09:00:00', N'09:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Friday', N'09:00:00', N'10:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Friday', N'09:30:00', N'10:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Friday', N'09:30:00', N'10:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Friday', N'10:00:00', N'10:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Friday', N'10:00:00', N'11:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Friday', N'10:30:00', N'11:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Friday', N'10:30:00', N'11:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Friday', N'11:00:00', N'11:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Friday', N'11:00:00', N'12:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Friday', N'11:30:00', N'12:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Friday', N'11:30:00', N'12:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Friday', N'12:00:00', N'12:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Friday', N'12:00:00', N'13:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Friday', N'12:30:00', N'13:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Friday', N'12:30:00', N'13:30:00', N'Lunch Break')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Friday', N'13:00:00', N'13:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Friday', N'13:00:00', N'14:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Friday', N'13:30:00', N'14:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Friday', N'13:30:00', N'14:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Friday', N'14:00:00', N'14:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Friday', N'14:00:00', N'15:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Friday', N'14:30:00', N'15:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Friday', N'14:30:00', N'15:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Friday', N'15:00:00', N'15:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Friday', N'15:00:00', N'16:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Friday', N'15:30:00', N'16:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Friday', N'15:30:00', N'16:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Friday', N'16:00:00', N'16:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Friday', N'16:00:00', N'17:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Friday', N'16:30:00', N'17:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Friday', N'16:30:00', N'17:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Friday', N'17:00:00', N'17:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Monday', N'08:30:00', N'09:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Monday', N'08:30:00', N'09:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Monday', N'09:00:00', N'09:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Monday', N'09:00:00', N'10:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Monday', N'09:30:00', N'10:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Monday', N'09:30:00', N'10:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Monday', N'10:00:00', N'10:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Monday', N'10:00:00', N'11:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Monday', N'10:30:00', N'11:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Monday', N'10:30:00', N'11:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Monday', N'11:00:00', N'11:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Monday', N'11:00:00', N'12:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Monday', N'11:30:00', N'12:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Monday', N'11:30:00', N'12:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Monday', N'12:00:00', N'12:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Monday', N'12:00:00', N'13:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Monday', N'12:30:00', N'13:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Monday', N'12:30:00', N'13:30:00', N'Lunch Break')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Monday', N'13:00:00', N'13:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Monday', N'13:00:00', N'14:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Monday', N'13:30:00', N'14:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Monday', N'13:30:00', N'14:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Monday', N'14:00:00', N'14:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Monday', N'14:00:00', N'15:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Monday', N'14:30:00', N'15:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Monday', N'14:30:00', N'15:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Monday', N'15:00:00', N'15:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Monday', N'15:00:00', N'16:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Monday', N'15:30:00', N'16:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Monday', N'15:30:00', N'16:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Monday', N'16:00:00', N'16:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Monday', N'16:00:00', N'17:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Monday', N'16:30:00', N'17:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Monday', N'16:30:00', N'17:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Monday', N'17:00:00', N'17:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Saturday', N'08:30:00', N'09:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Saturday', N'08:30:00', N'09:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Saturday', N'09:00:00', N'09:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Saturday', N'09:00:00', N'10:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Saturday', N'09:30:00', N'10:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Saturday', N'09:30:00', N'10:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Saturday', N'10:00:00', N'10:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Saturday', N'10:00:00', N'11:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Saturday', N'10:30:00', N'11:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Saturday', N'10:30:00', N'11:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Saturday', N'11:00:00', N'11:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Saturday', N'11:00:00', N'12:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Saturday', N'11:30:00', N'12:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Saturday', N'11:30:00', N'12:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Saturday', N'12:00:00', N'12:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Saturday', N'12:00:00', N'13:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Saturday', N'12:30:00', N'13:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Saturday', N'12:30:00', N'13:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Saturday', N'13:00:00', N'13:30:00', N'Lunch Break')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Saturday', N'13:00:00', N'14:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Saturday', N'13:30:00', N'14:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Saturday', N'13:30:00', N'14:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Saturday', N'14:00:00', N'14:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Saturday', N'14:00:00', N'15:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Saturday', N'14:30:00', N'15:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Saturday', N'14:30:00', N'15:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Saturday', N'15:00:00', N'15:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Saturday', N'15:00:00', N'16:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Saturday', N'15:30:00', N'16:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Saturday', N'15:30:00', N'16:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Saturday', N'16:00:00', N'16:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Saturday', N'16:00:00', N'17:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Saturday', N'16:30:00', N'17:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Saturday', N'16:30:00', N'17:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Saturday', N'17:00:00', N'17:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Sunday', N'08:30:00', N'09:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Sunday', N'08:30:00', N'09:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Sunday', N'09:00:00', N'09:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Sunday', N'09:00:00', N'10:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Sunday', N'09:30:00', N'10:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Sunday', N'09:30:00', N'10:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Sunday', N'10:00:00', N'10:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Sunday', N'10:00:00', N'11:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Sunday', N'10:30:00', N'11:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Sunday', N'10:30:00', N'11:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Sunday', N'11:00:00', N'11:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Sunday', N'11:00:00', N'12:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Sunday', N'11:30:00', N'12:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Sunday', N'11:30:00', N'12:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Sunday', N'12:00:00', N'12:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Sunday', N'12:00:00', N'13:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Sunday', N'12:30:00', N'13:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Sunday', N'12:30:00', N'13:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Sunday', N'13:00:00', N'13:30:00', N'Lunch Break')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Sunday', N'13:00:00', N'14:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Sunday', N'13:30:00', N'14:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Sunday', N'13:30:00', N'14:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Sunday', N'14:00:00', N'14:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Sunday', N'14:00:00', N'15:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Sunday', N'14:30:00', N'15:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Sunday', N'14:30:00', N'15:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Sunday', N'15:00:00', N'15:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Sunday', N'15:00:00', N'16:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Sunday', N'15:30:00', N'16:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Sunday', N'15:30:00', N'16:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Sunday', N'16:00:00', N'16:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Sunday', N'16:00:00', N'17:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Sunday', N'16:30:00', N'17:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Sunday', N'16:30:00', N'17:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Sunday', N'17:00:00', N'17:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Thursday', N'08:30:00', N'09:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Thursday', N'08:30:00', N'09:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Thursday', N'09:00:00', N'09:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Thursday', N'09:00:00', N'10:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Thursday', N'09:30:00', N'10:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Thursday', N'09:30:00', N'10:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Thursday', N'10:00:00', N'10:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Thursday', N'10:00:00', N'11:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Thursday', N'10:30:00', N'11:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Thursday', N'10:30:00', N'11:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Thursday', N'11:00:00', N'11:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Thursday', N'11:00:00', N'12:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Thursday', N'11:30:00', N'12:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Thursday', N'11:30:00', N'12:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Thursday', N'12:00:00', N'12:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Thursday', N'12:00:00', N'13:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Thursday', N'12:30:00', N'13:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Thursday', N'12:30:00', N'13:30:00', N'Lunch Break')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Thursday', N'13:00:00', N'13:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Thursday', N'13:00:00', N'14:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Thursday', N'13:30:00', N'14:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Thursday', N'13:30:00', N'14:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Thursday', N'14:00:00', N'14:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Thursday', N'14:00:00', N'15:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Thursday', N'14:30:00', N'15:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Thursday', N'14:30:00', N'15:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Thursday', N'15:00:00', N'15:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Thursday', N'15:00:00', N'16:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Thursday', N'15:30:00', N'16:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Thursday', N'15:30:00', N'16:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Thursday', N'16:00:00', N'16:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Thursday', N'16:00:00', N'17:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Thursday', N'16:30:00', N'17:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Thursday', N'16:30:00', N'17:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Thursday', N'17:00:00', N'17:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Tuesday', N'08:30:00', N'09:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Tuesday', N'08:30:00', N'09:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Tuesday', N'09:00:00', N'09:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Tuesday', N'09:00:00', N'10:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Tuesday', N'09:30:00', N'10:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Tuesday', N'09:30:00', N'10:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Tuesday', N'10:00:00', N'10:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Tuesday', N'10:00:00', N'11:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Tuesday', N'10:30:00', N'11:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Tuesday', N'10:30:00', N'11:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Tuesday', N'11:00:00', N'11:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Tuesday', N'11:00:00', N'12:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Tuesday', N'11:30:00', N'12:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Tuesday', N'11:30:00', N'12:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Tuesday', N'12:00:00', N'12:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Tuesday', N'12:00:00', N'13:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Tuesday', N'12:30:00', N'13:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Tuesday', N'12:30:00', N'13:30:00', N'Lunch Break')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Tuesday', N'13:00:00', N'13:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Tuesday', N'13:00:00', N'14:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Tuesday', N'13:30:00', N'14:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Tuesday', N'13:30:00', N'14:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Tuesday', N'14:00:00', N'14:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Tuesday', N'14:00:00', N'15:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Tuesday', N'14:30:00', N'15:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Tuesday', N'14:30:00', N'15:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Tuesday', N'15:00:00', N'15:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Tuesday', N'15:00:00', N'16:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Tuesday', N'15:30:00', N'16:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Tuesday', N'15:30:00', N'16:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Tuesday', N'16:00:00', N'16:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Tuesday', N'16:00:00', N'17:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Tuesday', N'16:30:00', N'17:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Tuesday', N'16:30:00', N'17:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Tuesday', N'17:00:00', N'17:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Wednesday', N'08:30:00', N'09:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Wednesday', N'08:30:00', N'09:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Wednesday', N'09:00:00', N'09:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Wednesday', N'09:00:00', N'10:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Wednesday', N'09:30:00', N'10:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Wednesday', N'09:30:00', N'10:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Wednesday', N'10:00:00', N'10:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Wednesday', N'10:00:00', N'11:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Wednesday', N'10:30:00', N'11:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Wednesday', N'10:30:00', N'11:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Wednesday', N'11:00:00', N'11:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Wednesday', N'11:00:00', N'12:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Wednesday', N'11:30:00', N'12:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Wednesday', N'11:30:00', N'12:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Wednesday', N'12:00:00', N'12:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Wednesday', N'12:00:00', N'13:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Wednesday', N'12:30:00', N'13:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Wednesday', N'12:30:00', N'13:30:00', N'Lunch Break')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Wednesday', N'13:00:00', N'13:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Wednesday', N'13:00:00', N'14:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Wednesday', N'13:30:00', N'14:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Wednesday', N'13:30:00', N'14:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Wednesday', N'14:00:00', N'14:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Wednesday', N'14:00:00', N'15:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Wednesday', N'14:30:00', N'15:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Wednesday', N'14:30:00', N'15:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Wednesday', N'15:00:00', N'15:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Wednesday', N'15:00:00', N'16:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Wednesday', N'15:30:00', N'16:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Wednesday', N'15:30:00', N'16:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Wednesday', N'16:00:00', N'16:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Wednesday', N'16:00:00', N'17:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Wednesday', N'16:30:00', N'17:00:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Wednesday', N'16:30:00', N'17:30:00', N'Work Time')
+INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) VALUES (N'Wednesday', N'17:00:00', N'17:30:00', N'Work Time')
+
+
+
+SELECT s.[day], s.[group_id], s.[sub_group_id], rs.[room], t.[tag_name], su.[sub_name], su.[subject_Code], s.[consecutive_id], s.[parallel_id], s.[not_parallel_id], s.[session_status]  FROM (((([Sessions] s INNER JOIN [RoomSession] rs ON s.[session_id] = rs.[session_id]) INNER JOIN [tags] t ON t.[tag_code] = s.[tag_code]) INNER JOIN [subjects] su ON su.subject_id = s.subject_id) INNER JOIN [lecturers] l ON l.[idlecturer] = s.[lecturer_id]) WHERE s.[sub_group_id] = @SubGroupID;
