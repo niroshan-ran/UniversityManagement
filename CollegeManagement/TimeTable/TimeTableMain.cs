@@ -51,16 +51,16 @@ namespace CollegeManagement.TimeTable
 
                 if (radioButtonLecturer.Checked == true) 
                 {
-                    timeTable.GenerateTimeTable(fbd.FileName, CommonConstants.QUERY_GET_TIMETABLE_BY_LECTURER, comboBoxLecturer.SelectedItem.ToString());
+                    timeTable.GenerateTimeTable(fbd.FileName, CommonConstants.QUERY_GET_TIMETABLE_BY_LECTURER, comboBoxLecturer.SelectedItem.ToString(), "LEC");
                 
                 }
                 else if (radioButtonRoom.Checked == true)
                 {
-                    timeTable.GenerateTimeTable(fbd.FileName, CommonConstants.QUERY_GET_TIMETABLE_BY_ROOM, comboBoxRoom.SelectedItem.ToString());
+                    timeTable.GenerateTimeTable(fbd.FileName, CommonConstants.QUERY_GET_TIMETABLE_BY_ROOM, comboBoxRoom.SelectedItem.ToString(), "HALL");
                 }
                 else if (radioButtonStudent.Checked == true)
                 {
-                    timeTable.GenerateTimeTable(fbd.FileName, CommonConstants.QUERY_GET_TIMETABLE_BY_STUDENT_GROUP, comboBoxStudent.SelectedItem.ToString());
+                    timeTable.GenerateTimeTable(fbd.FileName, CommonConstants.QUERY_GET_TIMETABLE_BY_STUDENT_GROUP, comboBoxStudent.SelectedItem.ToString(), "GROUP");
                 }
 
                 Cursor.Current = Cursors.Default;

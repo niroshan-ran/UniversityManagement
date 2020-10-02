@@ -494,3 +494,36 @@ INSERT INTO [dbo].[timeslots] ([dayOfTheWeek], [startTime], [endTime], [type]) V
 
 
 SELECT s.[day], s.[group_id], s.[sub_group_id], rs.[room], t.[tag_name], su.[sub_name], su.[subject_Code], s.[consecutive_id], s.[parallel_id], s.[not_parallel_id], s.[session_status]  FROM (((([Sessions] s INNER JOIN [RoomSession] rs ON s.[session_id] = rs.[session_id]) INNER JOIN [tags] t ON t.[tag_code] = s.[tag_code]) INNER JOIN [subjects] su ON su.subject_id = s.subject_id) INNER JOIN [lecturers] l ON l.[idlecturer] = s.[lecturer_id]) WHERE s.[sub_group_id] = @SubGroupID;
+
+
+SET IDENTITY_INSERT [dbo].[Sessions] ON
+INSERT INTO [dbo].[Sessions] ([session_id], [lecturer_id], [subject_id], [subject_code], [tag_code], [group_id], [sub_group_id], [student_count], [duration], [day], [start_time], [end_time], [start_slot], [end_slot], [consecutive_id], [parallel_id], [not_parallel_id], [session_status]) VALUES (1, N'1', N'1', N'System.Data.DataRowView', N'TUTE', N'1.1.BSCIT.1', N'1.1.BSCIT.1', 20, 60, NULL, NULL, NULL, NULL, NULL, 1, NULL, 1, 4)
+INSERT INTO [dbo].[Sessions] ([session_id], [lecturer_id], [subject_id], [subject_code], [tag_code], [group_id], [sub_group_id], [student_count], [duration], [day], [start_time], [end_time], [start_slot], [end_slot], [consecutive_id], [parallel_id], [not_parallel_id], [session_status]) VALUES (2, N'2', N'2', N'System.Data.DataRowView', N'LEC', N'1.1.BSCIT.1', N'1.1.BSCIT.1', 20, 120, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, 2)
+INSERT INTO [dbo].[Sessions] ([session_id], [lecturer_id], [subject_id], [subject_code], [tag_code], [group_id], [sub_group_id], [student_count], [duration], [day], [start_time], [end_time], [start_slot], [end_slot], [consecutive_id], [parallel_id], [not_parallel_id], [session_status]) VALUES (3, N'3', N'2', N'System.Data.DataRowView', N'PRAC', N'1.1.BSCIT.1', N'1.1.BSCIT.1', 20, 120, NULL, NULL, NULL, NULL, NULL, 1, NULL, 1, 4)
+INSERT INTO [dbo].[Sessions] ([session_id], [lecturer_id], [subject_id], [subject_code], [tag_code], [group_id], [sub_group_id], [student_count], [duration], [day], [start_time], [end_time], [start_slot], [end_slot], [consecutive_id], [parallel_id], [not_parallel_id], [session_status]) VALUES (4, N'4', N'1', N'System.Data.DataRowView', N'PRAC', N'1.1.BSCIT.1', N'1.1.BSCIT.1', 20, 120, NULL, NULL, NULL, NULL, NULL, 1, NULL, 1, 4)
+SET IDENTITY_INSERT [dbo].[Sessions] OFF
+
+SET IDENTITY_INSERT [dbo].[RoomSession] ON
+INSERT INTO [dbo].[RoomSession] ([rsid], [session_id], [room], [building]) VALUES (1, 2, N'A308', N'Computing')
+SET IDENTITY_INSERT [dbo].[RoomSession] OFF
+
+SET IDENTITY_INSERT [dbo].[ReservedRoom] ON
+INSERT INTO [dbo].[ReservedRoom] ([reservedId], [session_id], [start_time], [end_time], [room], [building], [day]) VALUES (1, 2, N'10:30', N'12:30', N'A308', N'Computing', N'Monday')
+SET IDENTITY_INSERT [dbo].[ReservedRoom] OFF
+
+INSERT INTO [dbo].[NotAvailableLec] ([LecturerID], [day], [start_time], [end_time], [start_slot], [end_slot]) VALUES (N'1', N'MONDAY', N'8.30', N'9.30', 1, 2)
+INSERT INTO [dbo].[NotAvailableLec] ([LecturerID], [day], [start_time], [end_time], [start_slot], [end_slot]) VALUES (N'2', N'MONDAY', N'10.30', N'12.30', 3, 5)
+INSERT INTO [dbo].[NotAvailableLec] ([LecturerID], [day], [start_time], [end_time], [start_slot], [end_slot]) VALUES (N'3', N'MONDAY', N'13.30', N'15.30', 6, 8)
+INSERT INTO [dbo].[NotAvailableLec] ([LecturerID], [day], [start_time], [end_time], [start_slot], [end_slot]) VALUES (N'4', N'MONDAY', N'15.30', N'17.30', 8, 10)
+
+INSERT INTO [dbo].[NotAvailableStudent] ([group_id], [sub_grou_id], [day], [start_time], [end_time], [start_slot], [end_slot]) VALUES (N'1.1.BSCIT.1', N'1.1.BSCIT.1.1', N'MONDAY', N'8.30', N'9.30', 1, 2)
+INSERT INTO [dbo].[NotAvailableStudent] ([group_id], [sub_grou_id], [day], [start_time], [end_time], [start_slot], [end_slot]) VALUES (N'1.1.BSCIT.1', N'1.1.BSCIT.1.1', N'MONDAY', N'10.30', N'12.30', 3, 5)
+INSERT INTO [dbo].[NotAvailableStudent] ([group_id], [sub_grou_id], [day], [start_time], [end_time], [start_slot], [end_slot]) VALUES (N'1.1.BSCIT.1', N'1.1.BSCIT.1.1', N'MONDAY', N'13.30', N'15.30', 6, 8)
+INSERT INTO [dbo].[NotAvailableStudent] ([group_id], [sub_grou_id], [day], [start_time], [end_time], [start_slot], [end_slot]) VALUES (N'1.1.BSCIT.1', N'1.1.BSCIT.1.1', N'MONDAY', N'15.30', N'17.30', 8, 10)
+
+
+INSERT INTO [dbo].[groups] ([group_id], [Year], [semester], [program], [group_no]) VALUES (N'1.1.BSCIT.1', N'1', N'1', N'BSCIT', 1)
+
+INSERT INTO [dbo].[sub_group] ([sub_group_id], [group_id], [sub_group_no]) VALUES (N'1.1.BSCIT.1.1', N'1.1.BSCIT.1', 1)
+INSERT INTO [dbo].[sub_group] ([sub_group_id], [group_id], [sub_group_no]) VALUES (N'1.1.BSCIT.1.2', N'1.1.BSCIT.1', 2)
+
