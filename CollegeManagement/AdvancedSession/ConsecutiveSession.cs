@@ -51,11 +51,11 @@ namespace CollegeManagement.AdvancedSession
             obj.Group = ddlGroup.SelectedValue.ToString();
             if(ddlGroup.SelectedValue != null)
             {
-                obj.SubGroup = ddlGroup.SelectedValue.ToString();
+                obj.SubGroup = ddlSubGroup.SelectedValue.ToString();
             }
             obj.Lecturer= ddlLecturer.SelectedValue.ToString();
             obj.Subject = ddlSubject.SelectedValue.ToString();
-            obj.SubjCode = ddlSubject.SelectedItem.ToString();
+            obj.SubjCode = (ddlSubject.SelectedItem as DataRowView)["subject_Code"].ToString();
             obj.Tag = ddlTags.SelectedValue.ToString();
             obj.Stucount = txtStdCount.Text;
             obj.Duration = txtDuration.Text;
@@ -134,6 +134,11 @@ namespace CollegeManagement.AdvancedSession
         private void btnManage_Click(object sender, EventArgs e)
         {
             openChildForm(new ConsecutiveManagement());            
+        }
+
+        private void subjectsBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

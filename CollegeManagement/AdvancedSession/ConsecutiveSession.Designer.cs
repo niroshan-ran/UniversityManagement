@@ -77,7 +77,7 @@
             this.label1.Location = new System.Drawing.Point(68, 75);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 24);
+            this.label1.Size = new System.Drawing.Size(55, 18);
             this.label1.TabIndex = 0;
             this.label1.Text = "Group";
             // 
@@ -88,7 +88,7 @@
             this.label2.Location = new System.Drawing.Point(68, 124);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(111, 24);
+            this.label2.Size = new System.Drawing.Size(89, 18);
             this.label2.TabIndex = 1;
             this.label2.Text = "Sub Group";
             // 
@@ -99,7 +99,7 @@
             this.label3.Location = new System.Drawing.Point(68, 175);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(87, 24);
+            this.label3.Size = new System.Drawing.Size(70, 18);
             this.label3.TabIndex = 2;
             this.label3.Text = "Lecturer";
             // 
@@ -110,7 +110,7 @@
             this.label4.Location = new System.Drawing.Point(68, 231);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(80, 24);
+            this.label4.Size = new System.Drawing.Size(64, 18);
             this.label4.TabIndex = 3;
             this.label4.Text = "Subject";
             // 
@@ -121,7 +121,7 @@
             this.label5.Location = new System.Drawing.Point(68, 345);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(142, 24);
+            this.label5.Size = new System.Drawing.Size(115, 18);
             this.label5.TabIndex = 4;
             this.label5.Text = "Student Count";
             // 
@@ -132,7 +132,7 @@
             this.label6.Location = new System.Drawing.Point(68, 399);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(88, 24);
+            this.label6.Size = new System.Drawing.Size(72, 18);
             this.label6.TabIndex = 5;
             this.label6.Text = "Duration";
             // 
@@ -145,7 +145,7 @@
             this.ddlGroup.Location = new System.Drawing.Point(222, 75);
             this.ddlGroup.Margin = new System.Windows.Forms.Padding(4);
             this.ddlGroup.Name = "ddlGroup";
-            this.ddlGroup.Size = new System.Drawing.Size(263, 30);
+            this.ddlGroup.Size = new System.Drawing.Size(263, 26);
             this.ddlGroup.TabIndex = 6;
             this.ddlGroup.ValueMember = "group_id";
             // 
@@ -168,7 +168,7 @@
             this.ddlSubGroup.Location = new System.Drawing.Point(222, 124);
             this.ddlSubGroup.Margin = new System.Windows.Forms.Padding(4);
             this.ddlSubGroup.Name = "ddlSubGroup";
-            this.ddlSubGroup.Size = new System.Drawing.Size(263, 30);
+            this.ddlSubGroup.Size = new System.Drawing.Size(263, 26);
             this.ddlSubGroup.TabIndex = 7;
             this.ddlSubGroup.ValueMember = "sub_group_id";
             // 
@@ -186,7 +186,7 @@
             this.ddlLecturer.Location = new System.Drawing.Point(222, 175);
             this.ddlLecturer.Margin = new System.Windows.Forms.Padding(4);
             this.ddlLecturer.Name = "ddlLecturer";
-            this.ddlLecturer.Size = new System.Drawing.Size(263, 30);
+            this.ddlLecturer.Size = new System.Drawing.Size(263, 26);
             this.ddlLecturer.TabIndex = 8;
             this.ddlLecturer.ValueMember = "idlecturer";
             // 
@@ -204,7 +204,7 @@
             this.ddlSubject.Location = new System.Drawing.Point(222, 231);
             this.ddlSubject.Margin = new System.Windows.Forms.Padding(4);
             this.ddlSubject.Name = "ddlSubject";
-            this.ddlSubject.Size = new System.Drawing.Size(263, 30);
+            this.ddlSubject.Size = new System.Drawing.Size(263, 26);
             this.ddlSubject.TabIndex = 9;
             this.ddlSubject.ValueMember = "subject_id";
             // 
@@ -212,6 +212,7 @@
             // 
             this.subjectsBindingSource.DataMember = "subjects";
             this.subjectsBindingSource.DataSource = this.collegeDBDataSet;
+            this.subjectsBindingSource.CurrentChanged += new System.EventHandler(this.subjectsBindingSource_CurrentChanged);
             // 
             // txtStdCount
             // 
@@ -219,7 +220,7 @@
             this.txtStdCount.Location = new System.Drawing.Point(222, 348);
             this.txtStdCount.Margin = new System.Windows.Forms.Padding(4);
             this.txtStdCount.Name = "txtStdCount";
-            this.txtStdCount.Size = new System.Drawing.Size(263, 28);
+            this.txtStdCount.Size = new System.Drawing.Size(263, 24);
             this.txtStdCount.TabIndex = 10;
             // 
             // txtDuration
@@ -228,7 +229,7 @@
             this.txtDuration.Location = new System.Drawing.Point(222, 399);
             this.txtDuration.Margin = new System.Windows.Forms.Padding(4);
             this.txtDuration.Name = "txtDuration";
-            this.txtDuration.Size = new System.Drawing.Size(263, 28);
+            this.txtDuration.Size = new System.Drawing.Size(263, 24);
             this.txtDuration.TabIndex = 11;
             // 
             // groupsTableAdapter
@@ -274,7 +275,7 @@
             this.label7.Location = new System.Drawing.Point(68, 34);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(259, 24);
+            this.label7.Size = new System.Drawing.Size(209, 18);
             this.label7.TabIndex = 13;
             this.label7.Text = "Add Consecutive Sessions";
             // 
@@ -287,7 +288,7 @@
             this.ddlTags.Location = new System.Drawing.Point(222, 288);
             this.ddlTags.Margin = new System.Windows.Forms.Padding(4);
             this.ddlTags.Name = "ddlTags";
-            this.ddlTags.Size = new System.Drawing.Size(263, 30);
+            this.ddlTags.Size = new System.Drawing.Size(263, 26);
             this.ddlTags.TabIndex = 15;
             this.ddlTags.ValueMember = "tag_code";
             // 
@@ -303,7 +304,7 @@
             this.label8.Location = new System.Drawing.Point(68, 288);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(56, 24);
+            this.label8.Size = new System.Drawing.Size(45, 18);
             this.label8.TabIndex = 14;
             this.label8.Text = "Tags";
             // 
@@ -381,7 +382,7 @@
             // 
             // ConsecutiveSession
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1303, 840);

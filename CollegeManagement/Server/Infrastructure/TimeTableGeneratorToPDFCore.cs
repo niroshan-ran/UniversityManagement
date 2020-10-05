@@ -56,7 +56,7 @@ namespace CollegeManagement.Server.Infrastructure
     {
         private Document document = null;
         private Table table = null;
-        public Document CreateDocument(string query, string value, string type)
+        private Document CreateDocument(string query, string value, string type)
         {
             // Create a new MigraDoc document
             this.document = new Document();
@@ -68,12 +68,15 @@ namespace CollegeManagement.Server.Infrastructure
 
             CreatePage(value);
 
-            FillContent(query, value, type);
+            int status = FillContent(query, value, type);
+
+            if (status == -1)
+                return null;
 
             return this.document;
         }
 
-        void DefineStyles()
+        private void DefineStyles()
         {
             // Get the predefined style Normal.
             Style style = this.document.Styles["Normal"];
@@ -90,7 +93,7 @@ namespace CollegeManagement.Server.Infrastructure
             style.ParagraphFormat.TabStops.AddTabStop("30.5cm", TabAlignment.Right);
         }
 
-        void CreatePage(string value)
+        private void CreatePage(string value)
         {
             // Each MigraDoc document needs at least one section.
             Section section = this.document.AddSection();
@@ -220,9 +223,8 @@ namespace CollegeManagement.Server.Infrastructure
             return stringlist;
         }
 
-        void FillContent(string query, string value, string type)
+        private int FillContent(string query, string value, string type)
         {
-
 
             DBConnection.OpenConnection();
 
@@ -244,36 +246,31 @@ namespace CollegeManagement.Server.Infrastructure
             Row row10 = this.table.AddRow();
 
 
-
-
-
-
-            row1.Cells[0].AddParagraph("08:30\n-\n09:30");
+            row1.Cells[0].AddParagraph("08:30");
             
 
-
-            row2.Cells[0].AddParagraph("09:30\n-\n10:30");
+            row2.Cells[0].AddParagraph("09:30");
             
 
-            row3.Cells[0].AddParagraph("10:30\n-\n11:30");
+            row3.Cells[0].AddParagraph("10:30");
 
 
-            row4.Cells[0].AddParagraph("11:30\n-\n12:30");
+            row4.Cells[0].AddParagraph("11:30");
 
 
-            row5.Cells[0].AddParagraph("12:30\n-\n13:30");
+            row5.Cells[0].AddParagraph("12:30");
 
 
-            row6.Cells[0].AddParagraph("13:30\n-\n14:30");
+            row6.Cells[0].AddParagraph("13:30");
 
 
-            row7.Cells[0].AddParagraph("14:30\n-\n15:30");
+            row7.Cells[0].AddParagraph("14:30");
 
 
-            row8.Cells[0].AddParagraph("15:30\n-\n16:30");
+            row8.Cells[0].AddParagraph("15:30");
 
 
-            row9.Cells[0].AddParagraph("16:30\n-\n17:30");
+            row9.Cells[0].AddParagraph("16:30");
 
 
 
@@ -287,14 +284,7 @@ namespace CollegeManagement.Server.Infrastructure
             monday = tuesday = wednesday = thursday = friday = saturday = sunday = Variables.GetOrigin(true);
 
 
-
-
             string cellValue = "";
-
-
-
-
-
 
 
             while (sqlDataReader.Read())
@@ -348,7 +338,7 @@ namespace CollegeManagement.Server.Infrastructure
                                         monday.row1 = false;
                                         break;
                                     default:
-                                        row1.Cells[1].AddParagraph("--");
+                                        //row1.Cells[1].AddParagraph("--");
                                         break;
                                 }
 
@@ -374,13 +364,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             monday.row2 = false;
                                             break;
                                         default:
-                                            row2.Cells[1].AddParagraph("--");
+                                            //row2.Cells[1].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else 
                                 {
-
+                                    return -1;
                                 }
 
                                 break;
@@ -401,13 +391,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             monday.row3 = false;
                                             break;
                                         default:
-                                            row3.Cells[1].AddParagraph("--");
+                                            //row3.Cells[1].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else
                                 {
-
+                                    return -1;
                                 }
 
                                 break;
@@ -429,13 +419,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             break;
 
                                         default:
-                                            row4.Cells[1].AddParagraph("--");
+                                            //row4.Cells[1].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else 
                                 {
-
+                                    return -1;
                                 }
 
                                 break;
@@ -459,13 +449,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             monday.row5 = false;
                                             break;
                                         default:
-                                            row5.Cells[1].AddParagraph("--");
+                                            //row5.Cells[1].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else 
                                 {
-
+                                    return -1;
                                 }
                                 break;
                             case 13:
@@ -485,13 +475,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             monday.row6 = false;
                                             break;
                                         default:
-                                            row6.Cells[1].AddParagraph("--");
+                                            //row6.Cells[1].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else
                                 {
-
+                                    return -1;
                                 }
                                 break;
                             case 14:
@@ -511,13 +501,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             monday.row7 = false;
                                             break;
                                         default:
-                                            row7.Cells[1].AddParagraph("--");
+                                            //row7.Cells[1].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else 
-                                { 
-
+                                {
+                                    return -1;
                                 }
                                 break;
                             case 15:
@@ -537,13 +527,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             monday.row8 = false;
                                             break;
                                         default:
-                                            row8.Cells[1].AddParagraph("--");
+                                            //row8.Cells[1].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else
                                 {
-
+                                    return -1;
                                 }
 
                                 break;
@@ -560,12 +550,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             break;
 
                                         default:
-                                            row9.Cells[1].AddParagraph("--");
+                                            //row9.Cells[1].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else 
                                 {
+                                    return -1;
                                 }
                                 break;
                            
@@ -595,7 +586,7 @@ namespace CollegeManagement.Server.Infrastructure
                                         tuesday.row1 = false;
                                         break;
                                     default:
-                                        row1.Cells[2].AddParagraph("--");
+                                        //row1.Cells[2].AddParagraph("--");
                                         break;
                                 }
 
@@ -621,13 +612,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             tuesday.row2 = false;
                                             break;
                                         default:
-                                            row2.Cells[2].AddParagraph("--");
+                                            //row2.Cells[2].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else
                                 {
-
+                                    return -1;
                                 }
 
                                 break;
@@ -648,13 +639,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             tuesday.row3 = false;
                                             break;
                                         default:
-                                            row3.Cells[2].AddParagraph("--");
+                                            //row3.Cells[2].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else
                                 {
-
+                                    return -1;
                                 }
 
                                 break;
@@ -676,13 +667,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             break;
 
                                         default:
-                                            row4.Cells[2].AddParagraph("--");
+                                            //row4.Cells[2].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else
                                 {
-
+                                    return -1;
                                 }
 
                                 break;
@@ -706,13 +697,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             tuesday.row5 = false;
                                             break;
                                         default:
-                                            row5.Cells[2].AddParagraph("--");
+                                            //row5.Cells[2].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else
                                 {
-
+                                    return -1;
                                 }
                                 break;
                             case 13:
@@ -732,13 +723,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             tuesday.row6 = false;
                                             break;
                                         default:
-                                            row6.Cells[2].AddParagraph("--");
+                                            //row6.Cells[2].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else
                                 {
-
+                                    return -1;
                                 }
                                 break;
                             case 14:
@@ -758,13 +749,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             tuesday.row7 = false;
                                             break;
                                         default:
-                                            row7.Cells[2].AddParagraph("--");
+                                            //row7.Cells[2].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else
                                 {
-
+                                    return -1;
                                 }
                                 break;
                             case 15:
@@ -784,13 +775,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             tuesday.row6 = false;
                                             break;
                                         default:
-                                            row8.Cells[2].AddParagraph("--");
+                                            //row8.Cells[2].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else
                                 {
-
+                                    return -1;
                                 }
 
                                 break;
@@ -807,12 +798,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             break;
 
                                         default:
-                                            row9.Cells[2].AddParagraph("--");
+                                            //row9.Cells[2].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else
                                 {
+                                    return -1;
                                 }
                                 break;
 
@@ -842,7 +834,7 @@ namespace CollegeManagement.Server.Infrastructure
                                         wednesday.row1 = false;
                                         break;
                                     default:
-                                        row1.Cells[3].AddParagraph("--");
+                                        //row1.Cells[3].AddParagraph("--");
                                         break;
                                 }
 
@@ -868,13 +860,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             wednesday.row2 = false;
                                             break;
                                         default:
-                                            row2.Cells[3].AddParagraph("--");
+                                            //row2.Cells[3].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else
                                 {
-
+                                    return -1;
                                 }
 
                                 break;
@@ -895,13 +887,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             wednesday.row3 = false;
                                             break;
                                         default:
-                                            row3.Cells[3].AddParagraph("--");
+                                            //row3.Cells[3].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else
                                 {
-
+                                    return -1;
                                 }
 
                                 break;
@@ -923,13 +915,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             break;
 
                                         default:
-                                            row4.Cells[3].AddParagraph("--");
+                                            //row4.Cells[3].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else
                                 {
-
+                                    return -1;
                                 }
 
                                 break;
@@ -953,13 +945,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             wednesday.row5 = false;
                                             break;
                                         default:
-                                            row5.Cells[3].AddParagraph("--");
+                                            //row5.Cells[3].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else
                                 {
-
+                                    return -1;
                                 }
                                 break;
                             case 13:
@@ -979,13 +971,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             wednesday.row6 = false;
                                             break;
                                         default:
-                                            row6.Cells[3].AddParagraph("--");
+                                            //row6.Cells[3].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else
                                 {
-
+                                    return -1;
                                 }
                                 break;
                             case 14:
@@ -1005,13 +997,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             wednesday.row7 = false;
                                             break;
                                         default:
-                                            row7.Cells[3].AddParagraph("--");
+                                            //row7.Cells[3].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else
                                 {
-
+                                    return -1;
                                 }
                                 break;
                             case 15:
@@ -1031,13 +1023,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             wednesday.row8 = false;
                                             break;
                                         default:
-                                            row8.Cells[3].AddParagraph("--");
+                                            //row8.Cells[3].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else
                                 {
-
+                                    return -1;
                                 }
 
                                 break;
@@ -1054,12 +1046,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             break;
 
                                         default:
-                                            row9.Cells[3].AddParagraph("--");
+                                            //row9.Cells[3].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else
                                 {
+                                    return -1;
                                 }
                                 break;
 
@@ -1089,7 +1082,7 @@ namespace CollegeManagement.Server.Infrastructure
                                         thursday.row1 = false;
                                         break;
                                     default:
-                                        row1.Cells[4].AddParagraph("--");
+                                        //row1.Cells[4].AddParagraph("--");
                                         break;
                                 }
 
@@ -1115,13 +1108,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             thursday.row2 = false;
                                             break;
                                         default:
-                                            row2.Cells[4].AddParagraph("--");
+                                            //row2.Cells[4].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else
                                 {
-
+                                    return -1;
                                 }
 
                                 break;
@@ -1142,13 +1135,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             thursday.row3 = false;
                                             break;
                                         default:
-                                            row3.Cells[4].AddParagraph("--");
+                                            //row3.Cells[4].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else
                                 {
-
+                                    return -1;
                                 }
 
                                 break;
@@ -1170,13 +1163,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             break;
 
                                         default:
-                                            row4.Cells[4].AddParagraph("--");
+                                            //row4.Cells[4].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else
                                 {
-
+                                    return -1;
                                 }
 
                                 break;
@@ -1200,13 +1193,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             thursday.row5 = false;
                                             break;
                                         default:
-                                            row5.Cells[4].AddParagraph("--");
+                                            //row5.Cells[4].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else
                                 {
-
+                                    return -1;
                                 }
                                 break;
                             case 13:
@@ -1226,13 +1219,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             thursday.row6 = false;
                                             break;
                                         default:
-                                            row6.Cells[4].AddParagraph("--");
+                                            //row6.Cells[4].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else
                                 {
-
+                                    return -1;
                                 }
                                 break;
                             case 14:
@@ -1252,13 +1245,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             thursday.row7 = false;
                                             break;
                                         default:
-                                            row7.Cells[4].AddParagraph("--");
+                                            //row7.Cells[4].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else
                                 {
-
+                                    return -1;
                                 }
                                 break;
                             case 15:
@@ -1278,13 +1271,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             thursday.row8 = false;
                                             break;
                                         default:
-                                            row8.Cells[4].AddParagraph("--");
+                                            //row8.Cells[4].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else
                                 {
-
+                                    return -1;
                                 }
 
                                 break;
@@ -1301,12 +1294,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             break;
 
                                         default:
-                                            row9.Cells[4].AddParagraph("--");
+                                            //row9.Cells[4].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else
                                 {
+                                    return -1;
                                 }
 
                                 break;
@@ -1337,7 +1331,7 @@ namespace CollegeManagement.Server.Infrastructure
                                         friday.row1 = false;
                                         break;
                                     default:
-                                        row1.Cells[5].AddParagraph("--");
+                                        //row1.Cells[5].AddParagraph("--");
                                         break;
                                 }
 
@@ -1363,13 +1357,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             friday.row2 = false;
                                             break;
                                         default:
-                                            row2.Cells[5].AddParagraph("--");
+                                            //row2.Cells[5].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else
                                 {
-
+                                    return -1;
                                 }
 
                                 break;
@@ -1390,13 +1384,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             friday.row3 = false;
                                             break;
                                         default:
-                                            row3.Cells[5].AddParagraph("--");
+                                            //row3.Cells[5].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else
                                 {
-
+                                    return -1;
                                 }
 
                                 break;
@@ -1418,13 +1412,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             break;
 
                                         default:
-                                            row4.Cells[5].AddParagraph("--");
+                                            //row4.Cells[5].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else
                                 {
-
+                                    return -1;
                                 }
 
                                 break;
@@ -1448,13 +1442,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             friday.row5 = false;
                                             break;
                                         default:
-                                            row5.Cells[5].AddParagraph("--");
+                                            //row5.Cells[5].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else
                                 {
-
+                                    return -1;
                                 }
                                 break;
                             case 13:
@@ -1474,13 +1468,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             friday.row6 = false;
                                             break;
                                         default:
-                                            row6.Cells[5].AddParagraph("--");
+                                            //row6.Cells[5].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else
                                 {
-
+                                    return -1;
                                 }
                                 break;
                             case 14:
@@ -1500,13 +1494,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             friday.row7 = false;
                                             break;
                                         default:
-                                            row7.Cells[5].AddParagraph("--");
+                                            //row7.Cells[5].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else
                                 {
-
+                                    return -1;
                                 }
                                 break;
                             case 15:
@@ -1526,13 +1520,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             friday.row8 = false;
                                             break;
                                         default:
-                                            row8.Cells[5].AddParagraph("--");
+                                            //row8.Cells[5].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else
                                 {
-
+                                    return -1;
                                 }
 
                                 break;
@@ -1549,12 +1543,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             break;
 
                                         default:
-                                            row9.Cells[5].AddParagraph("--");
+                                            //row9.Cells[5].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else
                                 {
+                                    return -1;
                                 }
                                 break;
 
@@ -1584,7 +1579,7 @@ namespace CollegeManagement.Server.Infrastructure
                                         saturday.row1 = false;
                                         break;
                                     default:
-                                        row1.Cells[6].AddParagraph("--");
+                                        //row1.Cells[6].AddParagraph("--");
                                         break;
                                 }
 
@@ -1610,13 +1605,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             saturday.row2 = false;
                                             break;
                                         default:
-                                            row2.Cells[6].AddParagraph("--");
+                                            //row2.Cells[6].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else
                                 {
-
+                                    return -1;
                                 }
 
                                 break;
@@ -1637,13 +1632,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             saturday.row3 = false;
                                             break;
                                         default:
-                                            row3.Cells[6].AddParagraph("--");
+                                            //row3.Cells[6].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else
                                 {
-
+                                    return -1;
                                 }
 
                                 break;
@@ -1665,13 +1660,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             break;
 
                                         default:
-                                            row4.Cells[6].AddParagraph("--");
+                                            //row4.Cells[6].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else
                                 {
-
+                                    return -1;
                                 }
 
                                 break;
@@ -1695,13 +1690,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             saturday.row5 = false;
                                             break;
                                         default:
-                                            row5.Cells[6].AddParagraph("--");
+                                            //row5.Cells[6].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else
                                 {
-
+                                    return -1;
                                 }
                                 break;
                             case 13:
@@ -1721,13 +1716,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             saturday.row6 = false;
                                             break;
                                         default:
-                                            row6.Cells[6].AddParagraph("--");
+                                            //row6.Cells[6].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else
                                 {
-
+                                    return -1;
                                 }
                                 break;
                             case 14:
@@ -1747,13 +1742,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             saturday.row7 = false;
                                             break;
                                         default:
-                                            row7.Cells[6].AddParagraph("--");
+                                            //row7.Cells[6].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else
                                 {
-
+                                    return -1;
                                 }
                                 break;
                             case 15:
@@ -1773,13 +1768,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             saturday.row8 = false;
                                             break;
                                         default:
-                                            row8.Cells[6].AddParagraph("--");
+                                            //row8.Cells[6].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else
                                 {
-
+                                    return -1;
                                 }
 
                                 break;
@@ -1796,12 +1791,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             break;
 
                                         default:
-                                            row9.Cells[6].AddParagraph("--");
+                                            //row9.Cells[6].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else
                                 {
+                                    return -1;
                                 }
                                 break;
 
@@ -1831,7 +1827,7 @@ namespace CollegeManagement.Server.Infrastructure
                                         sunday.row1 = false;
                                         break;
                                     default:
-                                        row1.Cells[7].AddParagraph("--");
+                                        //row1.Cells[7].AddParagraph("--");
                                         break;
                                 }
 
@@ -1857,13 +1853,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             sunday.row2 = false;
                                             break;
                                         default:
-                                            row2.Cells[7].AddParagraph("--");
+                                            //row2.Cells[7].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else
                                 {
-
+                                    return -1;
                                 }
 
                                 break;
@@ -1884,13 +1880,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             sunday.row3 = false;
                                             break;
                                         default:
-                                            row3.Cells[7].AddParagraph("--");
+                                            //row3.Cells[7].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else
                                 {
-
+                                    return -1;
                                 }
 
                                 break;
@@ -1912,13 +1908,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             break;
 
                                         default:
-                                            row4.Cells[7].AddParagraph("--");
+                                            //row4.Cells[7].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else
                                 {
-
+                                    return -1;
                                 }
 
                                 break;
@@ -1942,13 +1938,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             sunday.row5 = false;
                                             break;
                                         default:
-                                            row5.Cells[7].AddParagraph("--");
+                                            //row5.Cells[7].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else
                                 {
-
+                                    return -1;
                                 }
                                 break;
                             case 13:
@@ -1968,13 +1964,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             sunday.row6 = false;
                                             break;
                                         default:
-                                            row6.Cells[7].AddParagraph("--");
+                                            //row6.Cells[7].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else
                                 {
-
+                                    return -1;
                                 }
                                 break;
                             case 14:
@@ -1994,13 +1990,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             sunday.row7 = false;
                                             break;
                                         default:
-                                            row7.Cells[7].AddParagraph("--");
+                                            //row7.Cells[7].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else
                                 {
-
+                                    return -1;
                                 }
                                 break;
                             case 15:
@@ -2020,13 +2016,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             sunday.row8 = false;
                                             break;
                                         default:
-                                            row8.Cells[7].AddParagraph("--");
+                                            //row8.Cells[7].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else
                                 {
-
+                                    return -1;
                                 }
 
                                 break;
@@ -2043,12 +2039,13 @@ namespace CollegeManagement.Server.Infrastructure
                                             break;
 
                                         default:
-                                            row9.Cells[7].AddParagraph("--");
+                                            //row9.Cells[7].AddParagraph("--");
                                             break;
                                     }
                                 }
                                 else
                                 {
+                                    return -1;
                                 }
                                 break;
 
@@ -2061,439 +2058,442 @@ namespace CollegeManagement.Server.Infrastructure
                         break;
                 }
 
-                if (monday.columnStatus == false)
-                {
+                
+            }
+
+            if (monday.columnStatus == false)
+            {
+
+                row1.Cells[1].AddParagraph("--");
+
+
+
+                row2.Cells[1].AddParagraph("--");
+
+
+                row3.Cells[1].AddParagraph("--");
+
+
+                row4.Cells[1].AddParagraph("--");
+
+
+                row5.Cells[1].AddParagraph("--");
+
+
+                row6.Cells[1].AddParagraph("--");
+
+
+                row7.Cells[1].AddParagraph("--");
+
+
+                row8.Cells[1].AddParagraph("--");
+
+
+                row9.Cells[1].AddParagraph("--");
+
+
+                row10.Cells[1].AddParagraph("--");
+            }
+            else
+            {
+                if (monday.columnRow1 == false)
                     row1.Cells[1].AddParagraph("--");
 
-
-
+                if (monday.columnRow2 == false)
                     row2.Cells[1].AddParagraph("--");
 
-
+                if (monday.columnRow3 == false)
                     row3.Cells[1].AddParagraph("--");
 
-
+                if (monday.columnRow4 == false)
                     row4.Cells[1].AddParagraph("--");
 
-
+                if (monday.columnRow5 == false)
                     row5.Cells[1].AddParagraph("--");
 
-
+                if (monday.columnRow6 == false)
                     row6.Cells[1].AddParagraph("--");
 
-
+                if (monday.columnRow7 == false)
                     row7.Cells[1].AddParagraph("--");
 
-
+                if (monday.columnRow8 == false)
                     row8.Cells[1].AddParagraph("--");
 
-
+                if (monday.columnRow9 == false)
                     row9.Cells[1].AddParagraph("--");
+            }
+
+            if (tuesday.columnStatus == false)
+            {
+                row1.Cells[2].AddParagraph("--");
 
 
-                    row10.Cells[1].AddParagraph("--");
-                } 
-                else
-                {
-                    if (monday.columnRow1 == false)
-                        row1.Cells[1].AddParagraph("--");
 
-                    if (monday.columnRow2 == false)
-                        row2.Cells[1].AddParagraph("--");
+                row2.Cells[2].AddParagraph("--");
 
-                    if (monday.columnRow3 == false)
-                        row3.Cells[1].AddParagraph("--");
 
-                    if (monday.columnRow4 == false)
-                        row4.Cells[1].AddParagraph("--");
+                row3.Cells[2].AddParagraph("--");
 
-                    if (monday.columnRow5 == false)
-                        row5.Cells[1].AddParagraph("--");
 
-                    if (monday.columnRow6 == false)
-                        row6.Cells[1].AddParagraph("--");
+                row4.Cells[2].AddParagraph("--");
 
-                    if (monday.columnRow7 == false)
-                        row7.Cells[1].AddParagraph("--");
 
-                    if (monday.columnRow8 == false)
-                        row8.Cells[1].AddParagraph("--");
+                row5.Cells[2].AddParagraph("--");
 
-                    if (monday.columnRow9 == false)
-                        row9.Cells[1].AddParagraph("--");
-                }
 
-                if (tuesday.columnStatus == false)
-                {
+                row6.Cells[2].AddParagraph("--");
+
+
+                row7.Cells[2].AddParagraph("--");
+
+
+                row8.Cells[2].AddParagraph("--");
+
+
+                row9.Cells[2].AddParagraph("--");
+
+
+                row10.Cells[2].AddParagraph("--");
+            }
+            else
+            {
+                if (tuesday.columnRow1 == false)
                     row1.Cells[2].AddParagraph("--");
 
-
-
+                if (tuesday.columnRow2 == false)
                     row2.Cells[2].AddParagraph("--");
 
-
+                if (tuesday.columnRow3 == false)
                     row3.Cells[2].AddParagraph("--");
 
-
+                if (tuesday.columnRow4 == false)
                     row4.Cells[2].AddParagraph("--");
 
-
+                if (tuesday.columnRow5 == false)
                     row5.Cells[2].AddParagraph("--");
 
-
+                if (tuesday.columnRow6 == false)
                     row6.Cells[2].AddParagraph("--");
 
-
+                if (tuesday.columnRow7 == false)
                     row7.Cells[2].AddParagraph("--");
 
-
+                if (tuesday.columnRow8 == false)
                     row8.Cells[2].AddParagraph("--");
 
-
+                if (tuesday.columnRow9 == false)
                     row9.Cells[2].AddParagraph("--");
+            }
+
+            if (wednesday.columnStatus == false)
+            {
+                row1.Cells[3].AddParagraph("--");
 
 
-                    row10.Cells[2].AddParagraph("--");
-                }
-                else
-                {
-                    if (tuesday.columnRow1 == false)
-                        row1.Cells[2].AddParagraph("--");
 
-                    if (tuesday.columnRow2 == false)
-                        row2.Cells[2].AddParagraph("--");
+                row2.Cells[3].AddParagraph("--");
 
-                    if (tuesday.columnRow3 == false)
-                        row3.Cells[2].AddParagraph("--");
 
-                    if (tuesday.columnRow4 == false)
-                        row4.Cells[2].AddParagraph("--");
+                row3.Cells[3].AddParagraph("--");
 
-                    if (tuesday.columnRow5 == false)
-                        row5.Cells[2].AddParagraph("--");
 
-                    if (tuesday.columnRow6 == false)
-                        row6.Cells[2].AddParagraph("--");
+                row4.Cells[3].AddParagraph("--");
 
-                    if (tuesday.columnRow7 == false)
-                        row7.Cells[2].AddParagraph("--");
 
-                    if (tuesday.columnRow8 == false)
-                        row8.Cells[2].AddParagraph("--");
+                row5.Cells[3].AddParagraph("--");
 
-                    if (tuesday.columnRow9 == false)
-                        row9.Cells[2].AddParagraph("--");
-                }
 
-                if (wednesday.columnStatus == false)
-                {
+                row6.Cells[3].AddParagraph("--");
+
+
+                row7.Cells[3].AddParagraph("--");
+
+
+                row8.Cells[3].AddParagraph("--");
+
+
+                row9.Cells[3].AddParagraph("--");
+
+
+                row10.Cells[3].AddParagraph("--");
+            }
+            else
+            {
+                if (tuesday.columnRow1 == false)
                     row1.Cells[3].AddParagraph("--");
 
-
-
+                if (tuesday.columnRow2 == false)
                     row2.Cells[3].AddParagraph("--");
 
-
+                if (tuesday.columnRow3 == false)
                     row3.Cells[3].AddParagraph("--");
 
-
+                if (tuesday.columnRow4 == false)
                     row4.Cells[3].AddParagraph("--");
 
-
+                if (tuesday.columnRow5 == false)
                     row5.Cells[3].AddParagraph("--");
 
-
+                if (tuesday.columnRow6 == false)
                     row6.Cells[3].AddParagraph("--");
 
-
+                if (tuesday.columnRow7 == false)
                     row7.Cells[3].AddParagraph("--");
 
-
+                if (tuesday.columnRow8 == false)
                     row8.Cells[3].AddParagraph("--");
 
-
+                if (tuesday.columnRow9 == false)
                     row9.Cells[3].AddParagraph("--");
+            }
+
+            if (thursday.columnStatus == false)
+            {
+                row1.Cells[4].AddParagraph("--");
 
 
-                    row10.Cells[3].AddParagraph("--");
-                }
-                else
-                {
-                    if (tuesday.columnRow1 == false)
-                        row1.Cells[3].AddParagraph("--");
 
-                    if (tuesday.columnRow2 == false)
-                        row2.Cells[3].AddParagraph("--");
+                row2.Cells[4].AddParagraph("--");
 
-                    if (tuesday.columnRow3 == false)
-                        row3.Cells[3].AddParagraph("--");
 
-                    if (tuesday.columnRow4 == false)
-                        row4.Cells[3].AddParagraph("--");
+                row3.Cells[4].AddParagraph("--");
 
-                    if (tuesday.columnRow5 == false)
-                        row5.Cells[3].AddParagraph("--");
 
-                    if (tuesday.columnRow6 == false)
-                        row6.Cells[3].AddParagraph("--");
+                row4.Cells[4].AddParagraph("--");
 
-                    if (tuesday.columnRow7 == false)
-                        row7.Cells[3].AddParagraph("--");
 
-                    if (tuesday.columnRow8 == false)
-                        row8.Cells[3].AddParagraph("--");
+                row5.Cells[4].AddParagraph("--");
 
-                    if (tuesday.columnRow9 == false)
-                        row9.Cells[3].AddParagraph("--");
-                }
 
-                if (thursday.columnStatus == false)
-                {
+                row6.Cells[4].AddParagraph("--");
+
+
+                row7.Cells[4].AddParagraph("--");
+
+
+                row8.Cells[4].AddParagraph("--");
+
+
+                row9.Cells[4].AddParagraph("--");
+
+
+                row10.Cells[4].AddParagraph("--");
+            }
+            else
+            {
+                if (thursday.columnRow1 == false)
                     row1.Cells[4].AddParagraph("--");
 
-
-
+                if (thursday.columnRow2 == false)
                     row2.Cells[4].AddParagraph("--");
 
-
+                if (thursday.columnRow3 == false)
                     row3.Cells[4].AddParagraph("--");
 
-
+                if (thursday.columnRow4 == false)
                     row4.Cells[4].AddParagraph("--");
 
-
+                if (thursday.columnRow5 == false)
                     row5.Cells[4].AddParagraph("--");
 
-
+                if (thursday.columnRow6 == false)
                     row6.Cells[4].AddParagraph("--");
 
-
+                if (thursday.columnRow7 == false)
                     row7.Cells[4].AddParagraph("--");
 
-
+                if (thursday.columnRow8 == false)
                     row8.Cells[4].AddParagraph("--");
 
-
+                if (thursday.columnRow9 == false)
                     row9.Cells[4].AddParagraph("--");
+            }
+
+            if (friday.columnStatus == false)
+            {
+                row1.Cells[5].AddParagraph("--");
 
 
-                    row10.Cells[4].AddParagraph("--");
-                }
-                else
-                {
-                    if (thursday.columnRow1 == false)
-                        row1.Cells[4].AddParagraph("--");
 
-                    if (thursday.columnRow2 == false)
-                        row2.Cells[4].AddParagraph("--");
+                row2.Cells[5].AddParagraph("--");
 
-                    if (thursday.columnRow3 == false)
-                        row3.Cells[4].AddParagraph("--");
 
-                    if (thursday.columnRow4 == false)
-                        row4.Cells[4].AddParagraph("--");
+                row3.Cells[5].AddParagraph("--");
 
-                    if (thursday.columnRow5 == false)
-                        row5.Cells[4].AddParagraph("--");
 
-                    if (thursday.columnRow6 == false)
-                        row6.Cells[4].AddParagraph("--");
+                row4.Cells[5].AddParagraph("--");
 
-                    if (thursday.columnRow7 == false)
-                        row7.Cells[4].AddParagraph("--");
 
-                    if (thursday.columnRow8 == false)
-                        row8.Cells[4].AddParagraph("--");
+                row5.Cells[5].AddParagraph("--");
 
-                    if (thursday.columnRow9 == false)
-                        row9.Cells[4].AddParagraph("--");
-                }
 
-                if (friday.columnStatus == false)
-                {
+                row6.Cells[5].AddParagraph("--");
+
+
+                row7.Cells[5].AddParagraph("--");
+
+
+                row8.Cells[5].AddParagraph("--");
+
+
+                row9.Cells[5].AddParagraph("--");
+
+
+                row10.Cells[5].AddParagraph("--");
+            }
+            else
+            {
+                if (friday.columnRow1 == false)
                     row1.Cells[5].AddParagraph("--");
 
-
-
+                if (friday.columnRow2 == false)
                     row2.Cells[5].AddParagraph("--");
 
-
+                if (friday.columnRow3 == false)
                     row3.Cells[5].AddParagraph("--");
 
-
+                if (friday.columnRow4 == false)
                     row4.Cells[5].AddParagraph("--");
 
-
+                if (friday.columnRow5 == false)
                     row5.Cells[5].AddParagraph("--");
 
-
+                if (friday.columnRow6 == false)
                     row6.Cells[5].AddParagraph("--");
 
-
+                if (friday.columnRow7 == false)
                     row7.Cells[5].AddParagraph("--");
 
-
+                if (friday.columnRow8 == false)
                     row8.Cells[5].AddParagraph("--");
 
-
+                if (friday.columnRow9 == false)
                     row9.Cells[5].AddParagraph("--");
+            }
+
+            if (saturday.columnStatus == false)
+            {
+                row1.Cells[6].AddParagraph("--");
 
 
-                    row10.Cells[5].AddParagraph("--");
-                }
-                else
-                {
-                    if (friday.columnRow1 == false)
-                        row1.Cells[5].AddParagraph("--");
 
-                    if (friday.columnRow2 == false)
-                        row2.Cells[5].AddParagraph("--");
+                row2.Cells[6].AddParagraph("--");
 
-                    if (friday.columnRow3 == false)
-                        row3.Cells[5].AddParagraph("--");
 
-                    if (friday.columnRow4 == false)
-                        row4.Cells[5].AddParagraph("--");
+                row3.Cells[6].AddParagraph("--");
 
-                    if (friday.columnRow5 == false)
-                        row5.Cells[5].AddParagraph("--");
 
-                    if (friday.columnRow6 == false)
-                        row6.Cells[5].AddParagraph("--");
+                row4.Cells[6].AddParagraph("--");
 
-                    if (friday.columnRow7 == false)
-                        row7.Cells[5].AddParagraph("--");
 
-                    if (friday.columnRow8 == false)
-                        row8.Cells[5].AddParagraph("--");
+                row5.Cells[6].AddParagraph("--");
 
-                    if (friday.columnRow9 == false)
-                        row9.Cells[5].AddParagraph("--");
-                }
 
-                if (saturday.columnStatus == false)
-                {
+                row6.Cells[6].AddParagraph("--");
+
+
+                row7.Cells[6].AddParagraph("--");
+
+
+                row8.Cells[6].AddParagraph("--");
+
+
+                row9.Cells[6].AddParagraph("--");
+
+
+                row10.Cells[6].AddParagraph("--");
+            }
+            else
+            {
+                if (saturday.columnRow1 == false)
                     row1.Cells[6].AddParagraph("--");
 
-
-
+                if (saturday.columnRow2 == false)
                     row2.Cells[6].AddParagraph("--");
 
-
+                if (saturday.columnRow3 == false)
                     row3.Cells[6].AddParagraph("--");
 
-
+                if (saturday.columnRow4 == false)
                     row4.Cells[6].AddParagraph("--");
 
-
+                if (saturday.columnRow5 == false)
                     row5.Cells[6].AddParagraph("--");
 
-
+                if (saturday.columnRow6 == false)
                     row6.Cells[6].AddParagraph("--");
 
-
+                if (saturday.columnRow7 == false)
                     row7.Cells[6].AddParagraph("--");
 
-
+                if (saturday.columnRow8 == false)
                     row8.Cells[6].AddParagraph("--");
 
-
+                if (saturday.columnRow9 == false)
                     row9.Cells[6].AddParagraph("--");
+            }
+
+            if (sunday.columnStatus == false)
+            {
+                row1.Cells[7].AddParagraph("--");
 
 
-                    row10.Cells[6].AddParagraph("--");
-                }
-                else
-                {
-                    if (saturday.columnRow1 == false)
-                        row1.Cells[6].AddParagraph("--");
 
-                    if (saturday.columnRow2 == false)
-                        row2.Cells[6].AddParagraph("--");
+                row2.Cells[7].AddParagraph("--");
 
-                    if (saturday.columnRow3 == false)
-                        row3.Cells[6].AddParagraph("--");
 
-                    if (saturday.columnRow4 == false)
-                        row4.Cells[6].AddParagraph("--");
+                row3.Cells[7].AddParagraph("--");
 
-                    if (saturday.columnRow5 == false)
-                        row5.Cells[6].AddParagraph("--");
 
-                    if (saturday.columnRow6 == false)
-                        row6.Cells[6].AddParagraph("--");
+                row4.Cells[7].AddParagraph("--");
 
-                    if (saturday.columnRow7 == false)
-                        row7.Cells[6].AddParagraph("--");
 
-                    if (saturday.columnRow8 == false)
-                        row8.Cells[6].AddParagraph("--");
+                row5.Cells[7].AddParagraph("--");
 
-                    if (saturday.columnRow9 == false)
-                        row9.Cells[6].AddParagraph("--");
-                }
 
-                if (sunday.columnStatus == false)
-                {
+                row6.Cells[7].AddParagraph("--");
+
+
+                row7.Cells[7].AddParagraph("--");
+
+
+                row8.Cells[7].AddParagraph("--");
+
+
+                row9.Cells[7].AddParagraph("--");
+
+
+                row10.Cells[7].AddParagraph("--");
+            }
+            else
+            {
+                if (sunday.columnRow1 == false)
                     row1.Cells[7].AddParagraph("--");
 
-
-
+                if (sunday.columnRow2 == false)
                     row2.Cells[7].AddParagraph("--");
 
-
+                if (sunday.columnRow3 == false)
                     row3.Cells[7].AddParagraph("--");
 
-
+                if (sunday.columnRow4 == false)
                     row4.Cells[7].AddParagraph("--");
 
-
+                if (sunday.columnRow5 == false)
                     row5.Cells[7].AddParagraph("--");
 
-
+                if (sunday.columnRow6 == false)
                     row6.Cells[7].AddParagraph("--");
 
-
+                if (sunday.columnRow7 == false)
                     row7.Cells[7].AddParagraph("--");
 
-
+                if (sunday.columnRow8 == false)
                     row8.Cells[7].AddParagraph("--");
 
-
+                if (sunday.columnRow9 == false)
                     row9.Cells[7].AddParagraph("--");
-
-
-                    row10.Cells[7].AddParagraph("--");
-                }
-                else
-                {
-                    if (sunday.columnRow1 == false)
-                        row1.Cells[7].AddParagraph("--");
-
-                    if (sunday.columnRow2 == false)
-                        row2.Cells[7].AddParagraph("--");
-
-                    if (sunday.columnRow3 == false)
-                        row3.Cells[7].AddParagraph("--");
-
-                    if (sunday.columnRow4 == false)
-                        row4.Cells[7].AddParagraph("--");
-
-                    if (sunday.columnRow5 == false)
-                        row5.Cells[7].AddParagraph("--");
-
-                    if (sunday.columnRow6 == false)
-                        row6.Cells[7].AddParagraph("--");
-
-                    if (sunday.columnRow7 == false)
-                        row7.Cells[7].AddParagraph("--");
-
-                    if (sunday.columnRow8 == false)
-                        row8.Cells[7].AddParagraph("--");
-
-                    if (sunday.columnRow9 == false)
-                        row9.Cells[7].AddParagraph("--");
-                }
             }
 
             DBConnection.CloseConnection();
@@ -2501,49 +2501,63 @@ namespace CollegeManagement.Server.Infrastructure
 
             this.table.SetEdge(0, 0, this.table.Columns.Count, this.table.Rows.Count, Edge.Box, BorderStyle.Single, 0.75);
 
-
+            return 0;
 
 
         }
 
-        public void GenerateTimeTable(string filename, string query, string value, string type)
+        public Exception GenerateTimeTable(string filename, string query, string value, string type)
         {
+
             try
             {
 
                 Document document = CreateDocument(query, value, type);
-                document.Info.Title = "Created with PDFsharp";
 
-                document.UseCmykColor = true;
+                if (document != null)
+                {
 
-                // ===== Unicode encoding and font program embedding in MigraDoc is demonstrated here =====
+                    document.Info.Title = "Created with PDFsharp";
 
-                // A flag indicating whether to create a Unicode PDF or a WinAnsi PDF file.
-                // This setting applies to all fonts used in the PDF document.
-                // This setting has no effect on the RTF renderer.
-                const bool unicode = false;
+                    document.UseCmykColor = true;
+
+                    // ===== Unicode encoding and font program embedding in MigraDoc is demonstrated here =====
+
+                    // A flag indicating whether to create a Unicode PDF or a WinAnsi PDF file.
+                    // This setting applies to all fonts used in the PDF document.
+                    // This setting has no effect on the RTF renderer.
+                    const bool unicode = false;
 
 
 
-                // ========================================================================================
+                    // ========================================================================================
 
-                // Create a renderer for the MigraDoc document.
-                PdfDocumentRenderer pdfRenderer = new PdfDocumentRenderer(unicode);
+                    // Create a renderer for the MigraDoc document.
+                    PdfDocumentRenderer pdfRenderer = new PdfDocumentRenderer(unicode);
 
-                // Associate the MigraDoc document with a renderer
-                pdfRenderer.Document = document;
+                    // Associate the MigraDoc document with a renderer
+                    pdfRenderer.Document = document;
 
-                // Layout and render document to PDF
-                pdfRenderer.RenderDocument();
+                    // Layout and render document to PDF
+                    pdfRenderer.RenderDocument();
 
-                pdfRenderer.PdfDocument.Save(filename);
+                    pdfRenderer.PdfDocument.Save(filename);
 
-                Process.Start(filename);
+                    Process.Start(filename);
+
+                } else {
+                    return new Exception("TimeSlots are getting Overlapped");
+                }
+
+                
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
+                return ex;
             }
+
+            return null;
         }
 
 

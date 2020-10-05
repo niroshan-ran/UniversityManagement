@@ -43,6 +43,8 @@ namespace CollegeManagement.TimeTable
             fbd.Filter = "Pdf File|*.pdf";
             fbd.FileName = "Time-Table-Generated-at-" + DateTime.Now.ToString("yyyyMMddHHmmssffff");
 
+            Exception status = null;
+
             DialogResult result = fbd.ShowDialog();
 
             if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.FileName))
@@ -51,19 +53,25 @@ namespace CollegeManagement.TimeTable
 
                 if (radioButtonLecturer.Checked == true) 
                 {
-                    timeTable.GenerateTimeTable(fbd.FileName, CommonConstants.QUERY_GET_TIMETABLE_BY_LECTURER, comboBoxLecturer.SelectedItem.ToString(), "LEC");
+                   status = timeTable.GenerateTimeTable(fbd.FileName, CommonConstants.QUERY_GET_TIMETABLE_BY_LECTURER, comboBoxLecturer.SelectedItem.ToString(), "LEC");
                 
                 }
                 else if (radioButtonRoom.Checked == true)
                 {
-                    timeTable.GenerateTimeTable(fbd.FileName, CommonConstants.QUERY_GET_TIMETABLE_BY_ROOM, comboBoxRoom.SelectedItem.ToString(), "HALL");
+                    status = timeTable.GenerateTimeTable(fbd.FileName, CommonConstants.QUERY_GET_TIMETABLE_BY_ROOM, comboBoxRoom.SelectedItem.ToString(), "HALL");
                 }
                 else if (radioButtonStudent.Checked == true)
                 {
-                    timeTable.GenerateTimeTable(fbd.FileName, CommonConstants.QUERY_GET_TIMETABLE_BY_STUDENT_GROUP, comboBoxStudent.SelectedItem.ToString(), "GROUP");
+                    status = timeTable.GenerateTimeTable(fbd.FileName, CommonConstants.QUERY_GET_TIMETABLE_BY_STUDENT_GROUP, comboBoxStudent.SelectedItem.ToString(), "GROUP");
                 }
+                
 
                 Cursor.Current = Cursors.Default;
+
+                if (status != null)
+                {
+                    MessageBox.Show("Error Genarating PDF!!\n" + status.Message.ToString(), "Generate Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
 
             
